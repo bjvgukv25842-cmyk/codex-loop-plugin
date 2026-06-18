@@ -209,6 +209,7 @@ export interface Artifact {
   summary: string;
   created_by_agent_id: string;
   created_at: string;
+  updated_at: string;
   metadata: Metadata;
 }
 
@@ -241,6 +242,7 @@ export interface EvalReport {
   required_fixes: EvalRequiredFix[];
   validation_commands_checked: ValidationCommand[];
   created_at: string;
+  updated_at: string;
   metadata: Metadata;
 }
 
@@ -289,6 +291,7 @@ export interface ContextCapsule {
   do_not_repeat: string[];
   risks: string[];
   created_at: string;
+  updated_at: string;
 }
 
 export interface ModuleProgress {

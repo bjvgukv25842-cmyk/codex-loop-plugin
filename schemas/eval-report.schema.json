@@ -127,6 +127,9 @@
     "created_at": {
       "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
     },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
     "metadata": {
       "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
     }
@@ -143,6 +146,7 @@
     "required_fixes",
     "validation_commands_checked",
     "created_at",
+    "updated_at",
     "metadata"
   ],
   "additionalProperties": false

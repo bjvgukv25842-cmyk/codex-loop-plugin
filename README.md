@@ -40,6 +40,7 @@ This project creates a file-backed workflow so future Codex threads can continue
 |-- src/core/               # TypeScript types, schema registry, and validators
 |-- src/plugin/             # Plugin manifest loader and local validator
 |-- src/skills/             # Skill structure validator
+|-- src/state/              # Local JSON-backed loop state store
 |-- state/                  # Future local loop state
 |-- tests/                  # Schema, plugin manifest, and skill tests
 |-- package.json            # Minimal scripts and metadata
@@ -62,9 +63,9 @@ This project creates a file-backed workflow so future Codex threads can continue
 
 ## Current Status
 
-M0, M1, M2, M3, and M4 are complete. M5 is not started.
+M0, M1, M2, M3, M4, and M5 are complete. M6 is not started.
 
-M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. M4 provides custom agent role definitions and local agent validation. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. M4 provides custom agent role definitions and local agent validation. M5 provides a local JSON-backed state store. No MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Plugin Structure
 
@@ -76,7 +77,7 @@ The local plugin entrypoint is [.codex-plugin/plugin.json](/Users/litmus/Downloa
 - `interface.composerIcon: "./assets/icon.svg"`
 - `interface.logo: "./assets/logo.svg"`
 
-This repository is still in local development. M5 will add local loop state persistence, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
+This repository is still in local development. M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
 
 Hooks are intentionally not executable yet. Future hook behavior must require user trust and explicit installation before it runs.
 
@@ -105,6 +106,24 @@ M4 defines these custom agents under [.codex/agents/](/Users/litmus/Downloads/co
 - `architecture_reviewer`: read-only boundary and maintainability reviewer.
 
 Project-level agent concurrency is configured in [.codex/config.toml](/Users/litmus/Downloads/codex-loop-plugin/.codex/config.toml).
+
+## Local State Store
+
+M5 adds a local JSON-backed `LoopStore` under [src/state/](/Users/litmus/Downloads/codex-loop-plugin/src/state). It is the durable local source of truth for future MCP and CLI modules.
+
+Default state files:
+
+- `state/loop-runs.json`
+- `state/agents.json`
+- `state/tasks.json`
+- `state/artifacts.json`
+- `state/eval-reports.json`
+- `state/context-capsules.json`
+- `state/events.json`
+
+The store writes JSON files atomically by writing a temporary file and renaming it. Schema-backed writes use M1 runtime validation before persistence. Set `CODEX_LOOP_STATE_DIR` to redirect state files to another directory, especially in tests or per-project runs.
+
+Do not commit real run data from `state/*.json`; keep only placeholders or explicit fixtures.
 
 ## How To Run
 

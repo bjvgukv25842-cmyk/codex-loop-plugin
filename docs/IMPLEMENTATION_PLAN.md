@@ -124,11 +124,22 @@ Codex will then:
 
 ### M5: Local Loop State Store
 
-**Responsibility:** Create local file-based state persistence for runs, agents, tasks, events, artifacts, and statuses.
+**Responsibility:** Create local JSON file-based state persistence for runs, agents, tasks, artifacts, eval reports, context capsules, and events.
 
-**Acceptance:** Local state read/write operations are validated with fixtures and do not require MCP.
+**Acceptance:** `LoopStore` interface exists; JSON store implements core CRUD; schema-backed writes use M1 runtime validation; writes use temp-file then rename; duplicate ids fail clearly; `CODEX_LOOP_STATE_DIR` can redirect state files; tests cover required store operations; no MCP server, CLI state machine, hooks, remote database, or real state data is implemented.
 
-**Done status:** Not started.
+**Outputs:**
+
+- `src/state/types.ts`
+- `src/state/paths.ts`
+- `src/state/json-file.ts`
+- `src/state/store.ts`
+- `src/state/json-store.ts`
+- `src/state/index.ts`
+- `tests/state/json-store.test.ts`
+- `state/.gitkeep`
+
+**Done status:** Complete.
 
 ### M6: MCP Loop Store
 
@@ -177,7 +188,7 @@ Codex will then:
 - [x] M2 Codex Plugin Manifest
 - [x] M3 Loop Skills
 - [x] M4 Custom Agent Definitions
-- [ ] M5 Local Loop State Store
+- [x] M5 Local Loop State Store
 - [ ] M6 MCP Loop Store
 - [ ] M7 Orchestrator CLI
 - [ ] M8 Hooks Integration
@@ -186,13 +197,13 @@ Codex will then:
 
 ## Current Repository State
 
-M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation. M3 has added reusable workflow skills and skill structure validation. M4 has added custom agent definitions, project agent concurrency config, and local agent validation.
+M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation. M3 has added reusable workflow skills and skill structure validation. M4 has added custom agent definitions, project agent concurrency config, and local agent validation. M5 has added the local JSON-backed LoopStore.
 
-No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+No MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Validation Strategy
 
-M4 validation uses:
+M5 validation uses:
 
 - `npm run typecheck`
 - `npm test`
@@ -203,16 +214,16 @@ M4 validation uses:
 
 In the current shell, global `node` and `npm` are unavailable, so the same package scripts were executed with bundled Node and its directory prepended to `PATH`.
 
-Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, attach their plugin surfaces to the M2 manifest paths, and dispatch work according to the M3 skill contracts and M4 agent role boundaries.
+Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, attach their plugin surfaces to the M2 manifest paths, dispatch work according to the M3 skill contracts and M4 agent role boundaries, and use the M5 LoopStore instead of ad hoc state files.
 
 ## Recovery Notes
 
-Current module: M4 complete.
+Current module: M5 complete.
 
-Completed modules: M0, M1, M2, M3, M4.
+Completed modules: M0, M1, M2, M3, M4, M5.
 
 Open issues: official plugin validator currently rejects the reserved `hooks` field and requires `./.mcp.json` while M6 is not implemented.
 
-Next exact action: Start M5 Local Loop State Store using `docs/MODULE_PROMPT_TEMPLATE.md`.
+Next exact action: Start M6 MCP Loop Store using `docs/MODULE_PROMPT_TEMPLATE.md`.
 
-Validation status: local M4 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.
+Validation status: local M5 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.

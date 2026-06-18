@@ -51,6 +51,9 @@
     "created_at": {
       "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
     },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
     "metadata": {
       "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
     }
@@ -66,6 +69,7 @@
     "summary",
     "created_by_agent_id",
     "created_at",
+    "updated_at",
     "metadata"
   ],
   "additionalProperties": false

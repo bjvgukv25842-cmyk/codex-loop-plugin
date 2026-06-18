@@ -123,3 +123,19 @@ Each decision must use this format:
 - Reason: Planner and evaluator-style agents must not mutate implementation state, while dev and integration roles need bounded write access to implement assigned work or update delivery docs.
 - Alternatives considered: Giving every custom agent workspace-write access; rejected because it weakens evaluator and planning boundaries. Making every agent read-only; rejected because Dev Worker and Integration Manager must perform scoped writes in later modules.
 - Impact: `.codex/agents/*.toml` records sandbox boundaries, and `src/agents/validate-agents.ts` fails validation if read-only agents request write access or write-capable agents lose their required sandbox mode.
+
+## DEC-0015: Use JSON Files for the First Local Loop Store
+
+- Date: 2026-06-18
+- Decision: Implement M5 as a local JSON file store before introducing SQLite, Postgres, or remote persistence.
+- Reason: JSON files are enough to make loop state durable, inspectable, and testable while keeping M5 dependency-free and aligned with the incremental module plan.
+- Alternatives considered: SQLite; deferred because it adds migration and query concerns before the store interface is proven. Postgres or another remote database; rejected for M5 because the project needs a local-first source of truth and must not introduce remote infrastructure.
+- Impact: `src/state/json-store.ts` implements `LoopStore` using JSON arrays and atomic temp-file rename writes. Future SQLite/Postgres implementations can implement the same interface without changing MCP or CLI callers.
+
+## DEC-0016: Keep LoopEvent as an M5 Local Type for Now
+
+- Date: 2026-06-18
+- Decision: Define `LoopEvent` in `src/state/types.ts` with lightweight runtime checks instead of adding a new M1 JSON Schema during M5.
+- Reason: M1 did not include an event schema in the core contract list, while M5 requires `state/events.json`. A local event type keeps the module small and avoids expanding the schema catalog beyond the requested M1 entities.
+- Alternatives considered: Adding `schemas/event.schema.json`; deferred until M6/M7 reveal whether MCP and CLI need a formal external event contract. Storing untyped events; rejected because event log entries still need durable required fields.
+- Impact: Schema-backed entities still use M1 `assertValid`; event entries require `event_id`, `loop_run_id`, `type`, `message`, `created_at`, `updated_at`, and object metadata.
