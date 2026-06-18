@@ -1,145 +1,109 @@
 ---
 name: codex-loop
-description: Run a modular PRD to development to evaluation to repair loop for Codex plugin and software engineering projects. Use when the user asks Codex to implement a project progressively, coordinate agents, split work into modules, or continue until evaluator checks pass.
+description: "Trigger with $codex-loop, codex loop, run the loop, continue until evaluator passes, or modular PRD Dev Eval Repair requests. Use when coordinating a whole repository goal through PRD, TaskGraph, development, evaluation, repair, validation, context recovery, and final reporting. Do not use for single short answers, one-off edits that do not need planning/evaluation, or tasks where the user explicitly asks to skip the loop."
 ---
 
 # Codex Loop Skill
 
 ## Purpose
 
-Turn a user's project goal into a modular, evidence-checked delivery loop.
+Run a modular, evidence-checked delivery loop for a repository goal.
 
-This skill must reduce one-off prompting. It should keep Codex working through a clear loop:
+Use this skill to coordinate:
 
-Goal → PRD → Task Graph → Module Implementation → Evaluation → Repair → Validation → Progress Recording → Next Module.
+Goal -> PRD -> TaskGraph -> Dev -> Eval -> Repair -> Validation -> ContextCapsule -> Final Report.
 
-## Hard Rules
+For the detailed state machine, read [references/loop-state-machine.md](references/loop-state-machine.md).
+For required JSON outputs, read [references/output-contracts.md](references/output-contracts.md).
 
-Do not implement the entire project at once.
+## Inputs
 
-Work one module at a time.
+- User goal or current module prompt.
+- Source-of-truth files listed below.
+- Current git diff, validation logs, artifacts, and task outputs when available.
 
-State must be written to project files. Chat history is not the source of truth.
+## Source Of Truth
 
-Before every module, read:
+Before each module, read:
 
 - AGENTS.md
 - .agent/PLANS.md
 - docs/IMPLEMENTATION_PLAN.md
 - docs/LOOP_PROGRESS.md
 - docs/DECISIONS.md
+- schemas/
+- tests/
+- artifacts/ when relevant
+- state/ when it exists
 
-After every module, update:
-
-- docs/IMPLEMENTATION_PLAN.md
-- docs/LOOP_PROGRESS.md
-- docs/DECISIONS.md when decisions are made
+Chat history is never the only state source.
 
 ## Loop Phases
 
-### 1. Goal Normalization
+### Goal Normalization
 
-Convert the user's request into:
+Convert the user request into outcome, constraints, boundaries, success criteria, validation surface, and stop conditions. Ask only for blocking ambiguity.
 
-- outcome
-- constraints
-- boundaries
-- success criteria
-- validation surface
-- stop conditions
+### PRD Generation
 
-Ask questions only for blocking ambiguity.
-
-### 2. PRD Generation
-
-Create or update:
+Use `$prd-planner` behavior to create or update:
 
 - docs/PRD.md
 - docs/ACCEPTANCE_CRITERIA.md
 
-The PRD must include:
+### Task Graph Generation
 
-- user goal
-- non-goals
-- user flows
-- functional requirements
-- non-functional requirements
-- acceptance criteria
-- risks
-
-### 3. Task Graph Generation
-
-Create or update:
+Use `$task-decomposer` behavior to create or update:
 
 - docs/TASK_GRAPH.json
 
-Each task must include:
+The TaskGraph must follow the M1 `task-graph` schema.
 
-- task_id
-- module_id
-- owner_agent_type
-- dependencies
-- scope
-- files likely affected
-- acceptance criteria
-- validation commands
-- risk level
+### Module Implementation
 
-### 4. Module Implementation
+Use `$dev-worker` behavior for exactly one current module, task, or repair request. Keep changes inside declared scope.
 
-For the current module:
+### Evaluation
 
-1. Inspect relevant files.
-2. Produce a short implementation contract.
-3. Make the smallest useful changes.
-4. Run validation.
-5. Record results.
-6. Stop if blocked.
+Use `$evaluator` behavior. Evaluator is read-only and compares PRD, TaskGraph, acceptance criteria, diff, artifacts, and validation logs.
 
-### 5. Evaluation
+### Repair
 
-Evaluation must be read-only.
+If evaluation returns `NEEDS_REVISION`, create a RepairRequest and repair only listed findings. Rerun validation and re-evaluate.
 
-Evaluator must output:
+### Validation
 
-- PASS or NEEDS_REVISION
-- findings
-- file references
-- evidence
-- required fixes
-- validation commands
+Run the narrowest useful validation first, then broader validation. Record commands and results in docs/LOOP_PROGRESS.md.
 
-### 6. Repair
+### Context Recovery
 
-If evaluation returns NEEDS_REVISION:
+Use `$context-distiller` behavior when context is long, noisy, compacted, or unreliable. Save ContextCapsule artifacts under artifacts/context-capsules/ when artifact writing exists.
 
-1. Create a repair request.
-2. Repair only the listed findings.
-3. Rerun validation.
-4. Re-evaluate.
+### Final Report
 
-### 7. Context Recovery
+Use `$integration-manager` behavior only after evaluator PASS evidence exists for required modules.
 
-If context becomes noisy, long, or unreliable:
-
-1. Generate a Context Capsule.
-2. Save it under artifacts/context-capsules/.
-3. Continue from the capsule.
-
-### 8. Stop Conditions
+## Stop Conditions
 
 Stop when:
 
-- current module passes validation
-- evaluator returns PASS
-- required user approval is needed
-- environment is blocked
-- maximum repair iterations reached
-- next module requires confirmation
+- Current module passes validation.
+- Evaluator returns `PASS`.
+- Repair requires user approval or reaches the maximum repair budget.
+- Environment is blocked.
+- Context restart is required.
+- Next module requires confirmation.
 
-## Required Module Output
+## Rules
 
-At the end of each module, return:
+- Do not implement the whole project in one pass.
+- Do not rely on chat context as the only source of truth.
+- If validation or evaluation fails, repair the current module before moving on.
+- Evaluator must be read-only.
+- Context capsule must preserve `agent_id`, `old_thread_id`, `current_module`, `open_issues`, and `next_instruction`.
+- Do not enter the next module unless the user explicitly asks or the loop contract allows it.
+
+## Required Output JSON
 
 ```json
 {

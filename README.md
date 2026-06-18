@@ -35,11 +35,12 @@ This project creates a file-backed workflow so future Codex threads can continue
 |-- docs/                   # Implementation plan, progress, decisions, prompt templates
 |-- hooks/                  # Future hook configs or scripts
 |-- schemas/                # JSON Schema contracts shared by future modules
-|-- skills/                 # Codex skills
+|-- skills/                 # Codex workflow skills
 |-- src/core/               # TypeScript types, schema registry, and validators
 |-- src/plugin/             # Plugin manifest loader and local validator
+|-- src/skills/             # Skill structure validator
 |-- state/                  # Future local loop state
-|-- tests/                  # Schema and plugin manifest tests
+|-- tests/                  # Schema, plugin manifest, and skill tests
 |-- package.json            # Minimal scripts and metadata
 `-- tsconfig.json           # TypeScript scaffold config
 ```
@@ -60,9 +61,9 @@ This project creates a file-backed workflow so future Codex threads can continue
 
 ## Current Status
 
-M0, M1, and M2 are complete. M3 is not started.
+M0, M1, M2, and M3 are complete. M4 is not started.
 
-M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. No custom agent TOML implementation, state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Plugin Structure
 
@@ -74,9 +75,21 @@ The local plugin entrypoint is [.codex-plugin/plugin.json](/Users/litmus/Downloa
 - `interface.composerIcon: "./assets/icon.svg"`
 - `interface.logo: "./assets/logo.svg"`
 
-This repository is still in local development. M3 will fill in the full skills surface, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
+This repository is still in local development. M4 will formalize custom agent definitions, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
 
 Hooks are intentionally not executable yet. Future hook behavior must require user trust and explicit installation before it runs.
+
+## Skills
+
+Use these skill entrypoints in future Codex sessions:
+
+- `$codex-loop`: coordinate the full PRD -> TaskGraph -> Dev -> Eval -> Repair -> Validation -> ContextCapsule -> Final Report loop.
+- `$prd-planner`: create or update `docs/PRD.md` and `docs/ACCEPTANCE_CRITERIA.md`.
+- `$task-decomposer`: turn PRD and acceptance criteria into schema-compatible `docs/TASK_GRAPH.json`.
+- `$dev-worker`: implement exactly one scoped task, module, or repair request.
+- `$evaluator`: perform read-only evaluation and return EvalReport JSON.
+- `$context-distiller`: generate ContextCapsule JSON for thread restart or context recovery.
+- `$integration-manager`: check evaluator-approved modules and produce final delivery reporting.
 
 ## How To Run
 
@@ -97,6 +110,12 @@ Local manifest validation:
 
 ```bash
 npm run validate:manifest
+```
+
+Local skill validation:
+
+```bash
+npm run validate:skills
 ```
 
 Official plugin validator status:

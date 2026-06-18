@@ -4,30 +4,30 @@ This file is the durable progress log for Codex Loop work. It must be updated af
 
 ## Current Module
 
-M2: Plugin Manifest and Plugin Metadata
+M3: Loop Skills
 
 ## Completed Modules
 
 - M0 Project Memory & Scaffold
 - M1 Core Schemas and Runtime Types
 - M2 Plugin Manifest and Plugin Metadata
+- M3 Loop Skills
 
 ## Current Status
 
-M2 is complete. M3 is not started.
+M3 is complete. M4 is not started.
 
-The project now has source-of-truth documents, plugin metadata, skill scaffold, custom agent definitions, a core data contract layer, and a local plugin manifest validation layer.
+The project now has source-of-truth documents, plugin metadata, a core data contract layer, local plugin manifest validation, and reusable workflow skills.
 
-M2 added:
+M3 added:
 
-- `.codex-plugin/plugin.json` for the `codex-loop` plugin.
-- Local interface metadata, default prompts, keywords, capabilities, and asset references.
-- `assets/icon.svg` and `assets/logo.svg` placeholders.
-- `src/plugin/manifest.ts` for manifest typing, loading, and shape validation.
-- `src/plugin/validate-manifest.ts` for local structured manifest validation.
-- `tests/plugin/manifest.test.ts` for manifest contract coverage.
+- `$codex-loop` skill with full loop phases and references.
+- `$prd-planner`, `$task-decomposer`, `$dev-worker`, `$evaluator`, `$context-distiller`, and `$integration-manager` skills.
+- Codex Loop state machine and output contract references.
+- `src/skills/validate-skills.ts` for local skill frontmatter/contract validation.
+- `tests/skills/skills.test.ts` for required skill coverage.
 
-No state store, MCP server, CLI, hook logic, custom agent implementation, or business loop has been implemented.
+No custom agent TOML implementation, state store, MCP server, CLI, hook logic, or orchestration business loop has been implemented.
 
 ## Recent Validation Result
 
@@ -36,23 +36,24 @@ Status: Passed with bundled Node PATH fallback.
 Commands:
 
 - `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run typecheck` (passed)
-- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js test` (passed; 2 test files, 19 tests)
-- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run validate:manifest` (passed with warnings for future `./.mcp.json` and `./hooks/hooks.json`)
-- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run validate` (passed; typecheck, 2 test files, 19 tests, manifest validation warnings)
-- `PYTHONPATH=/tmp/codex-loop-plugin-verify-py /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 /Users/litmus/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py .` (failed; official validator rejects `hooks` and requires `./.mcp.json` while M6/M8 are not implemented)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js test` (passed; 3 test files, 25 tests)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run validate:skills` (passed)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run validate` (passed; typecheck, 3 test files, 25 tests, manifest validation warnings, skill validation)
 
 Result:
 
-- Local M2 manifest validation passes.
-- Manifest tests confirm name, version, component paths, default prompts, and asset files.
-- Future MCP and hook companion paths are reported as warnings, not errors.
-- Official plugin validator incompatibility is recorded and deferred until M6/M8 or a later manifest compatibility revision.
+- All required skills exist.
+- All skill frontmatter contains name and descriptions of at least 30 characters.
+- codex-loop includes all required loop phases.
+- evaluator is explicitly read-only.
+- context-distiller includes ContextCapsule and next_instruction requirements.
+- dev-worker includes scope limits and no-next-module rule.
 
 ## Next Step
 
-Start M3: Loop Skills.
+Start M4: Custom Agent Definitions.
 
-Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M4 until M3 is validated.
+Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M5 until M4 is validated.
 
 ## Blockers
 
@@ -60,16 +61,20 @@ Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M4 until M3 is validated.
 - GitHub CLI `gh` is not available in the current shell environment. Git remote and push use local `git`.
 - Official plugin validator rejects the M2-required `hooks` pointer and requires `./.mcp.json` when `mcpServers` is present. M2 keeps these as reserved future paths per module requirements.
 
-## M2 Outputs
+## M3 Outputs
 
-- `.codex-plugin/plugin.json`
-- `assets/icon.svg`
-- `assets/logo.svg`
-- `src/plugin/manifest.ts`
-- `src/plugin/validate-manifest.ts`
-- `tests/plugin/manifest.test.ts`
+- `skills/codex-loop/SKILL.md`
+- `skills/codex-loop/references/loop-state-machine.md`
+- `skills/codex-loop/references/output-contracts.md`
+- `skills/prd-planner/SKILL.md`
+- `skills/task-decomposer/SKILL.md`
+- `skills/dev-worker/SKILL.md`
+- `skills/evaluator/SKILL.md`
+- `skills/context-distiller/SKILL.md`
+- `skills/integration-manager/SKILL.md`
+- `src/skills/validate-skills.ts`
+- `tests/skills/skills.test.ts`
 - `package.json`
-- `tsconfig.json`
 - `README.md`
 - `docs/IMPLEMENTATION_PLAN.md`
 - `docs/LOOP_PROGRESS.md`
@@ -77,14 +82,14 @@ Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M4 until M3 is validated.
 
 ## Recovery Notes
 
-Current module: M2 complete.
+Current module: M3 complete.
 
-Completed modules: M0, M1, M2.
+Completed modules: M0, M1, M2, M3.
 
 Open issues: official plugin validator compatibility is deferred because M2 must reserve `mcpServers` and `hooks` paths before M6 and M8 implement them.
 
-Next exact action: implement M3 Loop Skills.
+Next exact action: implement M4 Custom Agent Definitions.
 
-Validation status: local validation passed with bundled Node PATH fallback; official plugin validator incompatibility recorded.
+Validation status: local M3 validation passed with bundled Node PATH fallback; official plugin validator incompatibility from M2 remains recorded.
 
 Known risks: global `node`/`npm` unavailable, `gh` unavailable, official plugin validator may continue to fail until M6/M8 or manifest compatibility decisions are revisited.

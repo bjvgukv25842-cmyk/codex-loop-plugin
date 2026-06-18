@@ -107,3 +107,11 @@ Each decision must use this format:
 - Reason: The M2 module contract requires the manifest to point at future skills, MCP, and hooks locations while also prohibiting implementation of those modules now.
 - Alternatives considered: Omitting `mcpServers` and `hooks` until their modules; rejected because it would not satisfy the M2 contract. Creating placeholder MCP or hook configs; rejected because it would blur module boundaries and imply behavior that does not exist.
 - Impact: `src/plugin/validate-manifest.ts` reports missing future files as warnings, not errors. Official plugin ingestion validation may still reject `hooks` until the platform supports it; M2 records that compatibility risk instead of entering M6 or M8 early.
+
+## DEC-0013: Treat M3 Skills as Workflow Contracts, Not Runtime Orchestration
+
+- Date: 2026-06-18
+- Decision: Implement M3 skills as reusable procedural contracts with static structure validation, while deferring durable state storage, MCP tools, hooks, and orchestration execution to later modules.
+- Reason: Skills should guide Codex behavior for PRD, task decomposition, scoped development, evaluation, repair, context recovery, and integration without pretending to execute the loop or persist state themselves.
+- Alternatives considered: Adding runtime loop orchestration inside skills; rejected because M3 explicitly prohibits business loop implementation. Deferring skill validation; rejected because later agents need reliable skill entrypoints before M4 and M5.
+- Impact: `src/skills/validate-skills.ts` verifies skill frontmatter and key constraints, and future M4 agent definitions should align with these skill contracts.

@@ -81,11 +81,25 @@ Codex will then:
 
 ### M3: Loop Skills
 
-**Responsibility:** Create Codex skills for codex-loop, planner, developer, evaluator, and context distiller workflows.
+**Responsibility:** Create Codex skills for codex-loop, PRD planning, task decomposition, scoped development, read-only evaluation, context distillation, and integration management workflows.
 
-**Acceptance:** Skill files validate and describe when to use each skill without implementing business logic.
+**Acceptance:** Required skill files have valid frontmatter; descriptions contain specific trigger/use/do-not-use guidance; codex-loop defines all loop phases; evaluator is read-only; context-distiller outputs ContextCapsule; dev-worker enforces scope; local skill validation and tests pass; no custom agent TOML, state store, MCP server, hooks, or orchestrator is implemented.
 
-**Done status:** Not started.
+**Outputs:**
+
+- `skills/codex-loop/SKILL.md`
+- `skills/codex-loop/references/loop-state-machine.md`
+- `skills/codex-loop/references/output-contracts.md`
+- `skills/prd-planner/SKILL.md`
+- `skills/task-decomposer/SKILL.md`
+- `skills/dev-worker/SKILL.md`
+- `skills/evaluator/SKILL.md`
+- `skills/context-distiller/SKILL.md`
+- `skills/integration-manager/SKILL.md`
+- `src/skills/validate-skills.ts`
+- `tests/skills/skills.test.ts`
+
+**Done status:** Complete.
 
 ### M4: Custom Agent Definitions
 
@@ -148,7 +162,7 @@ Codex will then:
 - [x] M0 Project Memory & Scaffold
 - [x] M1 Core Schemas and Types
 - [x] M2 Codex Plugin Manifest
-- [ ] M3 Loop Skills
+- [x] M3 Loop Skills
 - [ ] M4 Custom Agent Definitions
 - [ ] M5 Local Loop State Store
 - [ ] M6 MCP Loop Store
@@ -159,31 +173,32 @@ Codex will then:
 
 ## Current Repository State
 
-M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation.
+M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation. M3 has added reusable workflow skills and skill structure validation.
 
-No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+No custom agent TOML implementation, state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Validation Strategy
 
-M2 validation uses:
+M3 validation uses:
 
 - `npm run typecheck`
 - `npm test`
 - `npm run validate`
 - `npm run validate:manifest`
+- `npm run validate:skills`
 
 In the current shell, global `node` and `npm` are unavailable, so the same package scripts were executed with bundled Node and its directory prepended to `PATH`.
 
-Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, and attach their plugin surfaces to the M2 manifest paths.
+Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, attach their plugin surfaces to the M2 manifest paths, and align agent definitions with the M3 skill contracts.
 
 ## Recovery Notes
 
-Current module: M2 complete.
+Current module: M3 complete.
 
-Completed modules: M0, M1, M2.
+Completed modules: M0, M1, M2, M3.
 
 Open issues: official plugin validator currently rejects the reserved `hooks` field and requires `./.mcp.json` while M6 is not implemented.
 
-Next exact action: Start M3 Loop Skills using `docs/MODULE_PROMPT_TEMPLATE.md`.
+Next exact action: Start M4 Custom Agent Definitions using `docs/MODULE_PROMPT_TEMPLATE.md`.
 
-Validation status: local M2 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.
+Validation status: local M3 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.
