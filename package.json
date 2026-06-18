@@ -10,7 +10,8 @@
     "build": "tsc --noEmit",
     "validate:manifest": "node src/plugin/validate-manifest.ts",
     "validate:skills": "node src/skills/validate-skills.ts",
-    "validate": "tsc --noEmit && vitest run && node src/plugin/validate-manifest.ts && node src/skills/validate-skills.ts"
+    "validate:agents": "node src/agents/validate-agents.ts",
+    "validate": "tsc --noEmit && vitest run && node src/plugin/validate-manifest.ts && node src/skills/validate-skills.ts && node src/agents/validate-agents.ts"
   },
   "keywords": [
     "codex",

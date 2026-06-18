@@ -36,6 +36,7 @@ This project creates a file-backed workflow so future Codex threads can continue
 |-- hooks/                  # Future hook configs or scripts
 |-- schemas/                # JSON Schema contracts shared by future modules
 |-- skills/                 # Codex workflow skills
+|-- src/agents/             # Custom agent config validator
 |-- src/core/               # TypeScript types, schema registry, and validators
 |-- src/plugin/             # Plugin manifest loader and local validator
 |-- src/skills/             # Skill structure validator
@@ -61,9 +62,9 @@ This project creates a file-backed workflow so future Codex threads can continue
 
 ## Current Status
 
-M0, M1, M2, and M3 are complete. M4 is not started.
+M0, M1, M2, M3, and M4 are complete. M5 is not started.
 
-M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. No custom agent TOML implementation, state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. M4 provides custom agent role definitions and local agent validation. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Plugin Structure
 
@@ -75,7 +76,7 @@ The local plugin entrypoint is [.codex-plugin/plugin.json](/Users/litmus/Downloa
 - `interface.composerIcon: "./assets/icon.svg"`
 - `interface.logo: "./assets/logo.svg"`
 
-This repository is still in local development. M4 will formalize custom agent definitions, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
+This repository is still in local development. M5 will add local loop state persistence, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
 
 Hooks are intentionally not executable yet. Future hook behavior must require user trust and explicit installation before it runs.
 
@@ -90,6 +91,20 @@ Use these skill entrypoints in future Codex sessions:
 - `$evaluator`: perform read-only evaluation and return EvalReport JSON.
 - `$context-distiller`: generate ContextCapsule JSON for thread restart or context recovery.
 - `$integration-manager`: check evaluator-approved modules and produce final delivery reporting.
+
+## Agents
+
+M4 defines these custom agents under [.codex/agents/](/Users/litmus/Downloads/codex-loop-plugin/.codex/agents):
+
+- `planner`: read-only planning agent for PRD, acceptance criteria, and TaskGraph output.
+- `dev_worker`: workspace-write agent for exactly one scoped module, task, or repair request.
+- `evaluator`: read-only evidence checker that returns EvalReport-style PASS or NEEDS_REVISION results.
+- `context_distiller`: read-only ContextCapsule producer for thread restart and recovery.
+- `integration_manager`: workspace-write integration checker for evaluator-approved modules.
+- `test_reviewer`: read-only test coverage and validation reviewer.
+- `architecture_reviewer`: read-only boundary and maintainability reviewer.
+
+Project-level agent concurrency is configured in [.codex/config.toml](/Users/litmus/Downloads/codex-loop-plugin/.codex/config.toml).
 
 ## How To Run
 
@@ -116,6 +131,12 @@ Local skill validation:
 
 ```bash
 npm run validate:skills
+```
+
+Local agent validation:
+
+```bash
+npm run validate:agents
 ```
 
 Official plugin validator status:

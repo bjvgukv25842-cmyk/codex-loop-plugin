@@ -103,11 +103,24 @@ Codex will then:
 
 ### M4: Custom Agent Definitions
 
-**Responsibility:** Define Planner, Dev Worker, Evaluator, Context Distiller, Integration Manager, and reviewer agents.
+**Responsibility:** Define Planner, Dev Worker, Evaluator, Context Distiller, Integration Manager, and reviewer agents with explicit role contracts and sandbox boundaries.
 
-**Acceptance:** Agent TOML files parse and enforce role boundaries, sandbox modes, and output contracts.
+**Acceptance:** Required agent TOML files exist; read-only agents use `read-only`; write-capable agents use `workspace-write`; planner, dev worker, evaluator, context distiller, and integration manager instructions include required output contracts; project agent concurrency config exists; local agent validation and tests pass; no Orchestrator, MCP server, hooks, state store, or business loop is implemented.
 
-**Done status:** Not started.
+**Outputs:**
+
+- `.codex/agents/planner.toml`
+- `.codex/agents/dev-worker.toml`
+- `.codex/agents/evaluator.toml`
+- `.codex/agents/context-distiller.toml`
+- `.codex/agents/integration-manager.toml`
+- `.codex/agents/test-reviewer.toml`
+- `.codex/agents/architecture-reviewer.toml`
+- `.codex/config.toml`
+- `src/agents/validate-agents.ts`
+- `tests/agents/agents.test.ts`
+
+**Done status:** Complete.
 
 ### M5: Local Loop State Store
 
@@ -163,7 +176,7 @@ Codex will then:
 - [x] M1 Core Schemas and Types
 - [x] M2 Codex Plugin Manifest
 - [x] M3 Loop Skills
-- [ ] M4 Custom Agent Definitions
+- [x] M4 Custom Agent Definitions
 - [ ] M5 Local Loop State Store
 - [ ] M6 MCP Loop Store
 - [ ] M7 Orchestrator CLI
@@ -173,32 +186,33 @@ Codex will then:
 
 ## Current Repository State
 
-M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation. M3 has added reusable workflow skills and skill structure validation.
+M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation. M3 has added reusable workflow skills and skill structure validation. M4 has added custom agent definitions, project agent concurrency config, and local agent validation.
 
-No custom agent TOML implementation, state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Validation Strategy
 
-M3 validation uses:
+M4 validation uses:
 
 - `npm run typecheck`
 - `npm test`
 - `npm run validate`
 - `npm run validate:manifest`
 - `npm run validate:skills`
+- `npm run validate:agents`
 
 In the current shell, global `node` and `npm` are unavailable, so the same package scripts were executed with bundled Node and its directory prepended to `PATH`.
 
-Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, attach their plugin surfaces to the M2 manifest paths, and align agent definitions with the M3 skill contracts.
+Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, attach their plugin surfaces to the M2 manifest paths, and dispatch work according to the M3 skill contracts and M4 agent role boundaries.
 
 ## Recovery Notes
 
-Current module: M3 complete.
+Current module: M4 complete.
 
-Completed modules: M0, M1, M2, M3.
+Completed modules: M0, M1, M2, M3, M4.
 
 Open issues: official plugin validator currently rejects the reserved `hooks` field and requires `./.mcp.json` while M6 is not implemented.
 
-Next exact action: Start M4 Custom Agent Definitions using `docs/MODULE_PROMPT_TEMPLATE.md`.
+Next exact action: Start M5 Local Loop State Store using `docs/MODULE_PROMPT_TEMPLATE.md`.
 
-Validation status: local M3 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.
+Validation status: local M4 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.

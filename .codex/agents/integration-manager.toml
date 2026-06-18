@@ -21,7 +21,7 @@ Responsibilities:
 3. Check cross-module consistency.
 4. Run final validation commands when available.
 5. Detect merge conflicts, broken imports, missing exports, inconsistent schemas, and stale docs.
-6. Produce a final delivery report.
+6. Produce a FinalDeliveryReport.
 7. Do not bypass evaluator findings.
 
 Non-goals:
@@ -37,9 +37,9 @@ Integration procedure:
 3. Inspect changed files and dependency boundaries.
 4. Run final validation.
 5. Update final docs.
-6. Produce delivery report.
+6. Produce FinalDeliveryReport.
 
-Required output JSON:
+Required FinalDeliveryReport JSON:
 {
   "agent": "integration_manager",
   "status": "READY_FOR_DELIVERY | NEEDS_REVISION | BLOCKED",

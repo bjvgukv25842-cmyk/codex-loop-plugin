@@ -115,3 +115,11 @@ Each decision must use this format:
 - Reason: Skills should guide Codex behavior for PRD, task decomposition, scoped development, evaluation, repair, context recovery, and integration without pretending to execute the loop or persist state themselves.
 - Alternatives considered: Adding runtime loop orchestration inside skills; rejected because M3 explicitly prohibits business loop implementation. Deferring skill validation; rejected because later agents need reliable skill entrypoints before M4 and M5.
 - Impact: `src/skills/validate-skills.ts` verifies skill frontmatter and key constraints, and future M4 agent definitions should align with these skill contracts.
+
+## DEC-0014: Enforce Agent Permission Boundaries in Static Config
+
+- Date: 2026-06-18
+- Decision: Define planner, evaluator, context_distiller, test_reviewer, and architecture_reviewer as `read-only`, while dev_worker and integration_manager use `workspace-write`.
+- Reason: Planner and evaluator-style agents must not mutate implementation state, while dev and integration roles need bounded write access to implement assigned work or update delivery docs.
+- Alternatives considered: Giving every custom agent workspace-write access; rejected because it weakens evaluator and planning boundaries. Making every agent read-only; rejected because Dev Worker and Integration Manager must perform scoped writes in later modules.
+- Impact: `.codex/agents/*.toml` records sandbox boundaries, and `src/agents/validate-agents.ts` fails validation if read-only agents request write access or write-capable agents lose their required sandbox mode.
