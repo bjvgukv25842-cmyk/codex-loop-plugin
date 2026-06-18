@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# Runtime loop state is file-backed but should not be committed by default.
+state/agents/*
+state/artifacts/*
+state/runs/*
+!state/agents/.gitkeep
+!state/artifacts/.gitkeep
+!state/runs/.gitkeep

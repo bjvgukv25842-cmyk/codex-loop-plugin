@@ -1,0 +1,20 @@
+{
+  "name": "codex-loop-plugin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Loop-driven Codex plugin scaffold for modular multi-agent delivery.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "node -e \"JSON.parse(require('fs').readFileSync('tsconfig.json', 'utf8')); console.log('tsconfig parsed')\"",
+    "test": "node -e \"const fs=require('fs'); const dirs=['src','tests','schemas','state','artifacts']; const unexpected=[]; for (const dir of dirs) { if (!fs.existsSync(dir)) continue; const stack=[dir]; while (stack.length) { const current=stack.pop(); for (const entry of fs.readdirSync(current,{withFileTypes:true})) { const path=current+'/'+entry.name; if (entry.isDirectory()) stack.push(path); else if (entry.name!=='.gitkeep') unexpected.push(path); } } } if (unexpected.length) { console.error('Unexpected implementation files:\\n'+unexpected.join('\\n')); process.exit(1); } console.log('no business code found')\"",
+    "build": "node -e \"console.log('no build output for M0 scaffold')\"",
+    "validate": "node -e \"const fs=require('fs'); JSON.parse(fs.readFileSync('package.json','utf8')); JSON.parse(fs.readFileSync('tsconfig.json','utf8')); JSON.parse(fs.readFileSync('.codex-plugin/plugin.json','utf8')); const required=['AGENTS.md','.agent/PLANS.md','docs/IMPLEMENTATION_PLAN.md','docs/LOOP_PROGRESS.md','docs/DECISIONS.md','README.md','package.json','tsconfig.json','skills/.gitkeep','hooks/.gitkeep','schemas/.gitkeep','src/.gitkeep','tests/.gitkeep','state/.gitkeep','artifacts/.gitkeep','artifacts/context-capsules/.gitkeep','artifacts/eval-reports/.gitkeep','artifacts/task-results/.gitkeep','.codex/agents/.gitkeep','.codex-plugin/.gitkeep']; const missing=required.filter((path)=>!fs.existsSync(path)); if (missing.length) { console.error('Missing required paths:\\n'+missing.join('\\n')); process.exit(1); } console.log('M0 scaffold validation passed')\""
+  },
+  "keywords": [
+    "codex",
+    "plugin",
+    "multi-agent",
+    "loop"
+  ],
+  "license": "MIT"
+}

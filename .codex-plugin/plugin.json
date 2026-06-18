@@ -1,0 +1,23 @@
+{
+  "name": "codex-loop-plugin",
+  "version": "0.1.0",
+  "description": "Loop-driven Codex plugin and skill scaffold for multi-agent project execution.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Codex Loop Plugin",
+    "shortDescription": "Coordinate Codex agents through file-backed loop workflows.",
+    "longDescription": "A local Codex plugin scaffold for turning project goals into planner, developer, evaluator, repair, and continuation loops with durable state.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Run Codex Loop for this project goal."
+    ]
+  }
+}
