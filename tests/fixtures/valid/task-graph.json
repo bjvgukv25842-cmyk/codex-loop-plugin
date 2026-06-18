@@ -1,0 +1,56 @@
+{
+  "task_graph_id": "task_graph_001",
+  "loop_run_id": "loop_001",
+  "prd_artifact_id": "artifact_prd_001",
+  "root_goal": "Implement core schemas and runtime types.",
+  "tasks": [
+    {
+      "task_id": "task_m1_schemas",
+      "loop_run_id": "loop_001",
+      "module_id": "M1",
+      "title": "Define core schemas",
+      "description": "Create JSON Schema contracts for loop entities.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "agent_dev_001",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "agent_eval_001",
+      "dependencies": [],
+      "scope": [
+        "schemas",
+        "runtime validation"
+      ],
+      "non_goals": [
+        "Do not implement state storage"
+      ],
+      "likely_files": [
+        {
+          "path": "schemas/loop-run.schema.json",
+          "purpose": "Loop run contract"
+        }
+      ],
+      "acceptance_criteria": [
+        "Schemas load",
+        "Fixtures validate"
+      ],
+      "validation_commands": [
+        {
+          "command": "npm run validate",
+          "reason": "Run typecheck and tests"
+        }
+      ],
+      "risk_level": "medium",
+      "status": "READY_FOR_DEV",
+      "revision_count": 0,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [],
+      "created_at": "2026-06-18T07:00:00.000Z",
+      "updated_at": "2026-06-18T07:30:00.000Z",
+      "metadata": {}
+    }
+  ],
+  "edges": [],
+  "status": "TASK_GRAPH_READY",
+  "created_at": "2026-06-18T07:00:00.000Z",
+  "updated_at": "2026-06-18T07:30:00.000Z"
+}

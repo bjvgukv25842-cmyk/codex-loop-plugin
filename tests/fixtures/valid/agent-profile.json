@@ -1,0 +1,37 @@
+{
+  "agent_id": "agent_planner_001",
+  "agent_type": "planner",
+  "codex_agent_name": "planner",
+  "display_name": "Planner Agent",
+  "role_contract": {
+    "responsibilities": [
+      "Create PRDs",
+      "Create task graphs"
+    ],
+    "non_goals": [
+      "Do not write production code"
+    ],
+    "required_inputs": [
+      "user goal",
+      "source-of-truth docs"
+    ],
+    "required_outputs": [
+      "PRD",
+      "task graph"
+    ]
+  },
+  "current_thread_id": "thread_001",
+  "previous_thread_ids": [],
+  "skills": [
+    "codex-loop"
+  ],
+  "mcp_servers": [],
+  "sandbox_mode": "read-only",
+  "status": "READY",
+  "assigned_task_ids": [
+    "task_m1_schemas"
+  ],
+  "created_at": "2026-06-18T07:00:00.000Z",
+  "updated_at": "2026-06-18T07:30:00.000Z",
+  "metadata": {}
+}

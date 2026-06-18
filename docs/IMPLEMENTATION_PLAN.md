@@ -35,11 +35,32 @@ Codex will then:
 
 ### M1: Core Schemas and Types
 
-**Responsibility:** Define LoopRun, Agent, Task, Artifact, EvalReport, RepairRequest, and ContextCapsule contracts.
+**Responsibility:** Define LoopRun, AgentProfile, TaskGraph, TaskNode, Artifact, EvalReport, RepairRequest, ContextCapsule, and ModuleProgress contracts.
 
-**Acceptance:** Schemas/types exist, examples validate, and no runtime orchestration is implemented.
+**Acceptance:** JSON Schema draft 2020-12 files exist under `schemas/`; TypeScript types and runtime validation helpers exist under `src/core/`; valid and invalid fixtures exercise required fields and business rules; `npm run typecheck`, `npm test`, and `npm run validate` pass; no state store, MCP server, CLI, hooks, or business loop is implemented.
 
-**Done status:** Not started.
+**Outputs:**
+
+- `schemas/common.schema.json`
+- `schemas/loop-run.schema.json`
+- `schemas/agent-profile.schema.json`
+- `schemas/task-node.schema.json`
+- `schemas/task-graph.schema.json`
+- `schemas/artifact.schema.json`
+- `schemas/eval-report.schema.json`
+- `schemas/repair-request.schema.json`
+- `schemas/context-capsule.schema.json`
+- `schemas/module-progress.schema.json`
+- `src/core/types.ts`
+- `src/core/schema-registry.ts`
+- `src/core/validate.ts`
+- `src/core/errors.ts`
+- `src/core/index.ts`
+- `tests/core/schema.test.ts`
+- `tests/fixtures/valid/*.json`
+- `tests/fixtures/invalid/*.json`
+
+**Done status:** Complete.
 
 ### M2: Codex Plugin Manifest
 
@@ -116,7 +137,7 @@ Codex will then:
 ## Progress
 
 - [x] M0 Project Memory & Scaffold
-- [ ] M1 Core Schemas and Types
+- [x] M1 Core Schemas and Types
 - [ ] M2 Codex Plugin Manifest
 - [ ] M3 Loop Skills
 - [ ] M4 Custom Agent Definitions
@@ -129,31 +150,30 @@ Codex will then:
 
 ## Current Repository State
 
-M0 has created a resumable scaffold. The repository has source-of-truth docs, Codex plugin metadata, project-level Codex agent config, skill scaffold, placeholder directories, `package.json`, and `tsconfig.json`.
+M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests.
 
-No schema, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Validation Strategy
 
-M0 validation uses:
+M1 validation uses:
 
-- `package.json` script validation when npm is available.
-- Bundled Node fallback when npm is unavailable.
-- JSON parsing for `package.json`, `tsconfig.json`, and `.codex-plugin/plugin.json`.
-- TOML parsing for `.codex/config.toml` and `.codex/agents/*.toml`.
-- Plugin manifest validation.
-- No-business-logic scans for implementation directories.
+- `npm run typecheck`
+- `npm test`
+- `npm run validate`
 
-Future modules must add tests appropriate to their behavior.
+In the current shell, global `node` and `npm` are unavailable, so the same package scripts were executed with bundled Node and its directory prepended to `PATH`.
+
+Future modules must add tests appropriate to their behavior and keep using the M1 schemas as shared contracts.
 
 ## Recovery Notes
 
-Current module: M0 complete.
+Current module: M1 complete.
 
-Completed modules: M0.
+Completed modules: M0, M1.
 
-Open issues: none for M0.
+Open issues: none for M1.
 
-Next exact action: Start M1 Core Schemas and Types using `docs/MODULE_PROMPT_TEMPLATE.md`.
+Next exact action: Start M2 Codex Plugin Manifest using `docs/MODULE_PROMPT_TEMPLATE.md`.
 
-Validation status: passed with bundled Node fallback because global npm is not available in this shell.
+Validation status: passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.

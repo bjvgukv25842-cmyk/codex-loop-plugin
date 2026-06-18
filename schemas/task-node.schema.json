@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/task-node.schema.json",
+  "title": "TaskNode",
+  "type": "object",
+  "properties": {
+    "task_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_agent_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentType"
+    },
+    "owner_agent_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableID"
+    },
+    "reviewer_agent_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableAgentType"
+    },
+    "reviewer_agent_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableID"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "likely_files": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FileRef"
+      }
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+      }
+    },
+    "risk_level": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/RiskLevel"
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/TaskStatus"
+    },
+    "revision_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "branch": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "worktree_path": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "artifact_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "task_id",
+    "loop_run_id",
+    "module_id",
+    "title",
+    "description",
+    "owner_agent_type",
+    "owner_agent_id",
+    "reviewer_agent_type",
+    "reviewer_agent_id",
+    "dependencies",
+    "scope",
+    "non_goals",
+    "likely_files",
+    "acceptance_criteria",
+    "validation_commands",
+    "risk_level",
+    "status",
+    "revision_count",
+    "branch",
+    "worktree_path",
+    "artifact_ids",
+    "created_at",
+    "updated_at",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

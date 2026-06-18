@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/task-graph.schema.json",
+  "title": "TaskGraph",
+  "type": "object",
+  "properties": {
+    "task_graph_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "prd_artifact_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "root_goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/task-node.schema.json"
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_task_id": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+          },
+          "to_task_id": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "from_task_id",
+          "to_task_id",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/LoopStatus"
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    }
+  },
+  "required": [
+    "task_graph_id",
+    "loop_run_id",
+    "prd_artifact_id",
+    "root_goal",
+    "tasks",
+    "edges",
+    "status",
+    "created_at",
+    "updated_at"
+  ],
+  "additionalProperties": false
+}

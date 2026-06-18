@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/eval-report.schema.json",
+  "title": "EvalReport",
+  "type": "object",
+  "$defs": {
+    "Finding": {
+      "type": "object",
+      "properties": {
+        "finding_id": {
+          "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+        },
+        "severity": {
+          "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FindingSeverity"
+        },
+        "category": {
+          "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FindingCategory"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/EvidenceRef"
+          }
+        },
+        "required_fix": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "finding_id",
+        "severity",
+        "category",
+        "description",
+        "evidence",
+        "required_fix"
+      ],
+      "additionalProperties": false
+    },
+    "RequiredFix": {
+      "type": "object",
+      "properties": {
+        "fix_id": {
+          "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+        },
+        "finding_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+          },
+          "minItems": 1
+        },
+        "instruction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_files": {
+          "type": "array",
+          "items": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FileRef"
+          }
+        },
+        "validation_commands": {
+          "type": "array",
+          "items": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+          }
+        }
+      },
+      "required": [
+        "fix_id",
+        "finding_ids",
+        "instruction",
+        "expected_files",
+        "validation_commands"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "eval_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "task_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluator_agent_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "verdict": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/EvalVerdict"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Finding"
+      }
+    },
+    "required_fixes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RequiredFix"
+      }
+    },
+    "validation_commands_checked": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+      }
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "eval_id",
+    "loop_run_id",
+    "task_id",
+    "module_id",
+    "evaluator_agent_id",
+    "verdict",
+    "confidence",
+    "findings",
+    "required_fixes",
+    "validation_commands_checked",
+    "created_at",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

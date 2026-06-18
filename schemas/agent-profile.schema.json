@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/agent-profile.schema.json",
+  "title": "AgentProfile",
+  "type": "object",
+  "properties": {
+    "agent_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentType"
+    },
+    "codex_agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role_contract": {
+      "type": "object",
+      "properties": {
+        "responsibilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "non_goals": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required_inputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "responsibilities",
+        "non_goals",
+        "required_inputs",
+        "required_outputs"
+      ],
+      "additionalProperties": false
+    },
+    "current_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "previous_thread_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mcp_servers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sandbox_mode": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/SandboxMode"
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentStatus"
+    },
+    "assigned_task_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "agent_id",
+    "agent_type",
+    "codex_agent_name",
+    "display_name",
+    "role_contract",
+    "current_thread_id",
+    "previous_thread_ids",
+    "skills",
+    "mcp_servers",
+    "sandbox_mode",
+    "status",
+    "assigned_task_ids",
+    "created_at",
+    "updated_at",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

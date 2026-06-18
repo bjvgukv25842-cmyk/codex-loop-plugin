@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/context-capsule.schema.json",
+  "title": "ContextCapsule",
+  "type": "object",
+  "properties": {
+    "capsule_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentType"
+    },
+    "old_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "new_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableID"
+    },
+    "restart_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_module": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "completed_modules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "completed_work": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "open_issues": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluator_findings": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/eval-report.schema.json#/$defs/Finding"
+      }
+    },
+    "repair_requests": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "validation_status": {
+      "type": "object",
+      "properties": {
+        "commands_run": {
+          "type": "array",
+          "items": {
+            "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+          }
+        },
+        "passed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "failed": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "not_run_reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "commands_run",
+        "passed",
+        "failed",
+        "not_run_reason"
+      ],
+      "additionalProperties": false
+    },
+    "files_changed_recently": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FileRef"
+      }
+    },
+    "source_of_truth_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next_instruction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "do_not_repeat": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    }
+  },
+  "required": [
+    "capsule_id",
+    "loop_run_id",
+    "agent_id",
+    "agent_type",
+    "old_thread_id",
+    "new_thread_id",
+    "restart_reason",
+    "current_module",
+    "current_task",
+    "completed_modules",
+    "completed_work",
+    "open_issues",
+    "evaluator_findings",
+    "repair_requests",
+    "decisions",
+    "validation_status",
+    "files_changed_recently",
+    "source_of_truth_files",
+    "next_instruction",
+    "do_not_repeat",
+    "risks",
+    "created_at"
+  ],
+  "additionalProperties": false
+}

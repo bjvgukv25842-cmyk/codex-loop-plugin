@@ -4,86 +4,106 @@ This file is the durable progress log for Codex Loop work. It must be updated af
 
 ## Current Module
 
-M0: Project Memory & Scaffold
+M1: Core Schemas and Runtime Types
 
 ## Completed Modules
 
 - M0 Project Memory & Scaffold
+- M1 Core Schemas and Runtime Types
 
 ## Current Status
 
-M0 is complete. M1 is not started.
+M1 is complete. M2 is not started.
 
-The project has source-of-truth documents, package and TypeScript scaffolding, plugin metadata, skill scaffold, custom agent definitions, and placeholder directories for future implementation.
+The project now has source-of-truth documents, plugin metadata, skill scaffold, custom agent definitions, and a core data contract layer.
 
-The local directory is now initialized as a git repository on branch `main` with `origin` set to `https://github.com/bjvgukv25842-cmyk/codex-loop-plugin.git`.
+M1 added:
 
-No business logic has been implemented.
+- JSON Schema draft 2020-12 contracts for common definitions, LoopRun, AgentProfile, TaskNode, TaskGraph, Artifact, EvalReport, RepairRequest, ContextCapsule, and ModuleProgress.
+- TypeScript interfaces and unions matching the schema field names.
+- Schema registry helpers for listing, locating, and loading schemas.
+- Runtime validation helpers using Ajv and structured validation errors.
+- Business-rule validators for EvalReport and ContextCapsule cross-field requirements.
+- Valid and invalid fixtures plus automated schema tests.
+
+No state store, MCP server, CLI, hook logic, custom agent implementation, or business loop has been implemented.
 
 ## Recent Validation Result
 
-Status: Passed with bundled Node fallback.
+Status: Passed with bundled Node PATH fallback.
 
 Commands:
 
-- `npm run validate` (attempted; unavailable because global `npm` is not on `PATH`)
-- `/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node -e "...M0 scaffold validation..."` (passed)
-- `/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 - <<'PY' ... tomllib validation ... PY` (passed)
-- `PYTHONPATH=/tmp/codex-loop-plugin-verify-py /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 /Users/litmus/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py .`
-- `find src scripts hooks schemas tests examples state artifacts -type f ! -name '.gitkeep' -print | sort` (passed; no output)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run typecheck` (passed)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js test` (passed; 1 test file, 12 tests)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node /tmp/codex-loop-npm/package/bin/npm-cli.js run validate` (passed; typecheck plus 1 test file, 12 tests)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run typecheck` (passed)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run test` (passed; 1 test file, 12 tests)
+- `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run validate` (passed; typecheck plus 1 test file, 12 tests)
 
 Result:
 
-- Required M0 files exist.
-- JSON files parse.
-- TOML files parse.
-- Plugin validation passes.
-- No non-placeholder files exist in implementation directories.
+- All M1 schemas load.
+- Valid fixtures pass schema validation.
+- Invalid EvalReport and ContextCapsule fixtures fail as expected.
+- EvalReport `NEEDS_REVISION` with empty `findings` fails business validation.
+- ContextCapsule missing `next_instruction` fails business validation.
+- TypeScript typechecking passes.
 
 ## Next Step
 
-Start M1: Core Schemas and Types.
+Start M2: Codex Plugin Manifest.
 
-Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M2 until M1 is validated.
+Use `docs/MODULE_PROMPT_TEMPLATE.md` and do not enter M3 until M2 is validated.
 
 ## Blockers
 
-- Global `npm` is not available in the current shell environment. Use bundled Node fallback until a package manager is available.
+- Global `node` and `npm` are not available in the current shell environment. Use bundled Node with `PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH` until a package manager is available.
 - GitHub CLI `gh` is not available in the current shell environment. Git remote and push use local `git`.
 
-## M0 Outputs
+## M1 Outputs
 
-- `AGENTS.md`
-- `.agent/PLANS.md`
+- `schemas/common.schema.json`
+- `schemas/loop-run.schema.json`
+- `schemas/agent-profile.schema.json`
+- `schemas/task-node.schema.json`
+- `schemas/task-graph.schema.json`
+- `schemas/artifact.schema.json`
+- `schemas/eval-report.schema.json`
+- `schemas/repair-request.schema.json`
+- `schemas/context-capsule.schema.json`
+- `schemas/module-progress.schema.json`
+- `src/core/types.ts`
+- `src/core/schema-registry.ts`
+- `src/core/validate.ts`
+- `src/core/errors.ts`
+- `src/core/index.ts`
+- `tests/core/schema.test.ts`
+- `tests/fixtures/valid/loop-run.json`
+- `tests/fixtures/valid/agent-profile.json`
+- `tests/fixtures/valid/task-graph.json`
+- `tests/fixtures/valid/eval-report-pass.json`
+- `tests/fixtures/valid/eval-report-needs-revision.json`
+- `tests/fixtures/valid/context-capsule.json`
+- `tests/fixtures/invalid/eval-report-missing-verdict.json`
+- `tests/fixtures/invalid/context-capsule-missing-next-instruction.json`
+- `package.json`
+- `package-lock.json`
+- `tsconfig.json`
 - `docs/IMPLEMENTATION_PLAN.md`
 - `docs/LOOP_PROGRESS.md`
 - `docs/DECISIONS.md`
-- `README.md`
-- `package.json`
-- `tsconfig.json`
-- `.codex-plugin/.gitkeep`
-- `.codex/agents/.gitkeep`
-- `skills/.gitkeep`
-- `hooks/.gitkeep`
-- `schemas/.gitkeep`
-- `src/.gitkeep`
-- `tests/.gitkeep`
-- `state/.gitkeep`
-- `artifacts/.gitkeep`
-- `artifacts/context-capsules/.gitkeep`
-- `artifacts/eval-reports/.gitkeep`
-- `artifacts/task-results/.gitkeep`
 
 ## Recovery Notes
 
-Current module: M0 complete.
+Current module: M1 complete.
 
-Completed modules: M0.
+Completed modules: M0, M1.
 
-Open issues: none for M0.
+Open issues: none for M1.
 
-Next exact action: implement M1 Core Schemas and Types.
+Next exact action: implement M2 Codex Plugin Manifest.
 
-Validation status: passed with bundled Node fallback.
+Validation status: passed with bundled Node PATH fallback.
 
-Known risks: npm unavailable, gh unavailable, agent TOML has syntax-only validation.
+Known risks: global `node`/`npm` unavailable, `gh` unavailable, M2 must ensure plugin metadata references only existing plugin surfaces.

@@ -1,0 +1,55 @@
+{
+  "capsule_id": "capsule_001",
+  "loop_run_id": "loop_001",
+  "agent_id": "agent_dev_001",
+  "agent_type": "dev_worker",
+  "old_thread_id": "thread_old_001",
+  "new_thread_id": null,
+  "restart_reason": "Context became too long.",
+  "current_module": "M1",
+  "current_task": "task_m1_schemas",
+  "completed_modules": [
+    "M0"
+  ],
+  "completed_work": [
+    "Created M0 scaffold",
+    "Started M1 schema contracts"
+  ],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0008"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm run validate"
+      }
+    ],
+    "passed": [
+      "npm run validate"
+    ],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [
+    {
+      "path": "schemas/context-capsule.schema.json",
+      "purpose": "Context recovery contract"
+    }
+  ],
+  "source_of_truth_files": [
+    "AGENTS.md",
+    ".agent/PLANS.md",
+    "docs/IMPLEMENTATION_PLAN.md",
+    "docs/LOOP_PROGRESS.md",
+    "docs/DECISIONS.md"
+  ],
+  "next_instruction": "Continue M1 validation and update docs.",
+  "do_not_repeat": [
+    "Do not enter M2"
+  ],
+  "risks": [],
+  "created_at": "2026-06-18T07:50:00.000Z"
+}

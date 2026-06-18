@@ -1,0 +1,31 @@
+{
+  "loop_run_id": "loop_001",
+  "project_id": "project_codex_loop_plugin",
+  "user_goal": "Build codex-loop-plugin incrementally.",
+  "normalized_goal": "Create a modular Codex plugin that plans, develops, evaluates, repairs, and records state.",
+  "status": "TASK_GRAPH_READY",
+  "current_module_id": "M1",
+  "current_iteration": 1,
+  "max_iterations": 10,
+  "source_of_truth_files": [
+    "AGENTS.md",
+    ".agent/PLANS.md",
+    "docs/IMPLEMENTATION_PLAN.md",
+    "docs/LOOP_PROGRESS.md",
+    "docs/DECISIONS.md"
+  ],
+  "started_at": "2026-06-18T07:00:00.000Z",
+  "updated_at": "2026-06-18T07:30:00.000Z",
+  "completed_at": null,
+  "stop_conditions": [
+    "current module passes validation",
+    "next module requires confirmation"
+  ],
+  "budget": {
+    "max_repair_iterations_per_task": 2,
+    "max_context_restarts_per_agent": 3
+  },
+  "metadata": {
+    "module_order": "M0-M10"
+  }
+}

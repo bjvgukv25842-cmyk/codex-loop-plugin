@@ -1,0 +1,52 @@
+{
+  "eval_id": "eval_m1_needs_revision",
+  "loop_run_id": "loop_001",
+  "task_id": "task_m1_schemas",
+  "module_id": "M1",
+  "evaluator_agent_id": "agent_eval_001",
+  "verdict": "NEEDS_REVISION",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "finding_id": "finding_missing_test",
+      "severity": "medium",
+      "category": "test_gap",
+      "description": "Schema validation lacks an invalid fixture test.",
+      "evidence": [
+        {
+          "type": "file",
+          "ref": "tests/core/schema.test.ts",
+          "summary": "No invalid fixture test present"
+        }
+      ],
+      "required_fix": "Add invalid fixture coverage."
+    }
+  ],
+  "required_fixes": [
+    {
+      "fix_id": "fix_add_invalid_fixture",
+      "finding_ids": [
+        "finding_missing_test"
+      ],
+      "instruction": "Add invalid fixture coverage for missing required fields.",
+      "expected_files": [
+        {
+          "path": "tests/core/schema.test.ts",
+          "purpose": "Schema regression test"
+        }
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test"
+        }
+      ]
+    }
+  ],
+  "validation_commands_checked": [
+    {
+      "command": "npm test"
+    }
+  ],
+  "created_at": "2026-06-18T07:45:00.000Z",
+  "metadata": {}
+}

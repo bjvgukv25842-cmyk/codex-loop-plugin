@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/loop-run.schema.json",
+  "title": "LoopRun",
+  "type": "object",
+  "properties": {
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "project_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "user_goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalized_goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/LoopStatus"
+    },
+    "current_module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_iteration": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "max_iterations": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_of_truth_files": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "started_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "completed_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableISODateTime"
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_repair_iterations_per_task": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_context_restarts_per_agent": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "max_repair_iterations_per_task",
+        "max_context_restarts_per_agent"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "loop_run_id",
+    "project_id",
+    "user_goal",
+    "normalized_goal",
+    "status",
+    "current_module_id",
+    "current_iteration",
+    "max_iterations",
+    "source_of_truth_files",
+    "started_at",
+    "updated_at",
+    "completed_at",
+    "stop_conditions",
+    "budget",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

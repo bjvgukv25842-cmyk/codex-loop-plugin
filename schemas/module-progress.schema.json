@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/module-progress.schema.json",
+  "title": "ModuleProgress",
+  "type": "object",
+  "properties": {
+    "module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "module_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ModuleStatus"
+    },
+    "started_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "completed_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableISODateTime"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/FileRef"
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+      }
+    },
+    "validation_result": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationResult"
+    },
+    "evaluator_verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION",
+        "NOT_RUN"
+      ]
+    },
+    "docs_updated": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decisions_added": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "remaining_risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next_module": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ready_for_next_module": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "module_id",
+    "module_name",
+    "status",
+    "started_at",
+    "completed_at",
+    "changed_files",
+    "validation_commands",
+    "validation_result",
+    "evaluator_verdict",
+    "docs_updated",
+    "decisions_added",
+    "remaining_risks",
+    "next_module",
+    "ready_for_next_module"
+  ],
+  "additionalProperties": false
+}

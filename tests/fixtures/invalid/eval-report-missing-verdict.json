@@ -1,0 +1,13 @@
+{
+  "eval_id": "eval_missing_verdict",
+  "loop_run_id": "loop_001",
+  "task_id": "task_m1_schemas",
+  "module_id": "M1",
+  "evaluator_agent_id": "agent_eval_001",
+  "confidence": 0.9,
+  "findings": [],
+  "required_fixes": [],
+  "validation_commands_checked": [],
+  "created_at": "2026-06-18T07:45:00.000Z",
+  "metadata": {}
+}

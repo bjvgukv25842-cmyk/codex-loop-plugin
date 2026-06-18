@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/common.schema.json",
+  "title": "Codex Loop Common Definitions",
+  "type": "object",
+  "properties": {},
+  "required": [],
+  "additionalProperties": true,
+  "$defs": {
+    "ID": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Durable identifier string. Prefixes are conventional, not enforced by regex."
+    },
+    "NullableID": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ID"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ISODateTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "NullableISODateTime": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ISODateTime"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "LoopStatus": {
+      "type": "string",
+      "enum": [
+        "IDLE",
+        "GOAL_RECEIVED",
+        "PRD_DRAFTING",
+        "PRD_READY",
+        "TASK_GRAPH_READY",
+        "DEV_DISPATCHING",
+        "DEV_RUNNING",
+        "DEV_DONE",
+        "EVAL_RUNNING",
+        "REPAIR_REQUESTED",
+        "VALIDATION_RUNNING",
+        "READY_FOR_NEXT_MODULE",
+        "READY_FOR_MERGE",
+        "DONE",
+        "BLOCKED",
+        "FAILED",
+        "CONTEXT_RESTARTING"
+      ]
+    },
+    "ModuleStatus": {
+      "type": "string",
+      "enum": [
+        "NOT_STARTED",
+        "IN_PROGRESS",
+        "PASS",
+        "NEEDS_REVISION",
+        "BLOCKED",
+        "SKIPPED"
+      ]
+    },
+    "TaskStatus": {
+      "type": "string",
+      "enum": [
+        "TODO",
+        "READY_FOR_DEV",
+        "DEV_RUNNING",
+        "DEV_DONE",
+        "EVAL_RUNNING",
+        "PASS",
+        "NEEDS_REVISION",
+        "REPAIR_REQUESTED",
+        "BLOCKED",
+        "CANCELLED"
+      ]
+    },
+    "AgentStatus": {
+      "type": "string",
+      "enum": [
+        "IDLE",
+        "READY",
+        "RUNNING",
+        "BLOCKED",
+        "DONE",
+        "FAILED",
+        "CONTEXT_RESTARTING"
+      ]
+    },
+    "AgentType": {
+      "type": "string",
+      "enum": [
+        "planner",
+        "task_dispatcher",
+        "dev_worker",
+        "evaluator",
+        "test_reviewer",
+        "architecture_reviewer",
+        "context_distiller",
+        "integration_manager"
+      ]
+    },
+    "NullableAgentType": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentType"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "ArtifactType": {
+      "type": "string",
+      "enum": [
+        "prd",
+        "acceptance_criteria",
+        "task_graph",
+        "implementation_plan",
+        "dev_result",
+        "diff",
+        "test_report",
+        "eval_report",
+        "repair_request",
+        "context_capsule",
+        "final_report",
+        "log"
+      ]
+    },
+    "EvalVerdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION"
+      ]
+    },
+    "FindingSeverity": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "FindingCategory": {
+      "type": "string",
+      "enum": [
+        "correctness",
+        "test_gap",
+        "schema_gap",
+        "docs_gap",
+        "scope_creep",
+        "safety",
+        "maintainability",
+        "integration_risk"
+      ]
+    },
+    "ValidationResult": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "failed",
+        "not_run"
+      ]
+    },
+    "SandboxMode": {
+      "type": "string",
+      "enum": [
+        "read-only",
+        "workspace-write",
+        "danger-full-access"
+      ]
+    },
+    "RiskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "Metadata": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "ValidationCommand": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string",
+          "minLength": 1
+        },
+        "cwd": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string"
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "command"
+      ],
+      "additionalProperties": false
+    },
+    "EvidenceRef": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "file",
+            "command",
+            "artifact",
+            "url",
+            "text"
+          ]
+        },
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "type",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "FileRef": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

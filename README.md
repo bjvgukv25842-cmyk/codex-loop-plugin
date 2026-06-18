@@ -33,11 +33,11 @@ This project creates a file-backed workflow so future Codex threads can continue
 |   `-- task-results/       # Future task execution outputs
 |-- docs/                   # Implementation plan, progress, decisions, prompt templates
 |-- hooks/                  # Future hook configs or scripts
-|-- schemas/                # Future schemas and types
+|-- schemas/                # JSON Schema contracts shared by future modules
 |-- skills/                 # Codex skills
-|-- src/                    # Future implementation source
+|-- src/core/               # TypeScript types, schema registry, and validators
 |-- state/                  # Future local loop state
-|-- tests/                  # Future tests
+|-- tests/                  # Schema tests and fixtures
 |-- package.json            # Minimal scripts and metadata
 `-- tsconfig.json           # TypeScript scaffold config
 ```
@@ -58,9 +58,9 @@ This project creates a file-backed workflow so future Codex threads can continue
 
 ## Current Status
 
-M0 is complete. M1 is not started.
+M0 and M1 are complete. M2 is not started.
 
-No schema, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## How To Run
 
@@ -70,11 +70,11 @@ Preferred validation command when npm is available:
 npm run validate
 ```
 
-Current environment fallback when npm is not available:
+Current environment fallback when global `node` or `npm` is not available:
 
 ```bash
-/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node \
-  -e "const fs=require('fs'); JSON.parse(fs.readFileSync('package.json','utf8')); JSON.parse(fs.readFileSync('tsconfig.json','utf8')); JSON.parse(fs.readFileSync('.codex-plugin/plugin.json','utf8'));"
+PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH \
+  /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run validate
 ```
 
 Plugin validation:
