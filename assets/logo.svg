@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" role="img" aria-labelledby="title desc">
+  <title id="title">Codex Loop logo</title>
+  <desc id="desc">Codex Loop wordmark with loop arrows.</desc>
+  <rect width="320" height="96" rx="18" fill="#111827"/>
+  <g transform="translate(24 20)">
+    <path d="M42 8a26 26 0 0 0-39 11" fill="none" stroke="#60A5FA" stroke-width="6" stroke-linecap="round"/>
+    <path d="M3 19h14V5" fill="none" stroke="#60A5FA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M14 52a26 26 0 0 0 39-11" fill="none" stroke="#34D399" stroke-width="6" stroke-linecap="round"/>
+    <path d="M53 41H39v14" fill="none" stroke="#34D399" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 32l8 8 15-20" fill="none" stroke="#F9FAFB" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="96" y="42" fill="#F9FAFB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Codex Loop</text>
+  <text x="96" y="66" fill="#D1D5DB" font-family="Inter, Arial, sans-serif" font-size="15">PRD to Dev to Eval to Repair</text>
+</svg>

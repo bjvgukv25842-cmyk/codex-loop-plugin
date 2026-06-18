@@ -1,23 +1,44 @@
 {
-  "name": "codex-loop-plugin",
+  "name": "codex-loop",
   "version": "0.1.0",
-  "description": "Loop-driven Codex plugin and skill scaffold for multi-agent project execution.",
+  "description": "Loop-driven Codex plugin for modular multi-agent project delivery.",
   "author": {
-    "name": "Local developer"
+    "name": "Codex Loop Engineering",
+    "url": "https://github.com/bjvgukv25842-cmyk/codex-loop-plugin"
   },
+  "homepage": "https://github.com/bjvgukv25842-cmyk/codex-loop-plugin",
+  "repository": "https://github.com/bjvgukv25842-cmyk/codex-loop-plugin",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "plugin",
+    "loop",
+    "multi-agent",
+    "prd",
+    "evaluation",
+    "repair"
+  ],
   "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "hooks": "./hooks/hooks.json",
   "interface": {
-    "displayName": "Codex Loop Plugin",
-    "shortDescription": "Coordinate Codex agents through file-backed loop workflows.",
-    "longDescription": "A local Codex plugin scaffold for turning project goals into planner, developer, evaluator, repair, and continuation loops with durable state.",
-    "developerName": "Local developer",
+    "displayName": "Codex Loop",
+    "shortDescription": "Run PRD, development, evaluation, and repair loops in Codex.",
+    "longDescription": "Codex Loop turns a repository goal into a file-backed PRD, task graph, bounded development loop, evaluator pass, repair cycle, context capsule, and final delivery report. This local development manifest reserves future skills, MCP, and hooks surfaces without implementing those modules early.",
+    "developerName": "Codex Loop Engineering",
     "category": "Productivity",
     "capabilities": [
-      "Interactive",
-      "Write"
+      "Planning",
+      "Multi-agent coordination",
+      "Evaluation",
+      "Repair",
+      "Context recovery"
     ],
     "defaultPrompt": [
-      "Run Codex Loop for this project goal."
-    ]
+      "Use Codex Loop to turn this goal into a PRD, task graph, implementation loop, evaluator loop, and final delivery report.",
+      "Run a modular PRD → Dev → Eval → Repair loop for this repository and stop only when validation evidence supports completion."
+    ],
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg"
   }
 }

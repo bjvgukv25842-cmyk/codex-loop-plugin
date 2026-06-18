@@ -64,11 +64,20 @@ Codex will then:
 
 ### M2: Codex Plugin Manifest
 
-**Responsibility:** Finalize `.codex-plugin/plugin.json` for the plugin package.
+**Responsibility:** Finalize `.codex-plugin/plugin.json` for the plugin package, add local display metadata and placeholder assets, and provide a manifest loader/validator for development.
 
-**Acceptance:** Manifest validates with the plugin validator and references only existing plugin surfaces.
+**Acceptance:** Manifest contains the required `codex-loop` metadata and future `skills`, `mcpServers`, and `hooks` pointers; local manifest validation and tests pass; missing future companion files are reported as warnings; no skills, MCP server, hooks logic, or publication workflow is implemented.
 
-**Done status:** Not started.
+**Outputs:**
+
+- `.codex-plugin/plugin.json`
+- `assets/icon.svg`
+- `assets/logo.svg`
+- `src/plugin/manifest.ts`
+- `src/plugin/validate-manifest.ts`
+- `tests/plugin/manifest.test.ts`
+
+**Done status:** Complete.
 
 ### M3: Loop Skills
 
@@ -138,7 +147,7 @@ Codex will then:
 
 - [x] M0 Project Memory & Scaffold
 - [x] M1 Core Schemas and Types
-- [ ] M2 Codex Plugin Manifest
+- [x] M2 Codex Plugin Manifest
 - [ ] M3 Loop Skills
 - [ ] M4 Custom Agent Definitions
 - [ ] M5 Local Loop State Store
@@ -150,30 +159,31 @@ Codex will then:
 
 ## Current Repository State
 
-M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests.
+M0 has created a resumable scaffold. M1 has added the core data contract layer: JSON Schemas, matching TypeScript types, schema registry helpers, runtime validators, structured validation errors, fixtures, and tests. M2 has added the Codex plugin manifest, display assets, and local manifest validation.
 
 No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
 
 ## Validation Strategy
 
-M1 validation uses:
+M2 validation uses:
 
 - `npm run typecheck`
 - `npm test`
 - `npm run validate`
+- `npm run validate:manifest`
 
 In the current shell, global `node` and `npm` are unavailable, so the same package scripts were executed with bundled Node and its directory prepended to `PATH`.
 
-Future modules must add tests appropriate to their behavior and keep using the M1 schemas as shared contracts.
+Future modules must add tests appropriate to their behavior, keep using the M1 schemas as shared contracts, and attach their plugin surfaces to the M2 manifest paths.
 
 ## Recovery Notes
 
-Current module: M1 complete.
+Current module: M2 complete.
 
-Completed modules: M0, M1.
+Completed modules: M0, M1, M2.
 
-Open issues: none for M1.
+Open issues: official plugin validator currently rejects the reserved `hooks` field and requires `./.mcp.json` while M6 is not implemented.
 
-Next exact action: Start M2 Codex Plugin Manifest using `docs/MODULE_PROMPT_TEMPLATE.md`.
+Next exact action: Start M3 Loop Skills using `docs/MODULE_PROMPT_TEMPLATE.md`.
 
-Validation status: passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.
+Validation status: local M2 validation passed using bundled Node to execute package scripts because global `node` and `npm` are not available in this shell.

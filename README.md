@@ -26,7 +26,8 @@ This project creates a file-backed workflow so future Codex threads can continue
 .
 |-- .agent/                 # ExecPlan standard and planning memory
 |-- .codex/                 # Project-level Codex config and custom agents
-|-- .codex-plugin/          # Codex plugin metadata
+|-- .codex-plugin/          # Codex plugin manifest metadata
+|-- assets/                 # Local plugin icon and logo placeholders
 |-- artifacts/              # Future generated loop artifacts
 |   |-- context-capsules/   # Future context recovery capsules
 |   |-- eval-reports/       # Future evaluator outputs
@@ -36,8 +37,9 @@ This project creates a file-backed workflow so future Codex threads can continue
 |-- schemas/                # JSON Schema contracts shared by future modules
 |-- skills/                 # Codex skills
 |-- src/core/               # TypeScript types, schema registry, and validators
+|-- src/plugin/             # Plugin manifest loader and local validator
 |-- state/                  # Future local loop state
-|-- tests/                  # Schema tests and fixtures
+|-- tests/                  # Schema and plugin manifest tests
 |-- package.json            # Minimal scripts and metadata
 `-- tsconfig.json           # TypeScript scaffold config
 ```
@@ -58,9 +60,23 @@ This project creates a file-backed workflow so future Codex threads can continue
 
 ## Current Status
 
-M0 and M1 are complete. M2 is not started.
+M0, M1, and M2 are complete. M3 is not started.
 
-M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. No state store, MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+
+## Plugin Structure
+
+The local plugin entrypoint is [.codex-plugin/plugin.json](/Users/litmus/Downloads/codex-loop-plugin/.codex-plugin/plugin.json). It declares:
+
+- `skills: "./skills/"`
+- `mcpServers: "./.mcp.json"`
+- `hooks: "./hooks/hooks.json"`
+- `interface.composerIcon: "./assets/icon.svg"`
+- `interface.logo: "./assets/logo.svg"`
+
+This repository is still in local development. M3 will fill in the full skills surface, M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
+
+Hooks are intentionally not executable yet. Future hook behavior must require user trust and explicit installation before it runs.
 
 ## How To Run
 
@@ -77,13 +93,21 @@ PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node
   /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run validate
 ```
 
-Plugin validation:
+Local manifest validation:
+
+```bash
+npm run validate:manifest
+```
+
+Official plugin validator status:
 
 ```bash
 PYTHONPATH=/tmp/codex-loop-plugin-verify-py \
   /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 \
   /Users/litmus/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py .
 ```
+
+The official validator currently rejects the reserved `hooks` field and requires `./.mcp.json` when `mcpServers` is present. M2 keeps those pointers because later modules must attach to them, but treats missing future companion files as local warnings until M6 and M8.
 
 ## Continuing Work
 

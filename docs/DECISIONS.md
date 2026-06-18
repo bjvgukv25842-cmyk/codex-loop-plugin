@@ -99,3 +99,11 @@ Each decision must use this format:
 - Reason: M1 adds executable TypeScript behavior and must prove schemas load, fixtures validate, and required business rules fail when malformed.
 - Alternatives considered: Node's built-in test runner; rejected because Vitest provides a small, familiar TypeScript-ready harness for this project. No test framework; rejected because M1 requires automated schema tests.
 - Impact: `npm run typecheck`, `npm test`, and `npm run validate` become the M1 validation surface.
+
+## DEC-0012: M2 Manifest Reserves Future Integration Paths Without Implementing Them
+
+- Date: 2026-06-18
+- Decision: Include `skills`, `mcpServers`, and `hooks` path fields in `.codex-plugin/plugin.json`, but treat missing future companion files as local manifest warnings until M3, M6, and M8 implement those surfaces.
+- Reason: The M2 module contract requires the manifest to point at future skills, MCP, and hooks locations while also prohibiting implementation of those modules now.
+- Alternatives considered: Omitting `mcpServers` and `hooks` until their modules; rejected because it would not satisfy the M2 contract. Creating placeholder MCP or hook configs; rejected because it would blur module boundaries and imply behavior that does not exist.
+- Impact: `src/plugin/validate-manifest.ts` reports missing future files as warnings, not errors. Official plugin ingestion validation may still reject `hooks` until the platform supports it; M2 records that compatibility risk instead of entering M6 or M8 early.

@@ -8,7 +8,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "build": "tsc --noEmit",
-    "validate": "tsc --noEmit && vitest run"
+    "validate:manifest": "node src/plugin/validate-manifest.ts",
+    "validate": "tsc --noEmit && vitest run && node src/plugin/validate-manifest.ts"
   },
   "keywords": [
     "codex",
