@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/evals/sdk-orchestrated/schemas/planner-lite-output.schema.json",
+  "title": "PlannerLiteOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "prd_markdown",
+    "task_graph_json",
+    "acceptance_criteria",
+    "risks"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "BLOCKED"
+      ]
+    },
+    "prd_markdown": {
+      "type": "string"
+    },
+    "task_graph_json": {
+      "type": "string"
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

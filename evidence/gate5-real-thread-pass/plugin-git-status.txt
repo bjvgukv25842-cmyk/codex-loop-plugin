@@ -1,0 +1,55 @@
+ M README.md
+ M docs/DECISIONS.md
+ M docs/IMPLEMENTATION_PLAN.md
+ M docs/LOOP_PROGRESS.md
+ M package-lock.json
+ M package.json
+ M src/core/index.ts
+ M src/core/validate.ts
+ M src/state/index.ts
+ M src/state/json-file.ts
+ M src/state/json-store.ts
+ M src/state/paths.ts
+ M src/state/store.ts
+ M src/state/types.ts
+ M tests/core/schema.test.ts
+ M tests/plugin/manifest.test.ts
+ M tests/state/json-store.test.ts
+ M tsconfig.json
+?? .mcp.json
+?? artifacts/FinalDeliveryReport.md
+?? artifacts/real-thread/
+?? docs/AGENTS.md
+?? docs/ARCHITECTURE.md
+?? docs/EXAMPLES.md
+?? docs/HOOKS.md
+?? docs/INSTALLATION.md
+?? docs/MCP_TOOLS.md
+?? docs/PLUGIN_BOUNDARIES.md
+?? docs/PLUGIN_DISCOVERY_VALIDATION.md
+?? docs/REAL_THREAD_VALIDATION.md
+?? docs/RELEASE_CHECKLIST.md
+?? docs/SECURITY_MODEL.md
+?? docs/SKILLS.md
+?? docs/TROUBLESHOOTING.md
+?? docs/USAGE.md
+?? evals/
+?? evidence/
+?? examples/demo-repo/
+?? hooks/hooks.json
+?? hooks/post_tool_use.ts
+?? hooks/pre_compact.ts
+?? hooks/session_start.ts
+?? hooks/stop.ts
+?? hooks/subagent_stop.ts
+?? scripts/verify-mcp-live.mjs
+?? src/cli/
+?? src/hooks/
+?? src/mcp/
+?? src/orchestrator/
+?? tests/cli/
+?? tests/e2e/
+?? tests/hooks/
+?? tests/mcp/
+?? tests/orchestrator/
+?? tmp/

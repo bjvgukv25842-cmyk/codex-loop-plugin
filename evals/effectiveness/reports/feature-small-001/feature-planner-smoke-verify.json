@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "dry_run_status": "PASS",
+  "mode": "exact",
+  "real_sdk_run_executed": true,
+  "planner_thread_started": true,
+  "structured_output_valid": true,
+  "no_task_graph_json": true,
+  "sdk_dependency_detected": true,
+  "sdk_dynamic_import_ok": true,
+  "codex_sdk_version": "0.141.0",
+  "ready_for_one_feature_planner_parity_smoke": false,
+  "ready_for_feature_treatment_fresh_rerun": true,
+  "failure_category": "",
+  "errors": []
+}

@@ -1,0 +1,10 @@
+{"type":"thread.started","thread_id":"019f0423-4a96-7d52-b521-f5ab1de2e475"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Skill descriptions were shortened to fit the 2% skills context budget. Codex can still see every skill, but some descriptions are shorter. Disable unused skills or plugins to leave more room for the rest."}}
+{"type":"error","message":"Reconnecting... 1/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 23edfb05-e9f2-4885-83f5-826227bd3f13)"}
+{"type":"error","message":"Reconnecting... 2/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: be1215dd-8442-416e-9ffd-c57c59211e3e)"}
+{"type":"error","message":"Reconnecting... 3/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 26292490-b8a5-46ff-9ca2-0982186743a1)"}
+{"type":"error","message":"Reconnecting... 4/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 0afecbdc-d8db-4a2c-aa48-71afcf57d037)"}
+{"type":"error","message":"Reconnecting... 5/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 333974f7-f17d-4e1a-9d76-7e25b0863801)"}
+{"type":"error","message":"unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 60825c04-1538-44e9-9832-a2444f5e09c4"}
+{"type":"turn.failed","error":{"message":"unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 60825c04-1538-44e9-9832-a2444f5e09c4"}}

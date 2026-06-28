@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "current_stage": "PLANNER_DONE",
+  "real_sdk_run_executed": false,
+  "planner_thread_started": true,
+  "planner_thread_id": "thread_gate6b2_planner_mock",
+  "planner_output_contract_version": "v1",
+  "planner_raw_output_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-xmQ9Gv/triage/gate6b2-planner-stdout.log",
+  "planner_redacted_output_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-xmQ9Gv/triage/gate6b2-planner-stdout-redacted.log",
+  "planner_events_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-xmQ9Gv/triage/gate6b2-planner-events.jsonl",
+  "failure_category": "",
+  "errors": []
+}

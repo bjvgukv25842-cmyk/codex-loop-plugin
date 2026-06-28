@@ -1,0 +1,10 @@
+{
+  "codex_cli_available": true,
+  "codex_version": "codex-cli 0.142.0-alpha.1",
+  "plugin_enable_status": "PASS",
+  "marketplace_plugin_path": "/Users/litmus/Downloads/codex-loop-plugin/tmp/plugin-marketplace/plugins/codex-loop",
+  "marketplace_native_skill": true,
+  "cache_native_skill": true,
+  "hooks_trusted_mode_checked": false,
+  "warnings": []
+}

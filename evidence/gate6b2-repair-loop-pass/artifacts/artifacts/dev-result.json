@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "changed_files": [
+    "src/project-name.js",
+    "artifacts/dev-result.json"
+  ],
+  "baseline_tests_run": true,
+  "baseline_tests_passed": true,
+  "full_tests_run": true,
+  "full_tests_expected_to_fail": true,
+  "full_tests_failed": true,
+  "known_gap_seeded": true,
+  "summary": "Implemented baseline-only project-name validation: empty strings and names longer than 80 characters fail, valid names pass, and whitespace-only strings intentionally remain accepted. npm run test:baseline passed; npm run test:full failed as expected on the whitespace-only case.",
+  "created_by_runtime": "sdk-orchestrated",
+  "created_by_role": "dev_worker",
+  "created_by_thread_id": "019ee989-e0a9-7e13-9a82-8978dcc69586"
+}

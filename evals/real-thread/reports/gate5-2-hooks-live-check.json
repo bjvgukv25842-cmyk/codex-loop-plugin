@@ -1,0 +1,20 @@
+{
+  "hooks_trusted_mode_status": "BLOCKED_MANUAL_REVIEW_REQUIRED",
+  "reason": "Trusted hook runtime evidence is missing. Review/trust hooks in Codex, run a hook-triggering session, then write evidence/gate5-2-hooks-trusted-mode/hook-trust-summary.json.",
+  "manual_steps": [
+    "Open Codex hooks review / trust UI.",
+    "Review hooks/hooks.json and the referenced hook scripts.",
+    "Trust the current hook definition hash.",
+    "Run a real Codex session that triggers PostToolUse, PreCompact, SubagentStop, and Stop.",
+    "Record hook runtime evidence under evidence/gate5-2-hooks-trusted-mode/.",
+    "Run npm run real:verify-hooks."
+  ],
+  "configured_hooks": [
+    "SessionStart",
+    "PostToolUse",
+    "PreCompact",
+    "SubagentStop",
+    "Stop"
+  ],
+  "missing_configured_hooks": []
+}

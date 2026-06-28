@@ -4,6 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   AGENT_FILE_BY_NAME,
+  NATIVE_LOOP_AGENTS,
   REQUIRED_AGENTS,
   loadAgentDefinitions,
   validateAgents
@@ -28,7 +29,13 @@ describe("custom agent definitions", () => {
       errors: [],
       configChecked: true
     });
-    expect(result.agentsChecked).toEqual([...REQUIRED_AGENTS].sort());
+    expect(result.agentsChecked).toEqual([...REQUIRED_AGENTS, ...NATIVE_LOOP_AGENTS].sort());
+  });
+
+  it("has all native Gate 6 loop agent files", () => {
+    for (const agentName of NATIVE_LOOP_AGENTS) {
+      expect(existsSync(join(".codex", "agents", AGENT_FILE_BY_NAME[agentName]))).toBe(true);
+    }
   });
 
   it("has required fields for every agent", () => {
@@ -50,13 +57,37 @@ describe("custom agent definitions", () => {
       "evaluator.toml",
       "context-distiller.toml",
       "test-reviewer.toml",
-      "architecture-reviewer.toml"
+      "architecture-reviewer.toml",
+      "loop-planner.toml",
+      "loop-evaluator.toml",
+      "loop-context-distiller.toml"
     ]) {
       const content = readAgent(fileName);
 
       expect(content).toContain('sandbox_mode = "read-only"');
       expect(content).not.toContain('sandbox_mode = "workspace-write"');
     }
+  });
+
+  it("native loop agents include Gate 6 evidence fields", () => {
+    for (const fileName of [
+      "loop-planner.toml",
+      "loop-dev-worker.toml",
+      "loop-evaluator.toml",
+      "loop-context-distiller.toml",
+      "loop-integration-manager.toml"
+    ]) {
+      const content = readAgent(fileName);
+
+      expect(content).toContain("agent_run_id");
+      expect(content).toContain("thread_id");
+    }
+  });
+
+  it("native loop agents encode baseline evaluation and repair loop boundaries", () => {
+    expect(readAgent("loop-planner.toml")).toContain("baseline evaluation before development");
+    expect(readAgent("loop-dev-worker.toml")).toContain("RepairRequest input after a baseline evaluator NEEDS_REVISION verdict");
+    expect(readAgent("loop-evaluator.toml")).toContain("baseline state before development");
   });
 
   it("dev_worker includes scope limits and validation reporting", () => {

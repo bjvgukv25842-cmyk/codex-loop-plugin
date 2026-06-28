@@ -1,0 +1,25 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-002/treatment/target-repo",
+  "target_source_file": "src/project-slug.js",
+  "target_source_hash_before": "5a435a134450a05870680f8caeeca6111ceed704392ec4251d242267729cb0fd",
+  "target_test_files": [
+    "test/project-slug.test.js"
+  ],
+  "target_test_hashes_before": {
+    "test/project-slug.test.js": "108e40042d1b92a84fdaa1cc603a70977ae61546e59162dc5ebd6f8ea2eda006"
+  },
+  "src_project_name_hash_before": "5a435a134450a05870680f8caeeca6111ceed704392ec4251d242267729cb0fd",
+  "package_json_hash_before": "2c91dede7bccb40780a3cb01ffa53e9dafaf7aa16e6e25bdc11404c60aa6a13f",
+  "test_project_name_hash_before": "108e40042d1b92a84fdaa1cc603a70977ae61546e59162dc5ebd6f8ea2eda006",
+  "test_project_name_baseline_hash_before": "",
+  "test_project_name_full_hash_before": "",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "initial_baseline_tests_run": false,
+  "initial_baseline_tests_failed": true,
+  "initial_full_tests_run": true,
+  "initial_full_tests_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "BROKEN_AS_EXPECTED"
+}

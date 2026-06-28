@@ -1,0 +1,68 @@
+{
+  "case_id": "feature-small-001",
+  "current_failure_category": "",
+  "corrected_failure_category": "",
+  "failure_category_was_stale_or_inconsistent": false,
+  "stage_timeline": [
+    {
+      "stage": "planner",
+      "started": true,
+      "thread_id": "019ef3be-a98f-7971-80b4-9905b03d4029",
+      "completed": true,
+      "status": "PASS",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+      "last_event_type": "turn.completed",
+      "elapsed_ms": 30811
+    },
+    {
+      "stage": "dev_worker",
+      "started": true,
+      "thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+      "completed": true,
+      "status": "PASS",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-dev-worker-events.jsonl",
+      "last_event_type": "",
+      "elapsed_ms": 0
+    },
+    {
+      "stage": "evaluator",
+      "started": true,
+      "thread_id": "019ef3c0-7736-77f0-b250-cbfe245b8d2b",
+      "completed": true,
+      "status": "NEEDS_REVISION",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-events.jsonl",
+      "last_event_type": "turn.completed",
+      "elapsed_ms": 30847,
+      "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+      "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stderr.log",
+      "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+      "redacted_output_path": "",
+      "prompt_length": 694,
+      "prompt_hash": "4d63b013703bdc814395ca075b47dc05bf28d3cc55557c078f9cd9158bb31ee2"
+    },
+    {
+      "stage": "final_report",
+      "started": true,
+      "completed": true,
+      "status": "PASS"
+    }
+  ],
+  "last_completed_stage": "final_report",
+  "first_failed_stage": "",
+  "thread_ids_present": {
+    "planner": true,
+    "dev_worker": true,
+    "evaluator": true,
+    "repair_dev_worker": true,
+    "final_evaluator": true
+  },
+  "planner_smokes_all_passed": true,
+  "treatment_uses_feature_planner_exact_path": true,
+  "checkpoint_state_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-generic-feature-state.json",
+  "checkpoint_state_valid": true,
+  "recommended_fixes": [
+    "Keep feature-small-001 treatment blocked; do not mark the canary PASS without FinalDeliveryReport and validation evidence.",
+    "Use stage timeline and checkpoint state for compare/report/gate regrade-only decisions.",
+    "Preserve planner, dev worker, and evaluator thread ids even when downstream stages fail."
+  ]
+}

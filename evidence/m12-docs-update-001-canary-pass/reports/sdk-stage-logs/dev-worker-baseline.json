@@ -1,0 +1,17 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo",
+  "readme_hash_before": "71fba6fab86445849b1e1efdf4f5824a84b8a5f59fd6852427fb9d0a09c3a2cf",
+  "api_docs_hash_before": "ab822eb7fd8673b83c302e1e72ab7617ede300ddc3f90bc6b770b2746abe1d1a",
+  "src_duration_hash_before": "160ab05f309d265a94472d1397d6a45268428cc797af7fabf172f1cd146ba1d1",
+  "package_json_hash_before": "f1a4da848e9b9676fcaaf00c3366d647614defe2187cbc51298ad556500d997c",
+  "test_duration_hash_before": "65d0bf211610d8a71897c956ca42a7267c3368d068febda63e7f5f679a535eec",
+  "docs_contract_hash_before": "82c8c3aa4af8595cd423efe5b9d49f83da85c2aedd4a7f2172cf9a4707e0bae2",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": false,
+  "initial_tests_failed": false,
+  "initial_docs_contract_run": true,
+  "initial_docs_contract_expected_to_fail": true,
+  "initial_docs_contract_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "DOCS_GAP_AS_EXPECTED"
+}

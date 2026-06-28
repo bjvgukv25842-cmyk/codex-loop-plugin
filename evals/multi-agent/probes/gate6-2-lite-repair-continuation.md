@@ -1,0 +1,79 @@
+$codex-loop
+
+你现在运行在 Gate 6.2-Lite 的隔离测试仓库中。
+
+目标：
+只验证 repair continuation 切片，不要重新执行完整 Gate 6。
+
+当前仓库已经准备好：
+
+- `docs/PRD.md`
+- `docs/ACCEPTANCE_CRITERIA.md`
+- `docs/TASK_GRAPH.json`
+- `artifacts/eval-report-needs-revision.json`
+- `artifacts/repair-request.json`
+- `state/events.json`
+
+父线程规则：
+
+1. Parent thread 只做 Loop Manager。
+2. Parent 不得自己修改 `src/project-name.js`。
+3. Parent 不得自己写 final EvalReport。
+4. Parent 必须显式 spawn `loop_dev_worker` 修复。
+5. Parent 必须显式 spawn `loop_evaluator` final read-only 评估。
+6. 如果不能 spawn subagent，输出 `BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE`。
+
+`loop_dev_worker` 必须：
+
+1. 调用 `agent_run_start`。
+2. 读取 `artifacts/repair-request.json`。
+3. 只修 `required_fixes` / `repair_instructions` 指定的问题。
+4. 修改 `src/project-name.js`。
+5. 运行 `npm test`。
+6. 写 `artifacts/dev-repair-result.json`。
+7. 调用 `artifact_write_by_agent`。
+8. 调用 `agent_run_finish`。
+
+`loop_evaluator` 必须：
+
+1. read-only。
+2. 调用 `agent_run_start`。
+3. 读取 PRD、TaskGraph、RepairRequest、DevRepairResult、test log。
+4. 写 `artifacts/eval-report-pass.json`。
+5. verdict = `PASS` 只有测试通过且验收标准满足时允许。
+6. 调用 `eval_report_write_by_agent`。
+7. 调用 `agent_run_finish`。
+
+实现要求：
+
+- 空字符串失败。
+- 纯空格失败。
+- 超过 80 字符失败。
+- 合法名称通过。
+- `validateProjectName` 返回对象，至少包含 `ok: boolean`。
+- 不要引入第三方依赖。
+- 不要修改 `package.json`，除非测试命令无法运行。
+- 不要访问网络。
+- 不要读取 `.env`。
+- 不要删除测试。
+
+最终只输出 JSON：
+
+```json
+{
+  "status": "PASS | NEEDS_REVISION | BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE",
+  "real_thread_executed": true,
+  "agent_runs": [],
+  "mcp_cross_agent_state_verified": true,
+  "subagent_lifecycle_verified": true,
+  "final_eval_verdict": "PASS",
+  "tests_passed": true,
+  "parent_roleplay_detected": false,
+  "changed_files": [],
+  "artifacts": [],
+  "validation_commands": [],
+  "p0_blockers": [],
+  "p1_issues": []
+}
+```
+

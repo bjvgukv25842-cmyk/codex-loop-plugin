@@ -1,0 +1,9 @@
+{
+  "name": "m12-docs-update-001-target",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "docs:contract": "node scripts/check-docs-contract.js"
+  }
+}

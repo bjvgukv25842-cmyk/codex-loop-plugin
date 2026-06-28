@@ -1,10 +1,11 @@
 import type { SchemaName } from "../core/schema-registry.ts";
 import { assertValid } from "../core/validate.ts";
-import type { AgentProfile, Artifact, ContextCapsule, EvalReport, LoopRun, TaskNode } from "../core/types.ts";
+import type { AgentProfile, Artifact, ContextCapsule, EvalReport, LoopRun, RepairRequest, TaskNode } from "../core/types.ts";
 import { readJsonFile, writeJsonFileAtomic } from "./json-file.ts";
 import { getStateDir, resolveStatePath, type StateFileName } from "./paths.ts";
 import type {
   AppendEventInput,
+  CreateRepairRequestInput,
   CreateLoopRunInput,
   CreateTaskInput,
   LoopEvent,
@@ -48,8 +49,7 @@ export class JsonLoopStore implements LoopStore {
       ...patch,
       loop_run_id: loopRun.loop_run_id,
       updated_at: patch.updated_at ?? new Date().toISOString()
-    }));
-    assertValid("loop-run", updated);
+    }), (loopRun) => assertValid("loop-run", loopRun));
     await this.appendEventForWrite(loopRunId, "loop_run.updated", `Updated loop run ${loopRunId}`);
     return updated;
   }
@@ -84,8 +84,7 @@ export class JsonLoopStore implements LoopStore {
         previous_thread_ids: previousThreadIds,
         updated_at: new Date().toISOString()
       };
-    });
-    assertValid("agent-profile", updated);
+    }, (agent) => assertValid("agent-profile", agent));
     await this.appendEventForWrite(null, "agent.thread_updated", `Updated thread for agent ${agentId}`, {
       agent_id: agentId
     });
@@ -114,8 +113,7 @@ export class JsonLoopStore implements LoopStore {
       ...task,
       status: statusPatch.status,
       updated_at: new Date().toISOString()
-    }));
-    assertValid("task-node", updated);
+    }), (task) => assertValid("task-node", task));
     await this.appendEventForWrite(updated.loop_run_id, "task.status_updated", `Updated task ${taskId} status`, {
       task_id: taskId,
       status: statusPatch.status
@@ -165,6 +163,26 @@ export class JsonLoopStore implements LoopStore {
   async listEvalReportsByTask(taskId: string): Promise<EvalReport[]> {
     const reports = await this.readCollection<EvalReport>("eval-reports.json");
     return reports.filter((report) => report.task_id === taskId);
+  }
+
+  async createRepairRequest(input: CreateRepairRequestInput): Promise<RepairRequest> {
+    assertValid("repair-request", input);
+    await this.insertUnique("repair-requests.json", input, (repairRequest) => repairRequest.repair_id, input.repair_id);
+    await this.appendEventForWrite(input.loop_run_id, "repair_request.created", `Created repair request ${input.repair_id}`, {
+      repair_id: input.repair_id,
+      task_id: input.task_id,
+      source_eval_id: input.source_eval_id
+    });
+    return input;
+  }
+
+  async getRepairRequest(repairId: string): Promise<RepairRequest | null> {
+    return this.findById("repair-requests.json", (repairRequest) => repairRequest.repair_id, repairId);
+  }
+
+  async listRepairRequestsByTask(taskId: string): Promise<RepairRequest[]> {
+    const repairRequests = await this.readCollection<RepairRequest>("repair-requests.json");
+    return repairRequests.filter((repairRequest) => repairRequest.task_id === taskId);
   }
 
   async writeContextCapsule(input: WriteContextCapsuleInput): Promise<ContextCapsule> {
@@ -257,7 +275,8 @@ export class JsonLoopStore implements LoopStore {
     name: StateFileName,
     getId: (item: T) => string,
     idValue: string,
-    update: (item: T) => T
+    update: (item: T) => T,
+    validate?: (item: T) => void
   ): Promise<T> {
     const collection = await this.readCollection<T>(name);
     const index = collection.findIndex((item) => getId(item) === idValue);
@@ -266,6 +285,7 @@ export class JsonLoopStore implements LoopStore {
     }
 
     const updated = update(collection[index] as T);
+    validate?.(updated);
     const nextCollection = [...collection];
     nextCollection[index] = updated;
     await this.writeCollection(name, nextCollection);

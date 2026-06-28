@@ -1,0 +1,10 @@
+{
+  "status": "INITIAL_EVALUATOR_DID_NOT_CATCH_SEEDED_GAP",
+  "current_stage": "FAILED",
+  "real_sdk_run_executed": false,
+  "failure_category": "INITIAL_EVALUATOR_DID_NOT_CATCH_SEEDED_GAP",
+  "target_repo": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-8KQn3B/target",
+  "errors": [
+    "Initial evaluator must be NEEDS_REVISION before RepairRequest."
+  ]
+}

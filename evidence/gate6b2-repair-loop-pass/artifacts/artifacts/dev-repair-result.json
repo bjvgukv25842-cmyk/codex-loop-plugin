@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "changed_files": [
+    "src/project-name.js"
+  ],
+  "tests_run": [
+    "npm test"
+  ],
+  "tests_passed": true,
+  "summary": "Updated validateProjectName(name) to reject trim-empty project names while preserving the 80-character limit and valid-name success path. npm test now passes with 4/4 tests passing.",
+  "known_gap_seeded": false,
+  "created_by_runtime": "sdk-orchestrated",
+  "created_by_role": "dev_worker",
+  "created_by_thread_id": "019ee9af-1c07-7952-ac1e-c254390abb2b"
+}

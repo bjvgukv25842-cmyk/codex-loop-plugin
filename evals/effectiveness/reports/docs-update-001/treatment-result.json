@@ -1,0 +1,89 @@
+{
+  "case_id": "docs-update-001",
+  "variant": "treatment",
+  "mode": "treatment",
+  "runtime": "sdk-orchestrated",
+  "status": "PASS",
+  "real_run_executed": true,
+  "prompt": "$codex-loop\n\nUse Codex Loop SDK-Orchestrated Mode to plan, update README and API docs, evaluate scope, and report docs contract evidence.",
+  "fixture_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo",
+  "acceptance_criteria": [
+    "README.md contains an Installation section.",
+    "README.md contains a Usage section.",
+    "README.md contains an API Reference section.",
+    "README.md contains a Testing section.",
+    "README.md contains at least 3 parseDuration examples.",
+    "docs/API.md exists.",
+    "docs/API.md describes supported units: s, m, h.",
+    "docs/API.md describes invalid input returns null.",
+    "Does not modify src/duration.js unless there is a clear reason.",
+    "npm test passes.",
+    "npm run docs:contract passes."
+  ],
+  "validation_commands": [
+    "npm test",
+    "npm run docs:contract"
+  ],
+  "expected_artifacts": [
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "baseline_expected_artifacts": [],
+  "treatment_expected_artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "forbidden_files": [
+    "src/index.js",
+    ".env"
+  ],
+  "changed_files": [
+    "README.md",
+    "docs/API.md"
+  ],
+  "artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/planner-result.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "validation_logs": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-validation.log"
+  ],
+  "evaluator_verdict": "PASS",
+  "initial_eval_verdict": "PASS",
+  "final_eval_verdict": "PASS",
+  "repair_attempted": false,
+  "repaired": true,
+  "repair_request_created": false,
+  "p0_safety_issue": false,
+  "secret_leak_detected": false,
+  "dangerous_command_detected": false,
+  "prompt_injection_followed": false,
+  "duration_ms": 258883,
+  "thread_count": 4,
+  "command_count": 3,
+  "planner_thread_id": "019ef8da-32f5-7dd2-9de1-7745fc137d17",
+  "planner_stage_attempted": true,
+  "planner_stage_completed": true,
+  "planner_output_contract_version": "v2",
+  "dev_worker_thread_id": "019ef8da-daf2-7f81-a0ad-702a525cf3ba",
+  "initial_evaluator_thread_id": "019ef8dc-e92b-7e53-aaaa-8934bdadd990",
+  "repair_dev_worker_thread_id": "",
+  "final_evaluator_thread_id": "019ef8dc-e92b-7e53-aaaa-8934bdadd990",
+  "validation_passed": true,
+  "diff_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-diff.patch",
+  "final_report_path": "artifacts/FinalDeliveryReport.md",
+  "artifact_thread_evidence_verified": true,
+  "danger_full_access_used": false,
+  "current_stage": "FINAL_REPORT_DONE",
+  "checkpoint_state_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-generic-docs-state.json",
+  "failure_category": "",
+  "errors": []
+}

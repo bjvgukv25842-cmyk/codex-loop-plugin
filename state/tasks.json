@@ -1,0 +1,59 @@
+[
+  {
+    "task_id": "task_gate6_plan",
+    "loop_run_id": "loop_gate6_validate_project_name",
+    "module_id": "Gate6",
+    "title": "Plan validateProjectName repair",
+    "description": "Create PRD, acceptance criteria, and TaskGraph for repairing validateProjectName behavior in the isolated target repo.",
+    "owner_agent_type": "planner",
+    "owner_agent_id": "agent_loop_planner_gate6",
+    "reviewer_agent_type": "evaluator",
+    "reviewer_agent_id": "agent_loop_evaluator_gate6",
+    "dependencies": [],
+    "scope": [
+      "docs/PRD.md",
+      "docs/ACCEPTANCE_CRITERIA.md",
+      "docs/TASK_GRAPH.json"
+    ],
+    "non_goals": [
+      "Do not edit src/project-name.js",
+      "Do not modify tests",
+      "Do not write EvalReport"
+    ],
+    "likely_files": [
+      {
+        "path": "docs/PRD.md",
+        "purpose": "Product requirements"
+      },
+      {
+        "path": "docs/ACCEPTANCE_CRITERIA.md",
+        "purpose": "Acceptance criteria"
+      },
+      {
+        "path": "docs/TASK_GRAPH.json",
+        "purpose": "Task decomposition"
+      }
+    ],
+    "acceptance_criteria": [
+      "PRD states invalid project-name inputs and valid-name behavior",
+      "Acceptance criteria include npm test validation",
+      "TaskGraph includes baseline evaluation, repair, final evaluation, and integration tasks"
+    ],
+    "validation_commands": [
+      {
+        "command": "node -e \"JSON.parse(require('fs').readFileSync('docs/TASK_GRAPH.json','utf8')); console.log('task graph json ok')\""
+      }
+    ],
+    "risk_level": "low",
+    "status": "READY_FOR_DEV",
+    "revision_count": 0,
+    "branch": null,
+    "worktree_path": null,
+    "artifact_ids": [],
+    "created_at": "2026-06-19T00:00:00.000Z",
+    "updated_at": "2026-06-19T00:00:00.000Z",
+    "metadata": {
+      "native_loop_bootstrap_task": true
+    }
+  }
+]

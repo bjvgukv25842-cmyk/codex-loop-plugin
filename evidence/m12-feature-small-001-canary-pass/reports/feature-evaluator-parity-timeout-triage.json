@@ -1,0 +1,33 @@
+{
+  "case_id": "feature-small-001",
+  "stage": "evaluator-parity",
+  "failure_category": "FEATURE_EVALUATOR_PARITY_TURN_NO_EVENT_TIMEOUT",
+  "evaluator_thread_started": true,
+  "evaluator_thread_id": "019ef3bd-93be-7e02-bf96-ffb7636fc90c",
+  "turn_started": true,
+  "turn_completed": false,
+  "turn_failed": false,
+  "event_count": 3,
+  "last_event_type": "agent_message",
+  "elapsed_ms": 0,
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/feature-evaluator-smoke-parity-events.jsonl",
+  "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/feature-evaluator-smoke-parity-stdout.log",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/feature-evaluator-smoke-parity-stderr.log",
+  "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/feature-evaluator-smoke-parity-stdout.log",
+  "redacted_output_path": "",
+  "prompt": "Respond with exactly: FEATURE_EVALUATOR_PARITY_OK",
+  "prompt_hash": "ee2f3b5546686f07dea17e6998eb869072afda7f5b07da9be066ac7793d3350f",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "target_repo_is_git": true,
+  "sandbox_mode": "read-only",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+  "uses_output_schema": false,
+  "sdk_method": "run",
+  "recommended_fixes": [
+    "Keep feature evaluator text-only, output-minimal, output-lite, exact, and treatment rerun blocked until parity is proven.",
+    "Run evaluator CLI parity once to isolate whether Codex CLI can return FEATURE_EVALUATOR_PARITY_OK with the same target repo and prompt.",
+    "If CLI parity passes while SDK parity times out, investigate SDK evaluator adapter event streaming or switch the controlled parity method to run() for diagnosis."
+  ]
+}

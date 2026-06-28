@@ -2,13 +2,14 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
 export class JsonFileError extends Error {
-  constructor(
-    message: string,
-    readonly path: string,
-    readonly cause?: unknown
-  ) {
+  readonly path: string;
+  readonly cause?: unknown;
+
+  constructor(message: string, path: string, cause?: unknown) {
     super(message);
     this.name = "JsonFileError";
+    this.path = path;
+    this.cause = cause;
   }
 }
 

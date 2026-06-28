@@ -1,0 +1,132 @@
+ M README.md
+ M docs/DECISIONS.md
+ M docs/IMPLEMENTATION_PLAN.md
+ M docs/LOOP_PROGRESS.md
+ M package-lock.json
+ M package.json
+ M schemas/common.schema.json
+ M skills/codex-loop/SKILL.md
+ M src/agents/validate-agents.ts
+ M src/core/index.ts
+ M src/core/schema-registry.ts
+ M src/core/types.ts
+ M src/core/validate.ts
+ M src/state/index.ts
+ M src/state/json-file.ts
+ M src/state/json-store.ts
+ M src/state/paths.ts
+ M src/state/store.ts
+ M src/state/types.ts
+ M tests/agents/agents.test.ts
+ M tests/core/schema.test.ts
+ M tests/plugin/manifest.test.ts
+ M tests/skills/skills.test.ts
+ M tests/state/json-store.test.ts
+ M tsconfig.json
+?? .codex-eval/
+?? .codex/agents/loop-context-distiller.toml
+?? .codex/agents/loop-dev-worker.toml
+?? .codex/agents/loop-evaluator.toml
+?? .codex/agents/loop-integration-manager.toml
+?? .codex/agents/loop-planner.toml
+?? .mcp.json
+?? artifacts/FinalDeliveryReport.md
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781848022523.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781855955882.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781859305871.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781861347821.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781881814899.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781884774692.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781931172558.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781937729669.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781946857390.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781949866810.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781964743385.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781966782684.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1781973065319.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782015600791.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782019417145.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782025877515.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782042740554.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782047450185.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782053152361.json
+?? artifacts/context-capsules/capsule_agent_loop_planner_gate6_1782108549961.json
+?? artifacts/context-capsules/gate6-pause-2026-06-18.json
+?? artifacts/real-thread/
+?? docs/AGENTS.md
+?? docs/ARCHITECTURE.md
+?? docs/CODEX_LOCAL_STATE_TROUBLESHOOTING.md
+?? docs/CODEX_MODEL_CATALOG_TROUBLESHOOTING.md
+?? docs/EXAMPLES.md
+?? docs/GATE5_2_HOOKS_TRUSTED_MODE.md
+?? docs/GATE5_AUDIT_SUMMARY.md
+?? docs/GATE6B_SDK_ORCHESTRATED_VALIDATION.md
+?? docs/GATE6B_SDK_SMOKE_VALIDATION.md
+?? docs/GATE6_NATIVE_MULTI_AGENT_VALIDATION.md
+?? docs/HOOKS.md
+?? docs/INSTALLATION.md
+?? docs/M12_EFFECTIVENESS_EVALUATION.md
+?? docs/M12_RED_TEAM_PLAN.md
+?? docs/M12_RELEASE_GATES.md
+?? docs/MCP_TOOLS.md
+?? docs/PLUGIN_BOUNDARIES.md
+?? docs/PLUGIN_DISCOVERY_VALIDATION.md
+?? docs/REAL_THREAD_VALIDATION.md
+?? docs/RELEASE_CHECKLIST.md
+?? docs/SDK_API_CAPABILITY_MATRIX.md
+?? docs/SDK_ORCHESTRATED_MODE_PLAN.md
+?? docs/SECURITY_MODEL.md
+?? docs/SKILLS.md
+?? docs/TROUBLESHOOTING.md
+?? docs/USAGE.md
+?? evals/
+?? evidence/
+?? examples/demo-repo/
+?? hooks/hooks.json
+?? hooks/post_tool_use.ts
+?? hooks/pre_compact.ts
+?? hooks/session_start.ts
+?? hooks/stop.ts
+?? hooks/subagent_start.ts
+?? hooks/subagent_stop.ts
+?? schemas/agent-run.schema.json
+?? schemas/artifact-producer.schema.json
+?? schemas/sdk-thread-run.schema.json
+?? schemas/subagent-evidence.schema.json
+?? scripts/diagnostics/
+?? scripts/effectiveness/
+?? scripts/multi-agent/
+?? scripts/sdk-orchestrated/
+?? scripts/verify-hooks-live.mjs
+?? scripts/verify-mcp-live.mjs
+?? skills/codex-loop-bootstrap/
+?? src/bootstrap/
+?? src/cli/
+?? src/effectiveness/
+?? src/hooks/
+?? src/loop-manager/
+?? src/mcp/
+?? src/orchestrator/
+?? src/runtime/
+?? src/state/agent-runs.ts
+?? src/state/sdk-thread-runs.ts
+?? state/agent-runs.json
+?? state/agents.json
+?? state/context-capsules.json
+?? state/eval-reports.json
+?? state/events.json
+?? state/loop-runs.json
+?? state/repair-requests.json
+?? state/tasks.json
+?? tests/bootstrap/
+?? tests/cli/
+?? tests/e2e/
+?? tests/effectiveness/
+?? tests/fixtures/planner-lite/
+?? tests/hooks/
+?? tests/loop-manager/
+?? tests/mcp/
+?? tests/orchestrator/
+?? tests/runtime/
+?? tests/sdk-orchestrated/
+?? tmp/

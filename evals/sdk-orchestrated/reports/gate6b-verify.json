@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "gate6b_run_status": "BLOCKED_SDK_NOT_ENABLED",
+  "real_sdk_run_executed": false,
+  "m12_blocked": true,
+  "errors": []
+}

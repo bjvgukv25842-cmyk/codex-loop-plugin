@@ -1,0 +1,83 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782462100594",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm test -- tests/effectiveness/adversarial-security-contract.test.ts tests/effectiveness/adversarial-exact-completion.test.ts tests/effectiveness/adversarial-dev-worker-smoke.test.ts tests/effectiveness/adversarial-exact-completion-recovery.test.ts tests/effectiveness/treatment-adversarial-runner.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/adversarial-security-contract.test.ts tests/effectiveness/adversarial-exact-completion.test.ts tests/effectiveness/adversarial-dev-worker-smoke.test.ts tests/effectiveness/adversarial-exact-completion-recovery.test.ts tests/effectiveness/treatment-adversarial-runner.test.ts"
+      },
+      {
+        "command": "git diff -- src/effectiveness/adversarial-exact-completion.ts src/effectiveness/adversarial-dev-worker-smoke-target.ts src/effectiveness/adversarial-dev-worker-smoke-fixture.ts src/effectiveness/treatment-adversarial-runner.ts scripts/effectiveness/run-adversarial-dev-worker-smoke.ts scripts/effectiveness/run-adversarial-exact-completion-recovery.ts scripts/effectiveness/verify-adversarial-exact-completion-recovery.ts scripts/effectiveness/report-adversarial-exact-completion-recovery.ts scripts/effectiveness/triage-adversarial-exact-security-contract-mode.ts evals/effectiveness/fixtures/adversarial-prompt-injection-001/scripts/check-security-contract.js tests/effectiveness/adversarial-security-contract.test.ts tests/effectiveness/adversarial-exact-completion.test.ts tests/effectiveness/adversarial-exact-completion-recovery.test.ts tests/effectiveness/adversarial-dev-worker-smoke.test.ts tests/effectiveness/treatment-adversarial-runner.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/adversarial-security-contract.test.ts tests/effectiveness/adversarial-exact-completion.test.ts tests/effectiveness/adversarial-dev-worker-smoke.test.ts tests/effectiveness/adversarial-exact-completion-recovery.test.ts tests/effectiveness/treatment-adversarial-runner.test.ts"
+      },
+      {
+        "command": "git status --short src/effectiveness/adversarial-exact-completion.ts src/effectiveness/adversarial-dev-worker-smoke-target.ts src/effectiveness/adversarial-dev-worker-smoke-fixture.ts src/effectiveness/treatment-adversarial-runner.ts scripts/effectiveness/run-adversarial-dev-worker-smoke.ts scripts/effectiveness/run-adversarial-exact-completion-recovery.ts scripts/effectiveness/verify-adversarial-exact-completion-recovery.ts scripts/effectiveness/report-adversarial-exact-completion-recovery.ts scripts/effectiveness/triage-adversarial-exact-security-contract-mode.ts evals/effectiveness/fixtures/adversarial-prompt-injection-001/scripts/check-security-contract.js tests/effectiveness/adversarial-security-contract.test.ts tests/effectiveness/adversarial-exact-completion.test.ts tests/effectiveness/adversarial-exact-completion-recovery.test.ts tests/effectiveness/adversarial-dev-worker-smoke.test.ts tests/effectiveness/treatment-adversarial-runner.test.ts docs/DECISIONS.md docs/LOOP_PROGRESS.md evals/effectiveness/reports/adversarial-prompt-injection-001/adversarial-exact-security-contract-mode-triage.json evals/effectiveness/reports/adversarial-prompt-injection-001/AdversarialExactSecurityContractModeTriageReport.md evals/effectiveness/reports/adversarial-prompt-injection-001/adversarial-exact-completion-recovery-result.json evals/effectiveness/reports/adversarial-prompt-injection-001/adversarial-exact-completion-recovery-verify.json evals/effectiveness/reports/adversarial-prompt-injection-001/AdversarialExactCompletionTriageReport.md"
+      },
+      {
+        "command": "test -f evals/effectiveness/reports/adversarial-prompt-injection-001/adversarial-exact-completion-result.json; echo completion_result_alias_exists=$?\ntest -f evals/effectiveness/reports/adversarial-prompt-injection-001/AdversarialExactCompletionReport.md; echo completion_report_alias_exists=$?\njq '{status, real_sdk_run_executed, exact_smoke_rerun_executed, adversarial_treatment_rerun_executed, failure_category, thread_id, completion_thread_id, completion_enabled, completion_attempted, completion_dev_result_valid, completion_dev_result_status, completion_dev_result_changed_files, completion_runtime_status, git_changed_files, pre_run_test_failed, post_run_test_passed, security_contract_passed, post_run_validation, finalizer_immutability: {files_modified_during_completion, completion_was_read_only}, files_modified_during_completion, completion_was_read_only, danger_full_access_used, secret_leak_detected, errors}' evals/effectiveness/reports/adversarial-prompt-injection-001/adversarial-exact-completion-recovery-result.json"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-26T08:21:40.593Z",
+  "updated_at": "2026-06-26T08:21:40.593Z"
+}

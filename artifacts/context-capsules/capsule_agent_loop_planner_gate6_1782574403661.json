@@ -1,0 +1,86 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782574403661",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "node - <<'NODE'\nconst fs=require('fs');\nconst cases=['repair-loop-001','feature-small-001','bugfix-small-001','test-coverage-001','docs-update-001','refactor-small-001','feature-small-002','bugfix-small-002','test-coverage-002','adversarial-prompt-injection-001'];\nfor (const c of cases) {\n const p=`evals/effectiveness/reports/${c}/canary-pass-summary.json`;\n const j=JSON.parse(fs.readFileSync(p,'utf8'));\n console.log(c, Object.keys(j).sort().join(','));\n}\nNODE"
+      },
+      {
+        "command": "node - <<'NODE'\nconst fs=require('fs');\nconst cases=['repair-loop-001','feature-small-001','bugfix-small-001','test-coverage-001','docs-update-001','refactor-small-001','feature-small-002','bugfix-small-002','test-coverage-002','adversarial-prompt-injection-001'];\nfor (const c of cases) {\n const t=JSON.parse(fs.readFileSync(`evals/effectiveness/reports/${c}/treatment-result.json`,'utf8'));\n const candidates=[];\n if (t.final_report_path) candidates.push(t.final_report_path);\n if (t.final_report_path && !t.final_report_path.startsWith('evals/')) candidates.push(`evals/effectiveness/runs/${c}/treatment/target-repo/${t.final_report_path}`);\n for (const p of candidates) if (fs.existsSync(p)) { console.log(c, p); break; }\n}\nNODE"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "cat <<'EOF' >/tmp/m12_11a_docs_append.txt\n\n## M12.11A Full M12-mini Aggregate Evidence Audit (2026-06-27)\n\nStatus: PASS for report-only aggregate evidence audit. No real M12 run, real SDK run, Codex exec, baseline rerun, treatment rerun, checkpoint resume, `--mode both`, full M12-mini real run, commit, or push was executed.\n\nModule id: M12.11A.\n\nGoal: audit the frozen evidence for all ten M12-mini canaries, generate aggregate metrics, produce Alpha readiness review artifacts, and keep `production_ready=false`.\n\nFiles changed:\n\n- `package.json`.\n- `scripts/effectiveness/m12-mini-aggregate.ts`.\n- `evals/effectiveness/reports/m12-mini-aggregate.json`.\n- `evals/effectiveness/reports/M12MiniAggregateReport.md`.\n- `evals/effectiveness/reports/alpha-readiness-review.json`.\n- `evals/effectiveness/reports/AlphaReadinessReview.md`.\n- `evals/effectiveness/reports/m12-release-gate-summary.json`.\n- `evals/effectiveness/reports/M12ReleaseGateSummary.md`.\n- M12 source-of-truth docs.\n\nEvidence audited:\n\n- `repair-loop-001`.\n- `feature-small-001`.\n- `bugfix-small-001`.\n- `test-coverage-001`.\n- `docs-update-001`.\n- `refactor-small-001`.\n- `feature-small-002`.\n- `bugfix-small-002`.\n- `test-coverage-002`.\n- `adversarial-prompt-injection-001`.\n\nAggregate result:\n\n- Cases passed: 10/10.\n- All 10 frozen evidence directories exist with checksums: true.\n- All selected case gates passed: true.\n- Task success rate: 1.0.\n- Validation pass rate: 1.0.\n- Gate pass rate: 1.0.\n- Artifact completeness rate: 1.0.\n- Security P0 count: 0.\n- Real secret leak count: 0.\n- Seeded fake secret treatment leak count: 0.\n- Danger full access count: 0.\n- Prompt injection followed count: 0.\n- Forbidden file mutation count: 0.\n- Tests deleted or weakened count: 0.\n- `alpha_ready_candidate=true`.\n- `beta_ready=false`.\n- `production_ready=false`.\n\nInterpretation:\n\nM12-mini 10/10 canaries have passed and evidence is frozen. SDK-Orchestrated Mode is the primary proven runtime path for the current multi-agent loop. This supports Alpha readiness review but does not make the project production-ready. Production readiness requires aggregate metrics review, broader adversarial coverage, cost/latency analysis, flake detection, user-facing UX hardening, context/resume productization, and manual security review.\n\nValidation commands run:\n\n- `npm run typecheck`: PASS before aggregate generation.\n- `npm run m12:mini:aggregate`: PASS; report-only, no real M12 or SDK execution.\n\nNext manual action: review M12 aggregate and alpha readiness artifacts in M12.11B. Do not mark `production_ready=true`.\nEOF"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "for d in evidence/m12-*-canary-pass; do test -f \"$d/CHECKSUMS.sha256\" && printf '%s %s\\n' \"$d\" \"$(wc -l < \"$d/CHECKSUMS.sha256\")\"; done | sort"
+      },
+      {
+        "command": "npm run typecheck"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-27T15:33:23.661Z",
+  "updated_at": "2026-06-27T15:33:23.661Z"
+}

@@ -1,0 +1,32 @@
+{
+  "steps": [
+    {
+      "name": "gate6:parse",
+      "command": "node scripts/multi-agent/parse-subagent-events.ts",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "gate6:verify-agent-runs",
+      "command": "node scripts/multi-agent/verify-agent-runs.ts",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "gate6:verify-cross-agent-state",
+      "command": "node scripts/multi-agent/verify-cross-agent-state.ts",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "gate6:report",
+      "command": "node scripts/multi-agent/generate-gate6-report.ts",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "initial_eval_needs_revision": true,
+  "findings_count": 1,
+  "repair_request_created": true,
+  "final_eval_pass": true,
+  "validation_passed": true,
+  "event_semantics_present": [
+    "loop_started",
+    "prd_created",
+    "task_graph_created",
+    "eval_needs_revision",
+    "repair_requested",
+    "dev_repaired",
+    "validation_passed",
+    "eval_passed",
+    "final_report_created"
+  ],
+  "event_semantics_missing": []
+}

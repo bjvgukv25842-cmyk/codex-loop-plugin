@@ -1,0 +1,32 @@
+{
+  "status": "BLOCKED",
+  "reason": "FULL_GATE6_RUN_DISABLED_BY_DEFAULT",
+  "real_thread_executed": false,
+  "parent_thread_id": "",
+  "agent_runs": [],
+  "mcp_cross_agent_state_verified": false,
+  "subagent_lifecycle_verified": false,
+  "initial_eval_verdict": "",
+  "repair_request_created": false,
+  "final_eval_verdict": "",
+  "tests_passed": false,
+  "parent_roleplay_detected": false,
+  "changed_files": [],
+  "artifacts": [],
+  "validation_commands": [],
+  "p0_blockers": [
+    "Full Gate 6 run is disabled by default after Gate 6.2-Lite safety patch."
+  ],
+  "p1_issues": [
+    "Use Gate 6.2-Lite continuation probe unless a full run is explicitly approved."
+  ],
+  "ready_for_M12_effectiveness_eval": false,
+  "runtime_budget": {
+    "overall_budget_ms": 1800000,
+    "single_codex_exec_budget_ms": 180000,
+    "no_event_timeout_ms": 60000,
+    "max_codex_exec_runs": 1,
+    "max_retries": 0,
+    "allow_full_gate6_run": false
+  }
+}

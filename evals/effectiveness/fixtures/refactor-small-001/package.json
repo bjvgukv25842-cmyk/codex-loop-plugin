@@ -1,0 +1,10 @@
+{
+  "name": "m12-refactor-small-001-target",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "refactor:contract": "node scripts/check-refactor-contract.js",
+    "lint:structure": "node scripts/check-structure.js"
+  }
+}

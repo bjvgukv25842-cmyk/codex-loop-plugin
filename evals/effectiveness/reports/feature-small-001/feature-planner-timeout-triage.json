@@ -1,0 +1,34 @@
+{
+  "case_id": "feature-small-001",
+  "failure_category": "FEATURE_TREATMENT_PLANNER_NO_EVENT_TIMEOUT",
+  "planner_thread_started": true,
+  "planner_thread_id": "019eee5c-83b9-7be2-975a-32a734851275",
+  "last_event_type": "item.completed",
+  "event_count": 32,
+  "elapsed_ms": 101612,
+  "planner_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+  "planner_stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+  "planner_stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+  "planner_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+  "planner_redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log",
+  "feature_planner_prompt_length": 355,
+  "feature_planner_prompt_hash": "369a7ae0f92e9a007f647ea889fbbbf8428e639a989fec52b13542db85e38328",
+  "repair_loop_planner_prompt_hash": "cf434cb80ebdc9db4f1dba1ee714fefc8be94c4d2a080995eb45ae3456c51c9a",
+  "uses_planner_lite_v2": true,
+  "uses_task_graph_json_string": false,
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "target_repo_is_git": true,
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "critical_diffs": [
+    "workingDirectory",
+    "target_repo_git_status",
+    "checkpointStatePath",
+    "artifactOutputPaths"
+  ],
+  "recommended_fixes": [
+    "Keep feature-small-001 blocked until planner parity, lite-minimal, and exact smokes pass.",
+    "Use planner-lite-v2 with direct tasks[] and no nested JSON strings.",
+    "Classify no-event timeout as startup or turn timeout based on thread/event evidence.",
+    "Do not rerun full M12 or another case before this planner slice is isolated."
+  ]
+}

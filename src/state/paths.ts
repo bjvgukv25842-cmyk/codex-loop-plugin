@@ -9,7 +9,9 @@ export type StateFileName =
   | "tasks.json"
   | "artifacts.json"
   | "eval-reports.json"
+  | "repair-requests.json"
   | "context-capsules.json"
+  | "sdk-thread-runs.json"
   | "events.json";
 
 export function getStateDir(): string {

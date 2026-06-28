@@ -1,0 +1,17 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "src_project_name_hash_before": "3307d0f65556d1f2d14bd8fbcd095e53f99218cd51a652b5869b2af8591a9d00",
+  "package_json_hash_before": "6561172e3490a8597b29250995fdd9a535ed29bc58ff7f726a9f31b8fe042873",
+  "test_project_name_hash_before": "f80611b26637d9d583297253025d5281684e48b7b52db3ad108365c20f0fc866",
+  "test_project_name_baseline_hash_before": "",
+  "test_project_name_full_hash_before": "",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "initial_baseline_tests_run": false,
+  "initial_baseline_tests_failed": false,
+  "initial_full_tests_run": true,
+  "initial_full_tests_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "BROKEN_AS_EXPECTED"
+}

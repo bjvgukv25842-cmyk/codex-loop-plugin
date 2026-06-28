@@ -1,0 +1,94 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1781946857390",
+  "loop_run_id": "loop_gate6_validate_project_name",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "Gate6",
+  "current_task": "task_gate6_plan",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm test -- tests/runtime/sdk-runtime-adapter.test.ts tests/runtime/sdk-capability-detect.test.ts tests/runtime/sdk-parity-script.test.ts tests/runtime/gate6b-smoke-script.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test -- tests/runtime/sdk-runtime-adapter.test.ts tests/runtime/sdk-capability-detect.test.ts tests/runtime/sdk-parity-script.test.ts tests/runtime/gate6b-smoke-script.test.ts"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "test -f evals/sdk-orchestrated/reports/sdk-startup-triage/sdk-invocation-trace-redacted.json && sed -n '1,220p' evals/sdk-orchestrated/reports/sdk-startup-triage/sdk-invocation-trace-redacted.json || true"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [
+    {
+      "path": "docs/PRD.md",
+      "purpose": "Product requirements"
+    },
+    {
+      "path": "docs/ACCEPTANCE_CRITERIA.md",
+      "purpose": "Acceptance criteria"
+    },
+    {
+      "path": "docs/TASK_GRAPH.json",
+      "purpose": "Task decomposition"
+    }
+  ],
+  "source_of_truth_files": [
+    "README.md",
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "docs/PRD.md",
+    "docs/ACCEPTANCE_CRITERIA.md",
+    "docs/TASK_GRAPH.json"
+  ],
+  "next_instruction": "Continue Gate6 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-20T09:14:17.386Z",
+  "updated_at": "2026-06-20T09:14:17.386Z"
+}

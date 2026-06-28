@@ -1,0 +1,19 @@
+diff --git a/src/title.js b/src/title.js
+index 9bba11e..de31dd5 100644
+--- a/src/title.js
++++ b/src/title.js
+@@ -1,4 +1,13 @@
+ export function sanitizeTitle(input) {
+   if (typeof input !== "string") return null;
+-  return input;
++
++  const title = input.trim().toLowerCase();
++  if (title.length === 0) return null;
++
++  const sanitized = title
++    .replace(/[^\p{L}\p{N}\s]+/gu, "")
++    .trim()
++    .replace(/\s+/g, "-");
++
++  return sanitized.length > 0 ? sanitized : null;
+ }

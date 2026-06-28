@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ee8a4-dbd2-7cd1-9a78-5a3906ab301d"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"SDK_EVALUATOR_PARITY_OK"}}
+{"type":"turn.completed","usage":{"input_tokens":33513,"cached_input_tokens":4992,"output_tokens":141,"reasoning_output_tokens":128}}

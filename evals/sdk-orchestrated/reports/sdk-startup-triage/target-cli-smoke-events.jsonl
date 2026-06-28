@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ee3dd-b30a-75d0-b094-c15dc675f348"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"SDK_TARGET_DIRECT_CLI_OK"}}
+{"type":"turn.completed","usage":{"input_tokens":34140,"cached_input_tokens":2432,"output_tokens":39,"reasoning_output_tokens":27}}

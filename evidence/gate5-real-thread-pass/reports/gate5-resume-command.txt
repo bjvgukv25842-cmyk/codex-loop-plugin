@@ -1,0 +1,1 @@
+codex exec --sandbox read-only resume --last "只读检查刚刚完成的结果，生成 artifacts/context-capsule-smoke.json。不要修改 src，不要修改测试，不要重新实现功能。ContextCapsule 必须包含 thread_id、completed_work、open_issues、next_instruction。" --json > ../../../evals/real-thread/reports/gate5-resume-events.jsonl 2> ../../../evals/real-thread/reports/gate5-resume-stderr.log

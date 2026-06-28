@@ -1,0 +1,1 @@
+blocked_full_gate6_disabled_by_default

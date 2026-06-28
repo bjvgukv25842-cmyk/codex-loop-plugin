@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "current_stage": "PLANNER_DONE",
+  "real_sdk_run_executed": false,
+  "planner_thread_started": true,
+  "planner_thread_id": "thread_checkpoint_planner_mock",
+  "failure_category": "",
+  "errors": []
+}

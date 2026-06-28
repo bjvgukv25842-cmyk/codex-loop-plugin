@@ -1,0 +1,55 @@
+{
+  "eval_id": "eval_demo_needs_revision",
+  "loop_run_id": "loop_demo_001",
+  "task_id": "TASK-002",
+  "module_id": "M9",
+  "evaluator_agent_id": "agent_demo_eval",
+  "verdict": "NEEDS_REVISION",
+  "confidence": 0.9,
+  "findings": [
+    {
+      "finding_id": "finding_demo_whitespace_test",
+      "severity": "medium",
+      "category": "test_gap",
+      "description": "The first demo test pass did not include a whitespace-only project name regression test.",
+      "evidence": [
+        {
+          "type": "file",
+          "ref": "examples/demo-repo/tests/sample-feature.test.ts",
+          "summary": "Initial test set covered empty, too-long, and valid names but missed whitespace-only input."
+        }
+      ],
+      "required_fix": "Add a test proving whitespace-only project names fail."
+    }
+  ],
+  "required_fixes": [
+    {
+      "fix_id": "fix_demo_whitespace_test",
+      "finding_ids": [
+        "finding_demo_whitespace_test"
+      ],
+      "instruction": "Add only the missing whitespace-only project name test.",
+      "expected_files": [
+        {
+          "path": "examples/demo-repo/tests/sample-feature.test.ts",
+          "purpose": "Add whitespace-only regression coverage"
+        }
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+        }
+      ]
+    }
+  ],
+  "validation_commands_checked": [
+    {
+      "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+    }
+  ],
+  "created_at": "2026-06-18T09:06:00.000Z",
+  "updated_at": "2026-06-18T09:06:00.000Z",
+  "metadata": {
+    "demo": true
+  }
+}

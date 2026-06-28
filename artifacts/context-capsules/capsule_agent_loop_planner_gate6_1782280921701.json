@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782280921701",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm run m12:gate -- --case test-coverage-001 --regrade-only"
+      },
+      {
+        "command": "sed -n '1,220p' evals/effectiveness/reports/test-coverage-001/next-case-readiness.json && sed -n '1,180p' evals/effectiveness/reports/test-coverage-001/NextCaseReadinessReport.md"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-test-coverage-runner.test.ts tests/effectiveness/test-coverage-001-fixture.test.ts tests/effectiveness/generic-test-coverage-checkpoint-state.test.ts tests/effectiveness/treatment-case-router.test.ts tests/effectiveness/next-case-readiness.test.ts tests/effectiveness/baseline-codex-exec-runner.test.ts tests/effectiveness/task-success-grader.test.ts tests/effectiveness/validation-pass-grader.test.ts tests/effectiveness/diff-scope-grader.test.ts tests/effectiveness/thread-evidence-policy.test.ts tests/effectiveness/artifact-completeness-grader.test.ts"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run m12:mini:run -- --case test-coverage-001 --mode both && npm run m12:mini:compare -- --case test-coverage-001 --regrade-only && npm run m12:mini:report -- --case test-coverage-001 --regrade-only && npm run m12:gate -- --case test-coverage-001 --regrade-only"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "rg -n \"CODEX_LOOP_ENABLE_M12_REAL_RUN=1|danger-full-access|production_ready.*true\" evals/effectiveness/reports/test-coverage-001 docs/M12_EFFECTIVENESS_EVALUATION.md docs/M12_RELEASE_GATES.md docs/LOOP_PROGRESS.md docs/DECISIONS.md src/effectiveness scripts/effectiveness tests/effectiveness -S"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T06:02:01.700Z",
+  "updated_at": "2026-06-24T06:02:01.700Z"
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "test-coverage-002",
+  "parity": {
+    "status": "PASS",
+    "result_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/dev-worker-smoke-parity-result.json"
+  },
+  "minimal": {
+    "status": "PASS",
+    "result_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/dev-worker-smoke-minimal-result.json"
+  },
+  "exact": {
+    "status": "PASS",
+    "result_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/dev-worker-smoke-exact-result.json"
+  },
+  "ready_for_parity": true,
+  "ready_for_minimal": true,
+  "ready_for_exact": true,
+  "ready_for_treatment_rerun": true,
+  "reconstruction_status": "PASS"
+}

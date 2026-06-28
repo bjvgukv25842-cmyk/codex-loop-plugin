@@ -1,0 +1,176 @@
+[
+  {
+    "agent_id": "agent_loop_planner_gate6",
+    "agent_type": "planner",
+    "codex_agent_name": "loop_planner",
+    "display_name": "Loop Planner Gate6",
+    "role_contract": {
+      "responsibilities": [
+        "Create PRD",
+        "Create acceptance criteria",
+        "Create TaskGraph"
+      ],
+      "non_goals": [
+        "Do not edit production code",
+        "Do not evaluate implementation"
+      ],
+      "required_inputs": [
+        "User goal",
+        "Repository source files"
+      ],
+      "required_outputs": [
+        "docs/PRD.md",
+        "docs/ACCEPTANCE_CRITERIA.md",
+        "docs/TASK_GRAPH.json"
+      ]
+    },
+    "current_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+    "previous_thread_ids": [
+      "pending_loop_planner_thread"
+    ],
+    "skills": [
+      "prd-planner",
+      "task-decomposer"
+    ],
+    "mcp_servers": [
+      "codex_loop_store"
+    ],
+    "sandbox_mode": "read-only",
+    "status": "READY",
+    "assigned_task_ids": [
+      "task_gate6_plan"
+    ],
+    "created_at": "2026-06-19T00:00:00.000Z",
+    "updated_at": "2026-06-19T05:21:00.474Z",
+    "metadata": {
+      "gate": "Gate6"
+    }
+  },
+  {
+    "agent_id": "agent_loop_evaluator_gate6",
+    "agent_type": "evaluator",
+    "codex_agent_name": "loop_evaluator",
+    "display_name": "Loop Evaluator Gate6",
+    "role_contract": {
+      "responsibilities": [
+        "Read-only baseline and final evaluation",
+        "Write EvalReport evidence"
+      ],
+      "non_goals": [
+        "Do not edit files",
+        "Do not repair findings"
+      ],
+      "required_inputs": [
+        "PRD",
+        "TaskGraph",
+        "Diff",
+        "Validation logs"
+      ],
+      "required_outputs": [
+        "EvalReport"
+      ]
+    },
+    "current_thread_id": "pending_loop_evaluator_thread",
+    "previous_thread_ids": [],
+    "skills": [
+      "evaluator"
+    ],
+    "mcp_servers": [
+      "codex_loop_store"
+    ],
+    "sandbox_mode": "read-only",
+    "status": "READY",
+    "assigned_task_ids": [
+      "task_gate6_eval_baseline",
+      "task_gate6_eval_final"
+    ],
+    "created_at": "2026-06-19T00:00:00.000Z",
+    "updated_at": "2026-06-19T00:00:00.000Z",
+    "metadata": {
+      "gate": "Gate6"
+    }
+  },
+  {
+    "agent_id": "agent_loop_dev_worker_gate6",
+    "agent_type": "dev_worker",
+    "codex_agent_name": "loop_dev_worker",
+    "display_name": "Loop Dev Worker Gate6",
+    "role_contract": {
+      "responsibilities": [
+        "Repair validateProjectName in allowed scope",
+        "Run validation",
+        "Write DevResult evidence"
+      ],
+      "non_goals": [
+        "Do not write EvalReport",
+        "Do not expand scope"
+      ],
+      "required_inputs": [
+        "RepairRequest",
+        "TaskNode"
+      ],
+      "required_outputs": [
+        "DevResult"
+      ]
+    },
+    "current_thread_id": "pending_loop_dev_worker_thread",
+    "previous_thread_ids": [],
+    "skills": [
+      "dev-worker"
+    ],
+    "mcp_servers": [
+      "codex_loop_store"
+    ],
+    "sandbox_mode": "workspace-write",
+    "status": "READY",
+    "assigned_task_ids": [
+      "task_gate6_repair_validate_project_name"
+    ],
+    "created_at": "2026-06-19T00:00:00.000Z",
+    "updated_at": "2026-06-19T00:00:00.000Z",
+    "metadata": {
+      "gate": "Gate6"
+    }
+  },
+  {
+    "agent_id": "agent_loop_integration_manager_gate6",
+    "agent_type": "integration_manager",
+    "codex_agent_name": "loop_integration_manager",
+    "display_name": "Loop Integration Manager Gate6",
+    "role_contract": {
+      "responsibilities": [
+        "Verify final PASS evidence",
+        "Produce final delivery report"
+      ],
+      "non_goals": [
+        "Do not bypass evaluator findings"
+      ],
+      "required_inputs": [
+        "EvalReports",
+        "Validation logs",
+        "Artifacts"
+      ],
+      "required_outputs": [
+        "FinalDeliveryReport"
+      ]
+    },
+    "current_thread_id": "pending_loop_integration_manager_thread",
+    "previous_thread_ids": [],
+    "skills": [
+      "integration-manager"
+    ],
+    "mcp_servers": [
+      "codex_loop_store"
+    ],
+    "sandbox_mode": "workspace-write",
+    "status": "READY",
+    "assigned_task_ids": [
+      "task_gate6_integration"
+    ],
+    "created_at": "2026-06-19T00:00:00.000Z",
+    "updated_at": "2026-06-19T00:00:00.000Z",
+    "metadata": {
+      "gate": "Gate6"
+    }
+  }
+]

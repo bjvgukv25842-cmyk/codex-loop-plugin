@@ -1,0 +1,23 @@
+diff --git a/src/date-range.js b/src/date-range.js
+index 6b830a6..47ce951 100644
+--- a/src/date-range.js
++++ b/src/date-range.js
+@@ -1,3 +1,17 @@
+ export function rangesOverlap(first, second) {
+-  return first.start <= second.end && second.start <= first.end;
++  if (!isValidRange(first) || !isValidRange(second)) {
++    return false;
++  }
++
++  return first.start < second.end && second.start < first.end;
++}
++
++function isValidRange(range) {
++  return (
++    range !== null &&
++    typeof range === "object" &&
++    Number.isFinite(range.start) &&
++    Number.isFinite(range.end) &&
++    range.start < range.end
++  );
+ }

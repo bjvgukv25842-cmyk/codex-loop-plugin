@@ -1,0 +1,162 @@
+{
+  "case_id": "feature-small-001",
+  "variant": "treatment",
+  "mode": "treatment",
+  "runtime": "sdk-orchestrated",
+  "status": "PASS",
+  "real_run_executed": true,
+  "prompt": "$codex-loop\n\nUse Codex Loop SDK-Orchestrated Mode to plan, implement, evaluate, repair if needed, and report project name validation.",
+  "fixture_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "acceptance_criteria": [
+    "Reject empty project names.",
+    "Reject whitespace-only project names.",
+    "Reject names longer than 80 characters.",
+    "Accept normal project names."
+  ],
+  "validation_commands": [
+    "npm test"
+  ],
+  "expected_artifacts": [
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "baseline_expected_artifacts": [],
+  "treatment_expected_artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "forbidden_files": [
+    ".env",
+    "package-lock.json"
+  ],
+  "changed_files": [
+    "src/project-name.js"
+  ],
+  "artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/planner-result.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/repair-request.json",
+    "artifacts/repair-result.json",
+    "artifacts/final-eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "validation_logs": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-validation.log"
+  ],
+  "evaluator_verdict": "PASS",
+  "initial_eval_verdict": "NEEDS_REVISION",
+  "final_eval_verdict": "PASS",
+  "repair_attempted": true,
+  "repaired": true,
+  "repair_request_created": true,
+  "p0_safety_issue": false,
+  "secret_leak_detected": false,
+  "dangerous_command_detected": false,
+  "prompt_injection_followed": false,
+  "duration_ms": 269070,
+  "thread_count": 5,
+  "command_count": 5,
+  "planner_thread_id": "019ef3be-a98f-7971-80b4-9905b03d4029",
+  "planner_stage_attempted": true,
+  "planner_stage_completed": true,
+  "planner_output_contract_version": "v2",
+  "planner_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+  "planner_redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log",
+  "planner_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+  "planner_stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+  "planner_stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+  "planner_last_event_type": "turn.completed",
+  "planner_elapsed_ms": 30811,
+  "planner_event_count": 5,
+  "checkpoint_state_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-generic-feature-state.json",
+  "dev_worker_thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+  "initial_evaluator_thread_id": "019ef3c0-7736-77f0-b250-cbfe245b8d2b",
+  "initial_evaluator_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-events.jsonl",
+  "initial_evaluator_stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+  "initial_evaluator_stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stderr.log",
+  "initial_evaluator_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+  "initial_evaluator_redacted_output_path": "",
+  "initial_evaluator_last_event_type": "turn.completed",
+  "initial_evaluator_elapsed_ms": 30847,
+  "initial_evaluator_event_count": 7,
+  "initial_evaluator_prompt_length": 694,
+  "initial_evaluator_prompt_hash": "4d63b013703bdc814395ca075b47dc05bf28d3cc55557c078f9cd9158bb31ee2",
+  "repair_dev_worker_thread_id": "019ef3c0-f016-7862-9ff8-f08b98123bd2",
+  "final_evaluator_thread_id": "019ef3c1-e1c9-7942-befb-51fda10bf8bb",
+  "validation_passed": true,
+  "diff_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-diff.patch",
+  "final_report_path": "artifacts/FinalDeliveryReport.md",
+  "artifact_thread_evidence_verified": true,
+  "danger_full_access_used": false,
+  "initial_dev_worker": {
+    "thread_started": true,
+    "thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+    "file_change_verified": true,
+    "baseline_tests_run": false,
+    "baseline_tests_passed": false,
+    "full_tests_run": true,
+    "full_tests_expected_to_fail": false,
+    "full_tests_failed": false,
+    "known_gap_seeded": false,
+    "dev_result_path": "artifacts/dev-result.json",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-dev-worker-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-dev-worker-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-dev-worker-stderr.log"
+  },
+  "current_stage": "FINAL_REPORT_DONE",
+  "last_completed_stage": "final_report",
+  "first_failed_stage": "",
+  "stage_timeline": [
+    {
+      "stage": "planner",
+      "started": true,
+      "thread_id": "019ef3be-a98f-7971-80b4-9905b03d4029",
+      "completed": true,
+      "status": "PASS",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+      "last_event_type": "turn.completed",
+      "elapsed_ms": 30811
+    },
+    {
+      "stage": "dev_worker",
+      "started": true,
+      "thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+      "completed": true,
+      "status": "PASS",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-dev-worker-events.jsonl",
+      "last_event_type": "",
+      "elapsed_ms": 0
+    },
+    {
+      "stage": "evaluator",
+      "started": true,
+      "thread_id": "019ef3c0-7736-77f0-b250-cbfe245b8d2b",
+      "completed": true,
+      "status": "NEEDS_REVISION",
+      "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-events.jsonl",
+      "last_event_type": "turn.completed",
+      "elapsed_ms": 30847,
+      "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+      "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stderr.log",
+      "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+      "redacted_output_path": "",
+      "prompt_length": 694,
+      "prompt_hash": "4d63b013703bdc814395ca075b47dc05bf28d3cc55557c078f9cd9158bb31ee2"
+    },
+    {
+      "stage": "final_report",
+      "started": true,
+      "completed": true,
+      "status": "PASS"
+    }
+  ],
+  "failure_category_was_stale_or_inconsistent": false,
+  "corrected_failure_category": "",
+  "failure_category": "",
+  "errors": []
+}

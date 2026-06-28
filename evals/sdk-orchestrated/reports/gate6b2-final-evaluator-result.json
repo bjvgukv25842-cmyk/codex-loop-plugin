@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "current_stage": "FINAL_EVAL_DONE",
+  "real_sdk_run_executed": false,
+  "evaluator_thread_started": true,
+  "evaluator_thread_id": "thread_gate6b2_final_evaluator_mock",
+  "eval_verdict": "PASS",
+  "failure_category": "",
+  "errors": []
+}

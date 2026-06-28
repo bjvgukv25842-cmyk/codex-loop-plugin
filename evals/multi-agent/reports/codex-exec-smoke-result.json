@@ -1,0 +1,14 @@
+{
+  "status": "FAIL",
+  "duration_ms": 57,
+  "thread_started": false,
+  "event_count": 0,
+  "stderr_excerpt": "WARNING: proceeding, even though we could not create PATH aliases: Operation not permitted (os error 1)\nReading additional input from stdin...\nError: failed to initialize in-process app-server client: Operation not permitted (os error 1)\n",
+  "failure_category": "SANDBOX_OR_PERMISSION_ERROR",
+  "exit_code": 1,
+  "signal": null,
+  "command_redacted": "codex 'exec' '-c' 'sqlite_home=\"/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite\"' '--json' '--sandbox' 'read-only' '-C' '/Users/litmus/Downloads/codex-loop-plugin' 'Respond with exactly: CODEX_EXEC_SMOKE_OK'",
+  "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/multi-agent/reports/codex-exec-smoke-events.jsonl",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/multi-agent/reports/codex-exec-smoke-stderr.log",
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/multi-agent/reports/codex-exec-smoke-events.jsonl"
+}

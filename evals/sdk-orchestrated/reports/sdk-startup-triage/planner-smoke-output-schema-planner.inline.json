@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "const": "PASS"
+    },
+    "role": {
+      "const": "planner"
+    },
+    "prd": {
+      "type": "object"
+    },
+    "task_graph": {
+      "type": "object"
+    },
+    "acceptance_criteria": {
+      "type": "array"
+    },
+    "risks": {
+      "type": "array"
+    }
+  },
+  "required": [
+    "status",
+    "role"
+  ],
+  "additionalProperties": true
+}

@@ -1,0 +1,32 @@
+{
+  "sdk_parity_status": "PASS",
+  "planner_minimal_status": "PASS",
+  "planner_timeout_ms": 180000,
+  "planner_thread_started_detected": true,
+  "planner_thread_id_detected": "019ee474-d842-7db1-9689-7ab50a82b662",
+  "planner_events_path_exists": true,
+  "planner_event_count": 4,
+  "planner_stderr_exists": false,
+  "planner_stderr_excerpt": "",
+  "planner_stdout_exists": false,
+  "planner_stdout_excerpt": "",
+  "invocation_diff_detected": true,
+  "critical_diffs": [
+    "workingDirectory",
+    "target_repo_git_status",
+    "CODEX_SQLITE_HOME",
+    "sqlite_home",
+    "model_catalog_json",
+    "model",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "usesOutputSchema",
+    "prompt_length",
+    "prompt_hash",
+    "config_keys",
+    "env_keys",
+    "sdk_api_method",
+    "node_process_cwd"
+  ],
+  "diagnosed_failure_category": "SDK_INVOCATION_DIFF_DETECTED"
+}

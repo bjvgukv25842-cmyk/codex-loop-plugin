@@ -1,0 +1,67 @@
+{
+  "case_id": "refactor-small-001",
+  "module": "M12.6B Refactor-Small-001 Staged Real Canary",
+  "status": "NEEDS_REVISION",
+  "stage": "treatment",
+  "failure_category": "REFACTOR_TREATMENT_EVAL_REPORT_ARTIFACT_MISSING",
+  "failure_summary": "The real SDK-Orchestrated treatment run reached EVALUATOR_DONE with evaluator verdict NEEDS_REVISION, then crashed while creating the RepairRequest because artifacts/eval-report.json was missing in the treatment target repo.",
+  "baseline_stage": {
+    "executed": true,
+    "real_run_executed": true,
+    "status": "PASS",
+    "valid_outcome": true,
+    "thread_id_present": true,
+    "validation_passed": true,
+    "secret_leak_detected": false,
+    "danger_full_access_used": false,
+    "result_path": "evals/effectiveness/reports/refactor-small-001/baseline-result.json"
+  },
+  "treatment_stage": {
+    "executed": true,
+    "real_run_executed": true,
+    "result_path_present": false,
+    "current_stage": "EVALUATOR_DONE",
+    "planner_status": "PASS",
+    "planner_thread_id_present": true,
+    "dev_worker_status": "PASS",
+    "dev_worker_thread_id_present": true,
+    "initial_evaluator_status": "NEEDS_REVISION",
+    "initial_evaluator_thread_id_present": true,
+    "initial_eval_verdict": "NEEDS_REVISION",
+    "repair_request_created": false,
+    "repair_dev_worker_thread_id_present": false,
+    "final_evaluator_thread_id_present": false,
+    "final_eval_verdict": "",
+    "final_report_present": false,
+    "validation_log_present": true,
+    "validation_log_passed": true,
+    "missing_artifact": "evals/effectiveness/runs/refactor-small-001/treatment/target-repo/artifacts/eval-report.json",
+    "secret_leak_detected": false,
+    "danger_full_access_used": false
+  },
+  "observed_error": {
+    "code": "ENOENT",
+    "message": "no such file or directory, open '/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/refactor-small-001/treatment/target-repo/artifacts/eval-report.json'",
+    "throw_site": "src/effectiveness/treatment-generic-refactor-runner.ts:createRefactorRepairRequest"
+  },
+  "evidence_paths": [
+    "evals/effectiveness/reports/refactor-small-001/baseline-result.json",
+    "evals/effectiveness/reports/refactor-small-001/baseline-invocation-trace-redacted.json",
+    "evals/effectiveness/reports/refactor-small-001/treatment-generic-refactor-state.json",
+    "evals/effectiveness/reports/refactor-small-001/treatment-validation.log",
+    "evals/effectiveness/reports/refactor-small-001/treatment-diff.patch",
+    "evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-evaluator-stdout.log",
+    "evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-evaluator-events.jsonl",
+    "evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-evaluator-invocation-trace-redacted.json"
+  ],
+  "post_failure_actions": {
+    "treatment_retried": false,
+    "post_treatment_compare_run": false,
+    "post_treatment_report_run": false,
+    "gate_run": false,
+    "evidence_frozen": false,
+    "next_case_readiness_checked": false
+  },
+  "required_fix": "Persist evaluator NEEDS_REVISION output to artifacts/eval-report.json, or make createRefactorRepairRequest derive a schema-valid RepairRequest from the captured evaluator output when the artifact is missing. After a code fix, run dry validation first and request approval before exactly one treatment-only fresh rerun.",
+  "next_manual_action": "Fix generic refactor treatment evaluator artifact persistence before rerunning exactly one refactor-small-001 treatment-only fresh canary. Do not rerun baseline unless explicitly approved."
+}

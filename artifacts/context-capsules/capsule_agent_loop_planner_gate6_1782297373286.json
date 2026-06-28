@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782297373286",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '260,560p' tests/effectiveness/treatment-generic-refactor-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/thread-evidence-policy.test.ts"
+      },
+      {
+        "command": "sed -n '1,220p' tests/orchestrator/sdk-evaluator-stage.test.ts || true"
+      },
+      {
+        "command": "cat evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-evaluator-stdout.log && test -f evals/effectiveness/runs/refactor-small-001/treatment/target-repo/artifacts/eval-report.json && cat evals/effectiveness/runs/refactor-small-001/treatment/target-repo/artifacts/eval-report.json || true"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-refactor-runner.test.ts"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-refactor-runner.test.ts"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-refactor-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,220p' src/orchestrator/validate-eval-report-artifacts.ts"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-refactor-runner.test.ts"
+      },
+      {
+        "command": "node - <<'NODE'\nconst fs=require('fs');\nconst path=require('path');\nconst base='evals/effectiveness/reports/refactor-small-001';\nconst run='evals/effectiveness/runs/refactor-small-001/treatment/target-repo';\nconst readJson=p=>fs.existsSync(p)?JSON.parse(fs.readFileSync(p,'utf8')):null;\nconst state=readJson(path.join(base,'treatment-generic-refactor-state.json'));\nlet evaluatorOutput=null;\nlet evaluatorOutputFound=false;\nlet evaluatorVerdict='';\nconst stdoutPath=path.join(base,'sdk-stage-logs/generic-refactor-evaluator-stdout.log');\nif (fs.existsSync(stdoutPath)) {\n  try {\n    evaluatorOutput=JSON.parse(fs.readFileSync(stdoutPath,'utf8'));\n    evaluatorOutputFound=true;\n    evaluatorVerdict=evaluatorOutput.verdict || evaluatorOutput.status || '';\n  } catch {}\n}\nconst candidates=[\n  path.join(run,'artifacts/eval-report.json'),\n  path.join(run,'artifacts/final-eval-report.json'),\n  path.join(base,'sdk-stage-logs/generic-refactor-evaluator-stdout.log')\n];\nconst evaluatorArtifactPathsFound=candidates.filter(p=>fs.existsSync(p));\nconst evalReportPath=fs.existsSync(path.join(run,'artifacts/eval-report.json'))?'artifacts/eval-report.json':'';\nconst finalReportPath=fs.existsSync(path.join(run,'artifacts/FinalDeliveryReport.md'))?'artifacts/FinalDeliveryReport.md':'';\nconst validationLog=fs.existsSync(path.join(base,'treatment-validation.log'))?fs.readFileSync(path.join(base,'treatment-validation.log'),'utf8'):'';\nconst validationPassed=/Refactor behavior contract satisfied\\.|Refactor structure contract satisfied\\./.test(validationLog) && /pass 4/.test(validationLog);\nconst directPassApplicable=evaluatorVerdict==='PASS' && Boolean(state?.planner?.thread_id && state?.dev_worker?.thread_id && state?.evaluator?.thread_id && validationPassed);\nconst repairPathRequired=evaluatorVerdict==='NEEDS_REVISION';\nconst triage={\n  case_id:'refactor-small-001',\n  treatment_real_run_executed:Boolean(state?.planner?.thread_id || state?.dev_worker?.thread_id || state?.evaluator?.thread_id),\n  treatment_status:'BLOCKED',\n  planner_thread_id_present:Boolean(state?.planner?.thread_id),\n  dev_worker_thread_id_present:Boolean(state?.dev_worker?.thread_id),\n  initial_evaluator_thread_id_present:Boolean(state?.evaluator?.thread_id),\n  validation_passed:validationPassed,\n  evaluator_artifact_paths_found:evaluatorArtifactPathsFound,\n  evaluator_output_found:evaluatorOutputFound,\n  evaluator_verdict_detected:evaluatorVerdict,\n  eval_report_path:evalReportPath,\n  final_report_path:finalReportPath,\n  direct_pass_path_applicable:directPassApplicable,\n  repair_path_required:repairPathRequired,\n  artifact_mapping_issue_detected:evaluatorOutputFound && !evalReportPath,\n  final_report_generation_possible_from_existing_evidence:directPassApplicable && !finalReportPath,\n  requires_treatment_rerun:!directPassApplicable,\n  recommended_fixes: directPassApplicable ? [\n    'Generate FinalDeliveryReport from existing direct PASS evidence and update treatment-result.json without running SDK.'\n  ] : [\n    'Persist evaluator-lite output to artifacts/eval-report.json for generic refactor evaluator stages.',\n    'Return a structured BLOCKED treatment result instead of throwing when evaluator artifact recovery fails.',\n    'After dry validation, request approval for exactly one refactor-small-001 treatment-only fresh rerun; do not rerun baseline unless approved.'\n  ]\n};\nfs.mkdirSync(base,{recursive:true});\nfs.writeFileSync(path.join(base,'refactor-evaluator-artifact-triage.json'), JSON.stringify(triage,null,2)+'\\n');\nfs.writeFileSync(path.join(base,'RefactorEvaluatorArtifactTriageReport.md'), [\n  '# Refactor Evaluator Artifact Triage',\n  '',\n  `- Case: ${triage.case_id}`,\n  `- Treatment real run executed: ${triage.treatment_real_run_executed}`,\n  `- Planner thread id present: ${triage.planner_thread_id_present}`,\n  `- Dev worker thread id present: ${triage.dev_worker_thread_id_present}`,\n  `- Initial evaluator thread id present: ${triage.initial_evaluator_thread_id_present}`,\n  `- Validation passed: ${triage.validation_passed}`,\n  `- Evaluator output found: ${triage.evaluator_output_found}`,\n  `- Evaluator verdict detected: ${triage.evaluator_verdict_detected || 'none'}`,\n  `- EvalReport artifact path: ${triage.eval_report_path || 'missing'}`,\n  `- Direct PASS path applicable: ${triage.direct_pass_path_applicable}`,\n  `- Repair path required: ${triage.repair_path_required}`,\n  `- Requires treatment rerun: ${triage.requires_treatment_rerun}`,\n  '',\n  '## Recommendation',\n  '',\n  ...triage.recommended_fixes.map(x=>`- ${x}`),\n  ''\n].join('\\n'));\nconsole.log(JSON.stringify(triage,null,2));\nNODE"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T10:36:13.285Z",
+  "updated_at": "2026-06-24T10:36:13.285Z"
+}

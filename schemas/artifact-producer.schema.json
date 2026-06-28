@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/artifact-producer.schema.json",
+  "title": "ArtifactProducer",
+  "type": "object",
+  "properties": {
+    "producer_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "artifact_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "artifact_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ArtifactType"
+    },
+    "artifact_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_by_agent_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "created_by_agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "created_by_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "parent_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "producer_id",
+    "loop_run_id",
+    "artifact_id",
+    "artifact_type",
+    "artifact_path",
+    "created_by_agent_run_id",
+    "created_by_agent_name",
+    "created_by_thread_id",
+    "parent_thread_id",
+    "created_at",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

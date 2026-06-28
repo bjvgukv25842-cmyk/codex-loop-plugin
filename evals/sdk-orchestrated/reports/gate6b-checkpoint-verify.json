@@ -1,0 +1,16 @@
+{
+  "status": "EVALUATOR_STAGE_FAILED",
+  "current_stage": "FAILED",
+  "planner_thread_id": "thread_planner",
+  "dev_worker_thread_id": "thread_dev",
+  "evaluator_thread_id": "",
+  "planner_artifact_thread_evidence_verified": true,
+  "dev_worker_file_change_verified": true,
+  "dev_worker_tests_passed": true,
+  "evaluator_eval_verdict": "",
+  "evaluator_retry_from_dev_worker_done": true,
+  "ready_for_gate6b_2": false,
+  "errors": [
+    "Codex Exec exited with code 1: Reading prompt from stdin..."
+  ]
+}

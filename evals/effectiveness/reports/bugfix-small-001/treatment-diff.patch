@@ -1,0 +1,14 @@
+diff --git a/src/pagination.js b/src/pagination.js
+index 2aa11a3..b38f6c3 100644
+--- a/src/pagination.js
++++ b/src/pagination.js
+@@ -5,5 +5,8 @@ export function hasNextPage(currentPage, totalPages) {
+   if (totalPages < 1) {
+     return false;
+   }
+-  return currentPage <= totalPages;
++  if (currentPage < 1 || currentPage > totalPages) {
++    return false;
++  }
++  return currentPage < totalPages;
+ }

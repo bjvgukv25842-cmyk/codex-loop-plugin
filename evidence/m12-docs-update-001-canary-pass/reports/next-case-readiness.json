@@ -1,0 +1,32 @@
+{
+  "case_id": "docs-update-001",
+  "status": "READY",
+  "real_run_executed": false,
+  "dataset_case_present": true,
+  "baseline_dry_run_supported": true,
+  "treatment_dry_run_supported": true,
+  "fixture_repo": "evals/effectiveness/fixtures/docs-update-001",
+  "fixture_repo_exists": true,
+  "fixture_files_present": true,
+  "fixture_initial_tests_pass": true,
+  "fixture_initial_docs_contract_fails": true,
+  "acceptance_criteria_complete": true,
+  "validation_commands_complete": true,
+  "forbidden_files_complete": true,
+  "graders_declared": [
+    "task-success",
+    "validation-pass",
+    "diff-scope",
+    "artifact-completeness",
+    "security",
+    "cost-latency"
+  ],
+  "graders_available": true,
+  "missing_graders": [],
+  "baseline_real_runner_supports_case": true,
+  "treatment_real_runner_supports_case": true,
+  "no_real_run_required": true,
+  "blockers": [],
+  "ready_for_one_next_case_canary": true,
+  "next_minimal_action": "Run exactly one docs-update-001 canary. Do not run the full dataset yet."
+}

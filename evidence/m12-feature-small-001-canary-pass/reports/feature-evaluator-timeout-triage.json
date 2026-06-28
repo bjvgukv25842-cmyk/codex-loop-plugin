@@ -1,0 +1,35 @@
+{
+  "case_id": "feature-small-001",
+  "failure_category": "FEATURE_TREATMENT_EVALUATOR_TURN_NO_EVENT_TIMEOUT",
+  "planner_completed": true,
+  "dev_worker_completed": true,
+  "evaluator_thread_started": true,
+  "evaluator_thread_id": "019eefa6-0eac-79f2-900b-ffd106885119",
+  "evaluator_completed": false,
+  "event_count": 28,
+  "last_event_type": "item.completed",
+  "elapsed_ms": 0,
+  "evaluator_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-events.jsonl",
+  "evaluator_stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+  "evaluator_stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stderr.log",
+  "evaluator_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-evaluator-stdout.log",
+  "evaluator_redacted_output_path": "",
+  "evaluator_prompt_length": 865,
+  "evaluator_prompt_hash": "b3a3b92b8ffd6abd90f0e3e7aaa305b0254808170ac18b68548dc1a540cdc5c5",
+  "uses_evaluator_lite_schema": true,
+  "uses_full_eval_report_schema": false,
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "target_repo_is_git": true,
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "critical_diffs": [
+    "evaluator_thread_started_but_no_eval_report",
+    "planner_and_dev_worker_completed_before_evaluator_timeout",
+    "historical_evaluator_prompt_exceeded_m12_2g_budget"
+  ],
+  "recommended_fixes": [
+    "Keep feature-small-001 treatment blocked until an evaluator-only slice completes without timeout.",
+    "Run evaluator parity, text-only, output-minimal, output-lite, and exact smokes in order.",
+    "Use the shortened feature evaluator prompt with evaluator-lite outputSchema; do not use the full EvalReport schema as outputSchema.",
+    "Use checkpoint evaluator retry only after planner and dev worker PASS evidence is present."
+  ]
+}

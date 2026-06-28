@@ -1,0 +1,93 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782042740554",
+  "loop_run_id": "loop_gate6_validate_project_name",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "Gate6",
+  "current_task": "task_gate6_plan",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "git status --short scripts/sdk-orchestrated/gate6b2-utils.ts src/orchestrator/sdk-initial-dev-worker-stage.ts src/orchestrator/sdk-initial-dev-worker-stage-types.ts src/orchestrator/sdk-repair-loop-types.ts src/orchestrator/sdk-repair-loop-checkpoint-state.ts src/orchestrator/dev-worker-mutation-evidence.ts src/orchestrator/sdk-evaluator-stage.ts tests/orchestrator/sdk-initial-dev-worker-stage.test.ts tests/runtime/gate6b2-repair-loop-script.test.ts tests/sdk-orchestrated/run-gate6b2-initial-evaluator.test.ts docs/GATE6B_SDK_ORCHESTRATED_VALIDATION.md docs/SDK_ORCHESTRATED_MODE_PLAN.md docs/LOOP_PROGRESS.md docs/DECISIONS.md"
+      },
+      {
+        "command": "cat tmp/sdk-orchestrated/gate6b2-repair-loop-target/package.json && printf '\\n--- baseline ---\\n' && sed -n '1,120p' tmp/sdk-orchestrated/gate6b2-repair-loop-target/test/project-name.baseline.test.js && printf '\\n--- full ---\\n' && sed -n '1,140p' tmp/sdk-orchestrated/gate6b2-repair-loop-target/test/project-name.full.test.js"
+      },
+      {
+        "command": "git status --short scripts/sdk-orchestrated/gate6b2-utils.ts src/orchestrator/dev-worker-mutation-evidence.ts src/orchestrator/sdk-evaluator-stage.ts src/orchestrator/sdk-initial-dev-worker-stage.ts src/orchestrator/sdk-initial-dev-worker-stage-types.ts src/orchestrator/sdk-repair-loop-checkpoint-state.ts src/orchestrator/sdk-repair-loop-types.ts tests/orchestrator/sdk-initial-dev-worker-stage.test.ts tests/orchestrator/sdk-repair-loop-checkpoint-state.test.ts tests/runtime/gate6b2-repair-loop-script.test.ts tests/sdk-orchestrated/run-gate6b2-initial-evaluator.test.ts docs/GATE6B_SDK_ORCHESTRATED_VALIDATION.md docs/SDK_ORCHESTRATED_MODE_PLAN.md docs/LOOP_PROGRESS.md docs/DECISIONS.md evals/sdk-orchestrated/reports/gate6b2-prepare-result.json evals/sdk-orchestrated/reports/gate6b2-repair-loop-verify.json evals/sdk-orchestrated/reports/Gate6B2_Repair_Loop_Report.md"
+      },
+      {
+        "command": "ls -la /Users/litmus/.codex/memories 2>/dev/null && test -f /Users/litmus/.codex/memories/MEMORY.md && grep -n \"Gate 6B\\|M12\\|codex-loop-plugin\" /Users/litmus/.codex/memories/MEMORY.md | head -40 || true"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test -- --run tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "npm run typecheck && npm test && npm run validate"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [
+    {
+      "path": "docs/PRD.md",
+      "purpose": "Product requirements"
+    },
+    {
+      "path": "docs/ACCEPTANCE_CRITERIA.md",
+      "purpose": "Acceptance criteria"
+    },
+    {
+      "path": "docs/TASK_GRAPH.json",
+      "purpose": "Task decomposition"
+    }
+  ],
+  "source_of_truth_files": [
+    "README.md",
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "docs/PRD.md",
+    "docs/ACCEPTANCE_CRITERIA.md",
+    "docs/TASK_GRAPH.json"
+  ],
+  "next_instruction": "Continue Gate6 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-21T11:52:20.554Z",
+  "updated_at": "2026-06-21T11:52:20.554Z"
+}

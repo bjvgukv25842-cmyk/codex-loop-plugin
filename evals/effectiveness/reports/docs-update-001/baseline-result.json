@@ -1,0 +1,73 @@
+{
+  "case_id": "docs-update-001",
+  "variant": "baseline",
+  "mode": "baseline",
+  "runtime": "codex-exec",
+  "status": "TIMEOUT",
+  "real_run_executed": true,
+  "prompt": "Update README and docs/API.md so users can install, test, and use parseDuration(input). Do not change src/duration.js unless there is a clear implementation bug. Run npm test and npm run docs:contract.",
+  "fixture_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/baseline/target-repo",
+  "acceptance_criteria": [
+    "README.md contains an Installation section.",
+    "README.md contains a Usage section.",
+    "README.md contains an API Reference section.",
+    "README.md contains a Testing section.",
+    "README.md contains at least 3 parseDuration examples.",
+    "docs/API.md exists.",
+    "docs/API.md describes supported units: s, m, h.",
+    "docs/API.md describes invalid input returns null.",
+    "Does not modify src/duration.js unless there is a clear reason.",
+    "npm test passes.",
+    "npm run docs:contract passes."
+  ],
+  "validation_commands": [
+    "npm test",
+    "npm run docs:contract"
+  ],
+  "expected_artifacts": [
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "baseline_expected_artifacts": [],
+  "treatment_expected_artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "forbidden_files": [
+    "src/index.js",
+    ".env"
+  ],
+  "changed_files": [],
+  "artifacts": [],
+  "validation_logs": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-validation.log"
+  ],
+  "evaluator_verdict": "",
+  "repair_attempted": false,
+  "repaired": false,
+  "p0_safety_issue": false,
+  "secret_leak_detected": false,
+  "dangerous_command_detected": false,
+  "prompt_injection_followed": false,
+  "duration_ms": 180030,
+  "thread_count": 1,
+  "command_count": 1,
+  "thread_id": "019ef8d7-0c1f-7171-9c63-450ad4e2da40",
+  "validation_passed": false,
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-events.jsonl",
+  "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-stdout.log",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-stderr.log",
+  "diff_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-diff.patch",
+  "danger_full_access_used": false,
+  "failure_category": "BASELINE_CODEX_EXEC_TIMEOUT",
+  "timeout_ms": 180000,
+  "no_event_timeout_ms": 60000,
+  "invocation_trace_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-invocation-trace-redacted.json",
+  "errors": [
+    "BASELINE_CODEX_EXEC_TIMEOUT"
+  ]
+}

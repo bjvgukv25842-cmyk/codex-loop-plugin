@@ -1,0 +1,86 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782311299693",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm run m12:gate -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "npm run m12:mini:report -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "node --input-type=module <<'NODE'\nimport { readFileSync, writeFileSync } from 'node:fs';\nconst path = 'evals/effectiveness/reports/test-coverage-002/treatment-result.json';\nconst result = JSON.parse(readFileSync(path, 'utf8'));\nresult.validation_logs = [];\nresult.validation_log_paths = [];\nresult.validation_command_results = [\n  { command: 'npm test', status: 'NOT_RUN', passed: false, evidence: 'validation command log missing' },\n  { command: 'npm run coverage:contract', status: 'NOT_RUN', passed: false, evidence: 'validation command log missing' }\n];\nresult.coverage_contract_passed = false;\nresult.first_failed_stage = 'dev_worker';\nresult.corrected_failure_category = 'TEST_COVERAGE_002_DEV_WORKER_TURN_NO_EVENT_TIMEOUT';\nresult.failure_category_was_stale_or_inconsistent = result.failure_category !== result.corrected_failure_category;\nwriteFileSync(path, `${JSON.stringify(result, null, 2)}\\n`, 'utf8');\nNODE"
+      },
+      {
+        "command": "npm run m12:mini:compare -- --case test-coverage-002 --regrade-only && npm run m12:mini:report -- --case test-coverage-002 --regrade-only; npm run m12:gate -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "jq '{case_id, baseline_status, treatment_status, planner_thread_id_present, dev_worker_thread_id_present, dev_worker_completed, dev_result_path, validation_log_paths, npm_test_run, npm_test_passed, coverage_contract_run, coverage_contract_passed, initial_evaluator_started, first_failed_stage, failure_category_current, failure_category_corrected, can_recover_from_existing_evidence, requires_treatment_rerun, recommended_fixes}' evals/effectiveness/reports/test-coverage-002/test-coverage-treatment-triage.json"
+      },
+      {
+        "command": "find evidence/m12-test-coverage-002-treatment-blocked -maxdepth 2 -type f | sort | head -n 40 && git status --short"
+      },
+      {
+        "command": "rg -n \"M12\\.9C|test-coverage-002|TEST_COVERAGE_002_DEV_WORKER_TURN_NO_EVENT_TIMEOUT|M12\\.9\" /Users/litmus/.codex/memories/MEMORY.md"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T14:28:19.692Z",
+  "updated_at": "2026-06-24T14:28:19.692Z"
+}

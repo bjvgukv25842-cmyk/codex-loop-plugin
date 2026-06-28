@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "dry_run_status": "PASS",
+  "real_sdk_run_executed": true,
+  "direct_cli_parity_status": "PASS",
+  "ready_for_one_real_sdk_parity_smoke": false,
+  "ready_for_real_gate6b_smoke": true,
+  "failure_category": "",
+  "errors": []
+}

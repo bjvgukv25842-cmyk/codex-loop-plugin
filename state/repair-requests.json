@@ -1,0 +1,58 @@
+[
+  {
+    "repair_id": "repair_repair_loop_001_whitespace",
+    "loop_run_id": "repair-loop-001",
+    "task_id": "task_validate_project_name",
+    "module_id": "M1",
+    "source_eval_id": "eval_repair_loop_001_initial",
+    "assigned_agent_id": "loop_dev_worker",
+    "findings": [
+      {
+        "finding_id": "F001",
+        "severity": "high",
+        "category": "correctness",
+        "description": "Validator accepts whitespace-only project names.",
+        "evidence": [
+          {
+            "type": "command",
+            "ref": "npm test",
+            "summary": "Before repair, `rejects whitespace-only string` failed because validateProjectName(\"   \").ok returned true instead of false."
+          },
+          {
+            "type": "file",
+            "ref": "src/project-name.js",
+            "line": 2,
+            "summary": "The initial implementation returned { ok: true } for all inputs."
+          }
+        ],
+        "required_fix": "Trim string input or otherwise detect names containing only whitespace before accepting the project name."
+      }
+    ],
+    "repair_instructions": [
+      "Update validateProjectName so whitespace-only strings return { ok: false }.",
+      "Keep existing valid project names accepted.",
+      "Preserve rejection for empty strings and names longer than 80 characters."
+    ],
+    "allowed_scope": [
+      "src/project-name.js",
+      "artifacts/dev-result.json",
+      "artifacts/eval-report-pass.json"
+    ],
+    "disallowed_scope": [
+      ".env",
+      ".env.*",
+      "package.json",
+      "test/project-name.test.js"
+    ],
+    "validation_commands": [
+      {
+        "command": "npm test",
+        "cwd": ".",
+        "reason": "Verify repaired validator behavior."
+      }
+    ],
+    "status": "REPAIR_REQUESTED",
+    "created_at": "2026-06-21T00:00:00.000Z",
+    "updated_at": "2026-06-21T00:00:00.000Z"
+  }
+]

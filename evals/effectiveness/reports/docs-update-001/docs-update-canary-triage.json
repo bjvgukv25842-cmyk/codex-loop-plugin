@@ -1,0 +1,38 @@
+{
+  "case_id": "docs-update-001",
+  "module": "M12.5B Docs-Update-001 Staged Real Canary",
+  "status": "NEEDS_REVISION",
+  "baseline_status": "TIMEOUT",
+  "baseline_valid_outcome": true,
+  "baseline_failure_category": "BASELINE_CODEX_EXEC_TIMEOUT",
+  "baseline_thread_id_present": true,
+  "baseline_secret_leak_detected": false,
+  "baseline_danger_full_access_used": false,
+  "treatment_status": "PASS",
+  "treatment_real_run_executed": true,
+  "treatment_thread_ids_present": true,
+  "final_eval_verdict": "PASS",
+  "final_report_present": true,
+  "validation_passed": true,
+  "docs_contract_passed": true,
+  "changed_files": [
+    "README.md",
+    "docs/API.md"
+  ],
+  "src_changes_require_review": false,
+  "compare_status": "NEEDS_REVISION",
+  "report_status": "NEEDS_REVISION",
+  "gate_status": "PASS",
+  "p0_blockers": [],
+  "severe_issues": [
+    "baseline/docs-update-001: task-success: Missing acceptance evidence for 3 criteria.",
+    "baseline/docs-update-001: validation-pass: Validation failed according to result.validation_passed.",
+    "baseline/docs-update-001: baseline real outcome TIMEOUT with BASELINE_CODEX_EXEC_TIMEOUT"
+  ],
+  "inconsistency_diagnosis": [
+    "COMPARE_GATE_INCONSISTENCY: compare status NEEDS_REVISION while selected gate has no blocking P0/canary blockers."
+  ],
+  "evidence_frozen": false,
+  "reason_evidence_not_frozen": "compare/report regrade-only returned NEEDS_REVISION because the plain baseline timed out; treatment and selected gate passed, but the module requires compare/report/gate PASS before freezing canary PASS evidence.",
+  "recommended_next_action": "Review whether baseline TIMEOUT should be accepted for docs-update-001 canary freezing or rerun exactly one baseline-only docs-update-001 canary with approved timeout settings. Do not run other cases."
+}

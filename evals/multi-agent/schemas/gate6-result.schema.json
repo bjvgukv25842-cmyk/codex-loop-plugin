@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/evals/gate6-result.schema.json",
+  "title": "Gate6NativeMultiAgentResult",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION",
+        "BLOCKED",
+        "BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE",
+        "BLOCKED_MANUAL_REVIEW_REQUIRED"
+      ]
+    },
+    "real_thread_executed": {
+      "type": "boolean"
+    },
+    "parent_thread_id": {
+      "type": "string"
+    },
+    "agent_runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "agent_name": {
+            "type": "string"
+          },
+          "agent_run_id": {
+            "type": "string"
+          },
+          "thread_id": {
+            "type": "string"
+          },
+          "artifacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "agent_name",
+          "agent_run_id",
+          "thread_id",
+          "artifacts"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "mcp_cross_agent_state_verified": {
+      "type": "boolean"
+    },
+    "subagent_lifecycle_verified": {
+      "type": "boolean"
+    },
+    "initial_eval_verdict": {
+      "type": "string",
+      "enum": [
+        "NEEDS_REVISION",
+        ""
+      ]
+    },
+    "repair_request_created": {
+      "type": "boolean"
+    },
+    "final_eval_verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        ""
+      ]
+    },
+    "tests_passed": {
+      "type": "boolean"
+    },
+    "parent_roleplay_detected": {
+      "type": "boolean"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "p0_blockers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "p1_issues": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ready_for_M12_effectiveness_eval": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "status",
+    "real_thread_executed",
+    "parent_thread_id",
+    "agent_runs",
+    "mcp_cross_agent_state_verified",
+    "subagent_lifecycle_verified",
+    "initial_eval_verdict",
+    "repair_request_created",
+    "final_eval_verdict",
+    "tests_passed",
+    "parent_roleplay_detected",
+    "changed_files",
+    "artifacts",
+    "validation_commands",
+    "p0_blockers",
+    "p1_issues",
+    "ready_for_M12_effectiveness_eval"
+  ],
+  "additionalProperties": false
+}

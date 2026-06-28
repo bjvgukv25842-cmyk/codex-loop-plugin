@@ -1,0 +1,8 @@
+{
+  "name": "m12-bugfix-small-002-target",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

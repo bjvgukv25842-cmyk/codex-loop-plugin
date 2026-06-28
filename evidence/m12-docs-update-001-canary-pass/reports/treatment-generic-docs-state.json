@@ -1,0 +1,44 @@
+{
+  "case_id": "docs-update-001",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019ef8da-32f5-7dd2-9de1-7745fc137d17",
+    "prd_path": "docs/PRD.md",
+    "task_graph_path": "docs/TASK_GRAPH.json",
+    "planner_result_path": "artifacts/planner-result.json",
+    "stage_attempted": true,
+    "stage_completed": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/sdk-stage-logs/generic-docs-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/sdk-stage-logs/generic-docs-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/sdk-stage-logs/generic-docs-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/sdk-stage-logs/generic-docs-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/sdk-stage-logs/generic-docs-planner-stderr.log",
+    "last_event_type": "turn.completed",
+    "elapsed_ms": 43060,
+    "event_count": 6,
+    "failure_category": ""
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ef8da-daf2-7f81-a0ad-702a525cf3ba",
+    "file_change_verified": true,
+    "tests_passed": true,
+    "dev_result_path": "artifacts/dev-result.json"
+  },
+  "evaluator": {
+    "status": "PASS",
+    "thread_id": "019ef8dc-e92b-7e53-aaaa-8934bdadd990",
+    "eval_verdict": "PASS",
+    "eval_report_path": "artifacts/eval-report.json"
+  },
+  "repair_request": {},
+  "repair_dev_worker": {},
+  "final_evaluator": {},
+  "final_report": {
+    "status": "PASS",
+    "path": "artifacts/FinalDeliveryReport.md"
+  },
+  "errors": []
+}

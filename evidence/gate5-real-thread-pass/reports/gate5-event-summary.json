@@ -1,0 +1,23 @@
+{
+  "thread_id": "019edb1e-3a08-7101-85d0-f11a6680661f",
+  "event_count": 136,
+  "turn_started_count": 1,
+  "turn_completed_count": 1,
+  "turn_failed_count": 0,
+  "command_execution_count": 72,
+  "npm_test_command_seen": true,
+  "file_change_event_count": 18,
+  "mcp_tool_call_count": 0,
+  "error_count": 1,
+  "errors": [
+    {
+      "kind": "event_error",
+      "event_type": "item.completed",
+      "item_type": "command_execution",
+      "status": "failed",
+      "command": "/bin/zsh -lc 'npm test'",
+      "exit_code": 1,
+      "message": null
+    }
+  ]
+}

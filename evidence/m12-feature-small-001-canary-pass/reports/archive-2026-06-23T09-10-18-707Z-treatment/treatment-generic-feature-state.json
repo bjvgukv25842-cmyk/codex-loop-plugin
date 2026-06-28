@@ -1,0 +1,43 @@
+{
+  "case_id": "feature-small-001",
+  "current_stage": "FAILED",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019eefa4-415f-7743-a46c-eca0ff34a93a",
+    "prd_path": "docs/PRD.md",
+    "task_graph_path": "docs/TASK_GRAPH.json",
+    "planner_result_path": "artifacts/planner-result.json",
+    "stage_attempted": true,
+    "stage_completed": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+    "last_event_type": "",
+    "elapsed_ms": 0,
+    "event_count": 5,
+    "failure_category": ""
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019eefa4-a726-7f03-b1f7-d6dba7a192f1",
+    "file_change_verified": true,
+    "tests_passed": true,
+    "dev_result_path": "artifacts/dev-result.json"
+  },
+  "evaluator": {
+    "status": "TIMEOUT",
+    "thread_id": "019eefa6-0eac-79f2-900b-ffd106885119",
+    "eval_verdict": "",
+    "eval_report_path": "artifacts/eval-report.json"
+  },
+  "repair_request": {},
+  "repair_dev_worker": {},
+  "final_evaluator": {},
+  "final_report": {},
+  "errors": [
+    "SDK thread exceeded timeout_ms=180000."
+  ]
+}

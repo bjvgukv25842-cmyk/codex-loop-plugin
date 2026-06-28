@@ -66,4 +66,28 @@ describe("loop skills", () => {
     expect(content).toMatch(/scope/i);
     expect(content).toContain("Do not enter the next module");
   });
+
+  it("codex-loop includes Gate 6 fast path dispatch constraints", () => {
+    const content = readSkill("codex-loop");
+
+    expect(content).toContain("Gate 6 Fast Path");
+    expect(content).toContain("Do not run `npm run verify:agents` inside the isolated target repo unless that script exists");
+    expect(content).toContain("spawn `loop_dev_worker` immediately");
+    expect(content).toContain("planner_task_graph_schema_invalid");
+    expect(content).toContain("planner_done_without_dev_worker_spawn");
+    expect(content).toContain("repair_request_schema_invalid");
+    expect(content).toContain('assigned_agent_id: "loop_dev_worker"');
+    expect(content).toContain("source_eval_report_path");
+    expect(content).toContain("A `spawn_agent` event without a matching `wait` completion is not sufficient evidence");
+    expect(content).toContain('artifact_type: "dev_result"');
+    expect(content).toContain('artifact_type: "eval_report"');
+  });
+
+  it("Gate 6.1 native dispatch probe uses schema-valid MCP artifact types", () => {
+    const content = readFileSync("evals/multi-agent/probes/native-subagent-dispatch-probe.md", "utf8");
+
+    expect(content).toContain("`artifact_type`: `log`");
+    expect(content).not.toContain("probe_result");
+    expect(content).toContain("the same `thread_id` used in `agent_run_start`");
+  });
 });

@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "case_id": "test-coverage-002",
+  "compared_against_case_id": "test-coverage-001",
+  "critical_diffs": [],
+  "fields": {
+    "model": {
+      "test_coverage_001": "gpt-5.5",
+      "test_coverage_002": "gpt-5.5",
+      "same": true
+    },
+    "model_catalog_json": {
+      "test_coverage_001": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "test_coverage_002": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "same": true
+    },
+    "sqlite_home": {
+      "test_coverage_001": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "test_coverage_002": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "same": true
+    },
+    "workingDirectory": {
+      "test_coverage_001": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-001/treatment/target-repo",
+      "test_coverage_002": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-002/treatment/target-repo",
+      "same": false
+    },
+    "target_repo_git_status": {
+      "test_coverage_001": "M test/invoice.test.js\n?? artifacts/\n?? docs/\n?? evals/",
+      "test_coverage_002": "M test/cache.test.js\n?? artifacts/\n?? docs/\n?? evals/",
+      "same": false
+    },
+    "target_repo_is_git": {
+      "test_coverage_001": true,
+      "test_coverage_002": true,
+      "same": true
+    },
+    "sandboxMode": {
+      "test_coverage_001": "workspace-write",
+      "test_coverage_002": "workspace-write",
+      "same": true
+    },
+    "prompt_length": {
+      "test_coverage_001": 590,
+      "test_coverage_002": 585,
+      "same": false
+    },
+    "prompt_hash": {
+      "test_coverage_001": "278f35b8f4687402a74ebab4bf7e903e775ee2e8593de1ad29c0396d1025e9be",
+      "test_coverage_002": "06229a3d736e16e9cda1bba72d82500769285a164cfdc477bddbf95e2322e173",
+      "same": false
+    },
+    "prompt_section_count": {
+      "test_coverage_001": 5,
+      "test_coverage_002": 5,
+      "same": true
+    },
+    "validation_commands": {
+      "test_coverage_001": [
+        "npm test",
+        "npm run coverage:contract"
+      ],
+      "test_coverage_002": [
+        "npm test",
+        "npm run coverage:contract"
+      ],
+      "same": true
+    },
+    "likely_files": {
+      "test_coverage_001": [
+        "test/invoice.test.js",
+        "src/invoice.js",
+        "scripts/check-test-coverage-contract.js"
+      ],
+      "test_coverage_002": [
+        "test/cache.test.js",
+        "src/cache.js",
+        "src/cache-storage.js",
+        "scripts/check-test-coverage-contract.js"
+      ],
+      "same": false
+    },
+    "sdk_method": {
+      "test_coverage_001": "run",
+      "test_coverage_002": "run",
+      "same": true
+    },
+    "usesRunStreamed": {
+      "test_coverage_001": false,
+      "test_coverage_002": false,
+      "same": true
+    },
+    "usesRun": {
+      "test_coverage_001": true,
+      "test_coverage_002": true,
+      "same": true
+    },
+    "timeout_ms": {
+      "test_coverage_001": 180000,
+      "test_coverage_002": 180000,
+      "same": true
+    },
+    "no_event_timeout_ms": {
+      "test_coverage_001": 30000,
+      "test_coverage_002": 30000,
+      "same": true
+    },
+    "checkpoint_state_path": {
+      "test_coverage_001": "evals/effectiveness/reports/test-coverage-001/treatment-generic-test-coverage-state.json",
+      "test_coverage_002": "evals/effectiveness/reports/test-coverage-002/treatment-generic-test-coverage-state.json",
+      "same": false
+    },
+    "artifact_output_paths": {
+      "test_coverage_001": [
+        "artifacts/dev-result.json",
+        "artifacts/eval-report.json",
+        "artifacts/FinalDeliveryReport.md"
+      ],
+      "test_coverage_002": [
+        "artifacts/dev-result.json",
+        "artifacts/eval-report.json",
+        "artifacts/FinalDeliveryReport.md"
+      ],
+      "same": true
+    },
+    "source_modification_allowed": {
+      "test_coverage_001": "src/invoice.js only if tests expose a real bug",
+      "test_coverage_002": "src/cache.js or src/cache-storage.js only if tests expose a real bug",
+      "same": false
+    }
+  },
+  "recommended_fixes": [
+    "Keep TC002 dev-worker exact prompt no larger than the TC001 proven prompt envelope.",
+    "Run parity/minimal/exact dev-worker smokes before a treatment rerun.",
+    "Do not change source files unless tests expose a real implementation bug."
+  ]
+}

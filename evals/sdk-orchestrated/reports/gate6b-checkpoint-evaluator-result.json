@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "current_stage": "EVALUATOR_DONE",
+  "real_sdk_run_executed": false,
+  "evaluator_thread_started": true,
+  "evaluator_thread_id": "thread_checkpoint_evaluator_mock",
+  "eval_verdict": "PASS",
+  "failure_category": "",
+  "retry_classification": "EVALUATOR_RETRY_FROM_DEV_WORKER_DONE",
+  "errors": []
+}

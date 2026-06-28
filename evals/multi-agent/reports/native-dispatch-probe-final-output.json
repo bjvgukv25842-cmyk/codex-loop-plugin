@@ -1,0 +1,12 @@
+{
+  "status": "RUNNING",
+  "real_thread_executed": false,
+  "parent_thread_id": "",
+  "spawned_agents": [],
+  "artifacts": [],
+  "mcp_agent_run_evidence": false,
+  "parent_wrote_probe_artifacts": false,
+  "blockers": [
+    "Native dispatch probe has started; this placeholder must be replaced by event/state verification."
+  ]
+}

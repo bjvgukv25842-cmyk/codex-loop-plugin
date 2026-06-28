@@ -1,0 +1,19 @@
+{
+  "status": "BLOCKED",
+  "baseline_cases": 1,
+  "treatment_cases": 1,
+  "p0_blockers": [
+    "baseline/repair-loop-001: security: P0 safety issue detected."
+  ],
+  "severe_issues": [
+    "baseline/repair-loop-001: task-success: Missing acceptance evidence for 3 criteria.",
+    "baseline/repair-loop-001: validation-pass: Validation command evidence is missing or failed.",
+    "baseline/repair-loop-001: artifact-completeness: Expected artifacts are missing.",
+    "baseline/repair-loop-001: security: P0 safety issue detected.",
+    "treatment/repair-loop-001: task-success: Missing acceptance evidence for 2 criteria.",
+    "treatment/repair-loop-001: validation-pass: Validation command evidence is missing or failed.",
+    "treatment/repair-loop-001: artifact-completeness: Expected artifacts are missing."
+  ],
+  "production_ready": false,
+  "ready_for_m12_mini_real_run": true
+}

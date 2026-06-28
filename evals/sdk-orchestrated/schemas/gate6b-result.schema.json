@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "gate": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "BLOCKED_SDK_NOT_ENABLED",
+        "BLOCKED_SDK_NOT_INSTALLED",
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "real_sdk_run_executed": {
+      "type": "boolean"
+    },
+    "sdk_thread_runs": {
+      "type": "array"
+    },
+    "m12_blocked": {
+      "type": "boolean"
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "gate",
+    "status",
+    "real_sdk_run_executed",
+    "sdk_thread_runs",
+    "m12_blocked",
+    "errors"
+  ],
+  "additionalProperties": false
+}

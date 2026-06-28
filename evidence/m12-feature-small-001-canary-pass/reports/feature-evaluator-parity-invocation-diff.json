@@ -1,0 +1,178 @@
+{
+  "case_id": "feature-small-001",
+  "status": "NEEDS_REVISION",
+  "failure_category": "EVALUATOR_PARITY_INVOCATION_DIFF_DETECTED",
+  "compared_invocations": [
+    "feature-evaluator-parity",
+    "feature-planner-parity",
+    "dev-worker-parity-or-output-lite"
+  ],
+  "fields": {
+    "workingDirectory": {
+      "evaluator": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+      "planner": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+      "dev_worker": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "target_repo_git_status": {
+      "evaluator": "M src/project-name.js\n?? artifacts/\n?? docs/\n?? evals/",
+      "planner": "M src/project-name.js\n?? artifacts/\n?? docs/\n?? evals/",
+      "dev_worker": "M src/project-name.js\n?? artifacts/\n?? docs/\n?? evals/",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "model": {
+      "evaluator": "gpt-5.5",
+      "planner": "gpt-5.5",
+      "dev_worker": "gpt-5.5",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "model_catalog_json": {
+      "evaluator": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "planner": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "dev_worker": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "sqlite_home": {
+      "evaluator": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "planner": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "dev_worker": "",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": false
+    },
+    "sandboxMode": {
+      "evaluator": "read-only",
+      "planner": "read-only",
+      "dev_worker": "workspace-write",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": false
+    },
+    "skipGitRepoCheck": {
+      "evaluator": false,
+      "planner": false,
+      "dev_worker": "",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": false
+    },
+    "role_metadata": {
+      "evaluator": "evaluator",
+      "planner": "planner",
+      "dev_worker": "dev_worker",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "promptLength": {
+      "evaluator": 49,
+      "planner": 355,
+      "dev_worker": 439,
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "promptHash": {
+      "evaluator": "ee2f3b5546686f07dea17e6998eb869072afda7f5b07da9be066ac7793d3350f",
+      "planner": "369a7ae0f92e9a007f647ea889fbbbf8428e639a989fec52b13542db85e38328",
+      "dev_worker": "e361ca48c1882dc490ec58037129110fb3db27db1e627bb68156e3a280aee2ab",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "sdkMethod": {
+      "evaluator": "run",
+      "planner": "runStreamed",
+      "dev_worker": "runStreamed",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "runStreamedUsage": {
+      "evaluator": false,
+      "planner": true,
+      "dev_worker": true,
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "outputSchemaUsage": {
+      "evaluator": false,
+      "planner": true,
+      "dev_worker": true,
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "outputSchemaHash": {
+      "evaluator": "",
+      "planner": "4eb7a92b5497403e234940e49f9dcdf234d805eb037f1dc3d6683b8651f330de",
+      "dev_worker": "78b0fe2f9725e3430284348057fd6e8cdd833e13c1fbd9b2033ec8259c2e558b",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "envKeysHash": {
+      "evaluator": "ddd0eb9ec8d64cd0f67d8ff9f87e6c258c8d3988fb243cac6fa5795cc2178698",
+      "planner": "88aafaeffcf2f0117187cedc346fb2e38ea774eccf4da5c27734c155494691b1",
+      "dev_worker": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    },
+    "configKeys": {
+      "evaluator": [
+        "model",
+        "model_catalog_json",
+        "sqlite_home"
+      ],
+      "planner": [
+        "model",
+        "model_catalog_json",
+        "sqlite_home"
+      ],
+      "dev_worker": [],
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": false
+    },
+    "no_event_timeout_ms": {
+      "evaluator": 60000,
+      "planner": 60000,
+      "dev_worker": 60000,
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "timeout_ms": {
+      "evaluator": 180000,
+      "planner": 180000,
+      "dev_worker": 180000,
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "cwd": {
+      "evaluator": "/Users/litmus/Downloads/codex-loop-plugin",
+      "planner": "/Users/litmus/Downloads/codex-loop-plugin",
+      "dev_worker": "/Users/litmus/Downloads/codex-loop-plugin",
+      "evaluator_matches_planner": true,
+      "evaluator_matches_dev_worker": true
+    },
+    "eventsPath": {
+      "evaluator": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/feature-evaluator-smoke-parity-events.jsonl",
+      "planner": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+      "dev_worker": "",
+      "evaluator_matches_planner": false,
+      "evaluator_matches_dev_worker": false
+    }
+  },
+  "critical_diffs": [
+    "sqlite_home",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "promptLength",
+    "promptHash",
+    "sdkMethod",
+    "runStreamedUsage",
+    "outputSchemaUsage",
+    "outputSchemaHash",
+    "eventsPath"
+  ],
+  "recommended_fixes": [
+    "Keep later evaluator smoke modes and treatment rerun blocked until evaluator parity is proven.",
+    "Confirm the evaluator read-only sandbox matches the intended CLI parity command.",
+    "Use CODEX_LOOP_EVALUATOR_PARITY_SDK_METHOD=run only as an explicitly approved diagnostic if CLI parity passes.",
+    "Use the direct CLI parity prompt to determine whether prompt delivery or SDK event streaming is the blocker."
+  ]
+}

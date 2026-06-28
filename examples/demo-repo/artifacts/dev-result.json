@@ -1,0 +1,25 @@
+{
+  "artifact_id": "artifact_demo_dev_result",
+  "loop_run_id": "loop_demo_001",
+  "task_id": "TASK-001",
+  "module_id": "M9",
+  "type": "dev_result",
+  "path": "examples/demo-repo/artifacts/dev-result.json",
+  "hash": null,
+  "summary": "Implemented validateProjectName and added demo tests.",
+  "created_by_agent_id": "agent_demo_dev",
+  "created_at": "2026-06-18T09:05:00.000Z",
+  "updated_at": "2026-06-18T09:05:00.000Z",
+  "metadata": {
+    "changed_files": [
+      "examples/demo-repo/src/sample-feature.ts",
+      "examples/demo-repo/tests/sample-feature.test.ts"
+    ],
+    "validation_commands": [
+      {
+        "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+      }
+    ],
+    "validation_result": "passed"
+  }
+}

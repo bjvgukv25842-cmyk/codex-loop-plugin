@@ -1,0 +1,99 @@
+[
+  {
+    "eval_id": "eval_repair_loop_001_initial",
+    "loop_run_id": "repair-loop-001",
+    "task_id": "task_validate_project_name",
+    "module_id": "M1",
+    "evaluator_agent_id": "agent_loop_evaluator",
+    "verdict": "NEEDS_REVISION",
+    "confidence": 0.96,
+    "findings": [
+      {
+        "finding_id": "F001",
+        "severity": "high",
+        "category": "correctness",
+        "description": "Validator accepts whitespace-only project names.",
+        "evidence": [
+          {
+            "type": "command",
+            "ref": "npm test",
+            "summary": "Before repair, `rejects whitespace-only string` failed because validateProjectName(\"   \").ok returned true instead of false."
+          },
+          {
+            "type": "file",
+            "ref": "src/project-name.js",
+            "line": 2,
+            "summary": "The initial implementation returned { ok: true } for all inputs."
+          }
+        ],
+        "required_fix": "Trim string input or otherwise detect names containing only whitespace before accepting the project name."
+      }
+    ],
+    "required_fixes": [
+      {
+        "fix_id": "fix_whitespace_only_validation",
+        "finding_ids": [
+          "F001"
+        ],
+        "instruction": "Reject whitespace-only project names in validateProjectName.",
+        "expected_files": [
+          {
+            "path": "src/project-name.js",
+            "purpose": "Project name validator implementation"
+          }
+        ],
+        "validation_commands": [
+          {
+            "command": "npm test",
+            "cwd": ".",
+            "reason": "Verify validator behavior for empty, whitespace-only, overlong, and valid names."
+          }
+        ]
+      }
+    ],
+    "validation_commands_checked": [
+      {
+        "command": "npm test",
+        "cwd": ".",
+        "reason": "Baseline validation exposed the whitespace-only failure."
+      }
+    ],
+    "created_at": "2026-06-21T00:00:00.000Z",
+    "updated_at": "2026-06-21T00:00:00.000Z",
+    "metadata": {
+      "phase": "baseline",
+      "validation_result": "failed",
+      "validation_summary": "Before repair: 1 passing, 3 failing; whitespace-only case failed with actual true, expected false."
+    }
+  },
+  {
+    "eval_id": "eval_repair_loop_001_final",
+    "loop_run_id": "repair-loop-001",
+    "task_id": "task_validate_project_name",
+    "module_id": "M1",
+    "evaluator_agent_id": "agent_loop_evaluator",
+    "verdict": "PASS",
+    "confidence": 0.99,
+    "findings": [],
+    "required_fixes": [],
+    "validation_commands_checked": [
+      {
+        "command": "npm test",
+        "cwd": ".",
+        "reason": "Final validation passed all project-name validator tests."
+      }
+    ],
+    "created_at": "2026-06-21T00:00:00.000Z",
+    "updated_at": "2026-06-21T00:00:00.000Z",
+    "metadata": {
+      "phase": "final",
+      "repair_id": "repair_repair_loop_001_whitespace",
+      "repair_source_eval_id": "eval_repair_loop_001_initial",
+      "repair_finding_ids": [
+        "F001"
+      ],
+      "validation_result": "passed",
+      "validation_summary": "After repair: 4 passing, 0 failing."
+    }
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "mcp_live_status": "PASS",
+  "state_dir": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/codex-loop-mcp-live-squtde",
+  "tools_count": 24,
+  "missing_tools": [],
+  "shell_like_tool_names": [],
+  "events_count": 2,
+  "event_types": [
+    "loop_run.created",
+    "eval_report.written"
+  ],
+  "eval_report_ids": [
+    "eval_live_mcp_pass"
+  ],
+  "checks": {
+    "hasAllRequiredTools": true,
+    "hasNoShellLikeTools": true,
+    "loopCreateSucceeded": true,
+    "invalidPayloadRejected": true,
+    "validEvalSucceeded": true,
+    "notFoundStructured": true,
+    "writeAppendedLoopEvent": true,
+    "writeAppendedEvalEvent": true,
+    "wroteEvalReport": true
+  }
+}

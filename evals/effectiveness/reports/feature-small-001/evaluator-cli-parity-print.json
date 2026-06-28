@@ -1,0 +1,14 @@
+{
+  "module": "M12.2H.1 Feature Evaluator CLI Parity Print",
+  "status": "PRINT_ONLY",
+  "executed": false,
+  "target_repo_exists": true,
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "prompt": "Respond with exactly: FEATURE_EVALUATOR_PARITY_OK",
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-events.jsonl",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-stderr.log",
+  "command": "cd '/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo' && CODEX_SQLITE_HOME='/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite' codex exec --json --sandbox read-only -m 'gpt-5.5' -c 'sqlite_home=\"/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite\"' -c 'model_catalog_json=\"/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json\"' 'Respond with exactly: FEATURE_EVALUATOR_PARITY_OK' > '/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-events.jsonl' 2> '/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-stderr.log'"
+}

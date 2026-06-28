@@ -1,0 +1,43 @@
+{
+  "repair_id": "repair_demo_001",
+  "loop_run_id": "loop_demo_001",
+  "task_id": "TASK-002",
+  "module_id": "M9",
+  "source_eval_id": "eval_demo_needs_revision",
+  "assigned_agent_id": "agent_demo_dev",
+  "findings": [
+    {
+      "finding_id": "finding_demo_whitespace_test",
+      "severity": "medium",
+      "category": "test_gap",
+      "description": "The first demo test pass did not include a whitespace-only project name regression test.",
+      "evidence": [
+        {
+          "type": "file",
+          "ref": "examples/demo-repo/tests/sample-feature.test.ts",
+          "summary": "Initial test set covered empty, too-long, and valid names but missed whitespace-only input."
+        }
+      ],
+      "required_fix": "Add a test proving whitespace-only project names fail."
+    }
+  ],
+  "repair_instructions": [
+    "Add only the missing whitespace-only project name test."
+  ],
+  "allowed_scope": [
+    "examples/demo-repo/tests/sample-feature.test.ts"
+  ],
+  "disallowed_scope": [
+    "Do not add UI.",
+    "Do not add database persistence.",
+    "Do not change production code unless the missing test reveals a real failure."
+  ],
+  "validation_commands": [
+    {
+      "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+    }
+  ],
+  "status": "REPAIR_REQUESTED",
+  "created_at": "2026-06-18T09:07:00.000Z",
+  "updated_at": "2026-06-18T09:07:00.000Z"
+}

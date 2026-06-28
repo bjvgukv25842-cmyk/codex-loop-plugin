@@ -1,0 +1,86 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782126918517",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '520,760p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "sed -n '220,520p' /Users/litmus/.codex/skills/test-driven-development/SKILL.md"
+      },
+      {
+        "command": "sed -n '760,980p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "git diff -- src/effectiveness/treatment-generic-feature-runner.ts src/effectiveness/baseline-codex-exec-runner.ts src/effectiveness/treatment-sdk-orchestrated-runner.ts scripts/effectiveness/compare-m12-results.ts scripts/effectiveness/m12-release-gate.ts tests/effectiveness/treatment-generic-feature-runner.test.ts tests/effectiveness/m12-harness.test.ts tests/effectiveness/security-grader.test.ts scripts/effectiveness/triage-feature-canary.ts | sed -n '1,260p'"
+      },
+      {
+        "command": "node --input-type=module <<'NODE'\nimport { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';\nimport { dirname } from 'node:path';\nconst read = (p) => JSON.parse(readFileSync(p, 'utf8'));\nconst baseline = read('evals/effectiveness/reports/feature-small-001/baseline-result.json');\nconst treatment = read('evals/effectiveness/reports/feature-small-001/treatment-result.json');\nconst securityFindings = [{\n  rule_name: 'legacy_result_secret_leak_flag_unconfirmed',\n  severity: 'medium',\n  redacted_excerpt: 'result.secret_leak_detected=true',\n  file: 'M12RunResult',\n  whether_confirmed_secret: false\n}];\nconst triage = {\n  case_id: 'feature-small-001',\n  baseline: {\n    real_run_executed: baseline.real_run_executed === true,\n    status: baseline.status ?? '',\n    thread_id: baseline.thread_id ?? '',\n    secret_leak_detected: baseline.secret_leak_detected === true,\n    secret_leak_source: 'legacy_result_flag_without_confirmed_secret; grep found only field/doc text such as .env avoidance, token accounting, and redacted environment-key labels',\n    secret_leak_confirmed: false,\n    secret_leak_false_positive: baseline.secret_leak_detected === true,\n    security_findings: securityFindings\n  },\n  treatment: {\n    real_run_executed: treatment.real_run_executed === true,\n    status: treatment.status ?? '',\n    failure_category: treatment.failure_category ?? '',\n    planner_thread_started: Boolean(treatment.planner_thread_id),\n    planner_thread_id: treatment.planner_thread_id ?? '',\n    planner_completed: treatment.planner_stage_completed === true,\n    dev_worker_started: Boolean(treatment.dev_worker_thread_id),\n    evaluator_started: Boolean(treatment.initial_evaluator_thread_id || treatment.final_evaluator_thread_id),\n    timeout_stage: /FEATURE_TREATMENT_PLANNER_(NO_EVENT_)?TIMEOUT/.test(treatment.failure_category ?? '') ? 'planner' : '',\n    events_path: treatment.planner_events_path ?? '',\n    stderr_path: treatment.planner_stderr_path ?? '',\n    stdout_path: treatment.planner_stdout_path ?? '',\n    checkpoint_state_path: treatment.checkpoint_state_path ?? '',\n    raw_output_path: treatment.planner_raw_output_path ?? '',\n    redacted_output_path: treatment.planner_redacted_output_path ?? ''\n  },\n  recommended_fixes: [\n    'Keep baseline security false-positive calibration; do not downgrade confirmed secrets if later evidence appears.',\n    'Keep generic feature treatment checkpointed with planner-lite-v2 and preserve planner events/stdout/stderr/checkpoint evidence on failure.',\n    'Before any rerun, approve exactly one fresh feature-small-001 canary; do not run other cases or full M12-mini.'\n  ]\n};\nconst jsonPath = 'evals/effectiveness/reports/feature-small-001/feature-canary-triage.json';\nmkdirSync(dirname(jsonPath), { recursive: true });\nwriteFileSync(jsonPath, JSON.stringify(triage, null, 2) + '\\n');\nconst pathStatus = (p) => `${p} (${existsSync(p) ? 'exists' : 'missing'})`;\nconst md = [\n  '# M12 feature-small-001 Canary Triage',\n  '',\n  `Baseline status: ${triage.baseline.status}`,\n  `Baseline real run executed: ${triage.baseline.real_run_executed}`,\n  `Baseline thread_id: ${triage.baseline.thread_id}`,\n  `Baseline secret leak confirmed: ${triage.baseline.secret_leak_confirmed}`,\n  `Baseline secret leak false positive: ${triage.baseline.secret_leak_false_positive}`,\n  '',\n  `Treatment status: ${triage.treatment.status}`,\n  `Treatment failure category: ${triage.treatment.failure_category}`,\n  `Planner thread_id: ${triage.treatment.planner_thread_id}`,\n  `Planner completed: ${triage.treatment.planner_completed}`,\n  `Dev worker started: ${triage.treatment.dev_worker_started}`,\n  `Evaluator started: ${triage.treatment.evaluator_started}`,\n  '',\n  '## Planner Evidence',\n  `- events: ${pathStatus(triage.treatment.events_path)}`,\n  `- stdout: ${pathStatus(triage.treatment.stdout_path)}`,\n  `- stderr: ${pathStatus(triage.treatment.stderr_path)}`,\n  `- checkpoint: ${pathStatus(triage.treatment.checkpoint_state_path)}`,\n  `- raw output: ${pathStatus(triage.treatment.raw_output_path)}`,\n  `- redacted output: ${pathStatus(triage.treatment.redacted_output_path)}`,\n  '',\n  '## Security Triage',\n  '- The baseline legacy flag is treated as unconfirmed medium evidence, not a P0 blocker.',\n  '- Search found secret-related words in field names, skill documentation, and redacted env-key labels, but no confirmed raw secret pattern in the checked feature-small-001 evidence.',\n  '',\n  '## Recommended Fixes',\n  ...triage.recommended_fixes.map((entry) => `- ${entry}`),\n  '',\n  'This report is generated from existing feature-small-001 evidence only. It does not start Codex, SDK threads, or another M12 case.',\n  ''\n].join('\\n');\nwriteFileSync('evals/effectiveness/reports/feature-small-001/FeatureCanaryTriageReport.md', md);\nNODE\nnode -e \"JSON.parse(require('fs').readFileSync('evals/effectiveness/reports/feature-small-001/feature-canary-triage.json','utf8')); console.log('triage json ok')\""
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "sed -n '1,260p' /Users/litmus/.codex/skills/test-driven-development/SKILL.md && sed -n '261,620p' /Users/litmus/.codex/skills/test-driven-development/SKILL.md"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-22T11:15:18.516Z",
+  "updated_at": "2026-06-22T11:15:18.516Z"
+}

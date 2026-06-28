@@ -1,0 +1,53 @@
+{
+  "gate": "Gate 6B.2 SDK-Orchestrated Repair Loop E2E",
+  "target_repo": "tmp/sdk-orchestrated/gate6b2-repair-loop-target",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019ee983-5a6a-7f10-bf21-4c7085eb816b",
+    "prd_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/docs/PRD.md",
+    "task_graph_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/docs/TASK_GRAPH.json",
+    "planner_result_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/planner-result.json",
+    "artifact_thread_evidence_verified": true
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ee989-e0a9-7e13-9a82-8978dcc69586",
+    "dev_result_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/dev-result.json",
+    "file_change_verified": true,
+    "baseline_tests_passed": true,
+    "full_tests_expected_to_fail": true,
+    "full_tests_failed": true,
+    "known_gap_seeded": true
+  },
+  "initial_evaluator": {
+    "status": "PASS",
+    "thread_id": "019ee996-7fd8-7422-bce5-8961732157fb",
+    "eval_report_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/eval-report-needs-revision.json",
+    "eval_verdict": "NEEDS_REVISION"
+  },
+  "repair_request": {
+    "status": "PASS",
+    "repair_request_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/repair-request.json",
+    "source_eval_report_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/eval-report-needs-revision.json",
+    "required_fixes_count": 1
+  },
+  "repair_dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ee9af-1c07-7952-ac1e-c254390abb2b",
+    "repair_result_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/dev-repair-result.json",
+    "file_change_verified": true,
+    "tests_passed": true
+  },
+  "final_evaluator": {
+    "status": "PASS",
+    "thread_id": "019ee9c9-239f-7131-81d4-bad7319e2aa6",
+    "eval_report_path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/eval-report-pass.json",
+    "eval_verdict": "PASS"
+  },
+  "final_report": {
+    "status": "PASS",
+    "path": "tmp/sdk-orchestrated/gate6b2-repair-loop-target/artifacts/FinalDeliveryReport.md"
+  },
+  "errors": []
+}

@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "verdict",
+    "summary",
+    "findings_json",
+    "validation_commands_checked"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "NEEDS_REVISION"
+      ]
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION"
+      ]
+    },
+    "summary": {
+      "type": "string"
+    },
+    "findings_json": {
+      "type": "string"
+    },
+    "validation_commands_checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

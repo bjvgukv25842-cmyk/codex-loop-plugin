@@ -1,0 +1,50 @@
+{
+  "task_graph_id": "raw_model_graph",
+  "loop_run_id": "loop_fixture",
+  "prd_artifact_id": "artifact_prd_fixture",
+  "root_goal": "Validate project names",
+  "tasks": [
+    {
+      "task_id": "TASK-001",
+      "loop_run_id": "loop_fixture",
+      "module_id": "M1",
+      "title": "Implement validateProjectName",
+      "description": "Reject invalid names.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "sdk-dev-worker",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "sdk-evaluator",
+      "dependencies": [],
+      "scope": [
+        "Reject invalid names."
+      ],
+      "non_goals": [],
+      "likely_files": [
+        {
+          "path": "src/project-name.js",
+          "purpose": "Likely implementation file"
+        }
+      ],
+      "acceptance_criteria": [],
+      "validation_commands": [
+        {
+          "command": "npm test",
+          "reason": "Validate task behavior"
+        }
+      ],
+      "risk_level": "low",
+      "status": "READY_FOR_DEV",
+      "revision_count": 0,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [],
+      "created_at": "2026-06-21T00:00:00.000Z",
+      "updated_at": "2026-06-21T00:00:00.000Z",
+      "metadata": {}
+    }
+  ],
+  "edges": [],
+  "status": "TASK_GRAPH_READY",
+  "created_at": "2026-06-21T00:00:00.000Z",
+  "updated_at": "2026-06-21T00:00:00.000Z"
+}

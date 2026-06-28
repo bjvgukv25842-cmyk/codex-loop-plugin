@@ -1,0 +1,58 @@
+{
+  "case_id": "feature-small-001",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019ef3be-a98f-7971-80b4-9905b03d4029",
+    "prd_path": "docs/PRD.md",
+    "task_graph_path": "docs/TASK_GRAPH.json",
+    "planner_result_path": "artifacts/planner-result.json",
+    "stage_attempted": true,
+    "stage_completed": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+    "last_event_type": "turn.completed",
+    "elapsed_ms": 30811,
+    "event_count": 5,
+    "failure_category": ""
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+    "file_change_verified": true,
+    "tests_passed": true,
+    "dev_result_path": "artifacts/dev-result.json"
+  },
+  "evaluator": {
+    "status": "NEEDS_REVISION",
+    "thread_id": "019ef3c0-7736-77f0-b250-cbfe245b8d2b",
+    "eval_verdict": "NEEDS_REVISION",
+    "eval_report_path": "artifacts/eval-report.json"
+  },
+  "repair_request": {
+    "status": "PASS",
+    "repair_request_path": "artifacts/repair-request.json"
+  },
+  "repair_dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ef3c0-f016-7862-9ff8-f08b98123bd2",
+    "file_change_verified": true,
+    "tests_passed": true,
+    "repair_result_path": "artifacts/repair-result.json"
+  },
+  "final_evaluator": {
+    "status": "PASS",
+    "thread_id": "019ef3c1-e1c9-7942-befb-51fda10bf8bb",
+    "eval_verdict": "PASS",
+    "eval_report_path": "artifacts/final-eval-report.json"
+  },
+  "final_report": {
+    "status": "PASS",
+    "path": "artifacts/FinalDeliveryReport.md"
+  },
+  "errors": []
+}

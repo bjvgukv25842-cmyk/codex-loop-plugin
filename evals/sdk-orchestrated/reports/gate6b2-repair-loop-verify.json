@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner_status": "PASS",
+  "dev_worker_status": "PASS",
+  "dev_worker_known_gap_seeded": true,
+  "dev_worker_baseline_tests_passed": true,
+  "dev_worker_full_tests_expected_to_fail": true,
+  "dev_worker_full_tests_failed": true,
+  "initial_eval_verdict": "NEEDS_REVISION",
+  "repair_request_status": "PASS",
+  "repair_dev_worker_status": "PASS",
+  "repair_dev_worker_tests_passed": true,
+  "final_eval_verdict": "PASS",
+  "final_report_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-xmQ9Gv/target/artifacts/FinalDeliveryReport.md",
+  "all_thread_ids_present": true,
+  "artifact_thread_evidence_verified": true,
+  "danger_full_access_used": false,
+  "secret_leak_detected": false,
+  "ready_for_m12": false,
+  "ready_for_gate6b2_repair_loop": true,
+  "errors": []
+}

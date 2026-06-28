@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "mode": "output-lite",
+  "dry_run_status": "PASS",
+  "real_sdk_run_executed": true,
+  "dev_worker_stage_shared": true,
+  "dev_worker_stage_impl": "runDevWorkerStage",
+  "ready_for_one_real_dev_worker_parity_smoke": false,
+  "ready_for_dev_worker_minimal_fix_smoke": true,
+  "ready_for_dev_worker_output_lite_smoke": true,
+  "ready_for_gate6b_smoke": true,
+  "baseline_exists": true,
+  "baseline_fixture_broken": true,
+  "file_change_verified_by_hash": true,
+  "file_change_verified_by_git": true,
+  "file_change_verified_by_event": true,
+  "failure_category": "",
+  "errors": []
+}

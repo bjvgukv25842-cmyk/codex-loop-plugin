@@ -1,0 +1,85 @@
+diff --git a/README.md b/README.md
+index ba01883..adcf75c 100644
+--- a/README.md
++++ b/README.md
+@@ -2,6 +2,43 @@
+ 
+ Small helper library for duration parsing.
+ 
++## Installation
++
++Install dependencies before running tests or local scripts:
++
++```sh
++npm install
++```
++
+ ## Usage
+ 
+-Use `parseDuration(input)` to parse compact duration strings.
++Import `parseDuration(input)` from `src/duration.js` and pass a compact duration string:
++
++```js
++import { parseDuration } from "./src/duration.js";
++
++parseDuration("5s"); // 5000
++parseDuration("2m"); // 120000
++parseDuration("1h"); // 3600000
++parseDuration("bad"); // null
++```
++
++## API Reference
++
++### parseDuration(input)
++
++Parses a duration string and returns the duration in milliseconds.
++
++- `input`: a string in the format `<number><unit>`.
++- Supported units are `s` for seconds, `m` for minutes, and `h` for hours.
++- Returns a number of milliseconds for valid input.
++- Returns `null` for invalid input, unsupported units, non-string input, or unsafe integer values.
++
++## Testing
++
++Run the behavior tests and documentation contract:
++
++```sh
++npm test
++npm run docs:contract
++```
+diff --git a/docs/API.md b/docs/API.md
+index 030642e..a1006ed 100644
+--- a/docs/API.md
++++ b/docs/API.md
+@@ -1,3 +1,30 @@
+ # API
+ 
+-The duration parser accepts compact duration strings.
++## parseDuration(input)
++
++Parses compact duration strings into milliseconds.
++
++### Input
++
++`input` must be a string using the format `<number><unit>`.
++
++### Supported units
++
++- `s`: seconds
++- `m`: minutes
++- `h`: hours
++
++### Return value
++
++Valid input returns a number of milliseconds.
++
++Invalid input returns null. This includes unsupported units, malformed strings, non-string values, and values that are not safe integers.
++
++### Examples
++
++```js
++parseDuration("5s"); // 5000
++parseDuration("2m"); // 120000
++parseDuration("1h"); // 3600000
++parseDuration("wat"); // null
++```

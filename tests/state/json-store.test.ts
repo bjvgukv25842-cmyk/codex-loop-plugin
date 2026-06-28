@@ -5,7 +5,7 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { JsonLoopStore } from "../../src/state/json-store.ts";
 import { resolveStatePath } from "../../src/state/paths.ts";
-import type { AgentProfile, ContextCapsule, EvalReport, LoopRun, TaskNode } from "../../src/core/types.ts";
+import type { AgentProfile, ContextCapsule, EvalReport, LoopRun, RepairRequest, TaskNode } from "../../src/core/types.ts";
 
 const createdDirectories: string[] = [];
 
@@ -173,6 +173,45 @@ function createContextCapsule(overrides: Partial<ContextCapsule> = {}): ContextC
   };
 }
 
+function createRepairRequest(overrides: Partial<RepairRequest> = {}): RepairRequest {
+  return {
+    repair_id: "repair_m6_request",
+    loop_run_id: "loop_test_001",
+    task_id: "task_m5_store",
+    module_id: "M6",
+    source_eval_id: "eval_m5_needs_revision",
+    assigned_agent_id: "agent_dev_test",
+    findings: [
+      {
+        finding_id: "finding_m6_gap",
+        severity: "medium",
+        category: "correctness",
+        description: "MCP repair request test finding.",
+        evidence: [
+          {
+            type: "text",
+            ref: "test",
+            summary: "Test finding"
+          }
+        ],
+        required_fix: "Create repair request persistence."
+      }
+    ],
+    repair_instructions: ["Repair only the listed finding."],
+    allowed_scope: ["src/state"],
+    disallowed_scope: ["src/mcp/server.ts"],
+    validation_commands: [
+      {
+        command: "npm test"
+      }
+    ],
+    status: "REPAIR_REQUESTED",
+    created_at: now(),
+    updated_at: now(),
+    ...overrides
+  };
+}
+
 async function createStore(): Promise<JsonLoopStore> {
   const stateDir = await mkdtemp(join(tmpdir(), "codex-loop-state-"));
   createdDirectories.push(stateDir);
@@ -265,6 +304,14 @@ describe("JsonLoopStore", () => {
 
     expect(await store.getContextCapsule("capsule_m5")).toEqual(capsule);
     expect(await store.listContextCapsulesByAgent("agent_dev_test")).toEqual([capsule]);
+  });
+
+  it("creates a repair request and lists repair requests by task", async () => {
+    const store = await createStore();
+    const repairRequest = await store.createRepairRequest(createRepairRequest());
+
+    expect(await store.getRepairRequest("repair_m6_request")).toEqual(repairRequest);
+    expect(await store.listRepairRequestsByTask("task_m5_store")).toEqual([repairRequest]);
   });
 
   it("appends events and lists them by loop_run_id", async () => {

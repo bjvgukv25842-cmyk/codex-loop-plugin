@@ -1,173 +1,142 @@
 # codex-loop-plugin
 
-`codex-loop-plugin` is a loop-driven Codex plugin and skill system for turning a project goal into a modular multi-agent delivery loop.
+`codex-loop-plugin` is a local Codex plugin prototype that turns a project goal into a file-backed PRD -> TaskGraph -> Dev -> Eval -> Repair -> Validation loop.
 
-## Problem Background
+## Why Loop
 
-Long Codex projects can lose coherence when work relies on chat history alone. Context grows, threads compact, validation evidence gets scattered, and agents can drift from the original plan.
+Long Codex projects drift when the only source of truth is a chat thread. Context compacts, validation evidence gets scattered, and agents can lose the original acceptance criteria. Codex Loop keeps the work resumable by writing plans, decisions, schemas, state, artifacts, and validation evidence into the repository.
 
-This project creates a file-backed workflow so future Codex threads can continue from durable project memory: plans, progress, decisions, schemas, state, artifacts, and tests.
+## Architecture
 
-## Core Loop
-
-1. Normalize the user goal.
-2. Create or update a PRD.
-3. Create acceptance criteria.
-4. Create a task graph.
-5. Implement one bounded module.
-6. Evaluate implementation evidence.
-7. Repair only evaluator findings.
-8. Record validation, progress, decisions, and artifacts.
-9. Continue to the next module only when the current module is complete.
-
-## Directory Structure
-
-```text
-.
-|-- .agent/                 # ExecPlan standard and planning memory
-|-- .codex/                 # Project-level Codex config and custom agents
-|-- .codex-plugin/          # Codex plugin manifest metadata
-|-- assets/                 # Local plugin icon and logo placeholders
-|-- artifacts/              # Future generated loop artifacts
-|   |-- context-capsules/   # Future context recovery capsules
-|   |-- eval-reports/       # Future evaluator outputs
-|   `-- task-results/       # Future task execution outputs
-|-- docs/                   # Implementation plan, progress, decisions, prompt templates
-|-- hooks/                  # Future hook configs or scripts
-|-- schemas/                # JSON Schema contracts shared by future modules
-|-- skills/                 # Codex workflow skills
-|-- src/agents/             # Custom agent config validator
-|-- src/core/               # TypeScript types, schema registry, and validators
-|-- src/plugin/             # Plugin manifest loader and local validator
-|-- src/skills/             # Skill structure validator
-|-- src/state/              # Local JSON-backed loop state store
-|-- state/                  # Future local loop state
-|-- tests/                  # Schema, plugin manifest, and skill tests
-|-- package.json            # Minimal scripts and metadata
-`-- tsconfig.json           # TypeScript scaffold config
+```mermaid
+flowchart LR
+  User["User goal"] --> Skill["Skills"]
+  Skill --> Agents["Custom agents"]
+  Agents --> MCP["MCP state tools"]
+  Agents --> CLI["Orchestrator CLI"]
+  Hooks["Lifecycle hooks"] --> State["JSON state store"]
+  MCP --> State
+  CLI --> State
+  State --> Artifacts["Artifacts and reports"]
+  Artifacts --> Eval["Evaluator evidence"]
+  Eval --> Agents
 ```
 
-## Module Roadmap
+Core layers:
 
-- M0 Project Memory & Scaffold
-- M1 Core Schemas and Types
-- M2 Codex Plugin Manifest
-- M3 Loop Skills
-- M4 Custom Agent Definitions
-- M5 Local Loop State Store
-- M6 MCP Loop Store
-- M7 Orchestrator CLI
-- M8 Hooks Integration
-- M9 Demo Fixture and End-to-End Loop
-- M10 Documentation and Release Polish
+- Plugin layer: `.codex-plugin/plugin.json`, assets, `.mcp.json`, hooks pointer.
+- Skill layer: `$codex-loop`, `$prd-planner`, `$task-decomposer`, `$dev-worker`, `$evaluator`, `$context-distiller`, `$integration-manager`.
+- Agent layer: custom agent TOML files under `.codex/agents/`.
+- MCP layer: local STDIO server exposing state-only tools.
+- State Store layer: JSON-backed `LoopStore` under `state/*.json`.
+- Orchestrator CLI layer: local state machine and commands.
+- Hooks layer: lifecycle event scripts for evidence capture.
+- Demo layer: `examples/demo-repo` and e2e proof.
 
-## Current Status
+See [docs/ARCHITECTURE.md](/Users/litmus/Downloads/codex-loop-plugin/docs/ARCHITECTURE.md).
 
-M0, M1, M2, M3, M4, and M5 are complete. M6 is not started.
+## Quick Start
 
-M1 provides core JSON Schemas, TypeScript types, runtime validation helpers, and schema fixtures/tests. M2 provides `.codex-plugin/plugin.json`, local plugin display metadata, placeholder SVG assets, and a local manifest validator. M3 provides reusable Codex workflow skills. M4 provides custom agent role definitions and local agent validation. M5 provides a local JSON-backed state store. No MCP server, CLI, hook logic, or orchestration business logic has been implemented.
+Install dependencies:
 
-## Plugin Structure
+```bash
+npm install
+```
 
-The local plugin entrypoint is [.codex-plugin/plugin.json](/Users/litmus/Downloads/codex-loop-plugin/.codex-plugin/plugin.json). It declares:
-
-- `skills: "./skills/"`
-- `mcpServers: "./.mcp.json"`
-- `hooks: "./hooks/hooks.json"`
-- `interface.composerIcon: "./assets/icon.svg"`
-- `interface.logo: "./assets/logo.svg"`
-
-This repository is still in local development. M6 will add the MCP server configuration and implementation, and M8 will add hooks configuration and lifecycle behavior.
-
-Hooks are intentionally not executable yet. Future hook behavior must require user trust and explicit installation before it runs.
-
-## Skills
-
-Use these skill entrypoints in future Codex sessions:
-
-- `$codex-loop`: coordinate the full PRD -> TaskGraph -> Dev -> Eval -> Repair -> Validation -> ContextCapsule -> Final Report loop.
-- `$prd-planner`: create or update `docs/PRD.md` and `docs/ACCEPTANCE_CRITERIA.md`.
-- `$task-decomposer`: turn PRD and acceptance criteria into schema-compatible `docs/TASK_GRAPH.json`.
-- `$dev-worker`: implement exactly one scoped task, module, or repair request.
-- `$evaluator`: perform read-only evaluation and return EvalReport JSON.
-- `$context-distiller`: generate ContextCapsule JSON for thread restart or context recovery.
-- `$integration-manager`: check evaluator-approved modules and produce final delivery reporting.
-
-## Agents
-
-M4 defines these custom agents under [.codex/agents/](/Users/litmus/Downloads/codex-loop-plugin/.codex/agents):
-
-- `planner`: read-only planning agent for PRD, acceptance criteria, and TaskGraph output.
-- `dev_worker`: workspace-write agent for exactly one scoped module, task, or repair request.
-- `evaluator`: read-only evidence checker that returns EvalReport-style PASS or NEEDS_REVISION results.
-- `context_distiller`: read-only ContextCapsule producer for thread restart and recovery.
-- `integration_manager`: workspace-write integration checker for evaluator-approved modules.
-- `test_reviewer`: read-only test coverage and validation reviewer.
-- `architecture_reviewer`: read-only boundary and maintainability reviewer.
-
-Project-level agent concurrency is configured in [.codex/config.toml](/Users/litmus/Downloads/codex-loop-plugin/.codex/config.toml).
-
-## Local State Store
-
-M5 adds a local JSON-backed `LoopStore` under [src/state/](/Users/litmus/Downloads/codex-loop-plugin/src/state). It is the durable local source of truth for future MCP and CLI modules.
-
-Default state files:
-
-- `state/loop-runs.json`
-- `state/agents.json`
-- `state/tasks.json`
-- `state/artifacts.json`
-- `state/eval-reports.json`
-- `state/context-capsules.json`
-- `state/events.json`
-
-The store writes JSON files atomically by writing a temporary file and renaming it. Schema-backed writes use M1 runtime validation before persistence. Set `CODEX_LOOP_STATE_DIR` to redirect state files to another directory, especially in tests or per-project runs.
-
-Do not commit real run data from `state/*.json`; keep only placeholders or explicit fixtures.
-
-## How To Run
-
-Preferred validation command when npm is available:
+Validate the project:
 
 ```bash
 npm run validate
 ```
 
-Current environment fallback when global `node` or `npm` is not available:
+Run the demo feature test:
 
 ```bash
-PATH=/Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:$PATH \
-  /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node --run validate
+npm test -- examples/demo-repo/tests/sample-feature.test.ts
 ```
 
-Local manifest validation:
+Run the demo loop proof:
 
 ```bash
-npm run validate:manifest
+npm test -- tests/e2e/demo-loop.test.ts
 ```
 
-Local skill validation:
+If global `node` or `npm` is unavailable in this environment, use the bundled runtime path recorded in [docs/LOOP_PROGRESS.md](/Users/litmus/Downloads/codex-loop-plugin/docs/LOOP_PROGRESS.md).
 
-```bash
-npm run validate:skills
+## Module List
+
+- M0 Project Memory and Scaffold: complete.
+- M1 Core Schemas and Runtime Types: complete.
+- M2 Plugin Manifest and Metadata: complete.
+- M3 Loop Skills: complete.
+- M4 Custom Agent Definitions: complete.
+- M5 Local Loop State Store: complete.
+- M6 MCP Loop Store Server: complete.
+- M7 Orchestrator CLI: complete with runtime adapter stub.
+- M8 Codex Hooks: complete with trust boundary.
+- M9 Demo Fixture and E2E Loop: complete.
+- M10 Documentation and Release Polish: complete after final validation.
+
+## Current Capabilities
+
+- JSON Schema contracts and TypeScript runtime validation for loop entities.
+- Local JSON state store with schema-backed writes and event log.
+- MCP state tools for LoopRun, AgentProfile, TaskNode, Artifact, EvalReport, RepairRequest, ContextCapsule, and events.
+- Local CLI for `init`, `status`, `plan`, `run`, `eval`, `repair`, `capsule`, and `report`.
+- Custom agent definitions with read/write sandbox boundaries.
+- Codex workflow skills with explicit input/output contracts.
+- Lifecycle hooks for session context, validation capture, compaction capsules, subagent output capture, and stop checks.
+- Demo fixture proving NEEDS_REVISION -> RepairRequest -> PASS flow.
+
+## Current Limits
+
+- The project is not published.
+- The CLI does not call a real Codex SDK runtime.
+- `RuntimeAdapter` is a stub for future runtime integration.
+- The demo is a fixture proof, not a real autonomous Codex thread.
+- Evaluator reports are structured evidence, but they are not a substitute for running tests.
+- Context capsules reduce context loss but cannot guarantee zero information loss.
+- Hooks require user review/trust before execution.
+
+## Demo
+
+The demo lives in [examples/demo-repo](/Users/litmus/Downloads/codex-loop-plugin/examples/demo-repo). It implements:
+
+```ts
+validateProjectName(name: string)
 ```
 
-Local agent validation:
+The fixture includes PRD, acceptance criteria, TaskGraph, DevResult, NEEDS_REVISION EvalReport, RepairRequest, PASS EvalReport, ContextCapsule, and FinalDeliveryReport.
 
-```bash
-npm run validate:agents
-```
+More detail: [docs/EXAMPLES.md](/Users/litmus/Downloads/codex-loop-plugin/docs/EXAMPLES.md).
 
-Official plugin validator status:
+## Safety
 
-```bash
-PYTHONPATH=/tmp/codex-loop-plugin-verify-py \
-  /Users/litmus/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 \
-  /Users/litmus/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py .
-```
+- Evaluator, planner, context distiller, test reviewer, and architecture reviewer are read-only agents.
+- MCP tools never execute shell commands or access the network.
+- Hooks do not auto-fix code, delete files, commit git changes, or run arbitrary commands.
+- State files should not store secrets.
+- `danger-full-access` should not be a default sandbox for agents.
 
-The official validator currently rejects the reserved `hooks` field and requires `./.mcp.json` when `mcpServers` is present. M2 keeps those pointers because later modules must attach to them, but treats missing future companion files as local warnings until M6 and M8.
+See [docs/SECURITY_MODEL.md](/Users/litmus/Downloads/codex-loop-plugin/docs/SECURITY_MODEL.md) and [docs/PLUGIN_BOUNDARIES.md](/Users/litmus/Downloads/codex-loop-plugin/docs/PLUGIN_BOUNDARIES.md).
 
-## Continuing Work
+## Roadmap
 
-Use [docs/MODULE_PROMPT_TEMPLATE.md](/Users/litmus/Downloads/codex-loop-plugin/docs/MODULE_PROMPT_TEMPLATE.md) for each future module. Work only on the current module, run validation, update docs, and stop before entering the next module.
+- Replace `StubRuntimeAdapter` with a real Codex runtime integration after the API boundary is confirmed.
+- Verify official plugin ingestion behavior for reserved `hooks` metadata.
+- Add real project fixtures beyond the tiny demo.
+- Add packaging/release automation only after user approval.
+- Consider SQLite/Postgres store implementations behind the existing `LoopStore` interface.
+
+## Docs
+
+- [Installation](/Users/litmus/Downloads/codex-loop-plugin/docs/INSTALLATION.md)
+- [Usage](/Users/litmus/Downloads/codex-loop-plugin/docs/USAGE.md)
+- [Architecture](/Users/litmus/Downloads/codex-loop-plugin/docs/ARCHITECTURE.md)
+- [MCP Tools](/Users/litmus/Downloads/codex-loop-plugin/docs/MCP_TOOLS.md)
+- [Hooks](/Users/litmus/Downloads/codex-loop-plugin/docs/HOOKS.md)
+- [Agents](/Users/litmus/Downloads/codex-loop-plugin/docs/AGENTS.md)
+- [Skills](/Users/litmus/Downloads/codex-loop-plugin/docs/SKILLS.md)
+- [Examples](/Users/litmus/Downloads/codex-loop-plugin/docs/EXAMPLES.md)
+- [Troubleshooting](/Users/litmus/Downloads/codex-loop-plugin/docs/TROUBLESHOOTING.md)
+- [Release Checklist](/Users/litmus/Downloads/codex-loop-plugin/docs/RELEASE_CHECKLIST.md)

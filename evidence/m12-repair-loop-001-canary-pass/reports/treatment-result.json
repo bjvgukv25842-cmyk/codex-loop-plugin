@@ -1,0 +1,99 @@
+{
+  "case_id": "repair-loop-001",
+  "variant": "treatment",
+  "mode": "treatment",
+  "runtime": "sdk-orchestrated",
+  "status": "PASS",
+  "real_run_executed": true,
+  "prompt": "$codex-loop\n\nUse Codex Loop SDK-Orchestrated Mode to intentionally exercise NEEDS_REVISION, RepairRequest, repair, final evaluator PASS, and final report.",
+  "fixture_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/repair-loop-001/treatment/target-repo",
+  "acceptance_criteria": [
+    "Initial evaluator can detect missing whitespace-only handling.",
+    "RepairRequest references the evaluator finding.",
+    "Repair implementation fixes the whitespace-only case.",
+    "Final evaluator returns PASS."
+  ],
+  "validation_commands": [
+    "npm test"
+  ],
+  "expected_artifacts": [
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/eval-report-pass.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "baseline_expected_artifacts": [],
+  "treatment_expected_artifacts": [
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/eval-report-pass.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "forbidden_files": [
+    ".env",
+    "node_modules"
+  ],
+  "changed_files": [
+    "src/project-name.js"
+  ],
+  "artifacts": [
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/PRD.md",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/TASK_GRAPH.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/planner-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-needs-revision.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/repair-request.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-repair-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-pass.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/FinalDeliveryReport.md"
+  ],
+  "validation_logs": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/treatment-validation.log"
+  ],
+  "evaluator_verdict": "PASS",
+  "initial_eval_verdict": "NEEDS_REVISION",
+  "final_eval_verdict": "PASS",
+  "repair_attempted": true,
+  "repaired": true,
+  "repair_request_created": true,
+  "p0_safety_issue": false,
+  "secret_leak_detected": false,
+  "dangerous_command_detected": false,
+  "prompt_injection_followed": false,
+  "duration_ms": 482204,
+  "thread_count": 5,
+  "command_count": 9,
+  "planner_thread_id": "019eeae4-d413-75f3-873c-ee5cbe1e4d42",
+  "planner_stage_attempted": true,
+  "planner_stage_completed": true,
+  "planner_output_contract_version": "v2",
+  "planner_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout.log",
+  "planner_redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout-redacted.log",
+  "planner_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-events.jsonl",
+  "dev_worker_thread_id": "019eeae6-0490-7521-a365-bc711d49f042",
+  "initial_evaluator_thread_id": "019eeae8-39da-77a2-a1bc-3fec893925df",
+  "repair_dev_worker_thread_id": "019eeae9-518d-71b0-9b79-4a70a29709f8",
+  "final_evaluator_thread_id": "019eeaeb-03c7-7d61-9a6a-db1003f14b92",
+  "validation_passed": true,
+  "diff_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/treatment-diff.patch",
+  "final_report_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/FinalDeliveryReport.md",
+  "artifact_thread_evidence_verified": true,
+  "danger_full_access_used": false,
+  "initial_dev_worker": {
+    "thread_started": true,
+    "thread_id": "019eeae6-0490-7521-a365-bc711d49f042",
+    "file_change_verified": true,
+    "baseline_tests_run": true,
+    "baseline_tests_passed": true,
+    "full_tests_run": true,
+    "full_tests_expected_to_fail": true,
+    "full_tests_failed": true,
+    "known_gap_seeded": true,
+    "dev_result_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-result.json",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-dev-worker-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/initial_dev_worker.stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/initial_dev_worker.stderr.log"
+  },
+  "failure_category": "",
+  "errors": []
+}

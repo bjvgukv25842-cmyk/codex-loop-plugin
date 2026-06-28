@@ -1,0 +1,47 @@
+{
+  "eval_id": "eval_task_validate_project_name_needs_revision",
+  "loop_run_id": "loop_gate6b2_repair_loop",
+  "task_id": "task_validate_project_name",
+  "module_id": "Gate6B",
+  "evaluator_agent_id": "sdk-evaluator",
+  "verdict": "NEEDS_REVISION",
+  "confidence": 0.85,
+  "findings": [
+    {
+      "finding_id": "whitespace_only_project_names_accepted",
+      "severity": "high",
+      "category": "correctness",
+      "description": "Evaluator reported an issue.",
+      "evidence": [],
+      "required_fix": "Reject names whose trim-equivalent value is empty before returning ok: true."
+    }
+  ],
+  "required_fixes": [
+    {
+      "fix_id": "fix_whitespace_only_project_names_accepted",
+      "finding_ids": [
+        "whitespace_only_project_names_accepted"
+      ],
+      "instruction": "Reject names whose trim-equivalent value is empty before returning ok: true.",
+      "expected_files": [],
+      "validation_commands": [
+        {
+          "command": "npm test"
+        }
+      ]
+    }
+  ],
+  "validation_commands_checked": [
+    {
+      "command": "npm test"
+    }
+  ],
+  "created_at": "2026-06-21T09:51:14.919Z",
+  "updated_at": "2026-06-21T09:51:14.919Z",
+  "metadata": {
+    "summary": "NEEDS_REVISION: the seeded whitespace-only validation gap is still present. Current source, DevResult, and `npm test` evidence all show the full suite fails because `validateProjectName(\"   \")` returns `{ ok: true }` instead of `{ ok: false }`.",
+    "created_by_runtime": "sdk-orchestrated",
+    "created_by_role": "evaluator",
+    "created_by_thread_id": "019ee996-7fd8-7422-bce5-8961732157fb"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "module": "M12.11B Alpha Release Review Package",
+  "approval_status": "PENDING_MANUAL_REVIEW",
+  "production_ready": false,
+  "beta_ready": false,
+  "ga_ready": false,
+  "risks": [
+    "M12-mini is a small sample and does not represent all real projects.",
+    "A larger adversarial evaluation set is required.",
+    "Remote prompt injection and untrusted web content cases are required.",
+    "Cost, latency, and token statistics need full review.",
+    "Flaky detection is required.",
+    "Context capsule and thread replacement need productization.",
+    "User-facing UX needs productization.",
+    "Install, upgrade, and permissions paths need hardening.",
+    "Native Mode remains experimental.",
+    "production_ready=false.",
+    "Beta and GA require larger samples and longer stability data."
+  ],
+  "alpha_release_candidate": true
+}

@@ -1,0 +1,55 @@
+{
+  "gate": "Gate 6B.2 SDK-Orchestrated Repair Loop E2E",
+  "target_repo": "tmp/sdk-orchestrated/gate6b2-repair-loop-target",
+  "current_stage": "FAILED",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019eea69-e808-7620-bbc6-239a9a15e367",
+    "prd_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/PRD.md",
+    "task_graph_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/TASK_GRAPH.json",
+    "planner_result_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/planner-result.json",
+    "artifact_thread_evidence_verified": true
+  },
+  "dev_worker": {
+    "status": "",
+    "thread_id": "",
+    "dev_result_path": "",
+    "file_change_verified": false,
+    "baseline_tests_passed": false,
+    "full_tests_expected_to_fail": false,
+    "full_tests_failed": false,
+    "known_gap_seeded": false
+  },
+  "initial_evaluator": {
+    "status": "",
+    "thread_id": "",
+    "eval_report_path": "",
+    "eval_verdict": ""
+  },
+  "repair_request": {
+    "status": "",
+    "repair_request_path": "",
+    "source_eval_report_path": "",
+    "required_fixes_count": 0
+  },
+  "repair_dev_worker": {
+    "status": "",
+    "thread_id": "",
+    "repair_result_path": "",
+    "file_change_verified": false,
+    "tests_passed": false
+  },
+  "final_evaluator": {
+    "status": "",
+    "thread_id": "",
+    "eval_report_path": "",
+    "eval_verdict": ""
+  },
+  "final_report": {
+    "status": "",
+    "path": ""
+  },
+  "errors": [
+    "SDK thread exceeded timeout_ms=180000."
+  ]
+}

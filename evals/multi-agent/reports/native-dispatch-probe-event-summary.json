@@ -1,0 +1,28 @@
+{
+  "parent_thread_id": "019edf39-8f8b-7b93-a1f5-3694e01b2297",
+  "event_count": 56,
+  "command_execution_count": 6,
+  "collab_tool_call_count": 12,
+  "spawn_agent_call_count": 2,
+  "wait_call_count": 2,
+  "spawned_agent_names": [
+    "loop_evaluator",
+    "loop_planner"
+  ],
+  "native_subagent_thread_ids": [
+    "019edf3a-bfde-7f91-9d70-5566ad25ba44",
+    "019edf3b-0fcc-7db1-9d89-950f124365bc"
+  ],
+  "mcp_tool_call_count": 9,
+  "mcp_tool_names": [
+    "agent_list",
+    "artifact_get",
+    "artifact_list_by_task",
+    "loop_get_state",
+    "task_get",
+    "task_list_by_loop"
+  ],
+  "agent_run_tool_call_count": 0,
+  "error_count": 0,
+  "errors": []
+}

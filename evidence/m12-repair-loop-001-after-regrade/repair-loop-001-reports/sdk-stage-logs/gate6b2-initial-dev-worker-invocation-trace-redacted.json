@@ -1,0 +1,14 @@
+{
+  "mode": "initial-dev-worker-seeded-gap",
+  "uses_output_schema": true,
+  "output_schema_kind": "initial-dev-worker-seeded-gap",
+  "output_schema_hash": "d8cdf42fe54279de49488b6d23e8f512314b59351c61bf0a64be955d88fade57",
+  "prompt_length": 1136,
+  "prompt_hash": "84288bbc0e2c79ed8d2a64762a5d60832e651e0ed7f9dfec935630ed92d88561",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/repair-loop-001/treatment/target-repo",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sandbox_mode": "workspace-write",
+  "sdk_method": "runStreamed",
+  "initial_dev_worker_stage_impl": "runInitialDevWorkerSeededGapStage"
+}

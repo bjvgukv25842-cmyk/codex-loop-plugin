@@ -1,0 +1,32 @@
+{
+  "case_id": "test-coverage-002",
+  "failure_category": "TEST_COVERAGE_002_DEV_WORKER_TURN_NO_EVENT_TIMEOUT",
+  "planner_thread_id_present": true,
+  "dev_worker_thread_started": true,
+  "dev_worker_thread_id": "019ef9df-e650-70b2-8d2a-5d6e5b50ba67",
+  "dev_worker_completed": false,
+  "event_count": 0,
+  "last_event_type": "",
+  "elapsed_ms": 0,
+  "dev_worker_events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-dev-worker-events.jsonl",
+  "dev_worker_stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-dev-worker-stdout.log",
+  "dev_worker_stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-dev-worker-stderr.log",
+  "dev_worker_raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-dev-worker-stdout.log",
+  "dev_worker_redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-dev-worker-stdout-redacted.log",
+  "dev_worker_prompt_length": 585,
+  "dev_worker_prompt_hash": "06229a3d736e16e9cda1bba72d82500769285a164cfdc477bddbf95e2322e173",
+  "test_coverage_001_dev_worker_prompt_hash": "278f35b8f4687402a74ebab4bf7e903e775ee2e8593de1ad29c0396d1025e9be",
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-002/treatment/target-repo",
+  "target_repo_is_git": true,
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-002/treatment/target-repo",
+  "validation_commands": [
+    "npm test",
+    "npm run coverage:contract"
+  ],
+  "critical_diffs": [],
+  "recommended_fixes": [
+    "Run test-coverage-002 dev-worker parity, minimal, and exact smokes in order before approving another treatment rerun.",
+    "Keep the exact dev-worker prompt focused on test/cache.test.js, npm test, and npm run coverage:contract.",
+    "Preserve dev_worker timeout diagnostics in treatment-result.json for regrade/report/gate evidence."
+  ]
+}

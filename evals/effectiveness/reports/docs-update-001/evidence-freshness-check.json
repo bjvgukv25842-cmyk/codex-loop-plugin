@@ -1,0 +1,57 @@
+{
+  "case_id": "docs-update-001",
+  "baseline_result_path": "evals/effectiveness/reports/docs-update-001/baseline-result.json",
+  "treatment_result_path": "evals/effectiveness/reports/docs-update-001/treatment-result.json",
+  "treatment_result_mtime": "2026-06-24T09:02:48.089Z",
+  "final_report_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/FinalDeliveryReport.md",
+  "final_report_exists": true,
+  "final_report_mtime": "2026-06-24T09:02:48.032Z",
+  "validation_log_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-validation.log"
+  ],
+  "eval_report_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/eval-report.json"
+  ],
+  "dev_result_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/dev-result.json"
+  ],
+  "repair_request_paths": [],
+  "stale_triage_files_detected": [
+    "evals/effectiveness/reports/docs-update-001/BaselineCodexExecTimeoutTriageReport.md",
+    "evals/effectiveness/reports/docs-update-001/baseline-codex-exec-timeout-triage.json"
+  ],
+  "compare_used_latest_treatment_result": true,
+  "report_used_latest_treatment_result": true,
+  "gate_used_latest_treatment_result": true,
+  "recommended_fixes": [],
+  "evidence_source_paths": [
+    "evals/effectiveness/reports/docs-update-001/baseline-result.json",
+    "evals/effectiveness/reports/docs-update-001/treatment-result.json",
+    "evals/effectiveness/datasets/m12-mini.jsonl",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/FinalDeliveryReport.md",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-diff.patch",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-validation.log",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/docs/PRD.md",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/docs/TASK_GRAPH.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/planner-result.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/dev-result.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/eval-report.json"
+  ],
+  "evidence_source_mtimes": {
+    "evals/effectiveness/reports/docs-update-001/baseline-result.json": "2026-06-24T08:58:01.913Z",
+    "evals/effectiveness/reports/docs-update-001/treatment-result.json": "2026-06-24T09:02:48.089Z",
+    "evals/effectiveness/datasets/m12-mini.jsonl": "2026-06-24T08:16:34.629Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/FinalDeliveryReport.md": "2026-06-24T09:02:48.032Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-diff.patch": "2026-06-24T09:02:48.085Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/treatment-validation.log": "2026-06-24T09:01:27.636Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/docs/PRD.md": "2026-06-24T08:59:12.959Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/docs/TASK_GRAPH.json": "2026-06-24T08:59:12.959Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/planner-result.json": "2026-06-24T08:59:12.959Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/dev-result.json": "2026-06-24T09:01:27.636Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/artifacts/eval-report.json": "2026-06-24T09:02:47.942Z"
+  },
+  "stale_files_ignored": [
+    "evals/effectiveness/reports/docs-update-001/BaselineCodexExecTimeoutTriageReport.md",
+    "evals/effectiveness/reports/docs-update-001/baseline-codex-exec-timeout-triage.json"
+  ]
+}

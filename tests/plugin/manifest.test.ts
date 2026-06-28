@@ -56,18 +56,22 @@ describe("plugin manifest", () => {
     });
   });
 
-  it("reports future integration paths as warnings when not implemented yet", () => {
+  it("does not warn for implemented M6 and M8 integration paths", () => {
     const result = validatePluginManifest();
 
     expect(result.valid).toBe(true);
     expect(result.errors).toEqual([]);
-    expect(result.warnings).toEqual(
+    expect(result.warnings).not.toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          path: "$.hooks"
+        })
+      ])
+    );
+    expect(result.warnings).not.toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           path: "$.mcpServers"
-        }),
-        expect.objectContaining({
-          path: "$.hooks"
         })
       ])
     );

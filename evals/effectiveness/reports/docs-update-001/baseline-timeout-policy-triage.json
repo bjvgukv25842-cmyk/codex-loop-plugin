@@ -1,0 +1,14 @@
+{
+  "case_id": "docs-update-001",
+  "case_category": "docs",
+  "baseline_status": "TIMEOUT",
+  "baseline_valid_outcome": true,
+  "baseline_outcome_type": "valid_failure",
+  "baseline_timeout_accepted": true,
+  "baseline_timeout_reason": "The plain Codex baseline real run started, produced a thread id and timeout triage, and did not leak secrets or use danger-full-access. For docs-update-001, this is accepted as a valid baseline failure for comparison against the passing treatment.",
+  "treatment_status": "PASS",
+  "docs_contract_passed": true,
+  "gate_status": "PASS",
+  "compare_report_policy_bug_detected": true,
+  "recommended_fix": "Treat valid baseline TIMEOUT as baseline failure, not regrade blocker."
+}

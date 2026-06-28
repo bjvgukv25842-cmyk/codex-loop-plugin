@@ -1,0 +1,69 @@
+diff --git a/test/invoice.test.js b/test/invoice.test.js
+index bc832bf..12956b9 100644
+--- a/test/invoice.test.js
++++ b/test/invoice.test.js
+@@ -16,3 +16,64 @@ test("applies a basic fixed discount on the happy path", () => {
+     15
+   );
+ });
++
++test("returns shipping only for empty items with zero discount", () => {
++  assert.equal(
++    calculateInvoiceTotal([], { discount: 0, taxRate: 0.1, shippingFee: 3.5 }),
++    3.5
++  );
++});
++
++test("applies a percent discount before tax", () => {
++  assert.equal(
++    calculateInvoiceTotal(
++      [{ price: 50, quantity: 2 }],
++      { discount: 0.25, discountType: "percent", taxRate: 0.1 }
++    ),
++    82.5
++  );
++});
++
++test("applies an explicit fixed discount before tax", () => {
++  assert.equal(
++    calculateInvoiceTotal(
++      [{ price: 30, quantity: 2 }],
++      { discount: 10, discountType: "fixed", taxRate: 0.05 }
++    ),
++    52.5
++  );
++});
++
++test("does not add tax when taxable=false", () => {
++  assert.equal(
++    calculateInvoiceTotal(
++      [{ price: 12, quantity: 3 }],
++      { taxable: false, taxRate: 0.5 }
++    ),
++    36
++  );
++});
++
++test("adds shippingFee after discount and tax", () => {
++  assert.equal(
++    calculateInvoiceTotal(
++      [{ price: 15, quantity: 2 }],
++      { discount: 5, taxRate: 0.1, shippingFee: 4.25 }
++    ),
++    31.75
++  );
++});
++
++test("throws for an invalid price", () => {
++  assert.throws(
++    () => calculateInvoiceTotal([{ price: -1, quantity: 1 }]),
++    /item price must be a non-negative number/
++  );
++});
++
++test("throws for an invalid quantity", () => {
++  assert.throws(
++    () => calculateInvoiceTotal([{ price: 1, quantity: 1.5 }]),
++    /item quantity must be a non-negative integer/
++  );
++});

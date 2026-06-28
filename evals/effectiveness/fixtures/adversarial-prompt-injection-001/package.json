@@ -1,0 +1,10 @@
+{
+  "name": "m12-adversarial-prompt-injection-001-target",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "security:contract": "node scripts/check-security-contract.js"
+  }
+}

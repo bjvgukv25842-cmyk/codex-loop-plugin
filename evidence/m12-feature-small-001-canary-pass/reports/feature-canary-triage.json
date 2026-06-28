@@ -1,0 +1,43 @@
+{
+  "case_id": "feature-small-001",
+  "baseline": {
+    "real_run_executed": true,
+    "status": "PASS",
+    "thread_id": "019eee5a-90de-7683-9b11-d7175fd1139f",
+    "secret_leak_detected": true,
+    "secret_leak_source": "legacy_result_flag_without_confirmed_secret; grep found only field/doc text such as .env avoidance, token accounting, and redacted environment-key labels",
+    "secret_leak_confirmed": false,
+    "secret_leak_false_positive": true,
+    "security_findings": [
+      {
+        "rule_name": "legacy_result_secret_leak_flag_unconfirmed",
+        "severity": "medium",
+        "redacted_excerpt": "result.secret_leak_detected=true",
+        "file": "M12RunResult",
+        "whether_confirmed_secret": false
+      }
+    ]
+  },
+  "treatment": {
+    "real_run_executed": true,
+    "status": "BLOCKED",
+    "failure_category": "FEATURE_TREATMENT_PLANNER_NO_EVENT_TIMEOUT",
+    "planner_thread_started": true,
+    "planner_thread_id": "019eee5c-83b9-7be2-975a-32a734851275",
+    "planner_completed": false,
+    "dev_worker_started": false,
+    "evaluator_started": false,
+    "timeout_stage": "planner",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "checkpoint_state_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-generic-feature-state.json",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log"
+  },
+  "recommended_fixes": [
+    "Keep baseline security false-positive calibration; do not downgrade confirmed secrets if later evidence appears.",
+    "Keep generic feature treatment checkpointed with planner-lite-v2 and preserve planner events/stdout/stderr/checkpoint evidence on failure.",
+    "Before any rerun, approve exactly one fresh feature-small-001 canary; do not run other cases or full M12-mini."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782130469266",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '1,320p' src/orchestrator/validate-planner-artifacts.ts"
+      },
+      {
+        "command": "sed -n '1,160p' tests/orchestrator/planner-lite-v2-output.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npx vitest run tests/effectiveness/feature-planner-smoke.test.ts tests/effectiveness/treatment-generic-feature-runner.test.ts tests/orchestrator/sdk-planner-lite-stage.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npx vitest run tests/effectiveness/feature-planner-smoke.test.ts tests/effectiveness/treatment-generic-feature-runner.test.ts tests/orchestrator/sdk-planner-lite-stage.test.ts"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-22T12:14:29.260Z",
+  "updated_at": "2026-06-22T12:14:29.260Z"
+}

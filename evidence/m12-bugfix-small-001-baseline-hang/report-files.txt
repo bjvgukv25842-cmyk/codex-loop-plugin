@@ -1,0 +1,5 @@
+evals/effectiveness/reports/bugfix-small-001/evidence-freshness-check.json
+evals/effectiveness/reports/bugfix-small-001/EvidenceFreshnessCheckReport.md
+evals/effectiveness/reports/bugfix-small-001/next-case-readiness.json
+evals/effectiveness/reports/bugfix-small-001/NextCaseReadinessReport.md
+evals/effectiveness/reports/bugfix-small-001/sdk-stage-logs/dev-worker-baseline.json

@@ -1,0 +1,281 @@
+diff --git a/artifacts/dev-result.json b/artifacts/dev-result.json
+index 059a684..6040919 100644
+--- a/artifacts/dev-result.json
++++ b/artifacts/dev-result.json
+@@ -9,7 +9,7 @@
+   "full_tests_expected_to_fail": true,
+   "full_tests_failed": true,
+   "known_gap_seeded": true,
+-  "summary": "Implemented only the baseline validation criteria in src/project-name.js: empty strings and names longer than 80 characters fail, valid project names pass, and the whitespace-only gap remains intentionally accepted. npm run test:baseline passed; npm run test:full ran and failed as expected on the whitespace-only case. Wrote artifacts/dev-result.json with known_gap_seeded=true.",
++  "summary": "Implemented only the baseline validation criteria in src/project-name.js: empty strings and names longer than 80 characters fail, valid project names pass, and the whitespace-only gap remains intentionally accepted. npm run test:baseline passed with 3/3 tests passing. npm run test:full ran and failed as expected on the whitespace-only case with actual true and expected false. Wrote artifacts/dev-result.json with known_gap_seeded=true.",
+   "created_by_runtime": "sdk-orchestrated",
+   "created_by_role": "dev_worker",
+   "created_by_thread_id": "019eea1a-21ab-7c31-ab48-c65a8cae2f3f"
+diff --git a/artifacts/planner-result.json b/artifacts/planner-result.json
+index 8666b59..60c9459 100644
+--- a/artifacts/planner-result.json
++++ b/artifacts/planner-result.json
+@@ -6,32 +6,32 @@
+       "artifact_path": "docs/PRD.md",
+       "created_by_runtime": "sdk-orchestrated",
+       "created_by_role": "planner",
+-      "created_by_thread_id": "019eea19-1322-7b61-9d0d-0f37fd748df2"
++      "created_by_thread_id": "019eea69-e808-7620-bbc6-239a9a15e367"
+     },
+     {
+       "artifact_type": "task_graph",
+       "artifact_path": "docs/TASK_GRAPH.json",
+       "created_by_runtime": "sdk-orchestrated",
+       "created_by_role": "planner",
+-      "created_by_thread_id": "019eea19-1322-7b61-9d0d-0f37fd748df2"
++      "created_by_thread_id": "019eea69-e808-7620-bbc6-239a9a15e367"
+     }
+   ],
+   "prd_path": "docs/PRD.md",
+   "task_graph_path": "docs/TASK_GRAPH.json",
+   "acceptance_criteria": [
+-    "validateProjectName(\"\") returns an object with ok === false.",
+-    "validateProjectName(\"   \") returns an object with ok === false.",
+-    "validateProjectName(\"x\".repeat(81)) returns an object with ok === false.",
+-    "validateProjectName(\"My Project\") returns an object with ok === true.",
+-    "The module remains ESM-compatible and continues exporting validateProjectName from src/project-name.js.",
++    "validateProjectName rejects an empty string with { ok: false }.",
++    "validateProjectName rejects whitespace-only strings with { ok: false }.",
++    "validateProjectName rejects names longer than 80 characters with { ok: false }.",
++    "validateProjectName accepts valid project names such as \"My Project\" with { ok: true }.",
++    "The public export name, ESM module format, package scripts, and test file names remain unchanged.",
+     "Validation passes with npm run test:baseline and npm run test:full."
+   ],
+   "risks": [
+-    "The current tests assert only the ok boolean, so adding error messages or reason codes would be unvalidated scope creep.",
+-    "Input types other than strings are not specified by the tests or README; handling them should be conservative unless a later requirement defines it.",
+-    "The repository has no existing PRD or acceptance criteria files, so this plan is inferred from tests and package scripts."
++    "The current tests assert only the ok boolean, so adding messages or reason codes would be unvalidated scope creep.",
++    "Input types other than strings are not specified by the tests or README; behavior should remain conservative unless a later requirement defines it.",
++    "Changing package scripts, module format, or public export names would create unnecessary public API drift."
+   ],
+   "created_by_runtime": "sdk-orchestrated",
+   "created_by_role": "planner",
+-  "created_by_thread_id": "019eea19-1322-7b61-9d0d-0f37fd748df2"
++  "created_by_thread_id": "019eea69-e808-7620-bbc6-239a9a15e367"
+ }
+diff --git a/docs/PRD.md b/docs/PRD.md
+index d6ea484..d017783 100644
+--- a/docs/PRD.md
++++ b/docs/PRD.md
+@@ -1,41 +1,42 @@
+ ---
+ created_by_runtime: sdk-orchestrated
+ created_by_role: planner
+-created_by_thread_id: 019eea19-1322-7b61-9d0d-0f37fd748df2
++created_by_thread_id: 019eea69-e808-7620-bbc6-239a9a15e367
+ ---
+ 
+ # PRD: Project Name Validation Repair
+ 
+ ## User Goal
+-Repair the target package so project name validation enforces the behavior expressed by the existing baseline and full test suites.
++Repair the target Node.js package so project name validation enforces the behavior expressed by the repository test suites.
+ 
+ ## Background
+-The repository is a minimal Node.js ESM package for Gate 6B.2 repair-loop validation. The current implementation in `src/project-name.js` returns `{ ok: true }` for every input, while tests require invalid names to be rejected.
++The repository exposes `validateProjectName(name)` from `src/project-name.js`. The expected behavior is inferable from the existing baseline and full tests: invalid project names must be rejected while normal valid names remain accepted.
+ 
+ ## User-Visible Outcome
+-Consumers of `validateProjectName(name)` receive a stable object result whose `ok` property is `false` for empty, whitespace-only, or overlong project names, and `true` for valid project names.
++Consumers calling `validateProjectName(name)` receive `{ ok: false }` for empty, whitespace-only, or over-length names, and `{ ok: true }` for valid project names.
+ 
+ ## Non-Goals
+-- Do not add dependencies.
+-- Do not introduce a CLI, UI, or persistence layer.
+-- Do not change the public function name, module format, or test script names.
+-- Do not broaden validation beyond the rules covered by repository tests unless required for those rules.
++- Do not rename the public function or change the ESM module format.
++- Do not change package script names or test file names.
++- Do not add unrequested reason codes, error messages, dependencies, or validation rules beyond the behavior covered by tests.
+ 
+ ## Functional Requirements
+-- Reject an empty string.
+-- Reject strings that contain only whitespace after trimming.
+-- Reject names longer than 80 characters.
+-- Accept normal non-empty names up to 80 characters, including names with spaces such as `My Project`.
+-- Preserve the return-object shape with an `ok` boolean.
++- Empty string input is invalid.
++- Whitespace-only string input is invalid after trimming.
++- Names longer than 80 characters are invalid.
++- Valid project names such as `My Project` remain valid.
+ 
+ ## Non-Functional Requirements
+ - Keep the implementation small and dependency-free.
+-- Keep behavior deterministic and synchronous.
+-- Maintain compatibility with Node's built-in test runner and ESM modules.
++- Preserve compatibility with Node's built-in test runner.
+ 
+-## Validation Surface
++## Validation
+ - `npm run test:baseline`
+ - `npm run test:full`
+ 
++## Risks
++- The tests assert only the `ok` boolean, so extra response fields would be unvalidated scope creep.
++- Input types other than strings are not specified by the current tests or README.
++
+ ## Blockers
+-None for planning. The expected behavior is inferable from the source and tests.
++None. The expected behavior is available from existing tests and repository docs.
+diff --git a/docs/TASK_GRAPH.json b/docs/TASK_GRAPH.json
+index 109c903..50ae090 100644
+--- a/docs/TASK_GRAPH.json
++++ b/docs/TASK_GRAPH.json
+@@ -1,36 +1,44 @@
+ {
+-  "task_graph_id": "task_graph_loop_gate6b2_repair_loop",
++  "task_graph_id": "task_graph_project_name_validation_repair",
+   "loop_run_id": "loop_gate6b2_repair_loop",
+   "prd_artifact_id": "artifact_prd_gate6b_planner",
+   "root_goal": "Validate project names",
+   "tasks": [
+     {
+-      "task_id": "T1",
++      "task_id": "task_project_name_validation_dev",
+       "loop_run_id": "loop_gate6b2_repair_loop",
+       "module_id": "M1",
+-      "title": "Implement project name validation rules",
+-      "description": "Update src/project-name.js so validateProjectName returns { ok: false } for empty strings, whitespace-only strings, and names longer than 80 characters, while returning { ok: true } for valid project names. Preserve the existing ESM export and object return shape.",
++      "title": "Implement project name validation",
++      "description": "Update src/project-name.js so validateProjectName(name) rejects empty, whitespace-only, and over-80-character project names while preserving valid-name success behavior and the existing public API.",
+       "owner_agent_type": "dev_worker",
+       "owner_agent_id": "sdk-dev-worker",
+       "reviewer_agent_type": "evaluator",
+       "reviewer_agent_id": "sdk-evaluator",
+       "dependencies": [],
+       "scope": [
+-        "Update src/project-name.js so validateProjectName returns { ok: false } for empty strings, whitespace-only strings, and names longer than 80 characters, while returning { ok: true } for valid project names. Preserve the existing ESM export and object return shape."
++        "Update src/project-name.js so validateProjectName(name) rejects empty, whitespace-only, and over-80-character project names while preserving valid-name success behavior and the existing public API."
+       ],
+       "non_goals": [],
+       "likely_files": [
+         {
+           "path": "src/project-name.js",
+           "purpose": "Likely implementation file"
++        },
++        {
++          "path": "test/project-name.baseline.test.js",
++          "purpose": "Likely implementation file"
++        },
++        {
++          "path": "test/project-name.full.test.js",
++          "purpose": "Likely implementation file"
+         }
+       ],
+       "acceptance_criteria": [
+-        "validateProjectName(\"\").ok is false",
+-        "validateProjectName(\"   \").ok is false",
+-        "validateProjectName(\"x\".repeat(81)).ok is false",
+-        "validateProjectName(\"My Project\").ok is true",
+-        "No new runtime dependencies are introduced"
++        "Empty string returns { ok: false }.",
++        "Whitespace-only string returns { ok: false }.",
++        "Names longer than 80 characters return { ok: false }.",
++        "Valid names such as My Project return { ok: true }.",
++        "Public export name and ESM module format remain unchanged."
+       ],
+       "validation_commands": [
+         {
+@@ -48,28 +56,32 @@
+       "branch": null,
+       "worktree_path": null,
+       "artifact_ids": [],
+-      "created_at": "2026-06-21T12:14:01.325Z",
+-      "updated_at": "2026-06-21T12:14:01.325Z",
++      "created_at": "2026-06-21T13:42:10.661Z",
++      "updated_at": "2026-06-21T13:42:10.661Z",
+       "metadata": {}
+     },
+     {
+-      "task_id": "T2",
++      "task_id": "task_project_name_validation_eval",
+       "loop_run_id": "loop_gate6b2_repair_loop",
+       "module_id": "M1",
+       "title": "Evaluate validation behavior",
+-      "description": "Run the repository's baseline and full Node test suites after the implementation change and confirm all project name validation cases pass without public API drift.",
+-      "owner_agent_type": "evaluator",
++      "description": "Run the baseline and full Node test suites and confirm the implementation satisfies the PRD without public API drift.",
++      "owner_agent_type": "dev_worker",
+       "owner_agent_id": "sdk-dev-worker",
+       "reviewer_agent_type": "evaluator",
+       "reviewer_agent_id": "sdk-evaluator",
+       "dependencies": [
+-        "T1"
++        "task_project_name_validation_dev"
+       ],
+       "scope": [
+-        "Run the repository's baseline and full Node test suites after the implementation change and confirm all project name validation cases pass without public API drift."
++        "Run the baseline and full Node test suites and confirm the implementation satisfies the PRD without public API drift."
+       ],
+       "non_goals": [],
+       "likely_files": [
++        {
++          "path": "src/project-name.js",
++          "purpose": "Likely implementation file"
++        },
+         {
+           "path": "test/project-name.baseline.test.js",
+           "purpose": "Likely implementation file"
+@@ -79,14 +91,14 @@
+           "purpose": "Likely implementation file"
+         },
+         {
+-          "path": "src/project-name.js",
++          "path": "package.json",
+           "purpose": "Likely implementation file"
+         }
+       ],
+       "acceptance_criteria": [
+-        "npm run test:baseline exits 0",
+-        "npm run test:full exits 0",
+-        "The exported validateProjectName function remains importable from ../src/project-name.js"
++        "npm run test:baseline exits 0.",
++        "npm run test:full exits 0.",
++        "No unrequested API, script, or test file renames are introduced."
+       ],
+       "validation_commands": [
+         {
+@@ -104,19 +116,19 @@
+       "branch": null,
+       "worktree_path": null,
+       "artifact_ids": [],
+-      "created_at": "2026-06-21T12:14:01.325Z",
+-      "updated_at": "2026-06-21T12:14:01.325Z",
++      "created_at": "2026-06-21T13:42:10.661Z",
++      "updated_at": "2026-06-21T13:42:10.661Z",
+       "metadata": {}
+     }
+   ],
+   "edges": [
+     {
+-      "from_task_id": "T1",
+-      "to_task_id": "T2",
++      "from_task_id": "task_project_name_validation_dev",
++      "to_task_id": "task_project_name_validation_eval",
+       "reason": "Task dependency"
+     }
+   ],
+   "status": "TASK_GRAPH_READY",
+-  "created_at": "2026-06-21T12:14:01.325Z",
+-  "updated_at": "2026-06-21T12:14:01.325Z"
++  "created_at": "2026-06-21T13:42:10.661Z",
++  "updated_at": "2026-06-21T13:42:10.661Z"
+ }
+diff --git a/src/project-name.js b/src/project-name.js
+index 60567b0..03f7368 100644
+--- a/src/project-name.js
++++ b/src/project-name.js
+@@ -1,3 +1,7 @@
+ export function validateProjectName(name) {
++  if (name === "" || name.length > 80) {
++    return { ok: false };
++  }
++
+   return { ok: true };
+ }

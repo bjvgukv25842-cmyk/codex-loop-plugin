@@ -1,0 +1,44 @@
+{
+  "case_id": "refactor-small-001",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019ef948-85fa-7721-b961-cc3b846f36c8",
+    "prd_path": "docs/PRD.md",
+    "task_graph_path": "docs/TASK_GRAPH.json",
+    "planner_result_path": "artifacts/planner-result.json",
+    "stage_attempted": true,
+    "stage_completed": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-planner-stderr.log",
+    "last_event_type": "turn.completed",
+    "elapsed_ms": 28359,
+    "event_count": 5,
+    "failure_category": ""
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019ef948-f45a-7283-a661-327017f09680",
+    "file_change_verified": true,
+    "tests_passed": true,
+    "dev_result_path": "artifacts/dev-result.json"
+  },
+  "evaluator": {
+    "status": "PASS",
+    "thread_id": "019ef94a-c5c6-7620-8192-17d4d2740760",
+    "eval_verdict": "PASS",
+    "eval_report_path": "artifacts/eval-report.json"
+  },
+  "repair_request": {},
+  "repair_dev_worker": {},
+  "final_evaluator": {},
+  "final_report": {
+    "status": "PASS",
+    "path": "artifacts/FinalDeliveryReport.md"
+  },
+  "errors": []
+}

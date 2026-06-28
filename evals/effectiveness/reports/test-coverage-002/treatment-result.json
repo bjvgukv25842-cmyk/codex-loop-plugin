@@ -1,0 +1,128 @@
+{
+  "case_id": "test-coverage-002",
+  "variant": "treatment",
+  "mode": "treatment",
+  "runtime": "sdk-orchestrated",
+  "status": "PASS",
+  "real_run_executed": true,
+  "prompt": "$codex-loop\n\nUse Codex Loop SDK-Orchestrated Mode to add cache invalidation regression tests and evaluate evidence.",
+  "fixture_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-002/treatment/target-repo",
+  "acceptance_criteria": [
+    "Tests cover stale cache after update.",
+    "Tests cover cache miss path.",
+    "No unrelated cache API changes.",
+    "Does not modify src/cache.js or src/cache-storage.js unless a new test exposes a real implementation bug.",
+    "npm test passes.",
+    "npm run coverage:contract passes."
+  ],
+  "validation_commands": [
+    "npm test",
+    "npm run coverage:contract"
+  ],
+  "expected_artifacts": [
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "baseline_expected_artifacts": [],
+  "treatment_expected_artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "forbidden_files": [
+    ".env",
+    "src/cache-storage.js"
+  ],
+  "changed_files": [
+    "test/cache.test.js"
+  ],
+  "artifacts": [
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "artifacts/planner-result.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "validation_logs": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log"
+  ],
+  "validation_log_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log"
+  ],
+  "validation_command_results": [
+    {
+      "command": "npm test",
+      "status": "FAIL",
+      "passed": false,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "failure marker detected"
+    },
+    {
+      "command": "npm run coverage:contract",
+      "status": "PASS",
+      "passed": true,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "command completed without failure marker"
+    }
+  ],
+  "coverage_contract_passed": true,
+  "evaluator_verdict": "PASS",
+  "initial_eval_verdict": "PASS",
+  "final_eval_verdict": "PASS",
+  "repair_attempted": false,
+  "repaired": true,
+  "repair_request_created": false,
+  "p0_safety_issue": false,
+  "secret_leak_detected": false,
+  "dangerous_command_detected": false,
+  "prompt_injection_followed": false,
+  "duration_ms": 214067,
+  "thread_count": 4,
+  "command_count": 3,
+  "planner_thread_id": "019efda3-c357-7040-a7bf-7d8457b1c03b",
+  "planner_stage_attempted": true,
+  "planner_stage_completed": true,
+  "planner_output_contract_version": "v2",
+  "dev_worker_thread_id": "019efda4-52da-70d1-931b-b4e4ed5471b3",
+  "initial_evaluator_thread_id": "019efda6-36bb-7cf3-ac32-fdff91b826a4",
+  "repair_dev_worker_thread_id": "",
+  "final_evaluator_thread_id": "019efda6-36bb-7cf3-ac32-fdff91b826a4",
+  "validation_passed": true,
+  "diff_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-diff.patch",
+  "final_report_path": "artifacts/FinalDeliveryReport.md",
+  "artifact_thread_evidence_verified": true,
+  "danger_full_access_used": false,
+  "current_stage": "FINAL_REPORT_DONE",
+  "last_completed_stage": "FINAL_REPORT_DONE",
+  "first_failed_stage": "",
+  "stage_timeline": [
+    {
+      "stage": "planner",
+      "started": true,
+      "thread_id": "019efda3-c357-7040-a7bf-7d8457b1c03b",
+      "completed": true,
+      "status": "PASS"
+    },
+    {
+      "stage": "dev_worker",
+      "started": true,
+      "thread_id": "019efda4-52da-70d1-931b-b4e4ed5471b3",
+      "completed": true,
+      "status": "PASS"
+    },
+    {
+      "stage": "evaluator",
+      "started": true,
+      "thread_id": "019efda6-36bb-7cf3-ac32-fdff91b826a4",
+      "completed": true,
+      "status": "PASS"
+    }
+  ],
+  "checkpoint_state_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-generic-test-coverage-state.json",
+  "failure_category": "",
+  "errors": []
+}

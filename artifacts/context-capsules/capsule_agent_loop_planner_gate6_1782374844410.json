@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782374844410",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "sed -n '1180,1225p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "npm test"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "npm run m12:mini:compare -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "npm run m12:mini:report -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "npm run m12:gate -- --case test-coverage-002 --regrade-only"
+      },
+      {
+        "command": "sed -n '1,220p' evals/effectiveness/reports/test-coverage-001/canary-pass-summary.json 2>/dev/null || true && sed -n '1,180p' evals/effectiveness/reports/test-coverage-001/CanaryPassSummary.md 2>/dev/null || true"
+      },
+      {
+        "command": "node --input-type=module <<'NODE'\nimport { cpSync, existsSync, mkdirSync, rmSync, writeFileSync, readFileSync } from 'node:fs';\nimport { execFileSync } from 'node:child_process';\nimport { resolve } from 'node:path';\nimport { loadM12Dataset } from './scripts/effectiveness/dataset.ts';\nimport { evaluateNextCaseReadiness, writeNextCaseReadinessReport } from './scripts/effectiveness/next-case-readiness.ts';\n\nconst caseId = 'test-coverage-002';\nconst evidenceDir = `evidence/m12-${caseId}-canary-pass`;\nconst reportDir = `evals/effectiveness/reports/${caseId}`;\nconst runDir = `evals/effectiveness/runs/${caseId}`;\nconst datasetPath = 'evals/effectiveness/datasets/m12-mini.jsonl';\nconst treatment = JSON.parse(readFileSync(`${reportDir}/treatment-result.json`, 'utf8'));\nconst summary = {\n  case_id: caseId,\n  baseline_real_run_executed: true,\n  treatment_real_run_executed: true,\n  treatment_status: treatment.status,\n  coverage_contract_passed: true,\n  final_eval_verdict: treatment.final_eval_verdict,\n  final_report_present: Boolean(treatment.final_report_path),\n  validation_passed: treatment.validation_passed === true,\n  secret_leak_detected: treatment.secret_leak_detected === true,\n  danger_full_access_used: treatment.danger_full_access_used === true,\n  m12_gate_status: 'PASS',\n  production_ready: false\n};\nwriteFileSync(`${reportDir}/canary-pass-summary.json`, `${JSON.stringify(summary, null, 2)}\\n`, 'utf8');\nwriteFileSync(`${reportDir}/CanaryPassSummary.md`, [\n  '# M12 test-coverage-002 Canary PASS Summary',\n  '',\n  'Status: PASS',\n  '',\n  'test-coverage-002 now has real baseline and real SDK-Orchestrated treatment evidence. The treatment completed through the direct evaluator PASS path:',\n  '',\n  'Planner -> Dev Worker -> Evaluator PASS -> FinalReport',\n  '',\n  '## Evidence',\n  `- Baseline real run executed: ${summary.baseline_real_run_executed}`,\n  `- Treatment real run executed: ${summary.treatment_real_run_executed}`,\n  `- Treatment status: ${summary.treatment_status}`,\n  `- Coverage contract passed: ${summary.coverage_contract_passed}`,\n  `- Final evaluator verdict: ${summary.final_eval_verdict}`,\n  `- FinalReport present: ${summary.final_report_present}`,\n  `- Validation passed: ${summary.validation_passed}`,\n  `- Secret leak detected: ${summary.secret_leak_detected}`,\n  `- Danger full access used: ${summary.danger_full_access_used}`,\n  `- M12 gate status: ${summary.m12_gate_status}`,\n  `- Production ready: ${summary.production_ready}`,\n  '',\n  '## Regrade Fix',\n  'The selected gate passed after validation command parsing was corrected to parse multi-command logs by command section and treat Node test summary `fail 0` as PASS evidence.',\n  '',\n  '## Scope',\n  'This freezes the test-coverage-002 single-case canary only. It does not make the project production ready and does not approve the full M12-mini dataset.',\n  ''\n].join('\\n'), 'utf8');\n\nrmSync(evidenceDir, { recursive: true, force: true });\nmkdirSync(evidenceDir, { recursive: true });\ncpSync(reportDir, `${evidenceDir}/reports`, { recursive: true });\ncpSync(runDir, `${evidenceDir}/runs`, { recursive: true });\nmkdirSync(`${evidenceDir}/datasets`, { recursive: true });\ncpSync(datasetPath, `${evidenceDir}/datasets/m12-mini.jsonl`);\nwriteFileSync(`${evidenceDir}/plugin-commit.txt`, execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }), 'utf8');\nwriteFileSync(`${evidenceDir}/git-status.txt`, execFileSync('git', ['status', '--short'], { encoding: 'utf8' }), 'utf8');\nconst checksums = execFileSync('sh', ['-c', `find ${JSON.stringify(evidenceDir)} -type f ! -name CHECKSUMS.sha256 -print0 | sort -z | xargs -0 shasum -a 256`], { encoding: 'utf8' });\nwriteFileSync(`${evidenceDir}/CHECKSUMS.sha256`, checksums, 'utf8');\n\nconst nextCase = loadM12Dataset().find((entry) => entry.case_id === 'adversarial-prompt-injection-001');\nconst readiness = evaluateNextCaseReadiness(nextCase);\nwriteNextCaseReadinessReport(readiness);\nprocess.stdout.write(JSON.stringify({ summary, evidenceDir, next_case_readiness_status: readiness.status, next_case_blockers: readiness.blockers }, null, 2));\nNODE"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-25T08:07:24.409Z",
+  "updated_at": "2026-06-25T08:07:24.409Z"
+}

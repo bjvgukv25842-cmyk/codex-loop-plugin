@@ -48,6 +48,8 @@ export type AgentStatus =
   | "FAILED"
   | "CONTEXT_RESTARTING";
 
+export type AgentRunStatus = "STARTED" | "RUNNING" | "FINISHED" | "FAILED" | "PASS" | "NEEDS_REVISION" | "BLOCKED";
+
 export type AgentType =
   | "planner"
   | "task_dispatcher"
@@ -89,6 +91,8 @@ export type ValidationResult = "passed" | "failed" | "not_run";
 export type SandboxMode = "read-only" | "workspace-write" | "danger-full-access";
 export type RiskLevel = "low" | "medium" | "high";
 export type EvaluatorVerdict = EvalVerdict | "NOT_RUN";
+export type SdkThreadRunRole = "planner" | "dev_worker" | "evaluator" | "repair_dev_worker" | "final_evaluator" | "context_distiller";
+export type SdkThreadRunStatus = "PASS" | "NEEDS_REVISION" | "BLOCKED" | "FAILED" | "TIMEOUT";
 
 export interface ValidationCommand {
   command: string;
@@ -151,6 +155,65 @@ export interface AgentProfile {
   created_at: string;
   updated_at: string;
   metadata: Metadata;
+}
+
+export interface AgentRun {
+  agent_run_id: string;
+  loop_run_id: string;
+  agent_name: string;
+  agent_type: AgentType;
+  parent_thread_id: string;
+  thread_id: string;
+  task_id: string | null;
+  module_id: string;
+  phase: string;
+  status: AgentRunStatus;
+  started_at: string;
+  updated_at: string;
+  finished_at: string | null;
+  artifact_ids: string[];
+  metadata: Metadata;
+}
+
+export interface SubagentEvidence {
+  evidence_id: string;
+  loop_run_id: string;
+  agent_run_id: string;
+  agent_name: string;
+  thread_id: string;
+  artifact_type: ArtifactType;
+  artifact_path: string;
+  artifact_id: string | null;
+  created_at: string;
+  metadata: Metadata;
+}
+
+export interface ArtifactProducer {
+  producer_id: string;
+  loop_run_id: string;
+  artifact_id: string;
+  artifact_type: ArtifactType;
+  artifact_path: string;
+  created_by_agent_run_id: string;
+  created_by_agent_name: string;
+  created_by_thread_id: string;
+  parent_thread_id: string;
+  created_at: string;
+  metadata: Metadata;
+}
+
+export interface SdkThreadRun {
+  thread_run_id: string;
+  loop_run_id: string;
+  role: SdkThreadRunRole;
+  thread_id: string;
+  sandbox: Extract<SandboxMode, "read-only" | "workspace-write">;
+  started_at: string;
+  completed_at: string | null;
+  status: SdkThreadRunStatus;
+  artifacts_written: string[];
+  validation_commands: ValidationCommand[];
+  errors: string[];
 }
 
 export interface TaskNode {

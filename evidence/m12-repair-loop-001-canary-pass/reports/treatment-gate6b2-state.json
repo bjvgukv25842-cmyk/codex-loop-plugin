@@ -1,0 +1,59 @@
+{
+  "gate": "Gate 6B.2 SDK-Orchestrated Repair Loop E2E",
+  "target_repo": "tmp/sdk-orchestrated/gate6b2-repair-loop-target",
+  "current_stage": "FINAL_REPORT_DONE",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019eeae4-d413-75f3-873c-ee5cbe1e4d42",
+    "prd_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/PRD.md",
+    "task_graph_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/TASK_GRAPH.json",
+    "planner_result_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/planner-result.json",
+    "artifact_thread_evidence_verified": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-events.jsonl",
+    "failure_category": "",
+    "stage_completed": true
+  },
+  "dev_worker": {
+    "status": "PASS",
+    "thread_id": "019eeae6-0490-7521-a365-bc711d49f042",
+    "dev_result_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-result.json",
+    "file_change_verified": true,
+    "baseline_tests_passed": true,
+    "full_tests_expected_to_fail": true,
+    "full_tests_failed": true,
+    "known_gap_seeded": true
+  },
+  "initial_evaluator": {
+    "status": "PASS",
+    "thread_id": "019eeae8-39da-77a2-a1bc-3fec893925df",
+    "eval_report_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-needs-revision.json",
+    "eval_verdict": "NEEDS_REVISION"
+  },
+  "repair_request": {
+    "status": "PASS",
+    "repair_request_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/repair-request.json",
+    "source_eval_report_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-needs-revision.json",
+    "required_fixes_count": 1
+  },
+  "repair_dev_worker": {
+    "status": "PASS",
+    "thread_id": "019eeae9-518d-71b0-9b79-4a70a29709f8",
+    "repair_result_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-repair-result.json",
+    "file_change_verified": true,
+    "tests_passed": true
+  },
+  "final_evaluator": {
+    "status": "PASS",
+    "thread_id": "019eeaeb-03c7-7d61-9a6a-db1003f14b92",
+    "eval_report_path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-pass.json",
+    "eval_verdict": "PASS"
+  },
+  "final_report": {
+    "status": "PASS",
+    "path": "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/FinalDeliveryReport.md"
+  },
+  "errors": []
+}

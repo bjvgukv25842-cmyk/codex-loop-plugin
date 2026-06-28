@@ -1,0 +1,37 @@
+{
+  "mode": "output-lite",
+  "uses_output_schema": true,
+  "output_schema_kind": "evaluator-lite",
+  "output_schema_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-output-schema-lite.inline.json",
+  "output_schema_exists": true,
+  "output_schema_hash": "c574dbe24dea2eaa2bb637d1429b634ddc7327d2e996e13a9966a7ffcbf89075",
+  "output_schema_keys": [
+    "additionalProperties",
+    "properties",
+    "required",
+    "type"
+  ],
+  "prompt_length": 865,
+  "prompt_hash": "b3a3b92b8ffd6abd90f0e3e7aaa305b0254808170ac18b68548dc1a540cdc5c5",
+  "working_directory": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b-checkpoint-test-gMKtW5/target",
+  "model": "gpt-5.5",
+  "model_catalog_json": "",
+  "sandbox_mode": "read-only",
+  "sdk_method": "runStreamed",
+  "thread_options_keys": [
+    "approvalPolicy",
+    "model",
+    "networkAccessEnabled",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "workingDirectory"
+  ],
+  "run_options_keys": [
+    "outputSchema",
+    "signal"
+  ],
+  "evaluator_stage_shared": true,
+  "evaluator_stage_impl": "runEvaluatorLiteStage",
+  "full_eval_report_schema_in_output_schema": false,
+  "eval_report_hydration": true
+}

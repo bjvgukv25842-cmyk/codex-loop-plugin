@@ -4,6 +4,12 @@ dist/
 build/
 coverage/
 *.log
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.env
+.env.local
+.env.*.local
 
 # Runtime loop state is file-backed but should not be committed by default.
 state/agents/*
@@ -12,3 +18,12 @@ state/runs/*
 !state/agents/.gitkeep
 !state/artifacts/.gitkeep
 !state/runs/.gitkeep
+
+# Generated evaluation sandboxes and local Codex state.
+evals/effectiveness/runs/
+evidence/**/runs/
+evidence/**/target-repo/
+evidence/**/target/
+evidence/**/gate6b-smoke-target/
+.codex-eval/
+tmp/

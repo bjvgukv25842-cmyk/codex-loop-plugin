@@ -1,0 +1,38 @@
+{
+  "module": "M12.11D Alpha Approval Record",
+  "approval_status": "APPROVED_FOR_INTERNAL_ALPHA",
+  "approved_by": "litmus",
+  "approved_at": "2026-06-28T04:23:52Z",
+  "alpha_release_candidate": true,
+  "alpha_ready": true,
+  "scope": "internal controlled alpha only",
+  "allowed_repos": [
+    "sandbox/demo repos only"
+  ],
+  "allowed_users": [
+    "internal operators only"
+  ],
+  "requires_human_supervision": true,
+  "external_network_access": "disabled unless explicitly approved",
+  "danger_full_access": "forbidden",
+  "beta_ready": false,
+  "production_ready": false,
+  "manual_review_completed": true,
+  "approval_basis": [
+    "M12-mini 10/10 canary PASS",
+    "M12.11A aggregate evidence audit PASS",
+    "M12.11B Alpha Release Review Package PASS",
+    "Manual review completed for Alpha review artifacts"
+  ],
+  "forbidden_scope": [
+    "public alpha",
+    "production release",
+    "beta release",
+    "production repositories",
+    "repositories containing real secrets",
+    "unrestricted external network access",
+    "danger-full-access",
+    "automatic production deployment"
+  ],
+  "decision_notes": "APPROVE_ALPHA for internal controlled alpha only."
+}

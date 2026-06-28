@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "title": "Implement validateProjectName",
+      "description": "Reject invalid project names and accept valid names.",
+      "acceptanceCriteria": [
+        "Reject empty names",
+        "Reject whitespace-only names",
+        "Reject names longer than 80 characters",
+        "Accept valid names"
+      ],
+      "files": [
+        "src/project-name.js"
+      ],
+      "validation": [
+        "npm test"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "status": "BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE",
+  "required_agent_runs_present": false,
+  "required_agents_missing": [
+    "loop_dev_worker",
+    "loop_evaluator"
+  ],
+  "agent_runs": [
+    {
+      "agent_name": "loop_planner",
+      "agent_run_id": "agent_run_loop_planner_1781863223397_448fkpcli8l",
+      "thread_id": "thread_loop_planner_gate6_validate_project_name_20260619",
+      "status": "STARTED",
+      "artifacts": [
+        "artifacts/*.json",
+        "docs/ACCEPTANCE_CRITERIA.md",
+        "docs/PRD.md",
+        "docs/TASK_GRAPH.json",
+        "src/project-name.js",
+        "state/*.json",
+        "test/project-name.test.js"
+      ]
+    }
+  ],
+  "distinct_thread_ids": [
+    "thread_loop_planner_gate6_validate_project_name_20260619"
+  ],
+  "subagent_lifecycle_verified": true,
+  "native_spawn_verified": false,
+  "planner_artifacts_verified": false,
+  "dev_worker_artifacts_verified": false,
+  "evaluator_artifacts_verified": false,
+  "mcp_agent_ledger_verified": false,
+  "repair_request_agent_evidence_verified": false,
+  "parent_roleplay_detected": false,
+  "p0_blockers": [
+    "Missing required native agent runs: loop_dev_worker, loop_evaluator",
+    "Fewer than 3 required native spawn_agent events were captured; observed 1."
+  ],
+  "p1_issues": [
+    "MCP/state Agent Evidence Ledger or artifact producer ledger is incomplete or absent.",
+    "Planner artifacts are not backed by loop_planner MCP/state evidence.",
+    "DevResult is not backed by loop_dev_worker MCP/state evidence.",
+    "EvalReports are not backed by loop_evaluator MCP/state evidence.",
+    "RepairRequest lacks agent_run evidence."
+  ]
+}

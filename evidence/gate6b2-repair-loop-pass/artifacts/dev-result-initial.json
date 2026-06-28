@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "changed_files": [
+    "src/project-name.js"
+  ],
+  "tests_run": [
+    "npm test"
+  ],
+  "tests_passed": false,
+  "summary": "Seeded initial implementation intentionally leaves whitespace-only gap.",
+  "known_gap_seeded": true,
+  "created_by_runtime": "sdk-orchestrated",
+  "created_by_role": "dev_worker",
+  "created_by_thread_id": "thread_gate6b2_dev_worker_initial_mock"
+}

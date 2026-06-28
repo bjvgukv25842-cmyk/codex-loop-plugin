@@ -1,0 +1,126 @@
+{
+  "case_id": "feature-small-001",
+  "status": "PASS",
+  "failure_category": "",
+  "repair_loop_case_id": "repair-loop-001",
+  "fields": {
+    "model": {
+      "feature": "gpt-5.5",
+      "repair_loop": "gpt-5.5",
+      "same": true
+    },
+    "model_catalog_json": {
+      "feature": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "repair_loop": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "same": true
+    },
+    "sqlite_home": {
+      "feature": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "repair_loop": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "same": true
+    },
+    "workingDirectory": {
+      "feature": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+      "repair_loop": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/repair-loop-001/treatment/target-repo",
+      "same": false
+    },
+    "target_repo_git_status": {
+      "feature": "?? evals/",
+      "repair_loop": "M src/project-name.js\n?? artifacts/\n?? docs/",
+      "same": false
+    },
+    "sandboxMode": {
+      "feature": "read-only",
+      "repair_loop": "read-only",
+      "same": true
+    },
+    "outputSchemaPath": {
+      "feature": "",
+      "repair_loop": "",
+      "same": true
+    },
+    "outputSchemaHash": {
+      "feature": "4eb7a92b5497403e234940e49f9dcdf234d805eb037f1dc3d6683b8651f330de",
+      "repair_loop": "4eb7a92b5497403e234940e49f9dcdf234d805eb037f1dc3d6683b8651f330de",
+      "same": true
+    },
+    "planner_output_contract_version": {
+      "feature": "v2",
+      "repair_loop": "v2",
+      "same": true
+    },
+    "promptLength": {
+      "feature": 401,
+      "repair_loop": 401,
+      "same": true
+    },
+    "promptHash": {
+      "feature": "cf434cb80ebdc9db4f1dba1ee714fefc8be94c4d2a080995eb45ae3456c51c9a",
+      "repair_loop": "cf434cb80ebdc9db4f1dba1ee714fefc8be94c4d2a080995eb45ae3456c51c9a",
+      "same": true
+    },
+    "promptSectionCount": {
+      "feature": 1,
+      "repair_loop": 1,
+      "same": true
+    },
+    "usesTaskGraphJsonString": {
+      "feature": false,
+      "repair_loop": false,
+      "same": true
+    },
+    "usesPlannerLiteV2TasksArray": {
+      "feature": true,
+      "repair_loop": true,
+      "same": true
+    },
+    "sdkMethod": {
+      "feature": "runStreamed",
+      "repair_loop": "runStreamed",
+      "same": true
+    },
+    "runStreamedUsage": {
+      "feature": true,
+      "repair_loop": true,
+      "same": true
+    },
+    "no_event_timeout_ms": {
+      "feature": 60000,
+      "repair_loop": 60000,
+      "same": true
+    },
+    "checkpointStatePath": {
+      "feature": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/treatment-generic-feature-state.json",
+      "repair_loop": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/treatment-gate6b2-state.json",
+      "same": false
+    },
+    "artifactOutputPaths": {
+      "feature": {
+        "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+        "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+        "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log"
+      },
+      "repair_loop": {
+        "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-events.jsonl",
+        "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout.log",
+        "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stderr.log",
+        "result_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/gate6b2-planner-result.json"
+      },
+      "same": false
+    }
+  },
+  "critical_diffs": [
+    "workingDirectory",
+    "target_repo_git_status",
+    "checkpointStatePath",
+    "artifactOutputPaths"
+  ],
+  "uses_planner_lite_v2": true,
+  "uses_task_graph_json_string": false,
+  "feature_prompt_length": 401,
+  "repair_loop_prompt_length": 401,
+  "prompt_length_delta": 0,
+  "recommended_fixes": [
+    "Keep feature-small-001 rerun blocked until planner parity, lite-minimal, and exact smokes pass."
+  ]
+}

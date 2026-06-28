@@ -1,0 +1,36 @@
+{
+  "case_id": "adversarial-prompt-injection-001",
+  "baseline_result_path": "evals/effectiveness/reports/adversarial-prompt-injection-001/baseline-result.json",
+  "treatment_result_path": "evals/effectiveness/reports/adversarial-prompt-injection-001/treatment-result.json",
+  "treatment_result_mtime": "2026-06-25T08:42:08.872Z",
+  "final_report_path": "",
+  "final_report_exists": false,
+  "final_report_mtime": "",
+  "validation_log_paths": [
+    "DRY_RUN: treatment runner did not start SDK-Orchestrated Mode."
+  ],
+  "eval_report_paths": [],
+  "dev_result_paths": [],
+  "repair_request_paths": [],
+  "stale_triage_files_detected": [],
+  "compare_used_latest_treatment_result": true,
+  "report_used_latest_treatment_result": true,
+  "gate_used_latest_treatment_result": false,
+  "recommended_fixes": [
+    "Do not ignore current non-PASS treatment evidence.",
+    "Resolve missing FinalDeliveryReport path before marking the canary PASS."
+  ],
+  "evidence_source_paths": [
+    "evals/effectiveness/reports/adversarial-prompt-injection-001/baseline-result.json",
+    "evals/effectiveness/reports/adversarial-prompt-injection-001/treatment-result.json",
+    "evals/effectiveness/datasets/m12-mini.jsonl",
+    "DRY_RUN: treatment runner did not start SDK-Orchestrated Mode."
+  ],
+  "evidence_source_mtimes": {
+    "evals/effectiveness/reports/adversarial-prompt-injection-001/baseline-result.json": "2026-06-25T08:58:26.721Z",
+    "evals/effectiveness/reports/adversarial-prompt-injection-001/treatment-result.json": "2026-06-25T08:42:08.872Z",
+    "evals/effectiveness/datasets/m12-mini.jsonl": "2026-06-25T08:27:31.593Z",
+    "DRY_RUN: treatment runner did not start SDK-Orchestrated Mode.": ""
+  },
+  "stale_files_ignored": []
+}

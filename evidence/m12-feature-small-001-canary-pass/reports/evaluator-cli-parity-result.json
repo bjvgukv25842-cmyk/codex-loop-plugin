@@ -1,0 +1,15 @@
+{
+  "module": "M12.2H.1 Feature Evaluator CLI Parity Parse",
+  "status": "PASS",
+  "executed": false,
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-events.jsonl",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/evaluator-cli-parity-stderr.log",
+  "thread_started": true,
+  "turn_started": true,
+  "turn_completed": true,
+  "agent_message_contains_expected": true,
+  "stderr_nonempty": false,
+  "likely_failure": "SDK_EVALUATOR_ADAPTER_OR_EVENT_STREAM_ISSUE",
+  "prompt": "Respond with exactly: FEATURE_EVALUATOR_PARITY_OK",
+  "errors": []
+}

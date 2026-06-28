@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "mode": "minimal",
+  "dry_run_status": "BLOCKED_SDK_PLANNER_NOT_ENABLED",
+  "real_sdk_run_executed": false,
+  "planner_stage_shared": true,
+  "planner_stage_impl": "",
+  "task_graph_schema_valid": true,
+  "ready_for_one_real_planner_parity_as_planner_smoke": true,
+  "ready_for_one_real_planner_minimal_smoke": false,
+  "ready_for_schema_text_only_smoke": true,
+  "ready_for_output_schema_minimal_smoke": false,
+  "ready_for_output_schema_planner_smoke": false,
+  "ready_for_one_real_planner_lite_smoke": true,
+  "ready_for_gate6b_smoke": true,
+  "failure_category": "",
+  "errors": []
+}

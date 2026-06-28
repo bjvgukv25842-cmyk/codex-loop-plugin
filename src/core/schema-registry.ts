@@ -17,7 +17,11 @@ export const SCHEMA_DEFINITIONS = [
   { name: "eval-report", fileName: "eval-report.schema.json" },
   { name: "repair-request", fileName: "repair-request.schema.json" },
   { name: "context-capsule", fileName: "context-capsule.schema.json" },
-  { name: "module-progress", fileName: "module-progress.schema.json" }
+  { name: "module-progress", fileName: "module-progress.schema.json" },
+  { name: "agent-run", fileName: "agent-run.schema.json" },
+  { name: "subagent-evidence", fileName: "subagent-evidence.schema.json" },
+  { name: "artifact-producer", fileName: "artifact-producer.schema.json" },
+  { name: "sdk-thread-run", fileName: "sdk-thread-run.schema.json" }
 ] as const;
 
 export type SchemaName = (typeof SCHEMA_DEFINITIONS)[number]["name"];

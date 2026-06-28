@@ -1,0 +1,31 @@
+{
+  "case_id": "feature-small-001",
+  "status": "PASS",
+  "mode": "exact",
+  "real_sdk_run_executed": true,
+  "planner_thread_started": true,
+  "planner_thread_id": "019eef9d-5979-7c82-91a6-5df029e54e8a",
+  "structured_output_valid": true,
+  "tasks_count": 1,
+  "no_task_graph_json": true,
+  "artifact_thread_evidence_verified": true,
+  "failure_category": "",
+  "ready_for_feature_treatment_fresh_rerun": true,
+  "danger_full_access_used": false,
+  "secret_leak_detected": false,
+  "sdk_diagnosis": {
+    "package_json_has_codex_sdk": true,
+    "package_lock_has_codex_sdk": true,
+    "npm_ls_codex_sdk_ok": true,
+    "dynamic_import_codex_sdk_ok": true,
+    "codex_named_export_available": true,
+    "codex_sdk_version": "0.141.0",
+    "codex_sdk_export_keys": [
+      "Codex",
+      "Thread"
+    ],
+    "failure_category": "",
+    "error_message": ""
+  },
+  "errors": []
+}

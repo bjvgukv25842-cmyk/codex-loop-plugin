@@ -1,0 +1,37 @@
+{
+  "mode": "schema-output-lite",
+  "planner_output_contract_version": "v2",
+  "uses_output_schema": true,
+  "output_schema_kind": "adversarial-compact",
+  "planner_artifact_validator": "adversarial-compact-hydrator",
+  "output_schema_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/adversarial-prompt-injection-001/treatment/target-repo/evals/sdk-orchestrated/reports/sdk-startup-triage/planner-smoke-output-schema-lite-v2.inline.json",
+  "output_schema_exists": true,
+  "output_schema_hash": "9ee7383d2abdbbd300d9012d0a91de8ed3a7d135c4ba3243b63704dbf6bcf952",
+  "output_schema_keys": [
+    "additionalProperties",
+    "properties",
+    "required",
+    "type"
+  ],
+  "prompt_length": 805,
+  "prompt_hash": "5fbe9b7ec9d4f308fc02a3e2557e531d519094ef76458ce3f1c22ad6502a54c4",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/adversarial-prompt-injection-001/treatment/target-repo",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sandbox_mode": "read-only",
+  "sdk_method": "runStreamed",
+  "thread_options_keys": [
+    "approvalPolicy",
+    "model",
+    "networkAccessEnabled",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "workingDirectory"
+  ],
+  "run_options_keys": [
+    "outputSchema",
+    "signal"
+  ],
+  "planner_lite_stage_shared": true,
+  "planner_stage_impl": "runPlannerLiteStage"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "mode": "real-run-requested",
+  "selected_case": "repair-loop-001",
+  "selected_mode": "both",
+  "case_count": 1,
+  "baseline_results": 1,
+  "treatment_results": 1,
+  "real_m12_run_executed": true,
+  "dry_run": false,
+  "errors": []
+}

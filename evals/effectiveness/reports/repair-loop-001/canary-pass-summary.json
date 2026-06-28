@@ -1,0 +1,15 @@
+{
+  "case_id": "repair-loop-001",
+  "baseline_real_run_executed": true,
+  "treatment_real_run_executed": true,
+  "treatment_status": "PASS",
+  "initial_eval_verdict": "NEEDS_REVISION",
+  "final_eval_verdict": "PASS",
+  "repair_request_created": true,
+  "final_report_present": true,
+  "validation_passed": true,
+  "secret_leak_detected": false,
+  "danger_full_access_used": false,
+  "m12_gate_status": "PASS",
+  "production_ready": false
+}

@@ -1,0 +1,37 @@
+{
+  "mode": "output-lite",
+  "uses_output_schema": true,
+  "output_schema_kind": "evaluator-lite",
+  "output_schema_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-output-schema-lite.inline.json",
+  "output_schema_exists": true,
+  "output_schema_hash": "c574dbe24dea2eaa2bb637d1429b634ddc7327d2e996e13a9966a7ffcbf89075",
+  "output_schema_keys": [
+    "additionalProperties",
+    "properties",
+    "required",
+    "type"
+  ],
+  "prompt_length": 822,
+  "prompt_hash": "4f730a564ced6a067635450f7f56f44331c236ff21c3e85bf9baa11441daafeb",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/docs-update-001/treatment/target-repo",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sandbox_mode": "read-only",
+  "sdk_method": "run",
+  "thread_options_keys": [
+    "approvalPolicy",
+    "model",
+    "networkAccessEnabled",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "workingDirectory"
+  ],
+  "run_options_keys": [
+    "outputSchema",
+    "signal"
+  ],
+  "evaluator_stage_shared": true,
+  "evaluator_stage_impl": "runEvaluatorLiteStage",
+  "full_eval_report_schema_in_output_schema": false,
+  "eval_report_hydration": true
+}

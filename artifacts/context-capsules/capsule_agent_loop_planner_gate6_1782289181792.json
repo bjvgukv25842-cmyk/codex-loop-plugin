@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782289181792",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '260,620p' src/effectiveness/treatment-generic-test-coverage-runner.ts"
+      },
+      {
+        "command": "sed -n '620,980p' src/effectiveness/treatment-generic-test-coverage-runner.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/treatment-generic-test-coverage-runner.test.ts && sed -n '1,220p' tests/effectiveness/generic-test-coverage-checkpoint-state.test.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/test-coverage-001-fixture.test.ts && sed -n '1,260p' tests/effectiveness/treatment-case-router.test.ts && sed -n '1,260p' tests/effectiveness/next-case-readiness.test.ts"
+      },
+      {
+        "command": "sed -n '220,520p' tests/effectiveness/treatment-generic-test-coverage-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/baseline-codex-exec-runner.test.ts && sed -n '1,260p' tests/effectiveness/validation-pass-grader.test.ts && sed -n '1,260p' tests/effectiveness/diff-scope-grader.test.ts && sed -n '1,260p' tests/effectiveness/task-success-grader.test.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "cp src/effectiveness/treatment-generic-test-coverage-runner.ts /tmp/treatment-generic-docs-runner.ts && perl -0pi -e 's/TestCoverage/Docs/g; s/testCoverage/docs/g; s/TEST_COVERAGE/DOCS/g; s/test-coverage-001/docs-update-001/g; s/test-coverage/docs/g; s/Test coverage/Docs update/g; s/test coverage/docs/g; s/invoice/docs/g; s/Invoice/Docs/g; s/calculateInvoiceTotal\\(items, options\\)/parseDuration(input)/g; s/calculateInvoiceTotal/parseDuration/g; s/npm run coverage:contract/npm run docs:contract/g; s/coverage:contract/docs:contract/g; s/COVERAGE/DOCS/g; s/coverage contract/docs contract/g; s/Coverage contract/Docs contract/g; s/coverage_contract/docs_contract/g; s/test\\/docs.test.js/README.md/g; s/test\\/invoice.test.js/README.md/g; s/src\\/invoice.js/src\\/duration.js/g; s/scripts\\/check-test-coverage-contract.js/scripts\\/check-docs-contract.js/g; s/generic-docs-checkpoint-state/generic-docs-checkpoint-state/g; s/docs-planner-stage/docs-planner-stage/g; s/docs-evaluator-stage/docs-evaluator-stage/g' /tmp/treatment-generic-docs-runner.ts && sed -n '1,220p' /tmp/treatment-generic-docs-runner.ts"
+      },
+      {
+        "command": "cp src/effectiveness/treatment-generic-test-coverage-runner.ts src/effectiveness/treatment-generic-docs-runner.ts\nperl -0pi -e 's/GenericTestCoverage/GenericDocs/g; s/genericTestCoverage/genericDocs/g; s/TestCoverage/Docs/g; s/testCoverage/docs/g; s/TEST_COVERAGE/DOCS/g; s/test-coverage-001/docs-update-001/g; s/test-coverage/docs/g; s/Test coverage/Docs update/g; s/test coverage/docs/g; s/npm run coverage:contract/npm run docs:contract/g; s/coverage:contract/docs:contract/g; s/COVERAGE/DOCS/g; s/coverage_contract/docs_contract/g; s/coverage contract/docs contract/g; s/Coverage contract/Docs contract/g; s/invoice/docs/g; s/Invoice/Docs/g; s/calculateInvoiceTotal\\(items, options\\)/parseDuration(input)/g; s/calculateInvoiceTotal/parseDuration/g; s/test\\/invoice\\.test\\.js/README.md/g; s/src\\/invoice\\.js/src\\/duration.js/g; s/scripts\\/check-test-coverage-contract\\.js/scripts\\/check-docs-contract.js/g; s/generic-docs-checkpoint-state/generic-docs-checkpoint-state/g; s/docs-planner-stage/docs-planner-stage/g; s/docs-evaluator-stage/docs-evaluator-stage/g' src/effectiveness/treatment-generic-docs-runner.ts"
+      },
+      {
+        "command": "grep -n \"runGeneric\\|route.runtime\" -n src/effectiveness/treatment-sdk-orchestrated-runner.ts && grep -n \"baselineCaseSupported\" -A8 src/effectiveness/baseline-codex-exec-runner.ts && grep -n \"test-coverage\\|categoryFromCaseId\" -n src/effectiveness/thread-evidence-policy.ts"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T08:19:41.791Z",
+  "updated_at": "2026-06-24T08:19:41.791Z"
+}

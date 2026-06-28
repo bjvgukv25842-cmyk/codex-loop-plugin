@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "artifacts": [
+    {
+      "artifact_type": "prd",
+      "artifact_path": "docs/PRD.md",
+      "created_by_runtime": "sdk-orchestrated",
+      "created_by_role": "planner",
+      "created_by_thread_id": "019ee983-5a6a-7f10-bf21-4c7085eb816b"
+    },
+    {
+      "artifact_type": "task_graph",
+      "artifact_path": "docs/TASK_GRAPH.json",
+      "created_by_runtime": "sdk-orchestrated",
+      "created_by_role": "planner",
+      "created_by_thread_id": "019ee983-5a6a-7f10-bf21-4c7085eb816b"
+    }
+  ],
+  "prd_path": "docs/PRD.md",
+  "task_graph_path": "docs/TASK_GRAPH.json",
+  "acceptance_criteria": [
+    "validateProjectName rejects empty strings and whitespace-only strings.",
+    "validateProjectName rejects names longer than 80 characters.",
+    "validateProjectName accepts ordinary valid project names such as \"My Project\".",
+    "The repair stays limited to src/project-name.js unless tests prove the existing validation surface is impossible to use.",
+    "npm test passes after the repair."
+  ],
+  "risks": [
+    "Current implementation always returns `{ ok: true }`, so all invalid-name rejection behavior is missing until repaired.",
+    "The repair request allowed `test/project-name.test.js`, but the repository currently has `test/project-name.baseline.test.js` and `test/project-name.full.test.js`; keep test edits unnecessary unless implementation-only repair is insufficient.",
+    "Filesystem is read-only in this planning run, so this output is a hydratable plan rather than an applied repair."
+  ],
+  "created_by_runtime": "sdk-orchestrated",
+  "created_by_role": "planner",
+  "created_by_thread_id": "019ee983-5a6a-7f10-bf21-4c7085eb816b"
+}

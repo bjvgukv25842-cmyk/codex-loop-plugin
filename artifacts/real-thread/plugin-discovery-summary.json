@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "date": "2026-06-18",
+  "goal": "Prove codex-loop-plugin can be discovered by Codex as a real plugin.",
+  "marketplace": {
+    "name": "codex-loop-proof",
+    "root": "/Users/litmus/Downloads/codex-loop-plugin/tmp/plugin-marketplace",
+    "marketplace_file": "tmp/plugin-marketplace/.agents/plugins/marketplace.json",
+    "plugin_source_path": "./plugins/codex-loop"
+  },
+  "plugin": {
+    "plugin_id": "codex-loop@codex-loop-proof",
+    "name": "codex-loop",
+    "version": "0.1.0",
+    "installed": true,
+    "enabled": true,
+    "installed_path": "/Users/litmus/.codex/plugins/cache/codex-loop-proof/codex-loop/0.1.0"
+  },
+  "runtime_thread": {
+    "thread_id": "019edae1-4d55-79a3-853f-52b8e759adf3",
+    "events": "artifacts/real-thread/plugin-discovery-runtime-events.jsonl",
+    "message": "artifacts/real-thread/plugin-discovery-runtime-message.json",
+    "codex_loop_skill_visible": true,
+    "matching_skill_names": [
+      "codex-loop:codex-loop",
+      "codex-loop:context-distiller",
+      "codex-loop:dev-worker",
+      "codex-loop:evaluator",
+      "codex-loop:integration-manager",
+      "codex-loop:prd-planner",
+      "codex-loop:task-decomposer"
+    ]
+  },
+  "commands": [
+    {
+      "command": "codex plugin marketplace add /Users/litmus/Downloads/codex-loop-plugin/tmp/plugin-marketplace --json",
+      "status": "passed"
+    },
+    {
+      "command": "codex plugin list --marketplace codex-loop-proof --available --json",
+      "status": "passed",
+      "evidence": "Listed codex-loop@codex-loop-proof before install."
+    },
+    {
+      "command": "codex plugin add codex-loop --marketplace codex-loop-proof --json",
+      "status": "passed",
+      "evidence": "Installed to /Users/litmus/.codex/plugins/cache/codex-loop-proof/codex-loop/0.1.0."
+    },
+    {
+      "command": "codex plugin list --json",
+      "status": "passed",
+      "evidence": "Reported codex-loop@codex-loop-proof installed=true enabled=true."
+    },
+    {
+      "command": "codex exec --json --sandbox read-only -C /Users/litmus/Downloads/codex-loop-plugin -o artifacts/real-thread/plugin-discovery-runtime-message.json -",
+      "status": "passed",
+      "evidence": "Fresh runtime thread reported codex-loop-prefixed skills visible."
+    }
+  ],
+  "limitations": [
+    "This proves local plugin discovery, install, enablement, and skill visibility.",
+    "It does not prove remote marketplace publication.",
+    "It does not prove hook trust or MCP server startup."
+  ]
+}

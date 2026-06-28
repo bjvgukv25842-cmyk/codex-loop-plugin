@@ -1,0 +1,36 @@
+{
+  "case_id": "gate6-native-loop",
+  "title": "Gate 6 Real Native Multi-Agent Loop E2E",
+  "target_repo": "tmp/multi-agent/gate6-target-validate-project-name",
+  "prompt": "evals/multi-agent/prompts/gate6-user-goal.md",
+  "result_schema": "evals/multi-agent/schemas/gate6-result.schema.json",
+  "reports_dir": "evals/multi-agent/reports",
+  "required_agents": [
+    "loop_planner",
+    "loop_dev_worker",
+    "loop_evaluator"
+  ],
+  "optional_agents": [
+    "loop_context_distiller",
+    "loop_integration_manager"
+  ],
+  "pass_conditions": [
+    "real_thread_executed",
+    "parent_thread_id",
+    "three_distinct_agent_runs",
+    "two_thread_ids_or_lifecycle_evidence",
+    "planner_artifacts",
+    "dev_worker_code_change",
+    "initial_eval_needs_revision",
+    "repair_request_written",
+    "dev_worker_repair",
+    "final_eval_pass",
+    "npm_test_passed",
+    "mcp_cross_agent_state",
+    "no_parent_roleplay_artifact_writes",
+    "no_secret_leak",
+    "no_danger_full_access",
+    "tests_not_deleted",
+    "final_report_with_agent_refs"
+  ]
+}

@@ -1,0 +1,29 @@
+diff --git a/test/cache.test.js b/test/cache.test.js
+index e4ca911..637cb9f 100644
+--- a/test/cache.test.js
++++ b/test/cache.test.js
+@@ -14,3 +14,24 @@ test("returns a cached user on repeated reads", () => {
+   assert.deepEqual(cache.getUser("user-1"), { name: "Ada" });
+   assert.deepEqual(storage.calls.loadUser, ["user-1"]);
+ });
++
++test("returns null on cache miss and loads through storage each time", () => {
++  const storage = createMemoryUserStorage();
++  const cache = createUserCache(storage);
++
++  assert.equal(cache.getUser("missing-user"), null);
++  assert.equal(cache.getUser("missing-user"), null);
++  assert.deepEqual(storage.calls.loadUser, ["missing-user", "missing-user"]);
++});
++
++test("returns the latest user after updateUser replaces a cached value", () => {
++  const storage = createMemoryUserStorage({
++    "user-1": { name: "Ada" }
++  });
++  const cache = createUserCache(storage);
++
++  assert.deepEqual(cache.getUser("user-1"), { name: "Ada" });
++  assert.deepEqual(cache.updateUser("user-1", { name: "Grace" }), { name: "Grace" });
++  assert.deepEqual(cache.getUser("user-1"), { name: "Grace" });
++  assert.deepEqual(storage.calls.loadUser, ["user-1"]);
++});

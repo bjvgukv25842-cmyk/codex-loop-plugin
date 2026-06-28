@@ -1,0 +1,19 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/refactor-small-001/treatment/target-repo",
+  "src_report_builder_hash_before": "57333d6dd291fff908519497e43e3ed5b08a0b8782d7a32633649cfb8bd4341d",
+  "package_json_hash_before": "343784386e3fb2c7a7164abb7770803d29885c8da122804eead1f9a6cf7597ad",
+  "test_report_builder_hash_before": "6c33cd67e86a525590b1a803c1c4cb983f338970cae71c253ba7087477536261",
+  "refactor_contract_hash_before": "e42df411bc6c28173a96244d3336046191d632124dcb617279a6c824d77c0b5a",
+  "structure_lint_hash_before": "b832da66a38d137e007dd8118c0331f8147c82ed563a55e86beaaa51a99deda2",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": false,
+  "initial_tests_failed": false,
+  "initial_refactor_contract_run": true,
+  "initial_refactor_contract_expected_to_fail": false,
+  "initial_refactor_contract_failed": false,
+  "initial_structure_lint_run": true,
+  "initial_structure_lint_expected_to_fail": true,
+  "initial_structure_lint_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "REFACTOR_STRUCTURE_GAP_AS_EXPECTED"
+}

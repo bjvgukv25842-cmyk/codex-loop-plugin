@@ -1,0 +1,38 @@
+diff --git a/test/cache.test.js b/test/cache.test.js
+index e4ca911..f7adaa8 100644
+--- a/test/cache.test.js
++++ b/test/cache.test.js
+@@ -14,3 +14,33 @@ test("returns a cached user on repeated reads", () => {
+   assert.deepEqual(cache.getUser("user-1"), { name: "Ada" });
+   assert.deepEqual(storage.calls.loadUser, ["user-1"]);
+ });
++
++test("returns the updated user instead of stale cached data", () => {
++  const storage = createMemoryUserStorage({
++    "user-1": { name: "Ada" }
++  });
++  const cache = createUserCache(storage);
++
++  assert.deepEqual(cache.getUser("user-1"), { name: "Ada" });
++
++  const updated = cache.updateUser("user-1", { name: "Grace" });
++
++  assert.deepEqual(updated, { name: "Grace" });
++  assert.deepEqual(cache.getUser("user-1"), { name: "Grace" });
++  assert.deepEqual(storage.calls.loadUser, ["user-1"]);
++  assert.deepEqual(storage.calls.saveUser, [
++    { id: "user-1", user: { name: "Grace" } }
++  ]);
++});
++
++test("keeps the cache miss path open for later storage loads", () => {
++  const storage = createMemoryUserStorage();
++  const cache = createUserCache(storage);
++
++  assert.equal(cache.getUser("missing-user"), null);
++
++  storage.saveUser("missing-user", { name: "Lin" });
++
++  assert.deepEqual(cache.getUser("missing-user"), { name: "Lin" });
++  assert.deepEqual(storage.calls.loadUser, ["missing-user", "missing-user"]);
++});

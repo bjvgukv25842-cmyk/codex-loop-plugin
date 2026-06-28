@@ -1,0 +1,27 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-002/treatment/target-repo",
+  "target_source_file": "src/cache.js",
+  "target_source_hash_before": "eb29ab7e01a31048e4da0b7714e466982f2728d8d6bb4f90683c191f2e2d9bf9",
+  "target_test_files": [
+    "test/cache.test.js"
+  ],
+  "target_test_hashes_before": {
+    "test/cache.test.js": "077c374c830ff70de102330ec49166b5ea15d96a900484946a768fb8880392f7"
+  },
+  "coverage_contract_file": "scripts/check-test-coverage-contract.js",
+  "coverage_contract_hash_before": "1f919b9f8959374c6c0b6002a7a39bb5686d4bf7133aa965090f5c7e3c7b299d",
+  "src_invoice_hash_before": "",
+  "src_cache_hash_before": "eb29ab7e01a31048e4da0b7714e466982f2728d8d6bb4f90683c191f2e2d9bf9",
+  "src_cache_storage_hash_before": "ef318e3551cb36e09b85252b6eac0e3463b7a8a73c822072862f55fe0ea1e584",
+  "package_json_hash_before": "a29a24b5cea057327f229bb6c8d3a52142a2a4246cdfe7dc8cdf241c46f5910b",
+  "test_invoice_hash_before": "",
+  "test_cache_hash_before": "077c374c830ff70de102330ec49166b5ea15d96a900484946a768fb8880392f7",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": false,
+  "initial_tests_failed": false,
+  "initial_coverage_contract_run": true,
+  "initial_coverage_contract_expected_to_fail": true,
+  "initial_coverage_contract_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "COVERAGE_GAP_AS_EXPECTED"
+}

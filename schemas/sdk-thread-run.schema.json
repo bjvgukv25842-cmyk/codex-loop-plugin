@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/sdk-thread-run.schema.json",
+  "title": "SdkThreadRun",
+  "type": "object",
+  "properties": {
+    "thread_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "planner",
+        "dev_worker",
+        "evaluator",
+        "repair_dev_worker",
+        "final_evaluator",
+        "context_distiller"
+      ]
+    },
+    "thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "sandbox": {
+      "type": "string",
+      "enum": [
+        "read-only",
+        "workspace-write"
+      ]
+    },
+    "started_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "completed_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableISODateTime"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION",
+        "BLOCKED",
+        "FAILED",
+        "TIMEOUT"
+      ]
+    },
+    "artifacts_written": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ValidationCommand"
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "thread_run_id",
+    "loop_run_id",
+    "role",
+    "thread_id",
+    "sandbox",
+    "started_at",
+    "completed_at",
+    "status",
+    "artifacts_written",
+    "validation_commands",
+    "errors"
+  ],
+  "additionalProperties": false
+}

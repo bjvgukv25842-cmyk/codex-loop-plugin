@@ -1,0 +1,23 @@
+{
+  "id": "raw_model_graph",
+  "owner": "planner",
+  "tasks": [
+    {
+      "id": "TASK-001",
+      "owner": "model-owner",
+      "reviewer": "model-reviewer",
+      "title": "Implement validateProjectName",
+      "description": "Reject invalid names.",
+      "files": [
+        "src/project-name.js"
+      ],
+      "validation": [
+        "npm test"
+      ],
+      "arbitrary_extra": true
+    }
+  ],
+  "arbitrary_graph_extra": {
+    "from_model": true
+  }
+}

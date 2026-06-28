@@ -1,0 +1,26 @@
+{
+  "case_id": "refactor-small-001",
+  "treatment_real_run_executed": true,
+  "treatment_status": "BLOCKED",
+  "planner_thread_id_present": true,
+  "dev_worker_thread_id_present": true,
+  "initial_evaluator_thread_id_present": true,
+  "validation_passed": true,
+  "evaluator_artifact_paths_found": [
+    "evals/effectiveness/reports/refactor-small-001/sdk-stage-logs/generic-refactor-evaluator-stdout.log"
+  ],
+  "evaluator_output_found": true,
+  "evaluator_verdict_detected": "NEEDS_REVISION",
+  "eval_report_path": "",
+  "final_report_path": "",
+  "direct_pass_path_applicable": false,
+  "repair_path_required": true,
+  "artifact_mapping_issue_detected": true,
+  "final_report_generation_possible_from_existing_evidence": false,
+  "requires_treatment_rerun": true,
+  "recommended_fixes": [
+    "Persist evaluator-lite output to artifacts/eval-report.json for generic refactor evaluator stages.",
+    "Return a structured BLOCKED treatment result instead of throwing when evaluator artifact recovery fails.",
+    "After dry validation, request approval for exactly one refactor-small-001 treatment-only fresh rerun; do not rerun baseline unless approved."
+  ]
+}

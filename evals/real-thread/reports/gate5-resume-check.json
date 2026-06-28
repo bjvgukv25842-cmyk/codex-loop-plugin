@@ -1,0 +1,17 @@
+{
+  "resume_status": "PASS",
+  "read_only_resume_exit_code": 0,
+  "read_only_write_blocked": true,
+  "write_resume_exit_code": 0,
+  "thread_id": "019edb1e-3a08-7101-85d0-f11a6680661f",
+  "context_capsule_exists": true,
+  "required_fields_present": true,
+  "modified_src_or_tests": false,
+  "capsule_path": "artifacts/context-capsule-smoke.json",
+  "events_path": "evals/real-thread/reports/gate5-resume-write-events.jsonl",
+  "stderr_path": "evals/real-thread/reports/gate5-resume-write-stderr.log",
+  "notes": [
+    "First resume smoke used read-only sandbox and proved thread continuation/read-only inspection, but artifact writing was blocked by sandbox as expected.",
+    "Second resume smoke used workspace-write to create only artifacts/context-capsule-smoke.json while preserving src and test files."
+  ]
+}

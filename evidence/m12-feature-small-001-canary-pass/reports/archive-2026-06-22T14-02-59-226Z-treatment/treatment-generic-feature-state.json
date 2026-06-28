@@ -1,0 +1,42 @@
+{
+  "case_id": "feature-small-001",
+  "current_stage": "FAILED",
+  "planner": {
+    "status": "TIMEOUT",
+    "thread_id": "019eee5c-83b9-7be2-975a-32a734851275",
+    "prd_path": "",
+    "task_graph_path": "",
+    "planner_result_path": "",
+    "stage_attempted": true,
+    "stage_completed": false,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/feature-small-001/sdk-stage-logs/generic-planner-stderr.log",
+    "last_event_type": "item.completed",
+    "elapsed_ms": 101612,
+    "failure_category": "FEATURE_TREATMENT_PLANNER_NO_EVENT_TIMEOUT"
+  },
+  "dev_worker": {
+    "status": "",
+    "thread_id": "",
+    "file_change_verified": false,
+    "tests_passed": false,
+    "dev_result_path": ""
+  },
+  "evaluator": {
+    "status": "",
+    "thread_id": "",
+    "eval_verdict": "",
+    "eval_report_path": ""
+  },
+  "repair_request": {},
+  "repair_dev_worker": {},
+  "final_evaluator": {},
+  "final_report": {},
+  "errors": [
+    "SDK thread exceeded timeout_ms=180000."
+  ]
+}

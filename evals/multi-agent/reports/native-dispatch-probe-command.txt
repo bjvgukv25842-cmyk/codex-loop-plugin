@@ -1,0 +1,88 @@
+codex 'exec' '-c' 'mcp_servers.codex_loop_store.command="node"' '-c' 'mcp_servers.codex_loop_store.args=["src/mcp/server.ts"]' '-c' 'mcp_servers.codex_loop_store.cwd="/Users/litmus/Downloads/codex-loop-plugin"' '-c' 'mcp_servers.codex_loop_store.env.CODEX_LOOP_STATE_DIR="/Users/litmus/Downloads/codex-loop-plugin/tmp/multi-agent/native-dispatch-probe/state"' '--json' '--sandbox' 'workspace-write' '-C' '/Users/litmus/Downloads/codex-loop-plugin/tmp/multi-agent/native-dispatch-probe' '$codex-loop
+
+Gate 6.1 Native Subagent Capability Probe.
+
+You are running in an isolated probe repository. This is not a product implementation task.
+
+Goal:
+Prove whether Codex can spawn custom agents `loop_planner` and `loop_evaluator` from this repository and whether those subagents can record MCP AgentRun evidence.
+
+Hard rules:
+1. Parent thread is only the probe manager.
+2. Parent thread must not write `artifacts/probe/planner.json`.
+3. Parent thread must not write `artifacts/probe/evaluator.json`.
+4. Parent thread must spawn custom agent `loop_planner` with a complete work order.
+5. Parent thread must spawn custom agent `loop_evaluator` with a complete work order.
+6. Wait for both subagents to finish.
+7. Do not use danger-full-access.
+8. Do not read `.env`, tokens, or secrets.
+9. Do not access the network.
+
+Required `loop_planner` work order:
+- Role: `loop_planner`.
+- Sandbox expectation: read-only except for required probe artifact write if the runtime permits it.
+- Call MCP `agent_run_start` with:
+  - `loop_run_id`: `loop_probe_native_dispatch`
+  - `agent_name`: `loop_planner`
+  - `agent_type`: `planner`
+  - `parent_thread_id`: parent thread id if available, otherwise `parent_current_thread`
+  - `thread_id`: your current thread id if available, otherwise `loop_planner_probe_thread`
+  - `task_id`: `task_probe_planner`
+  - `module_id`: `Gate6.1`
+  - `phase`: `probe_planner`
+- Create `artifacts/probe/planner.json` containing:
+  - `agent_name`: `loop_planner`
+  - `status`: `PASS`
+  - `artifact`: `artifacts/probe/planner.json`
+- Call MCP `artifact_write_by_agent` for `artifacts/probe/planner.json` with:
+  - `agent_run_id`: the id returned by `agent_run_start`
+  - `agent_name`: `loop_planner`
+  - `thread_id`: the same `thread_id` used in `agent_run_start`
+  - `artifact_type`: `log`
+  - `artifact_path`: `artifacts/probe/planner.json`
+  - `artifact_id`: `artifact_probe_planner`
+- Call MCP `agent_run_finish` with `status`: `PASS` and `artifact_ids`: [`artifact_probe_planner`].
+
+Required `loop_evaluator` work order:
+- Role: `loop_evaluator`.
+- Sandbox expectation: read-only except for required probe artifact write if the runtime permits it.
+- Call MCP `agent_run_start` with:
+  - `loop_run_id`: `loop_probe_native_dispatch`
+  - `agent_name`: `loop_evaluator`
+  - `agent_type`: `evaluator`
+  - `parent_thread_id`: parent thread id if available, otherwise `parent_current_thread`
+  - `thread_id`: your current thread id if available, otherwise `loop_evaluator_probe_thread`
+  - `task_id`: `task_probe_evaluator`
+  - `module_id`: `Gate6.1`
+  - `phase`: `probe_evaluator`
+- Create `artifacts/probe/evaluator.json` containing:
+  - `agent_name`: `loop_evaluator`
+  - `status`: `PASS`
+  - `artifact`: `artifacts/probe/evaluator.json`
+- Call MCP `artifact_write_by_agent` for `artifacts/probe/evaluator.json` with:
+  - `agent_run_id`: the id returned by `agent_run_start`
+  - `agent_name`: `loop_evaluator`
+  - `thread_id`: the same `thread_id` used in `agent_run_start`
+  - `artifact_type`: `log`
+  - `artifact_path`: `artifacts/probe/evaluator.json`
+  - `artifact_id`: `artifact_probe_evaluator`
+- Call MCP `agent_run_finish` with `status`: `PASS` and `artifact_ids`: [`artifact_probe_evaluator`].
+
+Final parent output JSON:
+
+```json
+{
+  "status": "PASS | BLOCKED",
+  "real_thread_executed": true,
+  "parent_thread_id": "",
+  "spawned_agents": ["loop_planner", "loop_evaluator"],
+  "artifacts": [
+    "artifacts/probe/planner.json",
+    "artifacts/probe/evaluator.json"
+  ],
+  "mcp_agent_run_evidence": true,
+  "parent_wrote_probe_artifacts": false,
+  "blockers": []
+}
+```
+'

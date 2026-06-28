@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782294898461",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "wc -l src/effectiveness/treatment-generic-bugfix-runner.ts src/effectiveness/treatment-generic-docs-runner.ts src/effectiveness/treatment-generic-test-coverage-runner.ts src/effectiveness/treatment-generic-feature-runner.ts"
+      },
+      {
+        "command": "sed -n '220,520p' tests/effectiveness/treatment-generic-test-coverage-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,180p' tests/effectiveness/treatment-case-router.test.ts && sed -n '1,160p' tests/effectiveness/next-case-readiness.test.ts"
+      },
+      {
+        "command": "sed -n '240,420p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/generic-refactor-checkpoint-state.test.ts tests/effectiveness/treatment-generic-refactor-runner.test.ts tests/effectiveness/treatment-case-router.test.ts tests/effectiveness/next-case-readiness.test.ts tests/effectiveness/baseline-codex-exec-runner.test.ts tests/effectiveness/thread-evidence-policy.test.ts tests/effectiveness/task-success-grader.test.ts tests/effectiveness/validation-pass-grader.test.ts tests/effectiveness/diff-scope-grader.test.ts"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/treatment-generic-refactor-runner.test.ts -t \"supports optional repair path\" --reporter verbose"
+      },
+      {
+        "command": "node --input-type=module <<'NODE'\nimport { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { dirname, resolve } from 'node:path';\nimport { runGenericRefactorTreatment } from './src/effectiveness/treatment-generic-refactor-runner.ts';\nimport { loadM12Dataset } from './scripts/effectiveness/dataset.ts';\nimport { validPlannerLiteV2Output } from './tests/orchestrator/planner-lite-v2-output.test.ts';\nimport { validDevWorkerLiteOutput } from './tests/orchestrator/parse-dev-worker-lite-output.test.ts';\nfunction wf(p,v){ mkdirSync(dirname(p),{recursive:true}); writeFileSync(p,v,'utf8'); }\nfunction copyFixture(root){ const source=resolve(process.cwd(),'evals/effectiveness/fixtures/refactor-small-001'); const target=resolve(root,'evals/effectiveness/fixtures/refactor-small-001'); for(const f of ['package.json','README.md','src/report-builder.js','test/report-builder.test.js','scripts/check-refactor-contract.js','scripts/check-structure.js']) wf(resolve(target,f), readFileSync(resolve(source,f),'utf8')); }\nconst repoRoot=mkdtempSync(resolve(tmpdir(),'m12-refactor-debug-')); copyFixture(repoRoot);\nclass A { inputs=[]; dev=0; eval=0; async startThread(i){return this.runThread(i)} async runThread(i){ this.inputs.push(i); const tid=this.next(i.role); const ep=i.error_capture_paths?.events_path||''; if(ep) wf(ep,`{\"type\":\"thread.started\",\"thread_id\":\"${tid}\"}\\n`); if(i.role==='dev_worker') this.write(i.working_directory); return {thread_id:tid, role:i.role, status:'PASS', final_response:this.resp(i), events:[], events_path:ep, stdout_path:i.error_capture_paths?.stdout_path||'', stderr_path:i.error_capture_paths?.stderr_path||'', artifacts:[], sandbox_control:'VERIFIED', errors:[]}; } async resumeThread(i){return this.stub(i.role)} async getThreadEvents(i){return {thread_id:i.thread_id, events_path:i.events_path||'', events:[], errors:[]}} async stopThread(i){return {...this.stub('context_distiller'), thread_id:i.thread_id}} async getFinalResponse(i){return {...this.stub('context_distiller'), thread_id:i.thread_id}} next(role){ if(role==='planner') return 'thread_planner_1'; if(role==='dev_worker'){this.dev++; return `thread_dev_worker_${this.dev}`;} if(role==='evaluator') return `thread_evaluator_${this.eval+1}`; return `thread_${role}`;} write(root){ wf(resolve(root,'src/report-builder.js'), `export function buildSummaryReport(data) { return formatText(data?.title, \"Untitled\"); }\\nexport function buildDetailedReport(data) { return formatReportDate(data?.createdAt); }\\nexport function buildCsvReport(data) { return formatStatus(data?.status); }\\nfunction formatText(value, fallback) { return String(value ?? fallback).trim(); }\\nfunction formatReportDate(value) { const d = new Date(value ?? \"2026-01-01T00:00:00Z\"); return [d.getUTCFullYear(), String(d.getUTCMonth() + 1).padStart(2, \"0\"), String(d.getUTCDate()).padStart(2, \"0\")].join(\"-\"); }\\nfunction formatStatus(value) { const status = formatText(value, \"draft\").toLowerCase(); return status === \"published\" ? \"Published\" : status === \"archived\" ? \"Archived\" : \"Draft\"; }\\nfunction formatMoney(value) { return '$' + Number(value ?? 0).toFixed(2); }\\nfunction csvEscape(value) { return String(value); }\\n`)} resp(i){ if(i.role==='planner') return JSON.stringify(validPlannerLiteV2Output({prd_markdown:'# PRD', tasks:[{id:'TASK-001',title:'t',description:'d',acceptance_criteria:['npm test passes.'], likely_files:['src/report-builder.js'], validation_commands:['npm test','npm run refactor:contract','npm run lint:structure']}], acceptance_criteria:['npm test passes.']})); if(i.role==='dev_worker') return JSON.stringify(validDevWorkerLiteOutput({changed_files:['src/report-builder.js'], tests_run:['npm test','npm run refactor:contract','npm run lint:structure'], summary:'s'})); if(i.role==='evaluator'){ this.eval++; if(this.eval===1) return JSON.stringify({status:'NEEDS_REVISION',verdict:'NEEDS_REVISION',summary:'needs',findings_json:JSON.stringify([{severity:'medium',category:'maintainability',description:'x',evidence:[],required_fix:'fix'}]),validation_commands_checked:['npm test','npm run refactor:contract','npm run lint:structure']}); return JSON.stringify({status:'PASS',verdict:'PASS',summary:'pass',findings_json:'[]',validation_commands_checked:['npm test','npm run refactor:contract','npm run lint:structure']}); } return '{}'; } stub(role){ return {thread_id:`thread_${role}`, role, status:'PASS', final_response:'{}', events:[], events_path:'', stdout_path:'', stderr_path:'', artifacts:[], errors:[]}; }}\nconst result=await runGenericRefactorTreatment({testCase:loadM12Dataset().find(x=>x.case_id==='refactor-small-001'), repoRoot, fresh:true, env:{CODEX_LOOP_ENABLE_M12_REAL_RUN:'1', CODEX_LOOP_CODEX_MODEL:'gpt-test'}, runtime_adapter:new A(), validation_runner:(cwd,log,cmds)=>{wf(log,cmds.map(c=>`$ ${c}\\nPASS\\n`).join('')); return {passed:true, output:'PASS'};}});\nconsole.log(JSON.stringify(result,null,2));\nconsole.log('repoRoot', repoRoot);\nNODE"
+      },
+      {
+        "command": "node --input-type=module <<'NODE'\nimport { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';\nimport { tmpdir } from 'node:os';\nimport { dirname, resolve } from 'node:path';\nimport { runGenericRefactorTreatment } from './src/effectiveness/treatment-generic-refactor-runner.ts';\nimport { loadM12Dataset } from './scripts/effectiveness/dataset.ts';\nfunction wf(p,v){ mkdirSync(dirname(p),{recursive:true}); writeFileSync(p,v,'utf8'); }\nfunction copyFixture(root){ const source=resolve(process.cwd(),'evals/effectiveness/fixtures/refactor-small-001'); const target=resolve(root,'evals/effectiveness/fixtures/refactor-small-001'); for(const f of ['package.json','README.md','src/report-builder.js','test/report-builder.test.js','scripts/check-refactor-contract.js','scripts/check-structure.js']) wf(resolve(target,f), readFileSync(resolve(source,f),'utf8')); }\nconst repoRoot=mkdtempSync(resolve(tmpdir(),'m12-refactor-debug-')); copyFixture(repoRoot);\nconst plannerOutput={status:'PASS',prd_markdown:'# PRD',tasks:[{id:'TASK-001',title:'Centralize report builder formatting',description:'Refactor duplicate formatting logic.',acceptance_criteria:['npm test passes.'],likely_files:['src/report-builder.js'],validation_commands:['npm test','npm run refactor:contract','npm run lint:structure']}],acceptance_criteria:['npm test passes.'],risks:[]};\nconst devOutput={status:'PASS',changed_files:['src/report-builder.js'],tests_run:['npm test','npm run refactor:contract','npm run lint:structure'],tests_passed:true,summary:'s'};\nclass A { inputs=[]; dev=0; eval=0; async startThread(i){return this.runThread(i)} async runThread(i){ this.inputs.push(i); const tid=this.next(i.role); const ep=i.error_capture_paths?.events_path||''; if(ep) wf(ep,`{\"type\":\"thread.started\",\"thread_id\":\"${tid}\"}\\n`); if(i.role==='dev_worker') this.write(i.working_directory); return {thread_id:tid, role:i.role, status:'PASS', final_response:this.resp(i), events:[], events_path:ep, stdout_path:i.error_capture_paths?.stdout_path||'', stderr_path:i.error_capture_paths?.stderr_path||'', artifacts:[], sandbox_control:'VERIFIED', errors:[]}; } async resumeThread(i){return this.stub(i.role)} async getThreadEvents(i){return {thread_id:i.thread_id, events_path:i.events_path||'', events:[], errors:[]}} async stopThread(i){return {...this.stub('context_distiller'), thread_id:i.thread_id}} async getFinalResponse(i){return {...this.stub('context_distiller'), thread_id:i.thread_id}} next(role){ if(role==='planner') return 'thread_planner_1'; if(role==='dev_worker'){this.dev++; return `thread_dev_worker_${this.dev}`;} if(role==='evaluator') return `thread_evaluator_${this.eval+1}`; return `thread_${role}`;} write(root){ wf(resolve(root,'src/report-builder.js'), `export function buildSummaryReport(data) { const items = Array.isArray(data?.items) ? data.items : []; const title = formatText(data?.title, \"Untitled\"); const date = formatReportDate(data?.createdAt); const statusLabel = formatStatus(data?.status); const total = items.reduce((sum, item) => sum + Number(item.amount ?? 0), 0); return [\\`Report: ${'${title}'}\\`, \\`Date: ${'${date}'}\\`, \\`Status: ${'${statusLabel}'}\\`, \\`Items: ${'${items.length}'}\\`, \\`Total: ${'${formatMoney(total)}'}\\`].join(\"\\\\n\"); }\\nexport function buildDetailedReport(data) { const items = Array.isArray(data?.items) ? data.items : []; const title = formatText(data?.title, \"Untitled\"); const owner = formatText(data?.owner, \"Unassigned\"); const date = formatReportDate(data?.createdAt); const statusLabel = formatStatus(data?.status); const lines = [\\`Report: ${'${title}'}\\`, \\`Owner: ${'${owner}'}\\`, \\`Date: ${'${date}'}\\`, \\`Status: ${'${statusLabel}'}\\`, \"Items:\"]; for (const item of items) lines.push(\\`- ${'${formatText(item.name, \"Unnamed\")}'}: ${'${formatMoney(item.amount)}'}\\`); const total = items.reduce((sum, item) => sum + Number(item.amount ?? 0), 0); lines.push(\\`Total: ${'${formatMoney(total)}'}\\`); return lines.join(\"\\\\n\"); }\\nexport function buildCsvReport(data) { const items = Array.isArray(data?.items) ? data.items : []; const title = formatText(data?.title, \"Untitled\"); const date = formatReportDate(data?.createdAt); const statusLabel = formatStatus(data?.status); const rows = [\"title,date,status,item,amount\"]; for (const item of items) rows.push([title, date, statusLabel, formatText(item.name, \"Unnamed\"), Number(item.amount ?? 0).toFixed(2)].map(csvEscape).join(\",\")); return rows.join(\"\\\\n\"); }\\nfunction formatText(value, fallback) { return String(value ?? fallback).trim(); }\\nfunction formatReportDate(value) { const d = new Date(value ?? \"2026-01-01T00:00:00Z\"); return [d.getUTCFullYear(), String(d.getUTCMonth() + 1).padStart(2, \"0\"), String(d.getUTCDate()).padStart(2, \"0\")].join(\"-\"); }\\nfunction formatStatus(value) { const status = formatText(value, \"draft\").toLowerCase(); return status === \"published\" ? \"Published\" : status === \"archived\" ? \"Archived\" : \"Draft\"; }\\nfunction formatMoney(value) { return '$' + Number(value ?? 0).toFixed(2); }\\nfunction csvEscape(value) { const text = String(value); return /[\",\\\\n]/.test(text) ? \\`\"${'${text.replaceAll(\"\\\\\\\"\", \"\\\\\\\"\\\\\\\"\")}'}\"\\` : text; }\\n`)} resp(i){ if(i.role==='planner') return JSON.stringify(plannerOutput); if(i.role==='dev_worker') return JSON.stringify(devOutput); if(i.role==='evaluator'){ this.eval++; if(this.eval===1) return JSON.stringify({status:'NEEDS_REVISION',verdict:'NEEDS_REVISION',summary:'needs',findings_json:JSON.stringify([{severity:'medium',category:'maintainability',description:'x',evidence:[],required_fix:'fix'}]),validation_commands_checked:['npm test','npm run refactor:contract','npm run lint:structure']}); return JSON.stringify({status:'PASS',verdict:'PASS',summary:'pass',findings_json:'[]',validation_commands_checked:['npm test','npm run refactor:contract','npm run lint:structure']}); } return '{}'; } stub(role){ return {thread_id:`thread_${role}`, role, status:'PASS', final_response:'{}', events:[], events_path:'', stdout_path:'', stderr_path:'', artifacts:[], errors:[]}; }}\nconst result=await runGenericRefactorTreatment({testCase:loadM12Dataset().find(x=>x.case_id==='refactor-small-001'), repoRoot, fresh:true, env:{CODEX_LOOP_ENABLE_M12_REAL_RUN:'1', CODEX_LOOP_CODEX_MODEL:'gpt-test'}, runtime_adapter:new A(), validation_runner:(cwd,log,cmds)=>{wf(log,cmds.map(c=>`$ ${c}\\nPASS\\n`).join('')); return {passed:true, output:'PASS'};}});\nconsole.log(JSON.stringify(result,null,2));\nNODE"
+      },
+      {
+        "command": "npm test -- tests/effectiveness/generic-refactor-checkpoint-state.test.ts tests/effectiveness/treatment-generic-refactor-runner.test.ts tests/effectiveness/treatment-case-router.test.ts tests/effectiveness/next-case-readiness.test.ts tests/effectiveness/baseline-codex-exec-runner.test.ts tests/effectiveness/thread-evidence-policy.test.ts tests/effectiveness/task-success-grader.test.ts tests/effectiveness/validation-pass-grader.test.ts tests/effectiveness/diff-scope-grader.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T09:54:58.461Z",
+  "updated_at": "2026-06-24T09:54:58.461Z"
+}

@@ -1,0 +1,80 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782304231256",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "test -e evidence/m12-feature-small-002-canary-pass && find evidence/m12-feature-small-002-canary-pass -maxdepth 2 -type f | sort | sed -n '1,120p' || true"
+      },
+      {
+        "command": "test -f evals/effectiveness/runs/feature-small-002/treatment/target-repo/artifacts/FinalDeliveryReport.md && echo FINAL_REPORT_PRESENT || echo FINAL_REPORT_MISSING"
+      },
+      {
+        "command": "test -s evidence/m12-feature-small-002-canary-pass/CHECKSUMS.sha256 && tail -n 5 evidence/m12-feature-small-002-canary-pass/CHECKSUMS.sha256"
+      },
+      {
+        "command": "sed -n '1,340p' tests/effectiveness/treatment-generic-bugfix-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,280p' tests/effectiveness/baseline-codex-exec-runner.test.ts && printf '\\n--- router ---\\n' && sed -n '1,260p' tests/effectiveness/treatment-case-router.test.ts"
+      },
+      {
+        "command": "sed -n '1,320p' tests/effectiveness/next-case-readiness.test.ts && printf '\\n--- fixture test ---\\n' && sed -n '1,220p' tests/effectiveness/bugfix-small-001-fixture.test.ts"
+      },
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/task-success-grader.test.ts && printf '\\n--- validation ---\\n' && sed -n '1,220p' tests/effectiveness/validation-pass-grader.test.ts && printf '\\n--- diff ---\\n' && sed -n '1,260p' tests/effectiveness/diff-scope-grader.test.ts"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T12:30:31.255Z",
+  "updated_at": "2026-06-24T12:30:31.255Z"
+}

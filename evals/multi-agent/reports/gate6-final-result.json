@@ -1,0 +1,62 @@
+{
+  "gate": "Gate 6 Real Native Multi-Agent Loop E2E",
+  "status": "BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE",
+  "bootstrap_completed": true,
+  "custom_agents_materialized": [
+    "loop_planner",
+    "loop_dev_worker",
+    "loop_evaluator",
+    "loop_context_distiller",
+    "loop_integration_manager"
+  ],
+  "native_subagent_mode_enabled": true,
+  "real_thread_executed": true,
+  "parent_thread_id": "019edf4f-3cd6-7533-bfbc-1e79a3146ff9",
+  "agent_runs": [
+    {
+      "agent_name": "loop_planner",
+      "agent_run_id": "agent_run_loop_planner_1781863223397_448fkpcli8l",
+      "thread_id": "thread_loop_planner_gate6_validate_project_name_20260619",
+      "artifacts": [
+        "artifacts/*.json",
+        "docs/ACCEPTANCE_CRITERIA.md",
+        "docs/PRD.md",
+        "docs/TASK_GRAPH.json",
+        "src/project-name.js",
+        "state/*.json",
+        "test/project-name.test.js"
+      ]
+    }
+  ],
+  "mcp_cross_agent_state_verified": false,
+  "subagent_lifecycle_verified": true,
+  "initial_eval_verdict": "",
+  "repair_request_created": false,
+  "final_eval_verdict": "",
+  "tests_passed": false,
+  "parent_roleplay_detected": false,
+  "p0_blockers": [
+    "No npm test command was observed in JSONL events.",
+    "Missing required native agent runs: loop_dev_worker, loop_evaluator",
+    "Fewer than 3 required native spawn_agent events were captured; observed 1.",
+    "Missing required artifacts: artifacts/dev-result.json, artifacts/eval-report-needs-revision.json, artifacts/repair-request.json, artifacts/eval-report-pass.json, artifacts/FinalDeliveryReport.md",
+    "Final npm test did not pass.",
+    "src/project-name.js does not show a real validation repair.",
+    "Initial EvalReport is not NEEDS_REVISION.",
+    "Initial NEEDS_REVISION evidence has no persisted findings array.",
+    "RepairRequest does not reference the initial EvalReport.",
+    "Final EvalReport is not PASS."
+  ],
+  "p1_issues": [
+    "MCP/state Agent Evidence Ledger or artifact producer ledger is incomplete or absent.",
+    "Planner artifacts are not backed by loop_planner MCP/state evidence.",
+    "DevResult is not backed by loop_dev_worker MCP/state evidence.",
+    "EvalReports are not backed by loop_evaluator MCP/state evidence.",
+    "RepairRequest lacks agent_run evidence.",
+    "state/events.json missing semantic events: prd_created, task_graph_created, eval_needs_revision, repair_requested, dev_repaired, validation_passed, eval_passed, final_report_created",
+    "FinalDeliveryReport does not include agent_run_id/thread_id/artifact refs.",
+    "MCP/state cross-agent evidence is incomplete.",
+    "Hooks trusted mode was not checked; manual review/trust remains required."
+  ],
+  "ready_for_M12_effectiveness_eval": false
+}

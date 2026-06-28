@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/subagent-evidence.schema.json",
+  "title": "SubagentEvidence",
+  "type": "object",
+  "properties": {
+    "evidence_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "artifact_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ArtifactType"
+    },
+    "artifact_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableID"
+    },
+    "created_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "evidence_id",
+    "loop_run_id",
+    "agent_run_id",
+    "agent_name",
+    "thread_id",
+    "artifact_type",
+    "artifact_path",
+    "artifact_id",
+    "created_at",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

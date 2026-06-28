@@ -1,0 +1,23 @@
+{
+  "case_id": "docs-update-001",
+  "failure_category": "BASELINE_CODEX_EXEC_TIMEOUT",
+  "process_started": true,
+  "process_exit_code": 0,
+  "killed_by_timeout": true,
+  "thread_started": true,
+  "thread_id": "019ef8d7-0c1f-7171-9c63-450ad4e2da40",
+  "event_count": 2,
+  "last_event_type": "turn.started",
+  "stdout_bytes": 101,
+  "stderr_bytes": 4792,
+  "duration_ms": 180030,
+  "timeout_ms": 180000,
+  "no_event_timeout_ms": 60000,
+  "invocation_trace_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-invocation-trace-redacted.json",
+  "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-events.jsonl",
+  "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-stdout.log",
+  "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/docs-update-001/baseline-stderr.log",
+  "recommended_fixes": [
+    "Keep the baseline timeout as a real M12 outcome and rerun only after explicit approval with the timeout guard enabled."
+  ]
+}

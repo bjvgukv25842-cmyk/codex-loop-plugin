@@ -1,0 +1,499 @@
+{
+  "gate": "Gate 6B.1E SDK Invocation Differential",
+  "status": "SDK_INVOCATION_DIFF_DETECTED",
+  "planner_mode": "minimal",
+  "report_dir": "evals/sdk-orchestrated/reports/sdk-startup-triage",
+  "invocations": [
+    {
+      "name": "sdk_parity",
+      "trace_path": "evals/sdk-orchestrated/reports/sdk-startup-triage/sdk-parity-invocation-trace-redacted.json",
+      "trace_exists": true,
+      "trace_trusted": false,
+      "workingDirectory": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+      "target_repo_absolute_path": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+      "target_repo_git_status": "",
+      "CODEX_SQLITE_HOME": "present",
+      "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/package.json",
+      "model": "gpt-5.5",
+      "sandboxMode": "read-only",
+      "skipGitRepoCheck": false,
+      "usesOutputSchema": false,
+      "outputSchemaPath": "",
+      "outputSchemaHash": "",
+      "prompt_length": 46,
+      "prompt_hash": "6a5e2e25594cb04d249b541a7cda908092a01cbbabb45820c2548ca5884c8769",
+      "config_keys": [
+        "model",
+        "model_catalog_json",
+        "sqlite_home"
+      ],
+      "env_keys": [
+        "BASE_URL",
+        "CODEX_CI",
+        "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+        "CODEX_LOOP_DIRECT_CLI_PARITY_EVENTS_PATH",
+        "CODEX_LOOP_ENABLE_REAL_SDK_PARITY",
+        "CODEX_LOOP_GATE6B_SDK_PARITY_MOCK",
+        "CODEX_LOOP_MODEL_CATALOG_JSON",
+        "CODEX_LOOP_SDK_PARITY_RESULT_PATH",
+        "CODEX_SHELL",
+        "CODEX_SQLITE_HOME",
+        "CODEX_THREAD_ID",
+        "COLOR",
+        "COLORTERM",
+        "COMMAND_MODE",
+        "DEV",
+        "DISABLE_AUTO_UPDATE",
+        "EDITOR",
+        "FORCE_TTY",
+        "GH_PAGER",
+        "GIT_PAGER",
+        "HOME",
+        "INIT_CWD",
+        "LANG",
+        "LC_ALL",
+        "LC_CTYPE",
+        "LOGNAME",
+        "LOG_FORMAT",
+        "MODE",
+        "MallocNanoZone",
+        "NODE",
+        "NODE_ENV",
+        "NO_COLOR",
+        "OSLogRateLimit",
+        "PAGER",
+        "PATH",
+        "PROD",
+        "PWD",
+        "REDACTED_SENSITIVE_ENV_KEY",
+        "RUST_LOG",
+        "SHELL",
+        "SHLVL",
+        "SSR",
+        "TERM",
+        "TEST",
+        "TMPDIR",
+        "USER",
+        "VITEST",
+        "VITEST_MODE",
+        "VITEST_POOL_ID",
+        "VITEST_WORKER_ID",
+        "XPC_FLAGS",
+        "XPC_SERVICE_NAME",
+        "ZSH_TMUX_AUTOSTART",
+        "ZSH_TMUX_AUTOSTARTED",
+        "_",
+        "__CFBundleIdentifier",
+        "__CF_USER_TEXT_ENCODING",
+        "npm_command",
+        "npm_config_cache",
+        "npm_config_global_prefix",
+        "npm_config_globalconfig",
+        "npm_config_init_module",
+        "npm_config_local_prefix",
+        "npm_config_node_gyp",
+        "npm_config_noproxy",
+        "npm_config_npm_version",
+        "npm_config_prefix",
+        "npm_config_user_agent",
+        "npm_config_userconfig",
+        "npm_execpath",
+        "npm_lifecycle_event",
+        "npm_lifecycle_script",
+        "npm_node_execpath",
+        "npm_package_json",
+        "npm_package_name",
+        "npm_package_version"
+      ],
+      "sdk_api_method": "runStreamed",
+      "node_process_cwd": "/Users/litmus/Downloads/codex-loop-plugin",
+      "error_capture_paths": {
+        "result_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/sdk-parity-smoke-test-KirLTC/evals/sdk-orchestrated/reports/sdk-startup-triage/sdk-parity-smoke-result.json"
+      }
+    },
+    {
+      "name": "gate6b_planner",
+      "trace_path": "evals/sdk-orchestrated/reports/sdk-startup-triage/gate6b-smoke-planner-invocation-trace-redacted.json",
+      "trace_exists": false,
+      "trace_trusted": false,
+      "workingDirectory": "",
+      "target_repo_absolute_path": "",
+      "target_repo_git_status": "",
+      "CODEX_SQLITE_HOME": "",
+      "sqlite_home": "",
+      "model_catalog_json": "",
+      "model": "",
+      "sandboxMode": "",
+      "skipGitRepoCheck": null,
+      "usesOutputSchema": false,
+      "outputSchemaPath": "",
+      "outputSchemaHash": "",
+      "prompt_length": null,
+      "prompt_hash": "",
+      "config_keys": [],
+      "env_keys": [],
+      "sdk_api_method": "",
+      "node_process_cwd": "",
+      "error_capture_paths": {}
+    },
+    {
+      "name": "planner_smoke",
+      "trace_path": "evals/sdk-orchestrated/reports/sdk-startup-triage/planner-smoke-minimal-invocation-trace-redacted.json",
+      "trace_exists": false,
+      "trace_trusted": false,
+      "workingDirectory": "",
+      "target_repo_absolute_path": "",
+      "target_repo_git_status": "",
+      "CODEX_SQLITE_HOME": "",
+      "sqlite_home": "",
+      "model_catalog_json": "",
+      "model": "",
+      "sandboxMode": "",
+      "skipGitRepoCheck": null,
+      "usesOutputSchema": false,
+      "outputSchemaPath": "",
+      "outputSchemaHash": "",
+      "prompt_length": null,
+      "prompt_hash": "",
+      "config_keys": [],
+      "env_keys": [],
+      "sdk_api_method": "",
+      "node_process_cwd": "",
+      "error_capture_paths": {}
+    }
+  ],
+  "differences": [
+    {
+      "field": "workingDirectory",
+      "values": {
+        "sdk_parity": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "target_repo_absolute_path",
+      "values": {
+        "sdk_parity": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "target_repo_git_status",
+      "values": {
+        "sdk_parity": "",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "CODEX_SQLITE_HOME",
+      "values": {
+        "sdk_parity": "present",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "sqlite_home",
+      "values": {
+        "sdk_parity": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "model_catalog_json",
+      "values": {
+        "sdk_parity": "/Users/litmus/Downloads/codex-loop-plugin/package.json",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "model",
+      "values": {
+        "sdk_parity": "gpt-5.5",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "sandboxMode",
+      "values": {
+        "sdk_parity": "read-only",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "skipGitRepoCheck",
+      "values": {
+        "sdk_parity": false,
+        "gate6b_planner": null,
+        "planner_smoke": null
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "usesOutputSchema",
+      "values": {
+        "sdk_parity": false,
+        "gate6b_planner": false,
+        "planner_smoke": false
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "outputSchemaPath",
+      "values": {
+        "sdk_parity": "",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "outputSchemaHash",
+      "values": {
+        "sdk_parity": "",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "prompt_length",
+      "values": {
+        "sdk_parity": 46,
+        "gate6b_planner": null,
+        "planner_smoke": null
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "prompt_hash",
+      "values": {
+        "sdk_parity": "6a5e2e25594cb04d249b541a7cda908092a01cbbabb45820c2548ca5884c8769",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "config_keys",
+      "values": {
+        "sdk_parity": [
+          "model",
+          "model_catalog_json",
+          "sqlite_home"
+        ],
+        "gate6b_planner": [],
+        "planner_smoke": []
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "env_keys",
+      "values": {
+        "sdk_parity": [
+          "BASE_URL",
+          "CODEX_CI",
+          "CODEX_INTERNAL_ORIGINATOR_OVERRIDE",
+          "CODEX_LOOP_DIRECT_CLI_PARITY_EVENTS_PATH",
+          "CODEX_LOOP_ENABLE_REAL_SDK_PARITY",
+          "CODEX_LOOP_GATE6B_SDK_PARITY_MOCK",
+          "CODEX_LOOP_MODEL_CATALOG_JSON",
+          "CODEX_LOOP_SDK_PARITY_RESULT_PATH",
+          "CODEX_SHELL",
+          "CODEX_SQLITE_HOME",
+          "CODEX_THREAD_ID",
+          "COLOR",
+          "COLORTERM",
+          "COMMAND_MODE",
+          "DEV",
+          "DISABLE_AUTO_UPDATE",
+          "EDITOR",
+          "FORCE_TTY",
+          "GH_PAGER",
+          "GIT_PAGER",
+          "HOME",
+          "INIT_CWD",
+          "LANG",
+          "LC_ALL",
+          "LC_CTYPE",
+          "LOGNAME",
+          "LOG_FORMAT",
+          "MODE",
+          "MallocNanoZone",
+          "NODE",
+          "NODE_ENV",
+          "NO_COLOR",
+          "OSLogRateLimit",
+          "PAGER",
+          "PATH",
+          "PROD",
+          "PWD",
+          "REDACTED_SENSITIVE_ENV_KEY",
+          "RUST_LOG",
+          "SHELL",
+          "SHLVL",
+          "SSR",
+          "TERM",
+          "TEST",
+          "TMPDIR",
+          "USER",
+          "VITEST",
+          "VITEST_MODE",
+          "VITEST_POOL_ID",
+          "VITEST_WORKER_ID",
+          "XPC_FLAGS",
+          "XPC_SERVICE_NAME",
+          "ZSH_TMUX_AUTOSTART",
+          "ZSH_TMUX_AUTOSTARTED",
+          "_",
+          "__CFBundleIdentifier",
+          "__CF_USER_TEXT_ENCODING",
+          "npm_command",
+          "npm_config_cache",
+          "npm_config_global_prefix",
+          "npm_config_globalconfig",
+          "npm_config_init_module",
+          "npm_config_local_prefix",
+          "npm_config_node_gyp",
+          "npm_config_noproxy",
+          "npm_config_npm_version",
+          "npm_config_prefix",
+          "npm_config_user_agent",
+          "npm_config_userconfig",
+          "npm_execpath",
+          "npm_lifecycle_event",
+          "npm_lifecycle_script",
+          "npm_node_execpath",
+          "npm_package_json",
+          "npm_package_name",
+          "npm_package_version"
+        ],
+        "gate6b_planner": [],
+        "planner_smoke": []
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "sdk_api_method",
+      "values": {
+        "sdk_parity": "runStreamed",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "node_process_cwd",
+      "values": {
+        "sdk_parity": "/Users/litmus/Downloads/codex-loop-plugin",
+        "gate6b_planner": "",
+        "planner_smoke": ""
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    },
+    {
+      "field": "error_capture_paths",
+      "values": {
+        "sdk_parity": {
+          "result_path": "/var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/sdk-parity-smoke-test-KirLTC/evals/sdk-orchestrated/reports/sdk-startup-triage/sdk-parity-smoke-result.json"
+        },
+        "gate6b_planner": {},
+        "planner_smoke": {}
+      },
+      "missing_traces": [
+        "sdk_parity",
+        "gate6b_planner",
+        "planner_smoke"
+      ]
+    }
+  ],
+  "real_sdk_run_executed": false
+}

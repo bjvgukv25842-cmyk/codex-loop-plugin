@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/evals/real-thread/schemas/gate5-target-result.schema.json",
+  "title": "Gate5TargetResult",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "NEEDS_REVISION",
+        "BLOCKED"
+      ]
+    },
+    "prd_created": {
+      "type": "boolean"
+    },
+    "task_graph_created": {
+      "type": "boolean"
+    },
+    "initial_eval_verdict": {
+      "type": "string",
+      "enum": [
+        "NEEDS_REVISION"
+      ]
+    },
+    "repair_request_created": {
+      "type": "boolean"
+    },
+    "final_eval_verdict": {
+      "type": "string",
+      "enum": [
+        "PASS"
+      ]
+    },
+    "tests_passed": {
+      "type": "boolean"
+    },
+    "changed_files": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_commands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "remaining_risks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "status",
+    "prd_created",
+    "task_graph_created",
+    "initial_eval_verdict",
+    "repair_request_created",
+    "final_eval_verdict",
+    "tests_passed",
+    "changed_files",
+    "artifacts",
+    "validation_commands",
+    "remaining_risks"
+  ],
+  "additionalProperties": false
+}

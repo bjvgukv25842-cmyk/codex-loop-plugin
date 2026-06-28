@@ -1,0 +1,67 @@
+{
+  "module": "M12.2I Feature Evaluator Exact + Treatment Fresh Composite Gate",
+  "case_id": "feature-small-001",
+  "status": "NEEDS_REVISION",
+  "failure_category": "FEATURE_TREATMENT_REGRADER_ACCEPTANCE_EVIDENCE_GAP",
+  "production_ready": false,
+  "evidence_frozen": false,
+  "evaluator_exact": {
+    "executed": true,
+    "status": "PASS",
+    "thread_started": true,
+    "thread_id": "019ef3bd-93be-7e02-bf96-ffb7636fc90c",
+    "eval_report_created": true,
+    "eval_verdict": "PASS",
+    "evaluator_lite_schema_used": true,
+    "full_eval_report_schema_used_as_output_schema": false,
+    "artifact_thread_evidence_verified": true,
+    "secret_leak_detected": false,
+    "danger_full_access_used": false
+  },
+  "treatment_fresh": {
+    "executed": true,
+    "status": "PASS",
+    "real_run_executed": true,
+    "planner_thread_id": "019ef3be-a98f-7971-80b4-9905b03d4029",
+    "dev_worker_thread_id": "019ef3bf-21fa-7340-9cbd-f31080d81f09",
+    "initial_evaluator_thread_id": "019ef3c0-7736-77f0-b250-cbfe245b8d2b",
+    "repair_dev_worker_thread_id": "019ef3c0-f016-7862-9ff8-f08b98123bd2",
+    "final_evaluator_thread_id": "019ef3c1-e1c9-7942-befb-51fda10bf8bb",
+    "initial_eval_verdict": "NEEDS_REVISION",
+    "final_eval_verdict": "PASS",
+    "repair_request_created": true,
+    "final_report_present": true,
+    "validation_passed": true,
+    "artifact_thread_evidence_verified": true,
+    "secret_leak_detected": false,
+    "danger_full_access_used": false,
+    "current_stage": "FINAL_REPORT_DONE"
+  },
+  "regrade": {
+    "compare_status": "NEEDS_REVISION",
+    "report_status": "NEEDS_REVISION",
+    "gate_status": "PASS",
+    "p0_blockers": [],
+    "severe_issues": [
+      "treatment/feature-small-001: task-success: Missing acceptance evidence for 1 criteria."
+    ],
+    "gate_pass_has_non_clean_severe_issue": true,
+    "missing_acceptance_criterion": "Reject names longer than 80 characters.",
+    "implementation_evidence_observed": {
+      "source_rejects_name_length_greater_than_80": true,
+      "test_covers_name_length_greater_than_80": true,
+      "npm_test_passed": true,
+      "final_evaluator_verdict": "PASS"
+    },
+    "stale_report_symptoms": [
+      "M12_Mini_Report.md still lists historical evaluator timeout issues even though treatment-result.json is PASS and current_stage is FINAL_REPORT_DONE.",
+      "feature-canary-triage.json still describes an older blocked planner timeout and is superseded by this composite triage."
+    ]
+  },
+  "recommended_fixes": [
+    "Patch the task-success grader or regrade evidence extraction so the over-80-character acceptance criterion is recognized from treatment diff, test file, validation log, or final evaluator metadata.",
+    "Patch M12 report generation to suppress stale historical timeout and missing-artifact issues when the current treatment-result.json is PASS with FINAL_REPORT_DONE.",
+    "Rerun compare/report/gate in regrade-only mode after the grader/report patch; do not rerun treatment unless explicitly approved."
+  ],
+  "next_manual_action": "Fix feature-small-001 task-success regrade evidence/report staleness, then run compare/report/gate regrade-only. Do not rerun treatment or continue to another case unless approved."
+}

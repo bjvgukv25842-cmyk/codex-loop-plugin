@@ -1,0 +1,15 @@
+{
+  "case_id": "refactor-small-001",
+  "baseline_real_run_executed": true,
+  "treatment_real_run_executed": true,
+  "treatment_status": "PASS",
+  "direct_pass_path": true,
+  "repair_path_required": false,
+  "final_eval_verdict": "PASS",
+  "final_report_present": true,
+  "validation_passed": true,
+  "secret_leak_detected": false,
+  "danger_full_access_used": false,
+  "m12_gate_status": "PASS",
+  "production_ready": false
+}

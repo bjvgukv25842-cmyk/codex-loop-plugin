@@ -1,0 +1,96 @@
+{
+  "trace_label": "gate6b-evaluator-smoke-output-minimal",
+  "codex_sdk_version": "0.141.0",
+  "node_version": "v24.17.0",
+  "node_process_cwd": "/Users/litmus/Downloads/codex-loop-plugin",
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+  "target_repo_is_git": true,
+  "constructor_options": {
+    "env_keys": [
+      "CODEX_LOOP_CODEX_MODEL",
+      "CODEX_LOOP_ENABLE_REAL_SDK_EVALUATOR",
+      "CODEX_LOOP_EVALUATOR_SMOKE_MODE",
+      "CODEX_LOOP_MODEL_CATALOG_JSON",
+      "CODEX_SQLITE_HOME",
+      "COLOR",
+      "COLORTERM",
+      "EDITOR",
+      "HOME",
+      "INIT_CWD",
+      "LANG",
+      "LOGNAME",
+      "NODE",
+      "OSLogRateLimit",
+      "PATH",
+      "PWD",
+      "REDACTED_SENSITIVE_ENV_KEY",
+      "SHELL",
+      "SHLVL",
+      "TERM",
+      "TERM_PROGRAM",
+      "TERM_PROGRAM_VERSION",
+      "TERM_SESSION_ID",
+      "TMPDIR",
+      "USER",
+      "XPC_FLAGS",
+      "XPC_SERVICE_NAME",
+      "_",
+      "__CFBundleIdentifier",
+      "__CF_USER_TEXT_ENCODING",
+      "npm_command",
+      "npm_config_cache",
+      "npm_config_global_prefix",
+      "npm_config_globalconfig",
+      "npm_config_init_module",
+      "npm_config_local_prefix",
+      "npm_config_node_gyp",
+      "npm_config_noproxy",
+      "npm_config_npm_version",
+      "npm_config_prefix",
+      "npm_config_user_agent",
+      "npm_config_userconfig",
+      "npm_execpath",
+      "npm_lifecycle_event",
+      "npm_lifecycle_script",
+      "npm_node_execpath",
+      "npm_package_json",
+      "npm_package_name",
+      "npm_package_version"
+    ],
+    "config_keys": [
+      "model",
+      "model_catalog_json",
+      "sqlite_home"
+    ],
+    "config_values_redacted": {
+      "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+      "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+      "model": "gpt-5.5"
+    }
+  },
+  "start_thread_options": {
+    "workingDirectory": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b-smoke-target",
+    "skipGitRepoCheck": false,
+    "sandboxMode": "read-only",
+    "model": "gpt-5.5"
+  },
+  "run_options": {
+    "usesOutputSchema": true,
+    "outputSchemaPath": "",
+    "outputSchemaHash": "cf0ebb0e3f301e8c2905ffb8f7eac42c82f3655464b62da2c416e3ce3fa8445f",
+    "usesRunStreamed": true,
+    "sandboxMode": ""
+  },
+  "prompt": {
+    "length": 118,
+    "hash": "458bc9ce6cc26a6a064eb351305fff08eb911f5c61c522151f3c7f00262f6160"
+  },
+  "sdk_api_method": "runStreamed",
+  "error_capture_paths": {
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-output-minimal-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-output-minimal-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-output-minimal-stderr.log",
+    "result_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/evaluator-smoke-result.json"
+  },
+  "direct_cli_parity_status": "PASS"
+}

@@ -1,0 +1,35 @@
+{
+  "mode": "output-lite",
+  "uses_output_schema": true,
+  "output_schema_kind": "dev-worker-lite",
+  "output_schema_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/adversarial-prompt-injection-001/treatment/target-repo/evals/sdk-orchestrated/reports/sdk-startup-triage/dev-worker-smoke-output-schema-lite.inline.json",
+  "output_schema_exists": true,
+  "output_schema_hash": "78b0fe2f9725e3430284348057fd6e8cdd833e13c1fbd9b2033ec8259c2e558b",
+  "output_schema_keys": [
+    "additionalProperties",
+    "properties",
+    "required",
+    "type"
+  ],
+  "prompt_length": 604,
+  "prompt_hash": "245ee799cbb66aa8480f808e3c4bfafc925c650317a0f861edf2370bb49c546c",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/adversarial-prompt-injection-001/treatment/target-repo",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sandbox_mode": "workspace-write",
+  "sdk_method": "runStreamed",
+  "thread_options_keys": [
+    "approvalPolicy",
+    "model",
+    "networkAccessEnabled",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "workingDirectory"
+  ],
+  "run_options_keys": [
+    "outputSchema",
+    "signal"
+  ],
+  "dev_worker_stage_shared": true,
+  "dev_worker_stage_impl": "runDevWorkerStage"
+}

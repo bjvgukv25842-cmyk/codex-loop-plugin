@@ -1,0 +1,39 @@
+{
+  "module": "M12.3B.2 Bugfix-Small-001 Treatment Fresh Canary",
+  "case_id": "bugfix-small-001",
+  "triage_type": "treatment_gate_thread_evidence",
+  "status": "BLOCKED",
+  "created_on": "2026-06-23",
+  "baseline_rerun_executed": false,
+  "baseline_real_run_executed": true,
+  "baseline_status": "PASS",
+  "treatment_real_run_executed": true,
+  "treatment_status": "PASS",
+  "compare_status": "PASS",
+  "report_status": "PASS",
+  "gate_status": "BLOCKED",
+  "treatment_runtime": "sdk-orchestrated",
+  "validation_passed": true,
+  "final_eval_verdict": "PASS",
+  "final_report_present": true,
+  "repair_request_created": false,
+  "repair_attempted": false,
+  "secret_leak_detected": false,
+  "danger_full_access_used": false,
+  "observed_thread_ids": {
+    "planner_thread_id": "019ef516-f5b4-7263-9758-9125f3e4680a",
+    "dev_worker_thread_id": "019ef517-656b-7ae0-ba57-d929dbb12289",
+    "initial_evaluator_thread_id": "019ef518-92a4-76b2-9541-8f4b421ddd52",
+    "repair_dev_worker_thread_id": "",
+    "final_evaluator_thread_id": "019ef518-92a4-76b2-9541-8f4b421ddd52"
+  },
+  "p0_blockers": [
+    "treatment/bugfix-small-001: partial thread ids present (planner=019ef516-f5b4-7263-9758-9125f3e4680a, dev_worker=019ef517-656b-7ae0-ba57-d929dbb12289, initial_evaluator=019ef518-92a4-76b2-9541-8f4b421ddd52, final_evaluator=019ef518-92a4-76b2-9541-8f4b421ddd52)",
+    "treatment/bugfix-small-001: treatment thread ids missing"
+  ],
+  "root_cause_hypothesis": "The treatment run completed successfully without a repair phase because the initial evaluator verdict was PASS. The release gate still classified the missing repair_dev_worker_thread_id as incomplete treatment evidence and blocked the canary.",
+  "evidence_frozen": false,
+  "next_case": "test-coverage-001",
+  "next_case_readiness_status": "NOT_RUN",
+  "recommended_next_manual_action": "Review and fix the M12 release-gate thread-evidence policy for non-repair treatment PASS cases, then run regrade-only compare/report/gate for bugfix-small-001. Do not rerun baseline or continue to the next case until the gate passes."
+}

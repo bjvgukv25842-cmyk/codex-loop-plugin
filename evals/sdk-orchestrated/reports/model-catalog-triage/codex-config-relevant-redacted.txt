@@ -1,0 +1,10 @@
+### ~/.codex/config.toml relevant lines
+1:model = "gpt-5.5"
+3:model_provider = "relay"
+9:[model_providers.relay]
+11:base_url = "https://sub2api.xiaozhudf2026.foo/v1"
+12:wire_api = "responses"
+
+### ~/.codex/*.config.toml relevant lines
+
+### project .codex/config.toml relevant lines

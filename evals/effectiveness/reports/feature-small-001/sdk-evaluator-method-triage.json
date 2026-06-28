@@ -1,0 +1,23 @@
+{
+  "case_id": "feature-small-001",
+  "cli_parity_status": "PASS",
+  "sdk_parity_previous_status": "FAIL",
+  "likely_failure": "SDK_EVALUATOR_ADAPTER_OR_EVENT_STREAM_ISSUE",
+  "sdk_method_previous": "run",
+  "sdk_method_candidates": [
+    "run",
+    "runStreamed"
+  ],
+  "recommended_sdk_method_for_parity": "run",
+  "runstreamed_no_event_timeout_risk": false,
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/feature-small-001/treatment/target-repo",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+  "prompt": "Respond with exactly: FEATURE_EVALUATOR_PARITY_OK",
+  "prompt_hash": "ee2f3b5546686f07dea17e6998eb869072afda7f5b07da9be066ac7793d3350f",
+  "invocation_alignment_checked": true,
+  "invocation_diff_status": "PASS",
+  "historical_role_invocation_diff_status": "NEEDS_REVISION",
+  "recommended_next_action": "Rerun evaluator SDK parity once with CODEX_LOOP_EVALUATOR_PARITY_SDK_METHOD=run. Do not run text-only or treatment unless parity passes."
+}

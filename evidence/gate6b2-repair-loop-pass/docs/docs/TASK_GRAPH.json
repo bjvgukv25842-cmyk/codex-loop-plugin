@@ -1,0 +1,191 @@
+{
+  "task_graph_id": "task_graph_gate6b2_project_name_repair",
+  "loop_run_id": "loop_gate6b2_repair_loop",
+  "prd_artifact_id": "artifact_prd_gate6b_planner",
+  "root_goal": "Validate project names",
+  "tasks": [
+    {
+      "task_id": "T1",
+      "loop_run_id": "loop_gate6b2_repair_loop",
+      "module_id": "M1",
+      "title": "Confirm repair scope",
+      "description": "Review the validator implementation, baseline/full tests, and repair-request artifact to confirm the exact failing behavior and allowed scope.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "sdk-dev-worker",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "sdk-evaluator",
+      "dependencies": [],
+      "scope": [
+        "Review the validator implementation, baseline/full tests, and repair-request artifact to confirm the exact failing behavior and allowed scope."
+      ],
+      "non_goals": [],
+      "likely_files": [
+        {
+          "path": "src/project-name.js",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "test/project-name.baseline.test.js",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "test/project-name.full.test.js",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "artifacts/repair-request.json",
+          "purpose": "Likely implementation file"
+        }
+      ],
+      "acceptance_criteria": [
+        "Whitespace-only acceptance gap is confirmed from artifacts/repair-request.json and test/project-name.full.test.js.",
+        "Allowed implementation surface is identified before edits."
+      ],
+      "validation_commands": [
+        {
+          "command": "npm run test:baseline",
+          "reason": "Validate task behavior"
+        },
+        {
+          "command": "npm run test:full",
+          "reason": "Validate task behavior"
+        }
+      ],
+      "risk_level": "low",
+      "status": "READY_FOR_DEV",
+      "revision_count": 0,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [],
+      "created_at": "2026-06-21T09:30:38.237Z",
+      "updated_at": "2026-06-21T09:30:38.237Z",
+      "metadata": {}
+    },
+    {
+      "task_id": "T2",
+      "loop_run_id": "loop_gate6b2_repair_loop",
+      "module_id": "M1",
+      "title": "Implement focused validator repair",
+      "description": "Update validateProjectName so it rejects empty, whitespace-only, and overlength names while accepting valid names. Keep the change minimal and limited to src/project-name.js.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "sdk-dev-worker",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "sdk-evaluator",
+      "dependencies": [
+        "T1"
+      ],
+      "scope": [
+        "Update validateProjectName so it rejects empty, whitespace-only, and overlength names while accepting valid names. Keep the change minimal and limited to src/project-name.js."
+      ],
+      "non_goals": [],
+      "likely_files": [
+        {
+          "path": "src/project-name.js",
+          "purpose": "Likely implementation file"
+        }
+      ],
+      "acceptance_criteria": [
+        "validateProjectName(\"\").ok is false.",
+        "validateProjectName(\"   \").ok is false.",
+        "validateProjectName(\"x\".repeat(81)).ok is false.",
+        "validateProjectName(\"My Project\").ok is true."
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test",
+          "reason": "Validate task behavior"
+        }
+      ],
+      "risk_level": "low",
+      "status": "READY_FOR_DEV",
+      "revision_count": 0,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [],
+      "created_at": "2026-06-21T09:30:38.237Z",
+      "updated_at": "2026-06-21T09:30:38.237Z",
+      "metadata": {}
+    },
+    {
+      "task_id": "T3",
+      "loop_run_id": "loop_gate6b2_repair_loop",
+      "module_id": "M1",
+      "title": "Validate repair evidence",
+      "description": "Run the available local test suite and summarize exact pass/fail evidence for evaluator review.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "sdk-dev-worker",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "sdk-evaluator",
+      "dependencies": [
+        "T2"
+      ],
+      "scope": [
+        "Run the available local test suite and summarize exact pass/fail evidence for evaluator review."
+      ],
+      "non_goals": [],
+      "likely_files": [
+        {
+          "path": "package.json",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "test/project-name.baseline.test.js",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "test/project-name.full.test.js",
+          "purpose": "Likely implementation file"
+        },
+        {
+          "path": "artifacts/dev-repair-result.json",
+          "purpose": "Likely implementation file"
+        }
+      ],
+      "acceptance_criteria": [
+        "npm test exits successfully.",
+        "Validation evidence mentions the baseline and full project-name test coverage.",
+        "Any blocked or skipped checks are stated plainly."
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test",
+          "reason": "Validate task behavior"
+        }
+      ],
+      "risk_level": "low",
+      "status": "READY_FOR_DEV",
+      "revision_count": 0,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [],
+      "created_at": "2026-06-21T09:30:38.237Z",
+      "updated_at": "2026-06-21T09:30:38.237Z",
+      "metadata": {}
+    }
+  ],
+  "edges": [
+    {
+      "from_task_id": "T1",
+      "to_task_id": "T2",
+      "reason": "Repair implementation depends on confirmed failing behavior and allowed scope."
+    },
+    {
+      "from_task_id": "T2",
+      "to_task_id": "T3",
+      "reason": "Validation depends on the implementation repair."
+    },
+    {
+      "from_task_id": "T1",
+      "to_task_id": "T2",
+      "reason": "Task dependency"
+    },
+    {
+      "from_task_id": "T2",
+      "to_task_id": "T3",
+      "reason": "Task dependency"
+    }
+  ],
+  "status": "TASK_GRAPH_READY",
+  "created_at": "2026-06-21T09:30:38.237Z",
+  "updated_at": "2026-06-21T09:30:38.237Z"
+}

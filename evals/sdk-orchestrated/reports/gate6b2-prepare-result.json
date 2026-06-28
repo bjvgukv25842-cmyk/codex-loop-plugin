@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "repair_loop_checkpoint_state_created": true,
+  "current_stage": "PREPARED",
+  "target_repo": "tmp/sdk-orchestrated/gate6b2-repair-loop-target",
+  "state_path": "../../../../var/folders/6l/hbp_wrfn59xcgt210xbxpxbr0000gn/T/gate6b2-script-test-8KQn3B/repair-loop-state.json",
+  "initial_baseline_tests_failed": true,
+  "initial_full_tests_failed": true,
+  "seeded_gap_fixture_created": true,
+  "real_sdk_run_executed": false
+}

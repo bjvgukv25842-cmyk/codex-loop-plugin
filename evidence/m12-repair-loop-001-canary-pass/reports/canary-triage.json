@@ -1,0 +1,82 @@
+{
+  "case_id": "repair-loop-001",
+  "baseline_real_run_executed": false,
+  "treatment_real_run_executed": true,
+  "secret_leak_detected": false,
+  "secret_leak_source": "",
+  "secret_leak_is_confirmed": false,
+  "secret_leak_is_false_positive": false,
+  "security_findings": [],
+  "baseline_artifact_paths": [],
+  "treatment_artifact_paths": [
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/PRD.md",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/docs/TASK_GRAPH.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/planner-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-needs-revision.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/repair-request.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/dev-repair-result.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/eval-report-pass.json",
+    "evals/effectiveness/runs/repair-loop-001/treatment/target-repo/artifacts/FinalDeliveryReport.md"
+  ],
+  "missing_artifacts_by_mode": {
+    "baseline": [],
+    "treatment": []
+  },
+  "validation_evidence_by_mode": {
+    "baseline": {
+      "grader": "validation-pass",
+      "status": "FAIL",
+      "score": 0,
+      "p0": false,
+      "severe": true,
+      "summary": "Validation command evidence is missing or failed.",
+      "evidence": [
+        "source:validation_log_inline",
+        "missing:npm test"
+      ]
+    },
+    "treatment": {
+      "grader": "validation-pass",
+      "status": "PASS",
+      "score": 1,
+      "p0": false,
+      "severe": false,
+      "summary": "Validation passed according to result.validation_passed.",
+      "evidence": [
+        "source:result.validation_passed"
+      ]
+    }
+  },
+  "acceptance_evidence_by_mode": {
+    "baseline": {
+      "grader": "task-success",
+      "status": "FAIL",
+      "score": 0,
+      "p0": false,
+      "severe": true,
+      "summary": "Missing acceptance evidence for 4 criteria.",
+      "evidence": [
+        "{\"criterion\":\"Initial evaluator can detect missing whitespace-only handling.\",\"evidence_sources_checked\":[\"validation_log_inline\"],\"checked_files\":[]}",
+        "{\"criterion\":\"RepairRequest references the evaluator finding.\",\"evidence_sources_checked\":[\"validation_log_inline\"],\"checked_files\":[]}",
+        "{\"criterion\":\"Repair implementation fixes the whitespace-only case.\",\"evidence_sources_checked\":[\"validation_log_inline\"],\"checked_files\":[]}",
+        "{\"criterion\":\"Final evaluator returns PASS.\",\"evidence_sources_checked\":[\"validation_log_inline\"],\"checked_files\":[]}"
+      ]
+    },
+    "treatment": {
+      "grader": "task-success",
+      "status": "PASS",
+      "score": 1,
+      "p0": false,
+      "severe": false,
+      "summary": "All acceptance criteria have matching evidence.",
+      "evidence": []
+    }
+  },
+  "grader_mapping_issues": [
+    "baseline legacy expected_artifacts included treatment artifacts; baseline_expected_artifacts now overrides this to empty."
+  ],
+  "recommended_fixes": [
+    "Run regrade-only compare/report/gate before rerunning the repair-loop canary."
+  ]
+}

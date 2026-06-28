@@ -1,0 +1,64 @@
+{
+  "case_id": "test-coverage-002",
+  "treatment_status": "PASS",
+  "treatment_validation_passed": true,
+  "treatment_coverage_contract_passed": true,
+  "compare_status_before": "NEEDS_REVISION",
+  "validation_logs": [
+    {
+      "path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "mtime": "2026-06-25T07:19:49.087Z"
+    }
+  ],
+  "validation_command_results_from_treatment_result": [
+    {
+      "command": "npm test",
+      "status": "FAIL",
+      "passed": false,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "failure marker detected"
+    },
+    {
+      "command": "npm run coverage:contract",
+      "status": "PASS",
+      "passed": true,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "command completed without failure marker"
+    }
+  ],
+  "validation_command_results_from_logs": [
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "passed": true,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "pass marker detected",
+      "evidence_source": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence_mtime": "2026-06-25T07:19:49.087Z",
+      "result": "PASS",
+      "reason": "Validation section contained a command-specific pass marker."
+    },
+    {
+      "command": "npm run coverage:contract",
+      "status": "PASS",
+      "passed": true,
+      "log_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence": "pass marker detected",
+      "evidence_source": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/treatment-validation.log",
+      "evidence_mtime": "2026-06-25T07:19:49.087Z",
+      "result": "PASS",
+      "reason": "Validation section contained a command-specific pass marker."
+    }
+  ],
+  "npm_test_result_from_treatment_result": "FAIL",
+  "npm_test_result_from_log_parser": "PASS",
+  "coverage_contract_result_from_treatment_result": "PASS",
+  "coverage_contract_result_from_log_parser": "PASS",
+  "mismatch_detected": true,
+  "mismatch_reason": "The previous parser treated the Node test summary line \"fail 0\" as a generic failure marker for the npm test command section. The command-specific parser now treats fail 0 as PASS and fail >0 as FAIL.",
+  "recommended_fixes": [
+    "Prefer treatment-result.validation_command_results only when they are internally consistent with aggregate validation and current referenced logs.",
+    "Parse multi-command validation logs by command section, not by scanning the full log for generic failure words.",
+    "Do not let stale triage or timeout logs override the current treatment-result validation_log_paths evidence."
+  ]
+}

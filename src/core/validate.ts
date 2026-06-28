@@ -1,8 +1,8 @@
 import { Ajv2020, type AnySchemaObject, type ErrorObject, type ValidateFunction } from "ajv/dist/2020.js";
 import { createRequire } from "node:module";
 
-import { SchemaValidationError, type ValidationErrorDetail } from "./errors.js";
-import { listSchemas, loadSchema, type SchemaName } from "./schema-registry.js";
+import { SchemaValidationError, type ValidationErrorDetail } from "./errors.ts";
+import { listSchemas, loadSchema, type SchemaName } from "./schema-registry.ts";
 
 export interface SchemaValidationResult {
   valid: boolean;

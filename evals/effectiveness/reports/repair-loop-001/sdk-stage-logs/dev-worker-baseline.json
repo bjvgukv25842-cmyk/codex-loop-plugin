@@ -1,0 +1,17 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/repair-loop-001/treatment/target-repo",
+  "src_project_name_hash_before": "3307d0f65556d1f2d14bd8fbcd095e53f99218cd51a652b5869b2af8591a9d00",
+  "package_json_hash_before": "03c09a74bb8b0b68cb21c709f7fb5823458e3bf45e4286b92e83ba62dcfbcb3f",
+  "test_project_name_hash_before": "",
+  "test_project_name_baseline_hash_before": "bf15b8fa7827507cc941e5ed9026e53431b1b6a8ebaf72787a6401151115d665",
+  "test_project_name_full_hash_before": "a1603813ee00cf19f3a688f4104d1c103e5587cfed0f1a1af0437a901fc02979",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "initial_baseline_tests_run": true,
+  "initial_baseline_tests_failed": true,
+  "initial_full_tests_run": true,
+  "initial_full_tests_failed": true,
+  "seeded_gap_fixture_created": true,
+  "fixture_status": "BROKEN_AS_EXPECTED"
+}

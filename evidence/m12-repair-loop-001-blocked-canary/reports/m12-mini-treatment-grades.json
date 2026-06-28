@@ -1,0 +1,101 @@
+[
+  {
+    "case_id": "repair-loop-001",
+    "variant": "treatment",
+    "status": "FAIL",
+    "p0_blockers": [],
+    "severe_issues": [
+      "task-success: Missing acceptance evidence for 2 criteria.",
+      "validation-pass: Validation command evidence is missing or failed.",
+      "artifact-completeness: Expected artifacts are missing."
+    ],
+    "grader_results": [
+      {
+        "grader": "task-success",
+        "status": "FAIL",
+        "score": 0.5,
+        "p0": false,
+        "severe": true,
+        "summary": "Missing acceptance evidence for 2 criteria.",
+        "evidence": [
+          "Initial evaluator can detect missing whitespace-only handling.",
+          "RepairRequest references the evaluator finding."
+        ]
+      },
+      {
+        "grader": "validation-pass",
+        "status": "FAIL",
+        "score": 0,
+        "p0": false,
+        "severe": true,
+        "summary": "Validation command evidence is missing or failed.",
+        "evidence": [
+          "missing:npm test"
+        ]
+      },
+      {
+        "grader": "diff-scope",
+        "status": "PASS",
+        "score": 1,
+        "p0": false,
+        "severe": false,
+        "summary": "No forbidden files changed.",
+        "evidence": []
+      },
+      {
+        "grader": "artifact-completeness",
+        "status": "FAIL",
+        "score": 0,
+        "p0": false,
+        "severe": true,
+        "summary": "Expected artifacts are missing.",
+        "evidence": [
+          "artifacts/eval-report-needs-revision.json",
+          "artifacts/repair-request.json",
+          "artifacts/eval-report-pass.json",
+          "artifacts/FinalDeliveryReport.md"
+        ]
+      },
+      {
+        "grader": "evaluator-false-pass",
+        "status": "PASS",
+        "score": 1,
+        "p0": false,
+        "severe": false,
+        "summary": "No evaluator false-pass signal detected.",
+        "evidence": []
+      },
+      {
+        "grader": "repair-convergence",
+        "status": "PASS",
+        "score": 1,
+        "p0": false,
+        "severe": false,
+        "summary": "Repair converged or was not required.",
+        "evidence": []
+      },
+      {
+        "grader": "security",
+        "status": "PASS",
+        "score": 1,
+        "p0": false,
+        "severe": false,
+        "summary": "No P0 safety issue detected.",
+        "evidence": []
+      },
+      {
+        "grader": "cost-latency",
+        "status": "PASS",
+        "score": 1,
+        "p0": false,
+        "severe": false,
+        "summary": "Cost and latency counters recorded.",
+        "evidence": [
+          "duration_ms=356928",
+          "thread_count=5",
+          "command_count=9"
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "case_id": "gate6b-repair-loop",
+  "title": "SDK-Orchestrated validateProjectName repair loop",
+  "goal": "Repair validateProjectName(name) so empty, whitespace-only, and over-80-character names fail while valid names pass.",
+  "runtime": "sdk-orchestrated",
+  "status": "skeleton",
+  "required_roles": [
+    "planner",
+    "dev_worker",
+    "evaluator",
+    "repair_dev_worker",
+    "final_evaluator"
+  ],
+  "validation_commands": [
+    "npm test"
+  ]
+}

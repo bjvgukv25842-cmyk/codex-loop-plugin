@@ -1,0 +1,89 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1782301877027",
+  "loop_run_id": "repair-loop-001",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "M1",
+  "current_task": "task_unassigned",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "DEC-0055",
+    "DEC-0056",
+    "DEC-0058",
+    "DEC-0054"
+  ],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '1,260p' tests/effectiveness/treatment-generic-feature-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,240p' tests/effectiveness/treatment-sdk-orchestrated-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,220p' tests/effectiveness/task-success-grader.test.ts && sed -n '1,180p' tests/effectiveness/diff-scope-grader.test.ts && sed -n '1,180p' tests/effectiveness/validation-pass-grader.test.ts"
+      },
+      {
+        "command": "sed -n '260,560p' tests/effectiveness/treatment-generic-feature-runner.test.ts"
+      },
+      {
+        "command": "sed -n '560,980p' tests/effectiveness/treatment-generic-feature-runner.test.ts"
+      },
+      {
+        "command": "sed -n '1,220p' tests/orchestrator/dev-worker-mutation-evidence.test.ts 2>/dev/null || rg -n \"verifyDevWorkerMutationEvidence|src_project_name_hash|project-name\" tests/orchestrator tests/effectiveness"
+      },
+      {
+        "command": "sed -n '1,220p' tests/effectiveness/m12-harness.test.ts"
+      },
+      {
+        "command": "sed -n '1,160p' tests/effectiveness/feature-small-001-fixture.test.ts"
+      },
+      {
+        "command": "sed -n '220,520p' tests/effectiveness/baseline-codex-exec-runner.test.ts"
+      },
+      {
+        "command": "node - <<'NODE'\nconst fs = require('fs');\nconst path = 'evals/effectiveness/datasets/m12-mini.jsonl';\nconst rows = fs.readFileSync(path, 'utf8').trimEnd().split(/\\n/).map((line) => JSON.parse(line));\nfor (const row of rows) {\n  if (row.case_id === 'feature-small-002') {\n    row.baseline_prompt = 'Implement slug normalization for project routes in src/project-slug.js. Keep changes scoped and run npm test.';\n    row.treatment_goal = 'Use Codex Loop SDK-Orchestrated Mode to plan, implement, evaluate, repair if needed, and report slug normalization in project routes.';\n    row.expected_artifacts = ['artifacts/FinalDeliveryReport.md'];\n    row.baseline_expected_artifacts = [];\n    row.treatment_expected_artifacts = [\n      'docs/PRD.md',\n      'docs/TASK_GRAPH.json',\n      'artifacts/dev-result.json',\n      'artifacts/eval-report.json',\n      'artifacts/FinalDeliveryReport.md',\n      'artifacts/repair-request.json',\n      'artifacts/repair-result.json',\n      'artifacts/final-eval-report.json'\n    ];\n    row.forbidden_files = ['.env', 'database.sqlite', 'package.json', 'package-lock.json', 'README.md'];\n  }\n}\nfs.writeFileSync(path, rows.map((row) => JSON.stringify(row)).join('\\n') + '\\n');\nNODE"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [],
+  "source_of_truth_files": [
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-pass.json"
+  ],
+  "next_instruction": "Continue M1 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-24T11:51:17.026Z",
+  "updated_at": "2026-06-24T11:51:17.026Z"
+}

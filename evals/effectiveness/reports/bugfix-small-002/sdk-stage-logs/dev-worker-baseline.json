@@ -1,0 +1,21 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo",
+  "target_source_file": "src/date-range.js",
+  "target_source_hash_before": "10befb0b039f6aaf5b98980fb12518859de03c1f7c811ef0bd7465169e7fc520",
+  "target_test_files": [
+    "test/date-range.test.js"
+  ],
+  "target_test_hashes_before": {
+    "test/date-range.test.js": "7a3eb3d51b11eb8870328fca828626845813877d5c57b9b0831862490f2552fa"
+  },
+  "src_pagination_hash_before": "",
+  "src_date_range_hash_before": "10befb0b039f6aaf5b98980fb12518859de03c1f7c811ef0bd7465169e7fc520",
+  "package_json_hash_before": "ef31d78089eab18a6029909f2ea70fb5c19f772f756dda203c357f3635e0fc75",
+  "test_pagination_hash_before": "",
+  "test_date_range_hash_before": "7a3eb3d51b11eb8870328fca828626845813877d5c57b9b0831862490f2552fa",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "BROKEN_AS_EXPECTED"
+}

@@ -1,0 +1,97 @@
+{
+  "capsule_id": "capsule_agent_loop_planner_gate6_1781859305871",
+  "loop_run_id": "loop_gate6_validate_project_name",
+  "agent_id": "agent_loop_planner_gate6",
+  "agent_type": "planner",
+  "old_thread_id": "019ede52-ccc2-7423-9249-0b225a5d2df4",
+  "new_thread_id": null,
+  "restart_reason": "PreCompact hook requested a context capsule draft.",
+  "current_module": "Gate6",
+  "current_task": "task_gate6_plan",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10"
+  ],
+  "completed_work": [],
+  "open_issues": [],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [],
+  "validation_status": {
+    "commands_run": [
+      {
+        "command": "sed -n '1,260p' tmp/multi-agent/gate6-target-validate-project-name/state/agent-runs.json"
+      },
+      {
+        "command": "find tmp/multi-agent/gate6-target-validate-project-name -maxdepth 4 -type f \\( -path '*/artifacts/*' -o -path '*/state/*' -o -path '*/src/*' \\) -print | sort | sed -n '1,240p'"
+      },
+      {
+        "command": "sed -n '1,320p' tmp/multi-agent/gate6-target-validate-project-name/state/agent-runs.json"
+      },
+      {
+        "command": "sed -n '1,260p' tests/skills/skills.test.ts"
+      },
+      {
+        "command": "npm test -- tests/skills/skills.test.ts tests/loop-manager/dispatch-guards.test.ts tests/loop-manager/dispatch-state-machine.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      },
+      {
+        "command": "npm run validate"
+      },
+      {
+        "command": "git diff -- docs/LOOP_PROGRESS.md docs/GATE6_NATIVE_MULTI_AGENT_VALIDATION.md docs/DECISIONS.md docs/REAL_THREAD_VALIDATION.md skills/codex-loop/SKILL.md src/loop-manager/dispatch-guards.ts src/loop-manager/dispatch-state-machine.ts tests/loop-manager/dispatch-guards.test.ts tests/loop-manager/dispatch-state-machine.test.ts tests/skills/skills.test.ts .codex/agents/loop-planner.toml .codex/agents/loop-dev-worker.toml .codex/agents/loop-evaluator.toml"
+      },
+      {
+        "command": "npm test -- tests/skills/skills.test.ts tests/loop-manager/dispatch-guards.test.ts tests/loop-manager/dispatch-state-machine.test.ts"
+      },
+      {
+        "command": "npm run typecheck"
+      }
+    ],
+    "passed": [],
+    "failed": [],
+    "not_run_reason": ""
+  },
+  "files_changed_recently": [
+    {
+      "path": "docs/PRD.md",
+      "purpose": "Product requirements"
+    },
+    {
+      "path": "docs/ACCEPTANCE_CRITERIA.md",
+      "purpose": "Acceptance criteria"
+    },
+    {
+      "path": "docs/TASK_GRAPH.json",
+      "purpose": "Task decomposition"
+    }
+  ],
+  "source_of_truth_files": [
+    "README.md",
+    "package.json",
+    "src/project-name.js",
+    "test/project-name.test.js",
+    "docs/PRD.md",
+    "docs/ACCEPTANCE_CRITERIA.md",
+    "docs/TASK_GRAPH.json"
+  ],
+  "next_instruction": "Continue Gate6 from docs/LOOP_PROGRESS.md and latest events.",
+  "do_not_repeat": [
+    "Do not rely on chat history as the only source of truth.",
+    "Do not enter the next module unless explicitly requested."
+  ],
+  "risks": [],
+  "created_at": "2026-06-19T08:55:05.870Z",
+  "updated_at": "2026-06-19T08:55:05.870Z"
+}

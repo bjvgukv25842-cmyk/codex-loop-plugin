@@ -1,0 +1,8 @@
+{
+  "bundled_catalog_ok": true,
+  "remote_catalog_ok": true,
+  "remote_catalog_error_category": "",
+  "missing_field_models_detected": false,
+  "custom_provider_suspected": false,
+  "recommended_fix": "Use CODEX_LOOP_MODEL_CATALOG_JSON=$(pwd)/evals/sdk-orchestrated/model-catalog-bundled.json for the next single real SDK smoke."
+}

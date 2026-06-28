@@ -1,0 +1,51 @@
+{
+  "case_id": "bugfix-small-002",
+  "baseline_result_path": "evals/effectiveness/reports/bugfix-small-002/baseline-result.json",
+  "treatment_result_path": "evals/effectiveness/reports/bugfix-small-002/treatment-result.json",
+  "treatment_result_mtime": "2026-06-24T13:04:43.015Z",
+  "final_report_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/FinalDeliveryReport.md",
+  "final_report_exists": true,
+  "final_report_mtime": "2026-06-24T13:04:42.922Z",
+  "validation_log_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/bugfix-small-002/treatment-validation.log"
+  ],
+  "eval_report_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/eval-report.json"
+  ],
+  "dev_result_paths": [
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/dev-result.json"
+  ],
+  "repair_request_paths": [],
+  "stale_triage_files_detected": [],
+  "compare_used_latest_treatment_result": true,
+  "report_used_latest_treatment_result": true,
+  "gate_used_latest_treatment_result": true,
+  "recommended_fixes": [],
+  "evidence_source_paths": [
+    "evals/effectiveness/reports/bugfix-small-002/baseline-result.json",
+    "evals/effectiveness/reports/bugfix-small-002/treatment-result.json",
+    "evals/effectiveness/datasets/m12-mini.jsonl",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/FinalDeliveryReport.md",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/bugfix-small-002/treatment-diff.patch",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/bugfix-small-002/treatment-validation.log",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/docs/PRD.md",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/docs/TASK_GRAPH.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/planner-result.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/dev-result.json",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/eval-report.json"
+  ],
+  "evidence_source_mtimes": {
+    "evals/effectiveness/reports/bugfix-small-002/baseline-result.json": "2026-06-24T13:00:24.979Z",
+    "evals/effectiveness/reports/bugfix-small-002/treatment-result.json": "2026-06-24T13:04:43.015Z",
+    "evals/effectiveness/datasets/m12-mini.jsonl": "2026-06-24T12:36:46.064Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/FinalDeliveryReport.md": "2026-06-24T13:04:42.922Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/bugfix-small-002/treatment-diff.patch": "2026-06-24T13:04:43.014Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/bugfix-small-002/treatment-validation.log": "2026-06-24T13:04:43.014Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/docs/PRD.md": "2026-06-24T13:01:39.303Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/docs/TASK_GRAPH.json": "2026-06-24T13:01:39.303Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/planner-result.json": "2026-06-24T13:01:39.303Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/dev-result.json": "2026-06-24T13:03:34.169Z",
+    "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-002/treatment/target-repo/artifacts/eval-report.json": "2026-06-24T13:04:42.922Z"
+  },
+  "stale_files_ignored": []
+}

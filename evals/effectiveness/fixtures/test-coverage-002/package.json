@@ -1,0 +1,10 @@
+{
+  "name": "m12-test-coverage-002-target",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "coverage:contract": "node scripts/check-test-coverage-contract.js"
+  }
+}

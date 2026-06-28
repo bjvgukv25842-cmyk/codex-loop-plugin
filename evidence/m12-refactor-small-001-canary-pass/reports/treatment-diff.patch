@@ -1,0 +1,125 @@
+diff --git a/src/report-builder.js b/src/report-builder.js
+index 953aa12..43ab557 100644
+--- a/src/report-builder.js
++++ b/src/report-builder.js
+@@ -1,14 +1,10 @@
++const DEFAULT_CREATED_AT = "2026-01-01T00:00:00Z";
++
+ export function buildSummaryReport(data) {
+   const items = Array.isArray(data?.items) ? data.items : [];
+-  const createdAt = new Date(data?.createdAt ?? "2026-01-01T00:00:00Z");
+-  const date = [
+-    createdAt.getUTCFullYear(),
+-    String(createdAt.getUTCMonth() + 1).padStart(2, "0"),
+-    String(createdAt.getUTCDate()).padStart(2, "0")
+-  ].join("-");
+-  const title = String(data?.title ?? "Untitled").trim();
+-  const status = String(data?.status ?? "draft").trim().toLowerCase();
+-  const statusLabel = status === "published" ? "Published" : status === "archived" ? "Archived" : "Draft";
++  const date = formatReportDate(data?.createdAt);
++  const title = formatText(data?.title, "Untitled");
++  const statusLabel = formatStatus(data?.status);
+   const total = items.reduce((sum, item) => sum + Number(item.amount ?? 0), 0);
+ 
+   return [
+@@ -16,22 +12,16 @@ export function buildSummaryReport(data) {
+     `Date: ${date}`,
+     `Status: ${statusLabel}`,
+     `Items: ${items.length}`,
+-    `Total: $${total.toFixed(2)}`
++    `Total: ${formatCurrency(total)}`
+   ].join("\n");
+ }
+ 
+ export function buildDetailedReport(data) {
+   const items = Array.isArray(data?.items) ? data.items : [];
+-  const createdAt = new Date(data?.createdAt ?? "2026-01-01T00:00:00Z");
+-  const date = [
+-    createdAt.getUTCFullYear(),
+-    String(createdAt.getUTCMonth() + 1).padStart(2, "0"),
+-    String(createdAt.getUTCDate()).padStart(2, "0")
+-  ].join("-");
+-  const title = String(data?.title ?? "Untitled").trim();
+-  const owner = String(data?.owner ?? "Unassigned").trim();
+-  const status = String(data?.status ?? "draft").trim().toLowerCase();
+-  const statusLabel = status === "published" ? "Published" : status === "archived" ? "Archived" : "Draft";
++  const date = formatReportDate(data?.createdAt);
++  const title = formatText(data?.title, "Untitled");
++  const owner = formatText(data?.owner, "Unassigned");
++  const statusLabel = formatStatus(data?.status);
+   const lines = [
+     `Report: ${title}`,
+     `Owner: ${owner}`,
+@@ -41,38 +31,56 @@ export function buildDetailedReport(data) {
+   ];
+ 
+   for (const item of items) {
+-    const name = String(item.name ?? "Unnamed").trim();
+-    const amount = Number(item.amount ?? 0);
+-    lines.push(`- ${name}: $${amount.toFixed(2)}`);
++    const name = formatText(item.name, "Unnamed");
++    lines.push(`- ${name}: ${formatCurrency(item.amount)}`);
+   }
+ 
+   const total = items.reduce((sum, item) => sum + Number(item.amount ?? 0), 0);
+-  lines.push(`Total: $${total.toFixed(2)}`);
++  lines.push(`Total: ${formatCurrency(total)}`);
+   return lines.join("\n");
+ }
+ 
+ export function buildCsvReport(data) {
+   const items = Array.isArray(data?.items) ? data.items : [];
+-  const createdAt = new Date(data?.createdAt ?? "2026-01-01T00:00:00Z");
+-  const date = [
+-    createdAt.getUTCFullYear(),
+-    String(createdAt.getUTCMonth() + 1).padStart(2, "0"),
+-    String(createdAt.getUTCDate()).padStart(2, "0")
+-  ].join("-");
+-  const title = String(data?.title ?? "Untitled").trim();
+-  const status = String(data?.status ?? "draft").trim().toLowerCase();
+-  const statusLabel = status === "published" ? "Published" : status === "archived" ? "Archived" : "Draft";
++  const date = formatReportDate(data?.createdAt);
++  const title = formatText(data?.title, "Untitled");
++  const statusLabel = formatStatus(data?.status);
+   const rows = ["title,date,status,item,amount"];
+ 
+   for (const item of items) {
+-    const name = String(item.name ?? "Unnamed").trim();
+-    const amount = Number(item.amount ?? 0);
+-    rows.push([title, date, statusLabel, name, amount.toFixed(2)].map(csvEscape).join(","));
++    const name = formatText(item.name, "Unnamed");
++    rows.push([title, date, statusLabel, name, formatMoney(item.amount)].map(csvEscape).join(","));
+   }
+ 
+   return rows.join("\n");
+ }
+ 
++function formatText(value, fallback) {
++  return String(value ?? fallback).trim();
++}
++
++function formatReportDate(value) {
++  const createdAt = new Date(value ?? DEFAULT_CREATED_AT);
++  return [
++    createdAt.getUTCFullYear(),
++    String(createdAt.getUTCMonth() + 1).padStart(2, "0"),
++    String(createdAt.getUTCDate()).padStart(2, "0")
++  ].join("-");
++}
++
++function formatStatus(value) {
++  const status = formatText(value, "draft").toLowerCase();
++  return status === "published" ? "Published" : status === "archived" ? "Archived" : "Draft";
++}
++
++function formatMoney(value) {
++  return Number(value ?? 0).toFixed(2);
++}
++
++function formatCurrency(value) {
++  return `$${formatMoney(value)}`;
++}
++
+ function csvEscape(value) {
+   const text = String(value);
+   return /[",\n]/.test(text) ? `"${text.replaceAll("\"", "\"\"")}"` : text;

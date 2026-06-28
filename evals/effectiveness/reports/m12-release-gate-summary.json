@@ -1,0 +1,12 @@
+{
+  "module": "M12.11A M12 Release Gate Summary",
+  "m12_mini_gate_status": "PASS",
+  "all_case_gates_passed": true,
+  "p0_blockers": [],
+  "severe_issues": [],
+  "production_ready": false,
+  "alpha_ready_candidate": true,
+  "beta_ready": false,
+  "manual_review_required": true,
+  "ready_for_m12_11b_alpha_release_review": true
+}

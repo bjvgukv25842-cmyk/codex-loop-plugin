@@ -1,0 +1,33 @@
+{
+  "parent_thread_id": "019edf4f-3cd6-7533-bfbc-1e79a3146ff9",
+  "event_count": 70,
+  "thread_started_count": 1,
+  "turn_started_count": 1,
+  "turn_completed_count": 0,
+  "turn_failed_count": 0,
+  "command_execution_count": 23,
+  "npm_test_command_seen": false,
+  "file_change_event_count": 0,
+  "mcp_tool_call_count": 3,
+  "mcp_tool_names": [
+    "agent_list",
+    "loop_create_run"
+  ],
+  "collab_tool_call_count": 3,
+  "spawn_agent_call_count": 1,
+  "wait_call_count": 0,
+  "native_subagent_thread_ids": [
+    "019edf52-bf09-7e13-84db-003780c492cf"
+  ],
+  "native_subagent_tools": [
+    "spawn_agent",
+    "wait"
+  ],
+  "subagent_lifecycle_event_count": 1,
+  "subagent_lifecycle_events": [
+    "item.completed:collab_tool_call.spawn_agent"
+  ],
+  "agent_run_tool_call_count": 0,
+  "error_count": 0,
+  "errors": []
+}

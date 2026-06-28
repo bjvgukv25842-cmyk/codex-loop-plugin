@@ -1,0 +1,18 @@
+{
+  "case_id": "bugfix-small-001",
+  "case_category": "bugfix",
+  "treatment_status": "PASS",
+  "initial_eval_verdict": "PASS",
+  "final_eval_verdict": "PASS",
+  "repair_request_created": false,
+  "repair_path_required": false,
+  "repair_path_required_reason": "The initial evaluator returned PASS for a generic bugfix case, so the direct PASS path applies.",
+  "planner_thread_id_present": true,
+  "dev_worker_thread_id_present": true,
+  "evaluator_thread_id_present": true,
+  "final_report_present": true,
+  "validation_passed": true,
+  "gate_blocked_reason": "Release gate required repair_dev_worker_thread_id even though the treatment did not enter a NEEDS_REVISION repair path.",
+  "gate_policy_bug_detected": true,
+  "recommended_fix": "Allow non-repair PASS path for generic bugfix cases."
+}

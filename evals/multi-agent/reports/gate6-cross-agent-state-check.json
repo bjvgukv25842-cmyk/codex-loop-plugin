@@ -1,0 +1,58 @@
+{
+  "required_artifacts_present": false,
+  "missing_artifacts": [
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/repair-request.json",
+    "artifacts/eval-report-pass.json",
+    "artifacts/FinalDeliveryReport.md"
+  ],
+  "tests_passed": false,
+  "changed_files": [
+    "docs/PRD.md",
+    "docs/ACCEPTANCE_CRITERIA.md",
+    "docs/TASK_GRAPH.json",
+    "state/events.json",
+    "state/agent-runs.json"
+  ],
+  "src_project_name_modified": false,
+  "tests_deleted": false,
+  "package_json_unnecessarily_modified": false,
+  "secret_leak_detected": false,
+  "initial_eval_needs_revision": false,
+  "findings_count": 0,
+  "repair_request_created": false,
+  "repair_references_eval": false,
+  "final_eval_pass": false,
+  "validation_passed": false,
+  "event_semantics_present": [
+    "loop_started"
+  ],
+  "event_semantics_missing": [
+    "prd_created",
+    "task_graph_created",
+    "eval_needs_revision",
+    "repair_requested",
+    "dev_repaired",
+    "validation_passed",
+    "eval_passed",
+    "final_report_created"
+  ],
+  "final_report_exists": false,
+  "final_report_has_agent_refs": false,
+  "mcp_cross_agent_state_verified": false,
+  "p0_blockers": [
+    "Missing required artifacts: artifacts/dev-result.json, artifacts/eval-report-needs-revision.json, artifacts/repair-request.json, artifacts/eval-report-pass.json, artifacts/FinalDeliveryReport.md",
+    "Final npm test did not pass.",
+    "src/project-name.js does not show a real validation repair.",
+    "Initial EvalReport is not NEEDS_REVISION.",
+    "Initial NEEDS_REVISION evidence has no persisted findings array.",
+    "RepairRequest does not reference the initial EvalReport.",
+    "Final EvalReport is not PASS."
+  ],
+  "p1_issues": [
+    "state/events.json missing semantic events: prd_created, task_graph_created, eval_needs_revision, repair_requested, dev_repaired, validation_passed, eval_passed, final_report_created",
+    "FinalDeliveryReport does not include agent_run_id/thread_id/artifact refs.",
+    "MCP/state cross-agent evidence is incomplete."
+  ]
+}

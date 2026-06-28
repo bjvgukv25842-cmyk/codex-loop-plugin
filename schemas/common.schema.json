@@ -96,6 +96,18 @@
         "CONTEXT_RESTARTING"
       ]
     },
+    "AgentRunStatus": {
+      "type": "string",
+      "enum": [
+        "STARTED",
+        "RUNNING",
+        "FINISHED",
+        "FAILED",
+        "PASS",
+        "NEEDS_REVISION",
+        "BLOCKED"
+      ]
+    },
     "AgentType": {
       "type": "string",
       "enum": [

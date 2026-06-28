@@ -1,0 +1,124 @@
+{
+  "task_graph_id": "task_graph_demo_001",
+  "loop_run_id": "loop_demo_001",
+  "prd_artifact_id": "artifact_demo_prd",
+  "root_goal": "Implement validateProjectName with tests and documentation.",
+  "tasks": [
+    {
+      "task_id": "TASK-001",
+      "loop_run_id": "loop_demo_001",
+      "module_id": "M9",
+      "title": "Implement validateProjectName",
+      "description": "Add a small TypeScript function that validates project names.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "agent_demo_dev",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "agent_demo_eval",
+      "dependencies": [],
+      "scope": [
+        "examples/demo-repo/src/sample-feature.ts"
+      ],
+      "non_goals": [
+        "Do not implement UI.",
+        "Do not implement database persistence."
+      ],
+      "likely_files": [
+        {
+          "path": "examples/demo-repo/src/sample-feature.ts",
+          "purpose": "Project name validation implementation"
+        }
+      ],
+      "acceptance_criteria": [
+        "Empty string fails.",
+        "Whitespace-only string fails.",
+        "Names longer than 80 characters fail.",
+        "Normal project names pass."
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+        }
+      ],
+      "risk_level": "low",
+      "status": "PASS",
+      "revision_count": 1,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [
+        "artifact_demo_dev_result",
+        "eval_demo_pass"
+      ],
+      "created_at": "2026-06-18T09:00:00.000Z",
+      "updated_at": "2026-06-18T09:10:00.000Z",
+      "metadata": {
+        "demo": true
+      }
+    },
+    {
+      "task_id": "TASK-002",
+      "loop_run_id": "loop_demo_001",
+      "module_id": "M9",
+      "title": "Add tests and documentation",
+      "description": "Add acceptance criteria and tests for the demo validation function.",
+      "owner_agent_type": "dev_worker",
+      "owner_agent_id": "agent_demo_dev",
+      "reviewer_agent_type": "evaluator",
+      "reviewer_agent_id": "agent_demo_eval",
+      "dependencies": [
+        "TASK-001"
+      ],
+      "scope": [
+        "examples/demo-repo/docs/ACCEPTANCE_CRITERIA.md",
+        "examples/demo-repo/tests/sample-feature.test.ts"
+      ],
+      "non_goals": [
+        "Do not add a frontend framework.",
+        "Do not add integration with a database."
+      ],
+      "likely_files": [
+        {
+          "path": "examples/demo-repo/tests/sample-feature.test.ts",
+          "purpose": "Regression tests for validation rules"
+        },
+        {
+          "path": "examples/demo-repo/docs/ACCEPTANCE_CRITERIA.md",
+          "purpose": "Demo acceptance criteria"
+        }
+      ],
+      "acceptance_criteria": [
+        "Tests cover empty, whitespace-only, too-long, and valid names.",
+        "Docs state the non-goals."
+      ],
+      "validation_commands": [
+        {
+          "command": "npm test -- examples/demo-repo/tests/sample-feature.test.ts"
+        }
+      ],
+      "risk_level": "low",
+      "status": "PASS",
+      "revision_count": 1,
+      "branch": null,
+      "worktree_path": null,
+      "artifact_ids": [
+        "eval_demo_needs_revision",
+        "repair_demo_001",
+        "eval_demo_pass"
+      ],
+      "created_at": "2026-06-18T09:00:00.000Z",
+      "updated_at": "2026-06-18T09:10:00.000Z",
+      "metadata": {
+        "demo": true
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from_task_id": "TASK-001",
+      "to_task_id": "TASK-002",
+      "reason": "Tests and docs depend on the validation function shape."
+    }
+  ],
+  "status": "READY_FOR_NEXT_MODULE",
+  "created_at": "2026-06-18T09:00:00.000Z",
+  "updated_at": "2026-06-18T09:10:00.000Z"
+}

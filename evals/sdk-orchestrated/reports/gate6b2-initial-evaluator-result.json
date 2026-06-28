@@ -1,0 +1,9 @@
+{
+  "status": "INITIAL_DEV_SEEDED_GAP_CONTRACT_FAILED",
+  "current_stage": "DEV_DONE",
+  "real_sdk_run_executed": false,
+  "failure_category": "INITIAL_DEV_SEEDED_GAP_CONTRACT_FAILED",
+  "errors": [
+    "Initial evaluator requires a PASS initial dev worker with known_gap_seeded=true, baseline_tests_passed=true, and full_tests_failed=true."
+  ]
+}

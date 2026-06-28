@@ -1,0 +1,8 @@
+{
+  "tasks": [
+    {
+      "title": "Implement validateProjectName",
+      "description": "Validate project names according to the acceptance criteria."
+    }
+  ]
+}

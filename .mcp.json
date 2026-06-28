@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "codex_loop_store": {
+      "command": "node",
+      "args": [
+        "src/mcp/server.ts"
+      ],
+      "cwd": "/Users/litmus/Downloads/codex-loop-plugin"
+    }
+  }
+}

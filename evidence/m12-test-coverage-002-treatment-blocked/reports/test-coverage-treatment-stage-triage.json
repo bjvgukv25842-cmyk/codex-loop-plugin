@@ -1,0 +1,80 @@
+{
+  "case_id": "test-coverage-002",
+  "module": "M12.9B Test-Coverage-002 Staged Real Canary",
+  "status": "BLOCKED",
+  "stage": "treatment",
+  "failure_category": "SDK_THREAD_TIMEOUT",
+  "failure_summary": "The baseline-only real run produced a valid PASS outcome. The treatment-only real run started SDK-Orchestrated Mode, completed planner evidence, started the dev worker thread, and then exceeded timeout_ms=180000 before DevResult, evaluator, validation, or FinalDeliveryReport evidence could be completed.",
+  "baseline_stage": {
+    "executed": true,
+    "real_run_executed": true,
+    "status": "PASS",
+    "valid_outcome": true,
+    "thread_id_present": true,
+    "validation_passed": true,
+    "coverage_contract_passed": true,
+    "secret_leak_detected": false,
+    "danger_full_access_used": false,
+    "result_path": "evals/effectiveness/reports/test-coverage-002/baseline-result.json"
+  },
+  "treatment_stage": {
+    "executed": true,
+    "real_run_executed": true,
+    "status": "BLOCKED",
+    "runtime": "sdk-orchestrated",
+    "current_stage": "FAILED",
+    "planner_status": "PASS",
+    "planner_thread_id_present": true,
+    "planner_output_contract_version": "v2",
+    "dev_worker_status": "TIMEOUT",
+    "dev_worker_thread_id_present": true,
+    "initial_evaluator_thread_id_present": false,
+    "repair_request_created": false,
+    "repair_dev_worker_thread_id_present": false,
+    "final_evaluator_thread_id_present": false,
+    "final_eval_verdict": "",
+    "final_report_present": false,
+    "validation_passed": false,
+    "coverage_contract_passed": false,
+    "changed_files": [
+      "test/cache.test.js"
+    ],
+    "secret_leak_detected": false,
+    "danger_full_access_used": false,
+    "result_path": "evals/effectiveness/reports/test-coverage-002/treatment-result.json",
+    "checkpoint_state_path": "evals/effectiveness/reports/test-coverage-002/treatment-generic-test-coverage-state.json"
+  },
+  "observed_error": {
+    "message": "SDK thread exceeded timeout_ms=180000.",
+    "timeout_ms": 180000
+  },
+  "regrade": {
+    "compare_status": "NEEDS_REVISION",
+    "report_status": "NEEDS_REVISION",
+    "gate_status": "BLOCKED",
+    "gate_p0_blockers": [
+      "treatment/test-coverage-002: partial treatment failed with FEATURE_TREATMENT_PLANNER_TIMEOUT",
+      "treatment/test-coverage-002: planner stage blocker FEATURE_TREATMENT_PLANNER_TIMEOUT using v2"
+    ],
+    "gate_failure_category_note": "Gate output currently maps the partial test-coverage treatment failure to FEATURE_TREATMENT_PLANNER_TIMEOUT even though planner evidence completed and the checkpoint state shows the dev_worker stage timed out."
+  },
+  "evidence_paths": [
+    "evals/effectiveness/reports/test-coverage-002/baseline-result.json",
+    "evals/effectiveness/reports/test-coverage-002/baseline-invocation-trace-redacted.json",
+    "evals/effectiveness/reports/test-coverage-002/treatment-result.json",
+    "evals/effectiveness/reports/test-coverage-002/treatment-generic-test-coverage-state.json",
+    "evals/effectiveness/reports/test-coverage-002/treatment-diff.patch",
+    "evals/effectiveness/runs/test-coverage-002/treatment/target-repo/docs/PRD.md",
+    "evals/effectiveness/runs/test-coverage-002/treatment/target-repo/docs/TASK_GRAPH.json",
+    "evals/effectiveness/runs/test-coverage-002/treatment/target-repo/artifacts/planner-result.json",
+    "evals/effectiveness/reports/m12-release-gate.json"
+  ],
+  "post_failure_actions": {
+    "treatment_retried": false,
+    "evidence_frozen": false,
+    "next_case_readiness_checked": false,
+    "full_m12_mini_run_executed": false
+  },
+  "required_fix": "Review the generic test-coverage treatment dev worker timeout and the release-gate failure-category mapping. After a code or prompt fix is approved and dry validation passes, run exactly one test-coverage-002 treatment-only fresh rerun; do not rerun baseline unless explicitly approved.",
+  "next_manual_action": "Review test-coverage-002 treatment stage triage, then fix the SDK dev-worker timeout or timeout classification before approving exactly one treatment-only fresh rerun. Do not run the full dataset."
+}

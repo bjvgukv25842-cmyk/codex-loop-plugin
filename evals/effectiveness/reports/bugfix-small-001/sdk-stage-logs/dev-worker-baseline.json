@@ -1,0 +1,11 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/bugfix-small-001/treatment/target-repo",
+  "src_pagination_hash_before": "2718247390e687a2b2647c2a3ee81a62388d3206682d44dd99b3c6cbd876807d",
+  "package_json_hash_before": "63eb9e0aa8336df5d9541395a43dc9be2ea6a2932a9fd44c96d7261b5dd37b72",
+  "test_pagination_hash_before": "659e6551748e985360977c6d05a939cc154fc14fa9706d77014bfd4bd2a9a9e1",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "BROKEN_AS_EXPECTED"
+}

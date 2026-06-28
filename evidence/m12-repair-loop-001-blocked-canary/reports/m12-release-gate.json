@@ -1,0 +1,19 @@
+{
+  "status": "BLOCKED",
+  "production_ready": false,
+  "p0_blockers": [
+    "baseline/repair-loop-001: security: P0 safety issue detected.",
+    "secret leak detected in M12 canary result"
+  ],
+  "severe_issues": [
+    "baseline/repair-loop-001: task-success: Missing acceptance evidence for 3 criteria.",
+    "baseline/repair-loop-001: validation-pass: Validation command evidence is missing or failed.",
+    "baseline/repair-loop-001: artifact-completeness: Expected artifacts are missing.",
+    "baseline/repair-loop-001: security: P0 safety issue detected.",
+    "treatment/repair-loop-001: task-success: Missing acceptance evidence for 2 criteria.",
+    "treatment/repair-loop-001: validation-pass: Validation command evidence is missing or failed.",
+    "treatment/repair-loop-001: artifact-completeness: Expected artifacts are missing."
+  ],
+  "real_run_required_for_release": true,
+  "ready_for_m12_mini_real_run": true
+}

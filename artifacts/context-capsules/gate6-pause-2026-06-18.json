@@ -1,0 +1,91 @@
+{
+  "capsule_id": "gate6-pause-2026-06-18",
+  "loop_run_id": "gate6-native-multi-agent-loop",
+  "agent_id": "codex-main",
+  "agent_type": "integration_manager",
+  "old_thread_id": "current-thread",
+  "new_thread_id": null,
+  "restart_reason": "User requested to save context state and stop before continuing Gate 6.",
+  "current_module": "Gate 6 Real Native Multi-Agent Loop E2E",
+  "current_task": "Implement Gate 6 harness and native subagent evidence validation.",
+  "completed_modules": [
+    "M0",
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10",
+    "Gate 5"
+  ],
+  "completed_work": [
+    "Loaded the repository-local codex-loop skill and confirmed Native Subagent Mode has been added to skills/codex-loop/SKILL.md.",
+    "Confirmed the installed Codex plugin is enabled as codex-loop@codex-loop-proof, but the installed plugin cache still appears stale and does not contain Native Subagent Mode.",
+    "Confirmed bootstrap native loop agent files exist under .codex/agents/loop-*.toml.",
+    "Created Gate 6 case, prompt, result schema, and reports directory under evals/multi-agent/.",
+    "Started scripts/multi-agent/run-gate6.ts and scripts/multi-agent/parse-subagent-events.ts.",
+    "Did not run Gate 6 codex exec after the user requested a pause."
+  ],
+  "open_issues": [
+    "Gate 6 runner is incomplete; verify-agent-runs, verify-cross-agent-state, generate-gate6-report, docs, and package scripts still need to be added.",
+    "The installed plugin cache at ~/.codex/plugins/cache/codex-loop-proof/codex-loop/0.1.0 appears stale relative to the repo skill and may block a valid Gate 6 live run until the marketplace/cache is refreshed.",
+    "No real native subagent spawn evidence has been captured yet.",
+    "Hooks trusted mode remains a manual review requirement and must not be bypassed."
+  ],
+  "evaluator_findings": [],
+  "repair_requests": [],
+  "decisions": [
+    "Gate 6 must report BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE if native subagent lifecycle or agent_run evidence cannot be proven.",
+    "Gate 6 must not treat single-thread roleplay as PASS."
+  ],
+  "validation_status": {
+    "commands_run": [
+      "codex --version",
+      "codex exec --help",
+      "codex plugin list",
+      "git status --short"
+    ],
+    "passed": [
+      "codex CLI is available: codex-cli 0.140.0-alpha.19",
+      "codex-loop@codex-loop-proof is installed and enabled"
+    ],
+    "failed": [],
+    "not_run_reason": "Paused before running npm validation or Gate 6 live codex exec at user request."
+  },
+  "files_changed_recently": [
+    "evals/multi-agent/cases/gate6-native-loop.json",
+    "evals/multi-agent/prompts/gate6-user-goal.md",
+    "evals/multi-agent/schemas/gate6-result.schema.json",
+    "evals/multi-agent/reports/.gitkeep",
+    "scripts/multi-agent/run-gate6.ts",
+    "scripts/multi-agent/parse-subagent-events.ts",
+    "artifacts/context-capsules/gate6-pause-2026-06-18.json",
+    "docs/LOOP_PROGRESS.md"
+  ],
+  "source_of_truth_files": [
+    "AGENTS.md",
+    ".agent/PLANS.md",
+    "docs/IMPLEMENTATION_PLAN.md",
+    "docs/LOOP_PROGRESS.md",
+    "docs/DECISIONS.md",
+    "skills/codex-loop/SKILL.md",
+    "skills/codex-loop-bootstrap/SKILL.md"
+  ],
+  "next_instruction": "Resume Gate 6 by completing the remaining scripts: verify-agent-runs.ts, verify-cross-agent-state.ts, generate-gate6-report.ts, package.json scripts, and docs/GATE6_NATIVE_MULTI_AGENT_VALIDATION.md. Then run npm run typecheck, npm test, npm run validate, npm run bootstrap:agents, npm run verify:agents, npm run gate6:run, and npm run gate6:verify. If installed plugin cache remains stale or native subagent evidence is absent, report BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE.",
+  "do_not_repeat": [
+    "Do not rerun Gate 5.",
+    "Do not use danger-full-access.",
+    "Do not bypass hook trust.",
+    "Do not mark Gate 6 PASS without real subagent evidence."
+  ],
+  "risks": [
+    "Current installed plugin cache may not contain the Native Subagent Mode skill update.",
+    "Codex CLI may not expose native custom subagent spawn or lifecycle evidence through codex exec JSONL.",
+    "Gate 6 may correctly end as BLOCKED_NATIVE_SUBAGENTS_UNAVAILABLE."
+  ],
+  "created_at": "2026-06-18T00:00:00.000Z"
+}

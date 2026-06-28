@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codex-loop-plugin.dev/schemas/agent-run.schema.json",
+  "title": "AgentRun",
+  "type": "object",
+  "properties": {
+    "agent_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "loop_run_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "agent_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "agent_type": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentType"
+    },
+    "parent_thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "thread_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+    },
+    "task_id": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableID"
+    },
+    "module_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/AgentRunStatus"
+    },
+    "started_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "updated_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ISODateTime"
+    },
+    "finished_at": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/NullableISODateTime"
+    },
+    "artifact_ids": {
+      "type": "array",
+      "items": {
+        "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/ID"
+      }
+    },
+    "metadata": {
+      "$ref": "https://codex-loop-plugin.dev/schemas/common.schema.json#/$defs/Metadata"
+    }
+  },
+  "required": [
+    "agent_run_id",
+    "loop_run_id",
+    "agent_name",
+    "agent_type",
+    "parent_thread_id",
+    "thread_id",
+    "task_id",
+    "module_id",
+    "phase",
+    "status",
+    "started_at",
+    "updated_at",
+    "finished_at",
+    "artifact_ids",
+    "metadata"
+  ],
+  "additionalProperties": false
+}

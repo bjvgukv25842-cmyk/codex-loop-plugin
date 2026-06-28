@@ -1,0 +1,37 @@
+{
+  "case_id": "test-coverage-002",
+  "baseline_status": "PASS",
+  "treatment_status": "BLOCKED",
+  "planner_thread_id_present": true,
+  "dev_worker_thread_id_present": true,
+  "dev_worker_completed": false,
+  "dev_result_path": "",
+  "validation_log_paths": [],
+  "validation_command_results": [
+    {
+      "command": "npm test",
+      "status": "NOT_RUN",
+      "passed": false,
+      "evidence": "validation command log missing"
+    },
+    {
+      "command": "npm run coverage:contract",
+      "status": "NOT_RUN",
+      "passed": false,
+      "evidence": "validation command log missing"
+    }
+  ],
+  "npm_test_run": false,
+  "npm_test_passed": false,
+  "coverage_contract_run": false,
+  "coverage_contract_passed": false,
+  "initial_evaluator_started": false,
+  "first_failed_stage": "dev_worker",
+  "failure_category_current": "SDK_THREAD_TIMEOUT",
+  "failure_category_corrected": "TEST_COVERAGE_002_DEV_WORKER_TURN_NO_EVENT_TIMEOUT",
+  "can_recover_from_existing_evidence": false,
+  "requires_treatment_rerun": true,
+  "recommended_fixes": [
+    "Shorten or split the generic test coverage dev-worker prompt, then run exactly one treatment-only fresh rerun after approval."
+  ]
+}

@@ -1,5 +1,6 @@
 export type {
   AppendEventInput,
+  CreateRepairRequestInput,
   CreateLoopRunInput,
   CreateTaskInput,
   LoopEvent,

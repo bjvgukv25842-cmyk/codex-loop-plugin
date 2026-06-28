@@ -1,0 +1,20 @@
+{
+  "required_artifacts_present": true,
+  "missing_artifacts": [],
+  "tests_passed": true,
+  "changed_files": [
+    "artifacts/FinalDeliveryReport.md",
+    "artifacts/dev-result.json",
+    "artifacts/eval-report-needs-revision.json",
+    "artifacts/eval-report-pass.json",
+    "artifacts/repair-request.json",
+    "docs/ACCEPTANCE_CRITERIA.md",
+    "docs/PRD.md",
+    "docs/TASK_GRAPH.json",
+    "src/project-name.js",
+    "state/events.json"
+  ],
+  "forbidden_changes": [],
+  "secret_leak_detected": false,
+  "final_report_exists": true
+}

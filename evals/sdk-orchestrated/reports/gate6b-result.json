@@ -1,0 +1,10 @@
+{
+  "gate": "Gate 6B SDK-Orchestrated Mode",
+  "status": "BLOCKED_SDK_NOT_ENABLED",
+  "real_sdk_run_executed": false,
+  "sdk_thread_runs": [],
+  "m12_blocked": true,
+  "errors": [
+    "Set CODEX_LOOP_ENABLE_REAL_SDK_RUN=1 only in a controlled host terminal for Gate 6B.1."
+  ]
+}

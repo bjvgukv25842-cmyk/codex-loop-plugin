@@ -1,0 +1,9 @@
+{"type":"thread.started","thread_id":"019ee48a-76aa-7452-97e0-d54e0bf7b1e7"}
+{"type":"turn.started"}
+{"type":"error","message":"Reconnecting... 1/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: ad42802a-ba5b-469f-bdba-a2996f71e5e3)"}
+{"type":"error","message":"Reconnecting... 2/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 41b893b8-62de-444f-9e72-ba3c4a19b9e3)"}
+{"type":"error","message":"Reconnecting... 3/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: cb4d7ee0-af96-4e86-9eec-88d46d2c133d)"}
+{"type":"error","message":"Reconnecting... 4/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 67646319-72fe-46b8-a2ba-c3af442815c3)"}
+{"type":"error","message":"Reconnecting... 5/5 (unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 219b6978-ae26-4b06-b3a5-041761b12215)"}
+{"type":"error","message":"unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 42818146-18f1-4ab8-9a8a-c598199e1738"}
+{"type":"turn.failed","error":{"message":"unexpected status 502 Bad Gateway: Upstream request failed, url: https://sub2api.xiaozhudf2026.foo/v1/responses, request id: 42818146-18f1-4ab8-9a8a-c598199e1738"}}

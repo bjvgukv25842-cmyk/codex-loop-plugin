@@ -10,7 +10,7 @@ import {
   validateWithSchema,
   assertValid,
   type SchemaName
-} from "../../src/core/index.js";
+} from "../../src/core/index.ts";
 
 const fixtureRoot = join(process.cwd(), "tests", "fixtures");
 
@@ -53,7 +53,11 @@ describe("schema registry", () => {
       "eval-report",
       "repair-request",
       "context-capsule",
-      "module-progress"
+      "module-progress",
+      "agent-run",
+      "subagent-evidence",
+      "artifact-producer",
+      "sdk-thread-run"
     ]);
   });
 });

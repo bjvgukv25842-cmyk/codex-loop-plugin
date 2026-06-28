@@ -1,0 +1,33 @@
+{
+  "case_id": "repair-loop-001",
+  "treatment_real_run_executed": true,
+  "treatment_status": "BLOCKED",
+  "failure_category": "M12_TREATMENT_INITIAL_DEV_THREAD_MISSING",
+  "initial_dev_worker": {
+    "thread_started": false,
+    "thread_id": "",
+    "file_change_verified": false,
+    "baseline_tests_run": false,
+    "baseline_tests_passed": false,
+    "full_tests_run": false,
+    "full_tests_expected_to_fail": false,
+    "full_tests_failed": false,
+    "known_gap_seeded": false,
+    "dev_result_path": "",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-dev-worker-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/initial_dev_worker.stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/initial_dev_worker.stderr.log"
+  },
+  "path_mapping": {
+    "m12_run_dir": "evals/effectiveness/runs/repair-loop-001/treatment",
+    "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/repair-loop-001/treatment/target-repo",
+    "checkpoint_state_path": "evals/effectiveness/reports/repair-loop-001/treatment-gate6b2-state.json",
+    "gate6b2_runtime_reused": true
+  },
+  "resume_state_detected": true,
+  "stale_failed_checkpoint_detected": true,
+  "recommended_fixes": [
+    "Keep M12 treatment fixture aligned with Gate 6B.2 baseline/full seeded-gap contract.",
+    "Rerun treatment-only repair-loop-001 with --fresh after review; do not run additional cases."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "mode": "schema-output-lite",
+  "uses_output_schema": true,
+  "output_schema_kind": "lite",
+  "output_schema_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/reports/sdk-startup-triage/planner-smoke-output-schema-lite.inline.json",
+  "output_schema_exists": true,
+  "output_schema_hash": "228a9d459bb3f2f7877351b30bea8848f95271500346a1990e8e8c4f1dbd0268",
+  "output_schema_keys": [
+    "additionalProperties",
+    "properties",
+    "required",
+    "type"
+  ],
+  "prompt_length": 441,
+  "prompt_hash": "6f34a10d187598e05182c3f0dccc68059d0be3e4c43ceab823d990768a579077",
+  "working_directory": "/Users/litmus/Downloads/codex-loop-plugin/tmp/sdk-orchestrated/gate6b2-repair-loop-target",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sandbox_mode": "read-only",
+  "sdk_method": "runStreamed",
+  "thread_options_keys": [
+    "approvalPolicy",
+    "model",
+    "networkAccessEnabled",
+    "sandboxMode",
+    "skipGitRepoCheck",
+    "workingDirectory"
+  ],
+  "run_options_keys": [
+    "outputSchema",
+    "signal"
+  ],
+  "planner_lite_stage_shared": true,
+  "planner_stage_impl": "runPlannerLiteStage"
+}

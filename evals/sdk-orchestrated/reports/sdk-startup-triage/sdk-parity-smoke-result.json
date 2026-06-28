@@ -1,0 +1,21 @@
+{
+  "gate": "Gate 6B.1D SDK-vs-CLI Parity Smoke",
+  "status": "PASS",
+  "real_sdk_run_enabled": true,
+  "real_sdk_run_attempted": true,
+  "sdk_dependency_detected": true,
+  "node_version": "v24.17.0",
+  "node_version_ok": true,
+  "target_repo": "tmp/sdk-orchestrated/gate6b-smoke-target",
+  "direct_cli_parity_status": "PASS",
+  "model": "gpt-5.5",
+  "model_catalog_json": "/Users/litmus/Downloads/codex-loop-plugin/evals/sdk-orchestrated/model-catalog-bundled.json",
+  "sqlite_home": "/Users/litmus/Downloads/codex-loop-plugin/.codex-eval/sqlite",
+  "sdk_thread_started": true,
+  "sdk_thread_id": "019ee441-7b5e-77a0-a1c2-0432f6511108",
+  "final_response_contains_expected": true,
+  "failure_category": "",
+  "danger_full_access_used": false,
+  "secret_leak_detected": false,
+  "errors": []
+}

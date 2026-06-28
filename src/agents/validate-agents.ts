@@ -34,14 +34,29 @@ export const REQUIRED_AGENTS = [
   "architecture_reviewer"
 ] as const;
 
-export const AGENT_FILE_BY_NAME: Record<(typeof REQUIRED_AGENTS)[number], string> = {
+export const NATIVE_LOOP_AGENTS = [
+  "loop_planner",
+  "loop_dev_worker",
+  "loop_evaluator",
+  "loop_context_distiller",
+  "loop_integration_manager"
+] as const;
+
+export type KnownAgentName = (typeof REQUIRED_AGENTS)[number] | (typeof NATIVE_LOOP_AGENTS)[number];
+
+export const AGENT_FILE_BY_NAME: Record<KnownAgentName, string> = {
   planner: "planner.toml",
   dev_worker: "dev-worker.toml",
   evaluator: "evaluator.toml",
   context_distiller: "context-distiller.toml",
   integration_manager: "integration-manager.toml",
   test_reviewer: "test-reviewer.toml",
-  architecture_reviewer: "architecture-reviewer.toml"
+  architecture_reviewer: "architecture-reviewer.toml",
+  loop_planner: "loop-planner.toml",
+  loop_dev_worker: "loop-dev-worker.toml",
+  loop_evaluator: "loop-evaluator.toml",
+  loop_context_distiller: "loop-context-distiller.toml",
+  loop_integration_manager: "loop-integration-manager.toml"
 };
 
 const agentsRoot = ".codex/agents";
@@ -52,10 +67,13 @@ const readOnlyAgents = new Set([
   "evaluator",
   "context_distiller",
   "test_reviewer",
-  "architecture_reviewer"
+  "architecture_reviewer",
+  "loop_planner",
+  "loop_evaluator",
+  "loop_context_distiller"
 ]);
 
-const workspaceWriteAgents = new Set(["dev_worker", "integration_manager"]);
+const workspaceWriteAgents = new Set(["dev_worker", "integration_manager", "loop_dev_worker", "loop_integration_manager"]);
 
 export function validateAgents(): AgentValidationResult {
   const errors: AgentValidationIssue[] = [];
@@ -218,6 +236,31 @@ function validateRoleContract(agent: AgentDefinition, errors: AgentValidationIss
 
   if (agent.name === "integration_manager") {
     requireContains(agent, ["evaluator PASS", "Do not bypass evaluator findings", "final validation", "FinalDeliveryReport"], errors);
+  }
+
+  if (agent.name === "loop_planner") {
+    requireContains(agent, ["PRD", "TaskGraph", "agent_run_id", "thread_id"], errors);
+    requireContains(agent, ["Do not write production code"], errors);
+  }
+
+  if (agent.name === "loop_dev_worker") {
+    requireContains(agent, ["TaskNode", "RepairRequest", "allowed scope", "agent_run_id", "thread_id"], errors);
+    requireContains(agent, ["Do not write EvalReport"], errors);
+  }
+
+  if (agent.name === "loop_evaluator") {
+    requireContains(agent, ["read-only", "EvalReport", "PASS", "NEEDS_REVISION", "agent_run_id", "thread_id"], errors);
+    requireContains(agent, ["Do not modify files"], errors);
+  }
+
+  if (agent.name === "loop_context_distiller") {
+    requireContains(agent, ["ContextCapsule", "agent_run_id", "thread_id", "next_instruction"], errors);
+    requireContains(agent, ["Do not invent"], errors);
+  }
+
+  if (agent.name === "loop_integration_manager") {
+    requireContains(agent, ["evaluator PASS", "FinalDeliveryReport", "agent_run_id", "thread_id"], errors);
+    requireContains(agent, ["Do not bypass"], errors);
   }
 
   if (readOnlyAgents.has(agent.name) && instructions.includes("workspace-write")) {

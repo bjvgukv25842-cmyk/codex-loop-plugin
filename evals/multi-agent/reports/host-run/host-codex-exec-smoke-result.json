@@ -1,0 +1,17 @@
+{
+  "gate": "Host Codex Exec Smoke",
+  "status": "PASS",
+  "thread_started": true,
+  "thread_id": "019ee0bc-4933-7c61-8272-5f497c89a6fa",
+  "turn_completed": true,
+  "turn_failed": false,
+  "agent_message_seen": true,
+  "event_count": 4,
+  "parse_error_count": 0,
+  "stderr_exists": true,
+  "stderr_model_refresh_warning_seen": true,
+  "stderr_model_refresh_warning_blocking": false,
+  "error_event_count": 0,
+  "failure_category": "",
+  "ready_for_one_host_gate6_lite_run": true
+}

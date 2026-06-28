@@ -1,0 +1,15 @@
+{
+  "case_id": "feature-small-001",
+  "status": "PASS",
+  "mode": "text-only",
+  "real_sdk_run_executed": true,
+  "evaluator_thread_started": true,
+  "evaluator_thread_id": "",
+  "structured_output_valid": true,
+  "eval_report_created": false,
+  "artifact_thread_evidence_verified": true,
+  "final_response_contains_expected": true,
+  "eval_verdict": "PASS",
+  "sdk_method": "run",
+  "failure_category": ""
+}

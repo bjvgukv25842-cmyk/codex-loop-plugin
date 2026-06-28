@@ -1,0 +1,15 @@
+{
+  "gate": "Gate 6B.1J.1 Dev Worker Fixture Prepare",
+  "status": "PASS",
+  "target_repo": "tmp/sdk-orchestrated/gate6b-smoke-target",
+  "baseline_path": "evals/sdk-orchestrated/reports/sdk-startup-triage/dev-worker-baseline.json",
+  "src_project_name_hash_before": "3307d0f65556d1f2d14bd8fbcd095e53f99218cd51a652b5869b2af8591a9d00",
+  "package_json_hash_before": "4b9b46ddb4b99c6c6560b0f85f3fc92c92c07285d03a9c285d7515914f2beabd",
+  "test_project_name_hash_before": "a1603813ee00cf19f3a688f4104d1c103e5587cfed0f1a1af0437a901fc02979",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": true,
+  "initial_tests_failed": true,
+  "fixture_status": "BROKEN_AS_EXPECTED",
+  "real_sdk_run_executed": false,
+  "errors": []
+}

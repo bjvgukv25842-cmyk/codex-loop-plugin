@@ -1,0 +1,43 @@
+{
+  "case_id": "test-coverage-002",
+  "current_stage": "FAILED",
+  "planner": {
+    "status": "PASS",
+    "thread_id": "019ef9df-5bdb-7572-80c2-a9f5ac3f2a4b",
+    "prd_path": "docs/PRD.md",
+    "task_graph_path": "docs/TASK_GRAPH.json",
+    "planner_result_path": "artifacts/planner-result.json",
+    "stage_attempted": true,
+    "stage_completed": true,
+    "output_contract_version": "v2",
+    "raw_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-planner-stdout.log",
+    "redacted_output_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-planner-stdout-redacted.log",
+    "events_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-planner-events.jsonl",
+    "stdout_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-planner-stdout.log",
+    "stderr_path": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/reports/test-coverage-002/sdk-stage-logs/generic-test-coverage-planner-stderr.log",
+    "last_event_type": "turn.completed",
+    "elapsed_ms": 35508,
+    "event_count": 7,
+    "failure_category": ""
+  },
+  "dev_worker": {
+    "status": "TIMEOUT",
+    "thread_id": "019ef9df-e650-70b2-8d2a-5d6e5b50ba67",
+    "file_change_verified": false,
+    "tests_passed": false,
+    "dev_result_path": ""
+  },
+  "evaluator": {
+    "status": "",
+    "thread_id": "",
+    "eval_verdict": "",
+    "eval_report_path": ""
+  },
+  "repair_request": {},
+  "repair_dev_worker": {},
+  "final_evaluator": {},
+  "final_report": {},
+  "errors": [
+    "SDK thread exceeded timeout_ms=180000."
+  ]
+}

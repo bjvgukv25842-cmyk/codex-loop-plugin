@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "failure_category": "",
+  "real_thread_executed": true,
+  "parent_thread_id": "019edf39-8f8b-7b93-a1f5-3694e01b2297",
+  "agent_runs_count": 2,
+  "agent_names": [
+    "loop_evaluator",
+    "loop_planner"
+  ],
+  "artifacts_present": [
+    "artifacts/probe/planner.json",
+    "artifacts/probe/evaluator.json"
+  ],
+  "artifacts_missing": [],
+  "mcp_agent_run_evidence": true,
+  "subagent_lifecycle_verified": true,
+  "parent_wrote_probe_artifacts": false,
+  "custom_agents_discovered": true,
+  "project_codex_config_present": true,
+  "project_codex_config_trusted": true,
+  "blockers": [],
+  "warnings": []
+}

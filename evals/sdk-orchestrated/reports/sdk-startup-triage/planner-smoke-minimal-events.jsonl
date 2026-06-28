@@ -1,0 +1,4 @@
+{"type":"thread.started","thread_id":"019ee474-d842-7db1-9689-7ab50a82b662"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"agent_message","text":"SDK_PLANNER_MINIMAL_OK"}}
+{"type":"turn.completed","usage":{"input_tokens":34140,"cached_input_tokens":4992,"output_tokens":343,"reasoning_output_tokens":331}}

@@ -3,6 +3,7 @@ import type {
   ContextCapsule,
   EvalReport,
   LoopRun,
+  RepairRequest,
   TaskNode,
   TaskStatus,
   Artifact,
@@ -15,6 +16,7 @@ export type RegisterAgentInput = AgentProfile;
 export type CreateTaskInput = TaskNode;
 export type WriteArtifactInput = Artifact;
 export type WriteEvalReportInput = EvalReport;
+export type CreateRepairRequestInput = RepairRequest;
 export type WriteContextCapsuleInput = ContextCapsule;
 
 export interface UpdateAgentThreadInput {
@@ -64,6 +66,9 @@ export interface LoopStore {
   writeEvalReport(input: WriteEvalReportInput): Promise<EvalReport>;
   getEvalReport(evalId: string): Promise<EvalReport | null>;
   listEvalReportsByTask(taskId: string): Promise<EvalReport[]>;
+  createRepairRequest(input: CreateRepairRequestInput): Promise<RepairRequest>;
+  getRepairRequest(repairId: string): Promise<RepairRequest | null>;
+  listRepairRequestsByTask(taskId: string): Promise<RepairRequest[]>;
   writeContextCapsule(input: WriteContextCapsuleInput): Promise<ContextCapsule>;
   getContextCapsule(capsuleId: string): Promise<ContextCapsule | null>;
   listContextCapsulesByAgent(agentId: string): Promise<ContextCapsule[]>;

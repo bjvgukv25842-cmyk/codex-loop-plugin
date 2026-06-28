@@ -1,0 +1,15 @@
+{
+  "target_repo": "/Users/litmus/Downloads/codex-loop-plugin/evals/effectiveness/runs/test-coverage-001/treatment/target-repo",
+  "src_invoice_hash_before": "da07dc6f2c0cdcd84ee3dda423cc9e2797cdbd85521580a2419739c0a5224ae6",
+  "package_json_hash_before": "aeb798b53f2e4f34c5c6b563a879ae8f6c6a064d0a8e3e9fae3c2ea3881f303a",
+  "test_invoice_hash_before": "b01a3c36ca524259eb0aabbc874f0438708cd15cc2e818ee588a8bc6bfa94907",
+  "coverage_contract_hash_before": "6371d78976d3f168ecdb57a3a189abb7be2906d189deff6c96cb5b707f1f9c26",
+  "initial_tests_run": true,
+  "initial_tests_expected_to_fail": false,
+  "initial_tests_failed": false,
+  "initial_coverage_contract_run": true,
+  "initial_coverage_contract_expected_to_fail": true,
+  "initial_coverage_contract_failed": true,
+  "seeded_gap_fixture_created": false,
+  "fixture_status": "COVERAGE_GAP_AS_EXPECTED"
+}

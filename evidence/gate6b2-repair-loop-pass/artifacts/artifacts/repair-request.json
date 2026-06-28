@@ -1,0 +1,39 @@
+{
+  "repair_id": "repair_gate6b2_whitespace_only",
+  "loop_run_id": "loop_gate6b2_repair_loop",
+  "task_id": "task_validate_project_name",
+  "module_id": "Gate6B",
+  "source_eval_id": "eval_task_validate_project_name_needs_revision",
+  "assigned_agent_id": "sdk-repair-dev-worker",
+  "findings": [
+    {
+      "finding_id": "whitespace_only_project_names_accepted",
+      "severity": "high",
+      "category": "correctness",
+      "description": "Evaluator reported an issue.",
+      "evidence": [],
+      "required_fix": "Reject names whose trim-equivalent value is empty before returning ok: true."
+    }
+  ],
+  "repair_instructions": [
+    "Reject names whose trim-equivalent value is empty before returning ok: true."
+  ],
+  "allowed_scope": [
+    "src/project-name.js",
+    "test/project-name.baseline.test.js",
+    "test/project-name.full.test.js"
+  ],
+  "disallowed_scope": [
+    "Do not implement UI.",
+    "Do not add database changes.",
+    "Do not modify package.json unless validation is impossible."
+  ],
+  "validation_commands": [
+    {
+      "command": "npm test"
+    }
+  ],
+  "status": "REPAIR_REQUESTED",
+  "created_at": "2026-06-21T10:10:11.818Z",
+  "updated_at": "2026-06-21T10:10:11.818Z"
+}

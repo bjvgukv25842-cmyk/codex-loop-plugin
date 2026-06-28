@@ -1,0 +1,49 @@
+{
+  "case_id": "feature-small-001",
+  "parity": {
+    "status": "PASS",
+    "sdk_method": "run",
+    "thread_id": "019ef21f-a41e-76b1-bf33-762f06824382",
+    "evidence_path": "evals/effectiveness/reports/feature-small-001/feature-evaluator-smoke-parity-result.json",
+    "passed_at": "2026-06-23T09:10:10.594Z"
+  },
+  "text_only": {
+    "status": "PASS",
+    "sdk_method": "",
+    "thread_id": "",
+    "evidence_path": "evals/effectiveness/reports/feature-small-001/feature-evaluator-smoke-text-only-result.json",
+    "passed_at": "2026-06-23T09:10:10.595Z"
+  },
+  "output_minimal": {
+    "status": "PASS",
+    "sdk_method": "",
+    "thread_id": "019ef3ac-77fc-7b80-acc2-d31603b4192c",
+    "evidence_path": "evals/effectiveness/reports/feature-small-001/feature-evaluator-smoke-output-minimal-result.json",
+    "passed_at": "2026-06-23T09:10:10.595Z"
+  },
+  "output_lite": {
+    "status": "PASS",
+    "sdk_method": "",
+    "thread_id": "019ef3b3-1d94-7442-bbff-88cb10dab41b",
+    "evidence_path": "evals/effectiveness/reports/feature-small-001/feature-evaluator-smoke-output-lite-result.json",
+    "passed_at": "2026-06-23T09:10:10.595Z"
+  },
+  "exact": {
+    "status": "PASS",
+    "sdk_method": "",
+    "thread_id": "019ef3bd-93be-7e02-bf96-ffb7636fc90c",
+    "evidence_path": "evals/effectiveness/reports/feature-small-001/feature-evaluator-smoke-exact-result.json",
+    "passed_at": "2026-06-23T09:10:10.595Z"
+  },
+  "ready_for_output_minimal": true,
+  "ready_for_output_lite": true,
+  "ready_for_exact": true,
+  "ready_for_treatment_rerun": true,
+  "reconstruction_status": "PASS",
+  "errors": [],
+  "blocked_attempt": {
+    "mode": "output-lite",
+    "status": "BLOCKED_EVALUATOR_OUTPUT_MINIMAL_NOT_PASSED",
+    "reason": "output-lite attempted before output-minimal PASS"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "mode": "output-lite",
+  "dry_run_status": "PASS",
+  "real_sdk_run_executed": true,
+  "evaluator_stage_shared": true,
+  "evaluator_stage_impl": "runEvaluatorLiteStage",
+  "full_eval_report_schema_in_output_schema": false,
+  "ready_for_one_real_evaluator_parity_smoke": false,
+  "ready_for_evaluator_text_only_smoke": true,
+  "ready_for_evaluator_output_minimal_smoke": true,
+  "ready_for_evaluator_output_lite_smoke": true,
+  "ready_for_checkpoint_evaluator_retry": true,
+  "evaluator_smoke_gate_passed": true,
+  "failure_category": "",
+  "errors": []
+}

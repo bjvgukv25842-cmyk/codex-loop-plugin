@@ -1,0 +1,14 @@
+{
+  "case_id": "repair-loop-001",
+  "stage": "planner",
+  "planner_thread_started": true,
+  "planner_thread_id": "019eea92-842b-77e1-bc2a-73b7aa0c26eb",
+  "raw_output_path": "evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout.log",
+  "redacted_output_path": "evals/effectiveness/reports/repair-loop-001/sdk-stage-logs/gate6b2-planner-stdout-redacted.log",
+  "task_graph_json_present": true,
+  "task_graph_json_parse_error": "task_graph_json is not valid JSON: Bad escaped character in JSON at position 438 (line 1 column 439)",
+  "bad_escaped_character_detected": true,
+  "planner_v1_used": true,
+  "planner_v2_supported": true,
+  "recommended_fix": "Switch M12 treatment planner output to planner-lite-v2 structured tasks[] and persist planner partial evidence when postprocessing fails."
+}
